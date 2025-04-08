@@ -146,7 +146,7 @@ export default function Catalogue() {
               variant="outline"
               className="text-sm bg-sidebar text-gray-500 rounded-full"
             >
-              {technique.length} technique
+              {technique.length} techniques
             </Badge>
           </div>
         </div>
