@@ -1,0 +1,616 @@
+"use client";
+
+// Next
+import Image from "next/image";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+
+// Context
+import { useArticlesContext } from "../context/ArticlesContext";
+
+// Components
+import HomeSlider from "../components/HomeSlider";
+import HomeCarousel from "../components/HomeCarousel";
+import Aurora from "../components/Aurora/Aurora";
+
+// UI
+import { Button } from "../components/ui/button";
+import DecryptedText from "../components/DecryptedText";
+import SpotlightCard from "../components/SpotlightCard";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+
+// Icons
+import {
+  ArrowUpRight,
+  LibraryBig,
+  MessagesSquare,
+  ArrowRight,
+  Rss,
+  Calendar,
+  Paperclip,
+} from "lucide-react";
+export default function Home() {
+  const { articles } = useArticlesContext();
+  const [slides, setSlides] = useState([]);
+  const [boxes, setBoxes] = useState([]);
+
+  const fetchData = async (url: string, setData: any) => {
+    const baseUrl = "http://localhost:1337";
+    const response = await axios.get(`${baseUrl}/api/${url}`);
+    console.log("response", response);
+    setData(response.data);
+  };
+
+  useEffect(() => {
+    fetchData(
+      "home-page?populate[0]=Slider&populate[1]=Slider.Immagine",
+      setSlides
+    );
+    fetchData("home-page?populate[0]=BoxesSection", setBoxes);
+  }, []);
+
+  console.log(articles);
+  //console.log("data", data);
+
+  return (
+    <main className="w-full mx-auto">
+      <section className="container w-full mx-auto !overflow-visible z-10 relative">
+        <HomeSlider data={slides} />
+      </section>
+
+      {/* {articles.map((article: any) => (
+        <div key={article.id}>
+          <h2>{article.Titolo}</h2>
+          {article.Contenuto.map((content: any) => {
+            return (
+              <p key={content.id} className="py-2">
+                {content.children[0].text}
+              </p>
+            );
+          })}
+        </div>
+      ))} */}
+
+      <section className="container w-full mx-auto  flex flex-col items-center justify-center py-32 gap-18 md:px-0">
+        <div className="flex flex-col items-center gap-4 text-center max-w-5xl">
+          <span className="font-semibold flex flex-row gap-2 items-center">
+            <MessagesSquare className="w-12 h-12 stroke-1" />
+          </span>
+
+          <DecryptedText
+            text="Main Topics"
+            animateOn="view"
+            sequential={true}
+            maxIterations={20}
+            characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
+            speed={50}
+            revealDirection="start"
+            encryptedClassName="text-5xl  font-medium tracking-tight"
+            className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
+          />
+          <p className="text-center text-xl max-w-2xl">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
+            tempor incididunt ut labor.
+          </p>
+        </div>
+        {/* <div className="grid grid-cols-12 grid-rows-2 gap-2">
+          <div className="splash custom-spotlight-card col-span-4 row-span-2 bg-[var(--green-primary)] min-h-[300px] p-8 flex flex-col justify-between border-none rounded-none text-white">
+            <div className="flex flex-col gap-4">
+              <h3 className="text-3xl font-medium ">
+                Nanomaterials for energy
+              </h3>
+              <p className="">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua
+                eiusmod tempor incididunt ut labor.
+              </p>
+            </div>
+            <button className="bg-blue-primary  self-end">
+              <ArrowUpRight className="w-12 h-12 stroke-1" />
+            </button>
+          </div>
+          <div className="col-span-4 row-span-1 bg-[var(--green-secondary)] min-h-[300px] splash p-8 flex flex-col justify-between">
+            <div className="flex flex-col gap-4">
+              <h3 className="text-3xl font-medium text-white">
+                Green Energy Materials and Processing
+              </h3>
+              <p className="text-white">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua
+                eiusmod tempor incididunt ut labor.
+              </p>
+            </div>
+            <button className="bg-blue-primary text-white self-end">
+              <ArrowUpRight className="w-12 h-12 stroke-1" />
+            </button>
+          </div>
+          <div className="col-span-4 row-span-1 bg-[var(--green-primary)] min-h-[300px] splash p-8 flex flex-col justify-between">
+            <div className="flex flex-col gap-4">
+              <h3 className="text-3xl font-medium text-white">
+                Multiscale Characterization of Micro/Nanosystems
+              </h3>
+              <p className="text-white">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua
+                eiusmod tempor incididunt ut labor.
+              </p>
+            </div>
+            <button className="bg-blue-primary text-white self-end">
+              <ArrowUpRight className="w-12 h-12 stroke-1" />
+            </button>
+          </div>
+          <div className="col-span-4 row-span-1 col-start-5 row-start-2 col-end-13 row-end-2 bg-[var(--green-tertiary)] min-h-[300px] splash p-8 flex flex-col justify-between">
+            <div className="flex flex-col gap-4">
+              <h3 className="text-3xl font-medium text-white">
+                Device and System Fabrication Technologies
+              </h3>
+              <p className="text-white max-w-xl">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua
+                eiusmod tempor incididunt ut labor.
+              </p>
+            </div>
+            <button className="bg-blue-primary text-white self-end">
+              <ArrowUpRight className="w-12 h-12 stroke-1" />
+            </button>
+          </div>
+        </div> */}
+
+        <div className="w-full">
+          <Tabs
+            defaultValue="nanomaterials"
+            className="w-full max-w-7xl mx-auto"
+          >
+            <TabsList className="w-full h-full">
+              <TabsTrigger
+                value="nanomaterials"
+                className="flex-1 text-xl data-[state=active]:bg-[var(--blue-primary)] data-[state=active]:text-white"
+              >
+                Nanomaterials for energy
+              </TabsTrigger>
+              <TabsTrigger
+                value="green"
+                className="flex-1 text-xl data-[state=active]:bg-[var(--blue-primary)] data-[state=active]:text-white"
+              >
+                Green Energy Materials
+              </TabsTrigger>
+              <TabsTrigger
+                value="multiscale"
+                className="flex-1 text-xl data-[state=active]:bg-[var(--blue-primary)] data-[state=active]:text-white"
+              >
+                Multiscale Characterization
+              </TabsTrigger>
+              <TabsTrigger
+                value="fabrication"
+                className="flex-1 text-xl data-[state=active]:bg-[var(--blue-primary)] data-[state=active]:text-white"
+              >
+                Device and System Fabrication
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="nanomaterials">
+              <div className="flex flex-row gap-4 bg-muted rounded min-h-[500px]">
+                <div className="w-1/2 p-16 flex flex-col justify-between">
+                  <div className="flex flex-col gap-4">
+                    <h3 className="text-3xl font-semibold tracking-tight ">
+                      Nanomaterials for energy
+                    </h3>
+                    <p className="text-xl">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua eiusmod tempor incididunt ut labor.
+                    </p>
+                  </div>
+                  <Button className="self-end">
+                    Discover more
+                    <ArrowRight className="w-12 h-12 stroke-1" />
+                  </Button>
+                </div>
+                <div className="w-1/2">
+                  <Image
+                    src="/images/esempio.jpg"
+                    alt="nanomaterials"
+                    width={1000}
+                    height={1000}
+                    className="w-full object-cover h-full rounded-r"
+                  />
+                </div>
+              </div>
+            </TabsContent>
+            <TabsContent value="green">
+              <div className="flex flex-row gap-4 bg-muted rounded min-h-[500px]">
+                <div className="w-1/2 p-16 flex flex-col justify-between">
+                  <div className="flex flex-col gap-4">
+                    <h3 className="text-3xl font-semibold tracking-tight ">
+                      Green Energy Materials and Processing
+                    </h3>
+                    <p className="text-xl">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua eiusmod tempor incididunt ut labor.
+                    </p>
+                  </div>
+                  <Button className="self-end">
+                    Discover more
+                    <ArrowRight className="w-12 h-12 stroke-1" />
+                  </Button>
+                </div>
+                <div className="w-1/2">
+                  <Image
+                    src="/images/esempio.jpg"
+                    alt="nanomaterials"
+                    width={1000}
+                    height={1000}
+                    className="w-full object-cover h-full rounded-r"
+                  />
+                </div>
+              </div>
+            </TabsContent>
+            <TabsContent value="multiscale">
+              <div className="flex flex-row gap-4 bg-muted rounded min-h-[500px]">
+                <div className="w-1/2 p-16 flex flex-col justify-between">
+                  <div className="flex flex-col gap-4">
+                    <h3 className="text-3xl font-semibold tracking-tight ">
+                      Multiscale Characterization of Micro/Nanosystems
+                    </h3>
+                    <p className="text-xl">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua eiusmod tempor incididunt ut labor.
+                    </p>
+                  </div>
+                  <Button className="self-end">
+                    Discover more
+                    <ArrowRight className="w-12 h-12 stroke-1" />
+                  </Button>
+                </div>
+                <div className="w-1/2">
+                  <Image
+                    src="/images/esempio.jpg"
+                    alt="nanomaterials"
+                    width={1000}
+                    height={1000}
+                    className="w-full object-cover h-full rounded-r"
+                  />
+                </div>
+              </div>
+            </TabsContent>
+            <TabsContent value="fabrication">
+              <div className="flex flex-row gap-4 bg-muted rounded min-h-[500px]">
+                <div className="w-1/2 p-16 flex flex-col justify-between">
+                  <div className="flex flex-col gap-4">
+                    <h3 className="text-3xl font-semibold tracking-tight ">
+                      Device and System Fabrication Technologies
+                    </h3>
+                    <p className="text-xl">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua eiusmod tempor incididunt ut labor.
+                    </p>
+                  </div>
+                  <Button className="self-end">
+                    Discover more
+                    <ArrowRight className="w-12 h-12 stroke-1" />
+                  </Button>
+                </div>
+                <div className="w-1/2">
+                  <Image
+                    src="/images/esempio.jpg"
+                    alt="nanomaterials"
+                    width={1000}
+                    height={1000}
+                    className="w-full object-cover h-full rounded-r"
+                  />
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+
+        {/* <div className="flex flex-row gap-2 gap-2 w-full">
+          <div className="col-span-4 row-span-3 col-start-1 row-start-1">
+            <div className="bg-gray-200 splashMini p-[1px] pb-4 flex flex-1 flex-col h-full">
+              <div className="flex flex-col gap-4 bg-[var(--green-secondary)] text-white splashMini pb-4 h-full">
+                <Image
+                  src="/images/esempio.jpg"
+                  alt="nanomaterials"
+                  width={500}
+                  height={500}
+                  className="w-full object-cover splashMini h-[300px]"
+                />
+                <div className="flex flex-col gap-4 p-6">
+                  <h3 className="text-2xl font-semibold tracking-tight">
+                    Nanomaterials for energy
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua eiusmod tempor incididunt ut labor.
+                  </p>
+                </div>
+                <button className="bg-blue-primary self-end">
+                  <ArrowUpRight className="w-12 h-12 stroke-1" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-span-4 row-span-2 col-start-1 row-start-4">
+            <div className="bg-gray-200 splashMini p-[1px] pb-4 flex flex-1 flex-col h-full">
+              <div className="flex flex-col gap-4 bg-[var(--green-secondary)] text-white splashMini pb-4 h-full">
+                <Image
+                  src="/images/esempio.jpg"
+                  alt="nanomaterials"
+                  width={500}
+                  height={500}
+                  className="w-full object-cover splashMini h-[300px]"
+                />
+                <div className="flex flex-col gap-4 p-6">
+                  <h3 className="text-2xl font-semibold tracking-tight">
+                    Green Energy Materials and Processing
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua eiusmod tempor incididunt ut labor.
+                  </p>
+                </div>
+                <button className="bg-blue-primary self-end">
+                  <ArrowUpRight className="w-12 h-12 stroke-1" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-span-4 row-span-3 col-start-9 row-start-1">
+            <div className="bg-gray-200 splashMini p-[1px] pb-4 flex flex-1 flex-col h-full">
+              <div className="flex flex-col gap-4 bg-[var(--green-secondary)] text-white splashMini pb-4 h-full">
+                <Image
+                  src="/images/esempio.jpg"
+                  alt="nanomaterials"
+                  width={500}
+                  height={500}
+                  className="w-full object-cover splashMini h-[300px]"
+                />
+                <div className="flex flex-col gap-4 p-6">
+                  <h3 className="text-2xl font-semibold tracking-tight">
+                    Multiscale Characterization of Micro/Nanosystems
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua eiusmod tempor incididunt ut labor.
+                  </p>
+                </div>
+                <button className="bg-blue-primary self-end">
+                  <ArrowUpRight className="w-12 h-12 stroke-1" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-span-4 row-span-2 col-start-9 row-start-4">
+            <div className="bg-gray-200 splashMini p-[1px] pb-4 flex flex-1 flex-col h-full">
+              <div className="flex flex-col gap-4 bg-[var(--green-secondary)] text-white splashMini pb-4 h-full">
+                <Image
+                  src="/images/esempio.jpg"
+                  alt="nanomaterials"
+                  width={500}
+                  height={500}
+                  className="w-full object-cover splashMini h-[300px]"
+                />
+                <div className="flex flex-col gap-4 p-6">
+                  <h3 className="text-2xl font-semibold tracking-tight">
+                    Device and System Fabrication Technologies
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua eiusmod tempor incididunt ut labor.
+                  </p>
+                </div>
+                <button className="bg-blue-primary self-end">
+                  <ArrowUpRight className="w-12 h-12 stroke-1" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div> */}
+      </section>
+
+      <section className="flex flex-col gap-16 justify-center items-center bg-muted pt-20 pb-5 splashMaxi relative">
+        <div className=" container w-full mx-auto flex flex-col gap-4 justify-center items-center px-8  z-10">
+          <div className="flex flex-col gap-4 items-center mb-8">
+            <LibraryBig className="w-12 h-12 stroke-1" />
+            <DecryptedText
+              text="Our Catalogue"
+              animateOn="view"
+              sequential={true}
+              maxIterations={20}
+              characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
+              speed={50}
+              revealDirection="start"
+              encryptedClassName="text-5xl  font-medium tracking-tight"
+              className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
+            />
+            <p className="text-xl max-w-2xl text-center px-8">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
+              tempor incididunt ut labor.
+            </p>
+            <Link href="/catalogue">
+              <Button className="">
+                Go to Catalogue <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+          <div className="grid grid-cols-4 gap-2 w-full">
+            <div className="w-full flex flex-col gap-4 p-8 bg-white splashMini">
+              <span className="text-6xl font-medium">+94</span>
+              <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
+                Scientific techniques
+              </h4>
+              <p className="text-sm">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut.
+              </p>
+            </div>
+            <div className="w-full flex flex-col gap-4 p-8 bg-white splashMini">
+              <span className="text-6xl font-medium">30</span>
+              <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
+                Instruments available to external users
+              </h4>
+              <p className="text-sm">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut.
+              </p>
+            </div>
+            <div className="w-full flex flex-col gap-4 p-8 bg-white splashMini">
+              <span className="text-6xl font-medium">20</span>
+              <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
+                Investment in advanced instrumentation
+              </h4>
+              <p className="text-sm">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut.
+              </p>
+            </div>
+            <div className="w-full flex flex-col gap-4 p-8 bg-white splashMini">
+              <span className="text-6xl font-medium">+60</span>
+              <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
+                Researchers involved in the infrastructure
+              </h4>
+              <p className="text-sm">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="container max-w-7xl mx-auto  z-10">
+          <Image
+            src="/images/Browsers.png"
+            alt="catalogue"
+            width={1920}
+            height={1080}
+            className="w-full"
+            unoptimized
+          />
+        </div>
+        <div className="w-full h-full absolute top-0 left-0 opacity-50 rotate-180 z-0">
+          <Aurora speed={1} amplitude={0.1} />
+        </div>
+      </section>
+
+      <section className="container w-full mx-auto py-20 overflow-visible flex flex-col gap-20 px-8">
+        <div className="flex flex-row justify-between px-8 md:px-0">
+          <div>
+            <h2 className="text-lg font-medium tracking-tight">Features</h2>
+          </div>
+          <div className="max-w-2xl">
+            <p className="text-2xl font-medium tracking-tight">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
+              tempor incididunt ut labor.
+            </p>
+          </div>
+        </div>
+        <HomeCarousel boxes={boxes} />
+      </section>
+
+      <section className="bg-[var(--blue-primary)] h-[60vh] w-full relative px-8 hidden">
+        <div className="container w-full max-w-7xl mx-auto h-full relative">
+          <div className="absolute bottom-0 left-8 md:left-0 w-6/12 h-[350px] bg-white z-20 splash p-12 pr-16 pb-18">
+            <div className="w-full h-full relative">
+              <div className="flex flex-col gap-4 justify-between items-start h-full">
+                <h2 className="text-4xl fadeIn text-black tracking-tight">
+                  Discover our cutting-edge instruments for sustainable energy
+                  solutions
+                </h2>
+                <Button variant="outline" className="">
+                  Read more <ArrowRight className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full bg-muted h-screen py-20 splashMaxi">
+        <div className="container mx-auto w-full  flex flex-col gap-4 justify-center items-center">
+          <DecryptedText
+            text="Lorem ipsum dolor sit amet"
+            animateOn="view"
+            sequential={true}
+            maxIterations={20}
+            characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
+            speed={50}
+            revealDirection="start"
+            encryptedClassName="text-5xl  font-medium tracking-tight"
+            className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
+          />
+          <p className="text-xl max-w-2xl text-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
+            tempor incididunt ut labor.
+          </p>
+        </div>
+      </section>
+
+      <section className="container mx-auto w-full bg-white py-20 flex flex-col gap-16 px-8">
+        <div className="flex flex-row justify-between items-center">
+          <DecryptedText
+            text="News, proposals & Events"
+            animateOn="view"
+            sequential={true}
+            maxIterations={20}
+            characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
+            speed={50}
+            revealDirection="start"
+            encryptedClassName="text-5xl  font-medium tracking-tight"
+            className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
+          />
+          <Button>
+            Vedi tutto <ArrowRight className="w-4 h-4" />
+          </Button>
+        </div>
+        <div className="grid grid-cols-3 gap-4">
+          {articles
+            .sort(
+              (a: any, b: any) =>
+                new Date(b.createdAt).getTime() -
+                new Date(a.createdAt).getTime()
+            )
+            .map((article: any) => (
+              <div
+                className="flex flex-col p-8 border border-gray-300 min-h-[300px] justify-between hover:bg-muted hover:cursor-pointer"
+                key={article.id}
+              >
+                <h3 className="text-xl font-medium tracking-tight">
+                  {article?.Titolo}
+                </h3>
+                <div>
+                  <div className="flex flex-row border-t border-gray-300 w-full justify-between pt-6">
+                    <span className="text-sm font-medium flex flex-row gap-2 items-center">
+                      {article?.categorie_articoli?.Titolo == "News" ? (
+                        <Rss className="w-4 h-4" />
+                      ) : article?.categorie_articoli?.Titolo == "Proposals" ? (
+                        <Paperclip className="w-4 h-4" />
+                      ) : (
+                        <Calendar className="w-4 h-4" />
+                      )}
+                      {article?.categorie_articoli?.Titolo}
+                    </span>
+                    <span className="text-sm font-medium">
+                      {new Date(article?.createdAt).toLocaleDateString()}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
+      </section>
+    </main>
+  );
+}
