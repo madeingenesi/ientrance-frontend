@@ -1,7 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import dynamic from "next/dynamic";
+// Importa BrowserRouter in modalità client-only
+const BrowserRouter = dynamic(
+  () => import("react-router-dom").then((mod) => mod.BrowserRouter),
+  { ssr: false }
+);
 
 // Context
 import { useEquipments } from "@/context/EquimentContext";
@@ -31,7 +36,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-//Icons
+// Icons
 import { Check, ChevronsUpDown, Search, X, ArrowUpRight } from "lucide-react";
 import { SelectPopover } from "./SelectPopover";
 import DynamicBreadcrumb from "@/components/DynamicBreadcrumb";
@@ -53,7 +58,6 @@ export default function Catalogue() {
   const [model, setModel] = useState<string[]>([]);
   const [node, setNode] = useState<string[]>([]);
   const [state, setState] = useState<string[]>([]);
-
   const [filterFields, setFilterFields] = useState<string[]>([]);
 
   // Gestione dello Sheet
@@ -114,20 +118,20 @@ export default function Catalogue() {
 
   const removeTerm = (field: string) => {
     setFilterFields(filterFields.filter((f) => f !== field));
-    console.log(filterFields);
   };
 
   const handleFilter = (value: string) => {
-    // Your filter logic
+    // Implementa la logica di filtraggio se necessario
   };
 
   return (
     <>
       <header className="flex flex-col gap-0">
         <div className="w-full border-b p-4 px-8">
-          <Router>
+          {/* Il wrapper BrowserRouter viene caricato solo sul client */}
+          <BrowserRouter>
             <DynamicBreadcrumb />
-          </Router>
+          </BrowserRouter>
         </div>
         <div className="container w-full mx-auto flex flex-col gap-2 p-8 border border-t-0">
           <h1 className="text-5xl font-medium tracking-tight">Catalogue</h1>
@@ -138,7 +142,6 @@ export default function Catalogue() {
             >
               {machineries.length} machines
             </Badge>
-
             <Badge
               variant="outline"
               className="text-sm bg-sidebar text-gray-500 rounded-full"
@@ -175,7 +178,6 @@ export default function Catalogue() {
               setFilterFields={setFilterFields}
               filterName="Tenant Name"
             />
-
             <div className="relative">
               <Input
                 placeholder="Search"
@@ -200,7 +202,7 @@ export default function Catalogue() {
             </div>
           )}
         </div>
-
+        {/* Sezione tabella */}
         <section className="border mt-12">
           <Table>
             <TableHeader>
@@ -247,13 +249,10 @@ export default function Catalogue() {
                   <TableCell className="col-span-1 text-wrap whitespace-normal">
                     {machine.name || "Null"}
                   </TableCell>
-
                   <TableCell className="col-span-1 text-wrap whitespace-normal">
                     {machine.tenantName || "Null"}
                   </TableCell>
-                  <TableCell
-                    className={`col-span-1 text-wrap whitespace-normal`}
-                  >
+                  <TableCell className="col-span-1 text-wrap whitespace-normal">
                     <Badge
                       className={`rounded-full ${
                         machine.equipmentStatus === "Online"
@@ -275,7 +274,7 @@ export default function Catalogue() {
           )}
         </section>
       </main>
-
+      {/* Sheet di dettaglio */}
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent className="w-full min-w-4xl gap-0 h-screen">
           <SheetHeader>
@@ -288,7 +287,7 @@ export default function Catalogue() {
           </SheetHeader>
           <div className="flex flex-col border-y">
             <div className="flex flex-row gap-2 items-center justify-between p-4">
-              <h3 className="text-2xl font-medium">{selectedItem?.name} </h3>
+              <h3 className="text-2xl font-medium">{selectedItem?.name}</h3>
               <Badge
                 className={`rounded-full ${
                   selectedItem?.state === "Online"
@@ -308,7 +307,6 @@ export default function Catalogue() {
               </div>
             </div>
           </div>
-
           <div className="flex-1 min-h-0">
             <ScrollArea className="h-full">
               {selectedItem && (
@@ -330,7 +328,6 @@ export default function Catalogue() {
               )}
             </ScrollArea>
           </div>
-
           <SheetFooter className="border-t">
             <SheetClose asChild>
               <Button type="submit">More Details</Button>
