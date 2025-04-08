@@ -139,7 +139,7 @@ export default function TheMosaicPage() {
                 encryptedClassName="text-5xl  font-medium tracking-tight"
                 className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
               />
-              <p className="mb-4 text-3xl  tracking-tight">
+              <p className="mb-4 text-xl  tracking-tight">
                 iENTRANCE operates as an integrated advanced materials research
                 infrastructure, structured upon 14 interconnected nodes. This
                 configuration facilitates the convergence of physics, chemistry,
@@ -149,7 +149,7 @@ export default function TheMosaicPage() {
           </div>
         </section>
 
-        <section className="w-full flex flex-col px-22 pb-22">
+        <section className="w-full flex flex-col px-10 pb-22">
           <div className="grid grid-cols-12 grid-rows-12 gap-1 h-sc[80vh]">
             <div className="col-span-4 row-span-3 bg-gray-200  splashMiniXS p-[1px] pb-2">
               <div className="bg-white splashMiniXS w-full h-full p-8">
@@ -175,7 +175,7 @@ export default function TheMosaicPage() {
                 </div>
               </div>
             </div>
-            <div className="col-span-4 row-span-3 col-start-4 row-start-4 bg-gray-200 p-[1px] splashMiniXS">
+            <div className="col-span-4 row-span-3 col-start-4 row-start-4 bg-gray-200 p-[1px] pb-2 splashMiniXS">
               <div className="bg-white splashMiniXS w-full h-full p-8">3</div>
             </div>
             <div
@@ -191,17 +191,19 @@ export default function TheMosaicPage() {
             <div className="col-span-3 row-span-2 col-start-10 row-start-1 bg-gray-200 p-[1px] splashMiniXS">
               <div className="bg-white splashMiniXS w-full h-full p-8">5</div>
             </div>
-            <div className="col-span-3 row-span-4 col-start-10 row-start-3 bg-gray-200 p-8 splashMiniXS p-[1px1">
-              <h4 className="text-lg font-semibold mb-2 tracking-tight">
-                Integration and Collaboration
-              </h4>
-              <p className="text-sm">
-                The integration of these nodes into a single access point
-                overcome research fragmentation, enabling comprehensive project
-                execution across multiple disciplines. This unified approach
-                provides a full understanding of materials science, exceeding
-                the capabilities of isolated research units.
-              </p>
+            <div className="col-span-3 row-span-4 col-start-10 row-start-3 bg-gray-200 splashMiniXS p-[1px] pb-2">
+              <div className="bg-white splashMiniXS w-full h-full p-8">
+                <h4 className="text-lg font-semibold mb-2 tracking-tight">
+                  Integration and Collaboration
+                </h4>
+                <p className="text-sm">
+                  The integration of these nodes into a single access point
+                  overcome research fragmentation, enabling comprehensive
+                  project execution across multiple disciplines. This unified
+                  approach provides a full understanding of materials science,
+                  exceeding the capabilities of isolated research units.
+                </p>
+              </div>
             </div>
             <div className="col-span-2 row-span-3 col-start-8 row-start-4 bg-gray-200 p-[1px] splashMiniXS pb-2">
               <div className="bg-white splashMiniXS w-full h-full p-8 flex flex-col justify-between">
@@ -214,51 +216,60 @@ export default function TheMosaicPage() {
                 </div>
               </div>
             </div>
-            <div className="col-span-3 row-span-4 row-start-6 bg-gray-200 p-8 splashMiniXS">
-              <h4 className="text-lg font-semibold mb-2 tracking-tight">
-                Technology Transfer
-              </h4>
-              <p className="text-sm">
-                We extend the mosaic beyond iENTRANCE, actively driving
-                technology transfer, social impact, and territorial integration
-                by leveraging and integrating regional resources and expertise.
-              </p>
+            <div className="col-span-3 row-span-4 row-start-6 bg-gray-200 p-[1px] pb-2 splashMiniXS">
+              <div className="bg-white splashMiniXS w-full h-full p-8">
+                <h4 className="text-lg font-semibold mb-2 tracking-tight">
+                  Technology Transfer
+                </h4>
+                <p className="text-sm">
+                  We extend the mosaic beyond iENTRANCE, actively driving
+                  technology transfer, social impact, and territorial
+                  integration by leveraging and integrating regional resources
+                  and expertise.
+                </p>
+              </div>
             </div>
-            <div className="col-span-5 row-span-2 col-start-4 row-start-7 bg-gray-200 p-8 splashMiniXS">
-              <h4 className="text-lg font-semibold mb-2 tracking-tight">
-                Collaborative Research
-              </h4>
-              <p className="text-sm">
-                The system facilitates collaborative research with industrial
-                partners and SMEs, accelerating the translation of scientific
-                findings into practical applications.
-              </p>
+            <div className="col-span-5 row-span-2 col-start-4 row-start-7 bg-gray-200 p-[1px] pb-2 splashMiniXS">
+              <div className="bg-white splashMiniXS w-full h-full p-8">
+                <h4 className="text-lg font-semibold mb-2 tracking-tight">
+                  Collaborative Research
+                </h4>
+                <p className="text-sm">
+                  The system facilitates collaborative research with industrial
+                  partners and SMEs, accelerating the translation of scientific
+                  findings into practical applications.
+                </p>
+              </div>
             </div>
             <div className="col-span-5 row-span-4 col-start-4 row-start-9 bg-gray-200 p-8 splashMiniXS"></div>
             <div className="col-span-4 row-span-3 col-start-9 row-start-7 bg-gray-200 p-8 splashMiniXS"></div>
-            <div className="col-span-4 row-span-3 col-start-9 row-start-10 bg-gray-200 p-8 splashMiniXS">
-              <h4 className="text-lg font-semibold mb-2 tracking-tight">
-                Operational Focus
-              </h4>
-              <p className="text-sm">
-                The system's operational focus includes: infrastructure access,
-                technology scouting, collaborative research facilitation,
-                deployment project development, roadmap creation, innovation
-                support, policy informing, knowledge exchange, and educational
-                outreach.
-              </p>
+            <div className="col-span-4 row-span-3 col-start-9 row-start-10 bg-gray-200 p-[1px] pb-2 splashMiniXS">
+              <div className="bg-white splashMiniXS w-full h-full p-8">
+                <h4 className="text-lg font-semibold mb-2 tracking-tight">
+                  Operational Focus
+                </h4>
+                <p className="text-sm">
+                  The system's operational focus includes: infrastructure
+                  access, technology scouting, collaborative research
+                  facilitation, deployment project development, roadmap
+                  creation, innovation support, policy informing, knowledge
+                  exchange, and educational outreach.
+                </p>
+              </div>
             </div>
-            <div className="col-span-3 row-span-3 col-start-1 row-start-10 bg-gray-200 p-8 splashMiniXS ">
-              <h4 className="text-lg font-semibold mb-2 tracking-tight">
-                Accelerating Innovation
-              </h4>
-              <p className="text-sm">
-                iENTRANCE aims to accelerate materials development for energy
-                solutions and sustainable practices through the coordinated
-                utilization of its integrated resources. The mosaic model
-                emphasizes the system's capacity to deliver comprehensive,
-                multidisciplinary solutions.
-              </p>
+            <div className="col-span-3 row-span-3 col-start-1 row-start-10 bg-gray-200 p-[1px] pb-2 splashMiniXS ">
+              <div className="bg-white splashMiniXS w-full h-full p-8">
+                <h4 className="text-lg font-semibold mb-2 tracking-tight">
+                  Accelerating Innovation
+                </h4>
+                <p className="text-sm">
+                  iENTRANCE aims to accelerate materials development for energy
+                  solutions and sustainable practices through the coordinated
+                  utilization of its integrated resources. The mosaic model
+                  emphasizes the system's capacity to deliver comprehensive,
+                  multidisciplinary solutions.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -577,7 +588,7 @@ export default function TheMosaicPage() {
                         {item.title}
                       </h4>
                     </div>
-                    <p className="">{item.description}</p>
+                    <p className="text-sm">{item.description}</p>
                   </div>
                 </div>
               ))}

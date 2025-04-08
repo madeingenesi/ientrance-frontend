@@ -46,13 +46,27 @@ export default function HomeCarousel({ boxes }: any) {
   return (
     <>
       <Swiper
-        slidesPerView={3}
+        slidesPerView={1}
         spaceBetween={10}
         centeredSlides={false}
         pagination={false}
         navigation={false}
         modules={[Pagination]}
-        className="mySwiper h-full !overflow-visible"
+        className="mySwiper h-full overflow-hidden md:!overflow-visible"
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+        }}
       >
         {newBoxes?.map((slide: any, index: number) => (
           <SwiperSlide key={slide.id} className="">

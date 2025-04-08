@@ -74,7 +74,7 @@ export default function PageHeader({
       <Separator />
       <div className="border-l container mx-auto">
         <div
-          className="container mx-auto flex flex-col gap-2 p-12 splash min-h-[60vh] justify-end  bg-cover bg-center "
+          className="container mx-auto flex flex-col gap-2 p-12 splash min-h-[650] justify-end  bg-cover bg-center "
           style={{ backgroundImage: `url(${image})` }}
         >
           <div className="bg-white p-8 splashMini px-14 flex flex-row justify-between items-end relative z-10">

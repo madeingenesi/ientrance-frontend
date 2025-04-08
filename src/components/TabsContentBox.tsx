@@ -116,7 +116,7 @@ const contentSections = [
     ],
   },
   {
-    id: "post-project-requirements",
+    id: "key-considerations",
     number: "6",
     title: "Key Considerations",
     content: [
@@ -137,54 +137,75 @@ const contentSections = [
 ];
 
 export default function TabsContentBox() {
-  const linksRef = useRef(
-    Array(contentSections.length)
-      .fill(null)
-      .map(() => createRef<HTMLAnchorElement>())
-  );
-  const sectionsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const linksRef = useRef<HTMLAnchorElement[]>([]);
+  const sectionsRef = useRef<HTMLDivElement[]>([]);
+
+  // Initialize refs
+  useEffect(() => {
+    linksRef.current = linksRef.current.slice(0, contentSections.length);
+    sectionsRef.current = sectionsRef.current.slice(0, contentSections.length);
+  }, []);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    // Register ScrollTrigger
+    if (typeof window !== "undefined") {
+      gsap.registerPlugin(ScrollTrigger);
+    }
 
-    gsap.set(linksRef.current, {
-      opacity: 0.3,
-    });
+    // Make sure all refs are available
+    if (linksRef.current.length === 0 || sectionsRef.current.length === 0)
+      return;
 
-    sectionsRef.current.forEach((section, index) => {
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top 10%",
-        end: "bottom 5%",
-        markers: false,
-        onEnter: () => {
-          gsap.to(linksRef.current[index], {
-            opacity: 1,
-            duration: 0.3,
-          });
-        },
-        onLeave: () => {
-          gsap.to(linksRef.current[index], {
+    // Set initial state
+    const ctx = gsap.context(() => {
+      linksRef.current.forEach((link) => {
+        if (link) {
+          gsap.set(link, {
             opacity: 0.3,
-            duration: 0.3,
           });
-        },
-        onEnterBack: () => {
-          gsap.to(linksRef.current[index], {
-            opacity: 1,
-            duration: 0.3,
+        }
+      });
+
+      // Create ScrollTriggers
+      sectionsRef.current.forEach((section, index) => {
+        if (section && linksRef.current[index]) {
+          ScrollTrigger.create({
+            trigger: section,
+            start: "top 10%",
+            end: "bottom 5%",
+            markers: false,
+            onEnter: () => {
+              gsap.to(linksRef.current[index], {
+                opacity: 1,
+                duration: 0.3,
+              });
+            },
+            onLeave: () => {
+              gsap.to(linksRef.current[index], {
+                opacity: 0.3,
+                duration: 0.3,
+              });
+            },
+            onEnterBack: () => {
+              gsap.to(linksRef.current[index], {
+                opacity: 1,
+                duration: 0.3,
+              });
+            },
+            onLeaveBack: () => {
+              gsap.to(linksRef.current[index], {
+                opacity: 0.3,
+                duration: 0.3,
+              });
+            },
           });
-        },
-        onLeaveBack: () => {
-          gsap.to(linksRef.current[index], {
-            opacity: 0.3,
-            duration: 0.3,
-          });
-        },
+        }
       });
     });
 
+    // Cleanup
     return () => {
+      ctx.revert();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
@@ -196,13 +217,13 @@ export default function TabsContentBox() {
           {contentSections.map((section, index) => (
             <a
               key={section.id}
-              ref={linksRef.current[index]}
+              ref={(el) => (linksRef.current[index] = el)}
               href={`#${section.id}`}
               className="flex flex-row gap-4 pb-4 border-b border-black items-center justify-between"
             >
               <div className="flex flex-row gap-4">
-                <span className=" font-medium">{section.number}</span>
-                <span className=" font-medium">{section.title}</span>
+                <span className="font-medium">{section.number}</span>
+                <span className="font-medium">{section.title}</span>
               </div>
               <ChevronsRight className="w-5 h-5" />
             </a>
@@ -211,13 +232,11 @@ export default function TabsContentBox() {
       </div>
 
       <div className="w-8/12 flex flex-col gap-16 pl-12 relative">
-        <div className="flex flex-col gap-4 before:content-[''] before:absolute before:left-0 before:top-0 before:w-[1px] before:h-full before:bg-black before:opacity-10 before:z-0 before:translate-y-[15px]">
+        <div className="flex flex-col gap-4 before:content-[''] before:absolute before:left-0 before:top-0 before:w-[1px] before:h-full before:bg-black before:opacity-10 before:z-0 before:translate-y-[15px] gap-18">
           {contentSections.map((section, index) => (
             <div
               key={section.id}
-              ref={(el) => {
-                sectionsRef.current[index] = el;
-              }}
+              ref={(el) => (sectionsRef.current[index] = el)}
               className="flex flex-col pb-4 relative"
               id={section.id}
             >

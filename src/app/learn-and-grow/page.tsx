@@ -27,7 +27,7 @@ export default function LearnAndGrow() {
                 encryptedClassName="text-5xl  font-medium tracking-tight"
                 className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
               />
-              <p className="mb-4 text-xl font-medium tracking-tight">
+              <p className="mb-4 text-xl tracking-tight">
                 iENTRANCE operates as an integrated advanced materials research
                 infrastructure, structured upon 14 interconnected nodes. This
                 configuration facilitates the convergence of physics, chemistry,
@@ -73,7 +73,7 @@ export default function LearnAndGrow() {
           </div>
 
           <div className="w-full flex flex-col md:flex-row gap-32 p-22 justify-center  mx-auto">
-            <div className="flex-1 flex flex-col gap-2 text-2xl">
+            <div className="flex-1 flex flex-col gap-2 text-xl">
               <p>
                 The program will feature five high-level masterclasses, led by
                 experts in Research Ethics, Public Speaking, Research Funding,

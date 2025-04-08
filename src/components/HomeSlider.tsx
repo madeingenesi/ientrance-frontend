@@ -62,18 +62,18 @@ export default function HomeSlider({ data }: { data: any }) {
   // ];
 
   return (
-    <section className=" mx-auto h-full relative bg-red-500 border border-t-0 splash !overflow-visible relative">
+    <section className=" mx-auto h-full relative !overflow-visible">
       <Swiper
         navigation={false}
         modules={[Navigation]}
-        className="mySwiper overflow-visible z-0"
+        className="mySwiper overflow-visible z-0 md:splash"
         onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
         ref={swiperRef}
       >
         {newSlides?.data?.Slider?.map((slide: any, index: number) => (
           <SwiperSlide
             key={slide.id}
-            className="min-h-[60vh] bg-slate-500 !bg-cover !bg-center"
+            className="min-h-[70vh] bg-slate-500 !bg-cover !bg-center splash"
             style={{
               backgroundImage: `url(${baseImageUrl + slide.Immagine.url})`,
             }}
@@ -82,11 +82,11 @@ export default function HomeSlider({ data }: { data: any }) {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="absolute bottom-0 left-15 w-5/12 h-[350px] bg-[var(--blue-primary)] z-20 splash p-12 pr-16 pb-18 z-50">
+      <div className="absolute -bottom-10 left-0 md:left-5 w-full md:w-6/12 md:h-[350px] bg-[var(--blue-primary)] p-12 pr-16 pb-18 z-50 splash">
         <div className="w-full h-full relative z-50">
           <div className="flex flex-col gap-4 justify-between items-start h-full">
             <h2
-              className="text-4xl fadeIn text-white tracking-tight"
+              className="text-2xl md:text-4xl fadeIn text-white tracking-tight"
               key={activeSlide}
             >
               {newSlides?.data?.Slider[activeSlide].Titolo}
@@ -95,7 +95,7 @@ export default function HomeSlider({ data }: { data: any }) {
               Read more <ArrowRight className="w-4 h-4" />
             </Button>
           </div>
-          <div className="flex flex-row justify-between items-center absolute -bottom-12 left-12 w-full pl-10 pr-5 z-50">
+          <div className="flex flex-row justify-between items-center absolute -bottom-12 md:left-12 w-full md:pl-10 pr-5 z-50">
             <div className="text-white flex flex-row items-center gap-2">
               {activeSlide + 1}{" "}
               <div className="w-[25px] h-[1px] bg-white"></div>{" "}

@@ -13,6 +13,7 @@ import { useArticlesContext } from "../context/ArticlesContext";
 import HomeSlider from "../components/HomeSlider";
 import HomeCarousel from "../components/HomeCarousel";
 import Aurora from "../components/Aurora";
+import MainTopicsCarousel from "../components/MainTopicsCarousel";
 
 // UI
 import { Button } from "../components/ui/button";
@@ -79,8 +80,92 @@ export default function Home() {
         </div>
       ))} */}
 
-      <section className="container w-full mx-auto  flex flex-col items-center justify-center py-32 gap-18 md:px-0">
-        <div className="flex flex-col items-center gap-4 text-center max-w-5xl">
+      <section className="flex flex-col gap-16 justify-center items-center  pt-20 pb-5 splashMaxi relative">
+        <div className=" container w-full mx-auto flex flex-col gap-4 justify-center items-center px-4 md:px-8  z-10">
+          <div className="flex flex-col gap-4 items-center mb-8">
+            <LibraryBig className="w-12 h-12 stroke-1" />
+            <DecryptedText
+              text="Our Catalogue"
+              animateOn="view"
+              sequential={true}
+              maxIterations={20}
+              characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
+              speed={50}
+              revealDirection="start"
+              encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight"
+              className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
+            />
+            <p className="text-sm md:text-xl max-w-2xl text-center px-8">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
+              tempor incididunt ut labor.
+            </p>
+            <Link href="/catalogue">
+              <Button className="">
+                Go to Catalogue <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-2 w-full">
+            <div className="flex flex-col gap-4 p-2 h-full">
+              <span className="text-6xl font-medium">+94</span>
+              <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
+                Scientific techniques
+              </h4>
+              <p className="text-xs md:text-sm">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut.
+              </p>
+            </div>
+            <div className="flex flex-col gap-4 p-2 h-full">
+              <span className="text-6xl font-medium">30</span>
+              <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
+                Instruments available
+              </h4>
+              <p className="text-xs md:text-sm">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut.
+              </p>
+            </div>
+            <div className="flex flex-col gap-4 p-2 h-full">
+              <span className="text-6xl font-medium">20</span>
+              <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
+                Investments
+              </h4>
+              <p className="text-xs md:text-sm">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut.
+              </p>
+            </div>
+            <div className="flex flex-col gap-4 p-2 h-full">
+              <span className="text-6xl font-medium">+60</span>
+              <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
+                Researchers involved
+              </h4>
+              <p className="text-xs md:text-sm">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="container w-full max-w-7xl mx-auto z-10">
+          <Image
+            src="/images/Browsers.png"
+            alt="catalogue"
+            width={1920}
+            height={1080}
+            className="w-full"
+            unoptimized
+          />
+        </div>
+        <div className="w-full h-full hidden md:block absolute top-0 left-0 opacity-50 rotate-180 z-0">
+          <Aurora speed={1} amplitude={0.1} />
+        </div>
+      </section>
+
+      <section className="container w-full mx-auto flex flex-col items-center justify-center py-12 md:py-32 gap-18 px-4 md:px-0 overflow-hidden md:overflow-visible">
+        <div className="flex flex-col items-center gap-4 text-center max-w-5xl px-8">
           <span className="font-semibold flex flex-row gap-2 items-center">
             <MessagesSquare className="w-12 h-12 stroke-1" />
           </span>
@@ -93,15 +178,18 @@ export default function Home() {
             characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
             speed={50}
             revealDirection="start"
-            encryptedClassName="text-5xl  font-medium tracking-tight"
-            className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
+            encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight text-center"
+            className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight text-center"
           />
-          <p className="text-center text-xl max-w-2xl">
+          <p className="text-center text-sm md:text-xl max-w-2xl">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
             tempor incididunt ut labor.
           </p>
         </div>
+
+        <MainTopicsCarousel />
+
         {/* <div className="grid grid-cols-12 grid-rows-2 gap-2">
           <div className="splash custom-spotlight-card col-span-4 row-span-2 bg-[var(--green-primary)] min-h-[300px] p-8 flex flex-col justify-between border-none rounded-none text-white">
             <div className="flex flex-col gap-4">
@@ -165,7 +253,7 @@ export default function Home() {
           </div>
         </div> */}
 
-        <div className="w-full">
+        {/* <div className="w-full">
           <Tabs
             defaultValue="nanomaterials"
             className="w-full max-w-7xl mx-auto"
@@ -173,7 +261,7 @@ export default function Home() {
             <TabsList className="w-full h-full">
               <TabsTrigger
                 value="nanomaterials"
-                className="flex-1 text-xl data-[state=active]:bg-[var(--blue-primary)] data-[state=active]:text-white"
+                className="flex-1 text-xl data-[state=active]:bg-[var(--blue-primary)] data-[state=active]:text-white "
               >
                 Nanomaterials for energy
               </TabsTrigger>
@@ -198,7 +286,7 @@ export default function Home() {
             </TabsList>
             <TabsContent value="nanomaterials">
               <div className="flex flex-row gap-4 bg-muted rounded min-h-[500px]">
-                <div className="w-1/2 p-16 flex flex-col justify-between">
+                <div className="w-1/2 p-12 flex flex-col justify-between">
                   <div className="flex flex-col gap-4">
                     <h3 className="text-3xl font-semibold tracking-tight ">
                       Nanomaterials for energy
@@ -227,7 +315,7 @@ export default function Home() {
             </TabsContent>
             <TabsContent value="green">
               <div className="flex flex-row gap-4 bg-muted rounded min-h-[500px]">
-                <div className="w-1/2 p-16 flex flex-col justify-between">
+                <div className="w-1/2 p-12 flex flex-col justify-between">
                   <div className="flex flex-col gap-4">
                     <h3 className="text-3xl font-semibold tracking-tight ">
                       Green Energy Materials and Processing
@@ -256,7 +344,7 @@ export default function Home() {
             </TabsContent>
             <TabsContent value="multiscale">
               <div className="flex flex-row gap-4 bg-muted rounded min-h-[500px]">
-                <div className="w-1/2 p-16 flex flex-col justify-between">
+                <div className="w-1/2 p-12 flex flex-col justify-between">
                   <div className="flex flex-col gap-4">
                     <h3 className="text-3xl font-semibold tracking-tight ">
                       Multiscale Characterization of Micro/Nanosystems
@@ -285,7 +373,7 @@ export default function Home() {
             </TabsContent>
             <TabsContent value="fabrication">
               <div className="flex flex-row gap-4 bg-muted rounded min-h-[500px]">
-                <div className="w-1/2 p-16 flex flex-col justify-between">
+                <div className="w-1/2 p-12 flex flex-col justify-between">
                   <div className="flex flex-col gap-4">
                     <h3 className="text-3xl font-semibold tracking-tight ">
                       Device and System Fabrication Technologies
@@ -313,7 +401,7 @@ export default function Home() {
               </div>
             </TabsContent>
           </Tabs>
-        </div>
+        </div> */}
 
         {/* <div className="flex flex-row gap-2 gap-2 w-full">
           <div className="col-span-4 row-span-3 col-start-1 row-start-1">
@@ -426,92 +514,8 @@ export default function Home() {
         </div> */}
       </section>
 
-      <section className="flex flex-col gap-16 justify-center items-center bg-muted pt-20 pb-5 splashMaxi relative">
-        <div className=" container w-full mx-auto flex flex-col gap-4 justify-center items-center px-8  z-10">
-          <div className="flex flex-col gap-4 items-center mb-8">
-            <LibraryBig className="w-12 h-12 stroke-1" />
-            <DecryptedText
-              text="Our Catalogue"
-              animateOn="view"
-              sequential={true}
-              maxIterations={20}
-              characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
-              speed={50}
-              revealDirection="start"
-              encryptedClassName="text-5xl  font-medium tracking-tight"
-              className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
-            />
-            <p className="text-xl max-w-2xl text-center px-8">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
-              tempor incididunt ut labor.
-            </p>
-            <Link href="/catalogue">
-              <Button className="">
-                Go to Catalogue <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
-          <div className="grid grid-cols-4 gap-2 w-full">
-            <div className="w-full flex flex-col gap-4 p-8 bg-white splashMini">
-              <span className="text-6xl font-medium">+94</span>
-              <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
-                Scientific techniques
-              </h4>
-              <p className="text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut.
-              </p>
-            </div>
-            <div className="w-full flex flex-col gap-4 p-8 bg-white splashMini">
-              <span className="text-6xl font-medium">30</span>
-              <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
-                Instruments available to external users
-              </h4>
-              <p className="text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut.
-              </p>
-            </div>
-            <div className="w-full flex flex-col gap-4 p-8 bg-white splashMini">
-              <span className="text-6xl font-medium">20</span>
-              <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
-                Investment in advanced instrumentation
-              </h4>
-              <p className="text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut.
-              </p>
-            </div>
-            <div className="w-full flex flex-col gap-4 p-8 bg-white splashMini">
-              <span className="text-6xl font-medium">+60</span>
-              <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
-                Researchers involved in the infrastructure
-              </h4>
-              <p className="text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="container max-w-7xl mx-auto  z-10">
-          <Image
-            src="/images/Browsers.png"
-            alt="catalogue"
-            width={1920}
-            height={1080}
-            className="w-full"
-            unoptimized
-          />
-        </div>
-        <div className="w-full h-full absolute top-0 left-0 opacity-50 rotate-180 z-0">
-          <Aurora speed={1} amplitude={0.1} />
-        </div>
-      </section>
-
-      <section className="container w-full mx-auto py-20 overflow-visible flex flex-col gap-20 px-8">
-        <div className="flex flex-row justify-between px-8 md:px-0">
+      <section className="container w-full mx-auto py-20 overflow-visible flex flex-col gap-20 px-4 md:px-8">
+        <div className="flex flex-col md:flex-row justify-between gap-4 md:gap-8 px-2 md:px-0">
           <div>
             <h2 className="text-lg font-medium tracking-tight">Features</h2>
           </div>
@@ -523,7 +527,9 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <HomeCarousel boxes={boxes} />
+        <div className="w-full overflow-hidden md:overflow-visible">
+          <HomeCarousel boxes={boxes} />
+        </div>
       </section>
 
       <section className="bg-[var(--blue-primary)] h-[60vh] w-full relative px-8 hidden">
@@ -545,19 +551,19 @@ export default function Home() {
       </section>
 
       <section className="w-full bg-muted h-screen py-20 splashMaxi">
-        <div className="container mx-auto w-full  flex flex-col gap-4 justify-center items-center">
+        <div className="container mx-auto w-full flex flex-col gap-4 justify-center items-center px-8 md:px-0">
           <DecryptedText
-            text="Lorem ipsum dolor sit amet"
+            text="Nodes"
             animateOn="view"
             sequential={true}
             maxIterations={20}
             characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
             speed={50}
             revealDirection="start"
-            encryptedClassName="text-5xl  font-medium tracking-tight"
-            className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
+            encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight !text-center"
+            className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
           />
-          <p className="text-xl max-w-2xl text-center">
+          <p className="text-sm md:text-xl max-w-2xl text-center">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
             tempor incididunt ut labor.
@@ -565,8 +571,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container mx-auto w-full bg-white py-20 flex flex-col gap-16 px-8">
-        <div className="flex flex-row justify-between items-center">
+      <section className="container mx-auto w-full bg-white py-20 flex flex-col gap-16 px-4 md:px-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <DecryptedText
             text="News, proposals & Events"
             animateOn="view"
@@ -575,14 +581,14 @@ export default function Home() {
             characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
             speed={50}
             revealDirection="start"
-            encryptedClassName="text-5xl  font-medium tracking-tight"
-            className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
+            encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight text-center"
+            className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight text-center"
           />
           <Button>
             Vedi tutto <ArrowRight className="w-4 h-4" />
           </Button>
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {articles
             .sort(
               (a: any, b: any) =>

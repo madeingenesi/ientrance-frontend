@@ -6,7 +6,7 @@ import { Navigation } from "@/components/header/Navigation";
 
 export default function Header() {
   return (
-    <header className="bg-white dark:bg-gray-900 border-b border-gray-200">
+    <header className="bg-white dark:bg-gray-900 border-b border-gray-200 px-4 md:px-0">
       <div className="container mx-auto py-4">
         <div className="flex items-start align-top justify-between">
           <div className="flex items-center gap-4">
@@ -18,7 +18,7 @@ export default function Header() {
               unoptimized
             />
           </div>
-          <div className="flex flex-col items-end gap-4">
+          <div className="flex-col items-end gap-4 hidden md:flex">
             <div className="flex items-center gap-4">
               <Image
                 src="/mur/nextGeneration_positivo.png"

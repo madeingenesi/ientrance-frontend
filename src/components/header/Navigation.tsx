@@ -60,6 +60,13 @@ export function Navigation() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
+          <Link href="/" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Home
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
           <Link href="/the-mosaic" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               The Mosaic
