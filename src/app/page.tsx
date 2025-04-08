@@ -12,7 +12,7 @@ import { useArticlesContext } from "../context/ArticlesContext";
 // Components
 import HomeSlider from "../components/HomeSlider";
 import HomeCarousel from "../components/HomeCarousel";
-import Aurora from "../components/Aurora/Aurora";
+import Aurora from "../components/Aurora";
 
 // UI
 import { Button } from "../components/ui/button";
@@ -30,9 +30,16 @@ import {
   Calendar,
   Paperclip,
 } from "lucide-react";
+
+interface SlideProps {
+  image: string;
+  title: string;
+  description: string;
+}
+
 export default function Home() {
   const { articles } = useArticlesContext();
-  const [slides, setSlides] = useState([]);
+  const [slides, setSlides] = useState<SlideProps[]>([]);
   const [boxes, setBoxes] = useState([]);
 
   const fetchData = async (url: string, setData: any) => {

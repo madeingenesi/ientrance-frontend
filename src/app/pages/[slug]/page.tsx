@@ -1,20 +1,17 @@
 "use client";
 
-import { usePagesContext } from "@/context/PagesContext";
 import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { usePagesContext } from "@/context/PagesContext";
 import BlocksRender from "@/components/BlocksRender";
 import PageHeader from "@/components/PageHeader";
-
-type Props = {
-  params: { slug: string };
-};
 
 type PageData = {
   id: number;
   documentId: string;
   Titolo: string;
   Sottotitolo: string;
-  Slug: string; // Nota la S maiuscola
+  Slug: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -22,43 +19,45 @@ type PageData = {
   Immagine: any;
 };
 
-export default function Page({ params }: Props) {
-  const { pages, isLoading, error } = usePagesContext();
-  const [currentPage, setCurrentPage] = useState<PageData | null>(null);
-  const baseImageUrl = "http://localhost:1337";
+const baseImageUrl = "http://localhost:1337";
 
-  console.log("Blocks:", currentPage);
-  console.log(
-    "Immagine:",
-    `${baseImageUrl}${currentPage?.Immagine?.formats?.large?.url}`
-  );
-
-  useEffect(() => {
-    console.log("Current pages in state:", pages);
-    if (pages.length > 0) {
-      const foundPage = pages.find(
-        (page: PageData) => page.Slug === params.slug
-      );
-      console.log("Found page:", foundPage);
-      setCurrentPage(foundPage || null);
-    }
-  }, [pages, params.slug]);
-
-  if (isLoading) return <div>Caricamento...</div>;
-  if (error) return <div>Errore nel caricamento: {error.message}</div>;
-  if (!currentPage) return <div>Pagina non trovata</div>;
+function PageContent({ page }: { page: PageData | null }) {
+  if (!page) {
+    return <div>Pagina non trovata</div>;
+  }
 
   return (
     <main className="container w-full mx-auto border-x border-gray-200">
       <PageHeader
-        title={currentPage.Titolo}
-        description={currentPage.Sottotitolo}
-        image={`${baseImageUrl}${currentPage?.Immagine?.formats?.large?.url}`}
+        title={page.Titolo}
+        description={page.Sottotitolo}
+        image={`${baseImageUrl}${page?.Immagine?.formats?.large?.url}`}
       />
-      {/* Aggiungi altri campi che vuoi visualizzare */}
-      {currentPage.Blocks?.map((block, index) => (
+      {page.Blocks?.map((block, index) => (
         <BlocksRender key={index} block={block} index={index} />
       ))}
     </main>
   );
+}
+
+export default function Page() {
+  // Recupera lo slug tramite useParams
+  const { slug } = useParams() as { slug: string };
+
+  const { pages, isLoading, error } = usePagesContext();
+  const [currentPage, setCurrentPage] = useState<PageData | null>(null);
+
+  useEffect(() => {
+    const findPage = () => {
+      const foundPage = pages.find((page: PageData) => page.Slug === slug);
+      setCurrentPage(foundPage || null);
+    };
+
+    findPage();
+  }, [slug, pages]);
+
+  if (isLoading) return <div>Caricamento...</div>;
+  if (error) return <div>Errore nel caricamento: {error.message}</div>;
+
+  return <PageContent page={currentPage} />;
 }

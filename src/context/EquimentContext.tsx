@@ -23,7 +23,7 @@ export function EquipmentsProvider({
       try {
         const response = await api.get(endpoint);
         setter(response.data);
-      } catch (err) {
+      } catch (err: any) {
         setError(err.message);
       } finally {
         setLoading(false);

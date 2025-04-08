@@ -35,11 +35,14 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Check, ChevronsUpDown, Search, X, ArrowUpRight } from "lucide-react";
 import { SelectPopover } from "./SelectPopover";
 import DynamicBreadcrumb from "@/components/DynamicBreadcrumb";
+import { Equipment } from "@/helpers/types";
+
 export default function Catalogue() {
   const { equipments } = useEquipments();
   const { machineries } = useEquipments();
   const [search, setSearch] = useState("");
-  const [filteredMachineries, setFilteredMachineries] = useState(machineries);
+  const [filteredMachineries, setFilteredMachineries] =
+    useState<Equipment[]>(machineries);
   const [mainCategory, setMainCategory] = useState([
     "Caracterization",
     "Fabrication",
@@ -112,6 +115,10 @@ export default function Catalogue() {
   const removeTerm = (field: string) => {
     setFilterFields(filterFields.filter((f) => f !== field));
     console.log(filterFields);
+  };
+
+  const handleFilter = (value: string) => {
+    // Your filter logic
   };
 
   return (

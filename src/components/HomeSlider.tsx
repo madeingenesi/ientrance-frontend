@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperType } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
@@ -15,7 +16,7 @@ import { ChevronRight, ChevronLeft, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 export default function HomeSlider({ data }: { data: any }) {
   const [activeSlide, setActiveSlide] = useState(0);
-  const swiperRef = useRef(null);
+  const swiperRef = useRef<{ swiper: SwiperType }>(null);
   const baseImageUrl = "http://localhost:1337";
 
   const newSlides = data;

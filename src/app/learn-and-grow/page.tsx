@@ -1,4 +1,5 @@
 import { Calendar1, Ticket } from "lucide-react";
+import Link from "next/link";
 
 import PageHeader from "@/components/PageHeader";
 import DecryptedText from "@/components/DecryptedText";
@@ -100,8 +101,8 @@ export default function LearnAndGrow() {
                 </div>
                 <Ticket className="w-12 h-12 " />
                 <p className="text-lg font-semibold tracking-tight pt-12">
-                  "iENTRANCE to research. The young scientist's guide to the
-                  galaxy. Rethinking research in an AI-empowered world”
+                  iENTRANCE to research. The young scientist's guide to the
+                  galaxy. Rethinking research in an AI-empowered world
                 </p>
                 <span className="text-sm tracking-tight pt-4">
                   Ventotene (Italy) <br />@ Sala Polivalente Umberto Terracini

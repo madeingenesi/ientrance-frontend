@@ -6,7 +6,6 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { DecryptedText as DecryptedTextComponent } from "react-decrypted-text";
 
 interface DecryptedTextProps {
   text: string;
@@ -45,6 +44,7 @@ export default function DecryptedText({
   );
   const [hasAnimated, setHasAnimated] = useState<boolean>(false);
   const containerRef = useRef<HTMLSpanElement>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     let interval: number;
@@ -132,7 +132,7 @@ export default function DecryptedText({
 
     if (isHovering) {
       setIsScrambling(true);
-      interval = setInterval(() => {
+      intervalRef.current = setInterval(() => {
         setRevealedIndices((prevRevealed) => {
           if (sequential) {
             if (prevRevealed.size < text.length) {
@@ -142,7 +142,7 @@ export default function DecryptedText({
               setDisplayText(shuffleText(text, newRevealed));
               return newRevealed;
             } else {
-              clearInterval(interval);
+              clearInterval(intervalRef.current!);
               setIsScrambling(false);
               return prevRevealed;
             }
@@ -150,7 +150,7 @@ export default function DecryptedText({
             setDisplayText(shuffleText(text, prevRevealed));
             currentIteration++;
             if (currentIteration >= maxIterations) {
-              clearInterval(interval);
+              clearInterval(intervalRef.current!);
               setIsScrambling(false);
               setDisplayText(text);
             }
@@ -165,7 +165,7 @@ export default function DecryptedText({
     }
 
     return () => {
-      if (interval) clearInterval(interval);
+      if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, [
     isHovering,

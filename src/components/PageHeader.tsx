@@ -10,10 +10,10 @@ import {
   BreadcrumbPage,
 } from "./ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
-
+import Link from "next/link";
 // Components
 import DecryptedText from "@/components/DecryptedText";
-import Aurora from "./Aurora/Aurora";
+import Aurora from "./Aurora";
 
 import { ArrowDown } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -37,7 +37,7 @@ export default function PageHeader({
 
   const generateBreadcrumb = (): BreadcrumbItem[] => {
     const paths = pathname.split("/").filter((path) => path);
-    let breadcrumb: BreadcrumbItem[] = [{ label: "Home", href: "/" }];
+    const breadcrumb: BreadcrumbItem[] = [{ label: "Home", href: "/" }];
 
     let currentPath = "";
     paths.forEach((path) => {
@@ -89,13 +89,13 @@ export default function PageHeader({
               encryptedClassName="text-5xl  font-medium tracking-tight"
               className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
             />
-            <a
+            <Link
               href="/"
               className="text-lg text-gray-500 hover:text-black transition-all duration-300 flex flex-row gap-2 items-center"
             >
               Discover more
               <ArrowDown className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
           <div className="w-full h-full absolute top-0 left-0 opacity-90 rotate-180 z-0">
             <Aurora speed={1} amplitude={0.5} />

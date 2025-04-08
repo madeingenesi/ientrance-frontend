@@ -19,7 +19,7 @@ const Context = createContext<PagesContextType>({
 
 // Provider per le pagine
 export function PagesContext({ children }: { children: React.ReactNode }) {
-  const [pages, setPages] = useState([]);
+  const [pages, setPages] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 

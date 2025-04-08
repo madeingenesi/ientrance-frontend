@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, createRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Separator } from "@/components/ui/separator";
@@ -137,8 +137,12 @@ const contentSections = [
 ];
 
 export default function TabsContentBox() {
-  const linksRef = useRef([]);
-  const sectionsRef = useRef([]);
+  const linksRef = useRef(
+    Array(contentSections.length)
+      .fill(null)
+      .map(() => createRef<HTMLAnchorElement>())
+  );
+  const sectionsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -192,7 +196,7 @@ export default function TabsContentBox() {
           {contentSections.map((section, index) => (
             <a
               key={section.id}
-              ref={(el) => (linksRef.current[index] = el)}
+              ref={linksRef.current[index]}
               href={`#${section.id}`}
               className="flex flex-row gap-4 pb-4 border-b border-black items-center justify-between"
             >
@@ -211,7 +215,9 @@ export default function TabsContentBox() {
           {contentSections.map((section, index) => (
             <div
               key={section.id}
-              ref={(el) => (sectionsRef.current[index] = el)}
+              ref={(el) => {
+                sectionsRef.current[index] = el;
+              }}
               className="flex flex-col pb-4 relative"
               id={section.id}
             >
@@ -221,37 +227,44 @@ export default function TabsContentBox() {
                 </div>
               </span>
               {Array.isArray(section.content) ? (
-                section.content.map((item, i) => {
-                  switch (item.type) {
-                    case "paragraph":
-                      return (
-                        <p key={i} className="flex flex-col gap-0">
-                          {item.text}
-                        </p>
-                      );
-                    case "subtitle":
-                      return (
-                        <h3
-                          key={i}
-                          className="text-xl font-medium mt-4 mb-4 tracking-tight"
-                        >
-                          {item.text}
-                        </h3>
-                      );
-                    case "list":
-                      return (
-                        <ul key={i} className="list-disc pl-6 space-y-2">
-                          {item.items.map((listItem, index) => (
-                            <li key={index} className="">
-                              {listItem}
-                            </li>
-                          ))}
-                        </ul>
-                      );
-                    default:
-                      return null;
+                section.content.map(
+                  (
+                    item: { type: string; text: string; items?: string[] },
+                    i: number
+                  ) => {
+                    switch (item.type) {
+                      case "paragraph":
+                        return (
+                          <p key={i} className="flex flex-col gap-0">
+                            {item.text}
+                          </p>
+                        );
+                      case "subtitle":
+                        return (
+                          <h3
+                            key={i}
+                            className="text-xl font-medium mt-4 mb-4 tracking-tight"
+                          >
+                            {item.text}
+                          </h3>
+                        );
+                      case "list":
+                        return (
+                          <ul key={i} className="list-disc pl-6 space-y-2">
+                            {item.items?.map(
+                              (listItem: string, index: number) => (
+                                <li key={index} className="">
+                                  {listItem}
+                                </li>
+                              )
+                            )}
+                          </ul>
+                        );
+                      default:
+                        return null;
+                    }
                   }
-                })
+                )
               ) : (
                 <p className="">{section.content}</p>
               )}
