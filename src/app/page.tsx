@@ -106,7 +106,7 @@ export default function Home() {
               </Button>
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-2 w-full">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 w-full">
             <div className="flex flex-col gap-4 p-2 h-full">
               <span className="text-6xl font-medium">+94</span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
@@ -514,7 +514,7 @@ export default function Home() {
         </div> */}
       </section>
 
-      <section className="container w-full mx-auto py-20 overflow-visible flex flex-col gap-20 px-4 md:px-8">
+      <section className="container w-full mx-auto py-20 overflow-visible flex flex-col gap-20 px-2 md:px-0">
         <div className="flex flex-col md:flex-row justify-between gap-4 md:gap-8 px-2 md:px-0">
           <div>
             <h2 className="text-lg font-medium tracking-tight">Features</h2>

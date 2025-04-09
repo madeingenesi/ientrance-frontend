@@ -151,7 +151,7 @@ export default function Catalogue() {
           </div>
         </div>
       </header>
-      <main className="container w-full mx-auto flex flex-col">
+      <main className="container w-full mx-auto flex flex-col mb-12">
         <div className="container w-full mx-auto sticky top-0 bg-white z-10">
           <div className="grid grid-cols-5 gap-0 border border-t-0 divide-x divide-gray-200">
             <SelectPopover
@@ -188,7 +188,7 @@ export default function Catalogue() {
             </div>
           </div>
           {filterFields.length > 0 && (
-            <div className="container w-full max-w-7xl mx-auto flex gap-2 p-4 border border-t-0 overflow-hidden">
+            <div className="container w-full mx-auto flex gap-2 p-4 border border-t-0 overflow-hidden">
               {filterFields.map((field) => (
                 <Badge
                   key={field}
@@ -274,6 +274,7 @@ export default function Catalogue() {
           )}
         </section>
       </main>
+
       {/* Sheet di dettaglio */}
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent className="w-full min-w-4xl gap-0 h-screen">

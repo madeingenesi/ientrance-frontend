@@ -1,6 +1,7 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Footer() {
   const theMosaic = [
@@ -56,9 +57,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[var(--blue-primary)] text-white splashMaxiTopRight min-h-[700px] pt-16">
-      <section className="container w-full grid grid-cols-1 md:grid-cols-4 mx-auto p-8 gap-8">
-        <div className="">
+    <footer className="bg-[var(--blue-primary)] text-white splashMaxiTopRight pt-16">
+      <section className="container w-full grid grid-cols-1 md:grid-cols-5 grid-rows-2 mx-auto p-8 gap-0">
+        <div className="col-span-1">
           <h5 className="text-2xl font-semibold tracking-tight mb-6 flex items-center gap-8">
             The Mosaic <ArrowRight className="w-5 h-5" />
           </h5>
@@ -73,7 +74,7 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div>
+        <div className="col-span-1">
           <h5 className="text-2xl font-semibold tracking-tight mb-6 flex items-center gap-8">
             Come In <ArrowRight className="w-5 h-5" />
           </h5>
@@ -88,7 +89,7 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div>
+        <div className="col-span-1">
           <h5 className="text-2xl font-semibold tracking-tight mb-6 flex items-center gap-8">
             Learn & Grow <ArrowRight className="w-5 h-5" />
           </h5>
@@ -103,7 +104,7 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div>
+        <div className="col-span-1">
           <h5 className="text-2xl font-semibold tracking-tight mb-6 flex items-center gap-8">
             Outcomes <ArrowRight className="w-5 h-5" />
           </h5>
@@ -117,6 +118,39 @@ export default function Footer() {
               </li>
             ))}
           </ul>
+        </div>
+        <div className="col-span-1 col-start-1 col-end-5 row-span-1 row-start-2 row-end-3">
+          <div className="pt-12">
+            <h3>Altro</h3>
+          </div>
+        </div>
+        <div className="bg-white splashMiniXS text-black p-4 col-span-1 col-start-5 row-start-1 row-end-3 flex flex-col justify-between gap-4">
+          <div className="flex-1 p-4 bg-muted splashMiniXS">
+            <h5 className="text-2xl font-semibold tracking-tight mb-6 flex items-center gap-8">
+              Catalogue
+            </h5>
+            <p className="text-sm">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <ul className="flex flex-col">
+              <li className="flex flex-row gap-2 items-center">
+                <ChevronRight className="w-4 h-4" /> Testo1
+              </li>
+              <li className="flex flex-row gap-2 items-center">
+                <ChevronRight className="w-4 h-4" /> Testo2
+              </li>
+              <li className="flex flex-row gap-2 items-center">
+                <ChevronRight className="w-4 h-4" /> Testo3
+              </li>
+              <li className="flex flex-row gap-2 items-center">
+                <ChevronRight className="w-4 h-4" /> Testo4
+              </li>
+            </ul>
+          </div>
+          <Button className="w-full flex flex-row gap-2 justify-between items-center splashMiniXS rounded-none p-6 self-end">
+            Go to Catalogue <ArrowRight className="w-5 h-5" />
+          </Button>
         </div>
       </section>
     </footer>

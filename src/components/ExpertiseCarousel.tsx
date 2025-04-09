@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 // import required modules
-import { Pagination } from "swiper/modules";
+import { Pagination, Navigation } from "swiper/modules";
 
 export default function ExpertiseCarousel() {
   const slides = [
@@ -57,8 +57,8 @@ export default function ExpertiseCarousel() {
         spaceBetween={10}
         centeredSlides={false}
         pagination={false}
-        navigation={false}
-        modules={[Pagination]}
+        navigation={true}
+        modules={[Pagination, Navigation]}
         className="mySwiper h-full overflow-hidden md:!overflow-visible"
       >
         {slides?.map((slide: any, index: number) => (

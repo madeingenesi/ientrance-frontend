@@ -94,7 +94,7 @@ export default function LearnAndGrow() {
               </p>
             </div>
             <div className="w-1/3">
-              <div className="bg-gray-200 p-8 splashMiniXS relative">
+              <div className="bg-muted p-8 splashMiniXS relative">
                 <div className="bg-[var(--blue-primary)] text-white p-4 absolute top-0 right-0 splashMiniXS font-semibold text-2xl tracking-tight flex items-center gap-2">
                   <Calendar1 strokeWidth={1.5} className="w-6 h-6 " />
                   3-6 June

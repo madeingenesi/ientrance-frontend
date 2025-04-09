@@ -51,7 +51,7 @@ export function SelectPopover({
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[250px] p-0 left-0">
+      <PopoverContent className="w-[250px] p-0 left-10">
         <Command>
           <CommandInput placeholder={`Search ${filterName}...`} />
           <CommandList>

@@ -232,7 +232,7 @@ export default function TabsContentBox() {
       </div>
 
       <div className="w-8/12 flex flex-col gap-16 pl-12 relative">
-        <div className="flex flex-col gap-4 before:content-[''] before:absolute before:left-0 before:top-0 before:w-[1px] before:h-full before:bg-black before:opacity-10 before:z-0 before:translate-y-[15px] gap-18">
+        <div className="flex flex-col gap-4 before:content-[''] before:absolute before:left-0 before:top-0 before:w-[1px] before:h-full before:bg-black before:opacity-10 before:z-0 before:translate-y-[15px] gap-32">
           {contentSections.map((section, index) => (
             <div
               key={section.id}

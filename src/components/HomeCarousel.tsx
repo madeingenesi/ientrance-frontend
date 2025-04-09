@@ -5,9 +5,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 // import required modules
-import { Pagination } from "swiper/modules";
+import { Pagination, Navigation } from "swiper/modules";
 
 export default function HomeCarousel({ boxes }: any) {
   const baseImageUrl = "http://localhost:1337";
@@ -50,9 +51,9 @@ export default function HomeCarousel({ boxes }: any) {
         spaceBetween={10}
         centeredSlides={false}
         pagination={false}
-        navigation={false}
-        modules={[Pagination]}
-        className="mySwiper h-full overflow-hidden md:!overflow-visible"
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        className="mySwiper featuresCarousel h-full overflow-hidden md:!overflow-visible"
         breakpoints={{
           640: {
             slidesPerView: 2,

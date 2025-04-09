@@ -292,7 +292,7 @@
 'wght' (range from 100.0 to 900.0
 */
 @font-face {
-  font-family: "Switzer-Variable";
+  font-family: "Switzer";
   src: url("/fonts/Switzer-Variable.woff2") format("woff2"),
     url("/fonts/Switzer-Variable.woff") format("woff"),
     url("/fonts/Switzer-Variable.ttf") format("truetype");
@@ -309,7 +309,7 @@
 'wght' (range from 100.0 to 900.0
 */
 @font-face {
-  font-family: "Switzer-VariableItalic";
+  font-family: "Switzer";
   src: url("/fonts/Switzer-VariableItalic.woff2") format("woff2"),
     url("/fonts/Switzer-VariableItalic.woff") format("woff"),
     url("/fonts/Switzer-VariableItalic.ttf") format("truetype");
@@ -336,16 +336,16 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Switzer";
+  font-family: "Switzer", system-ui, -apple-system, sans-serif;
 }
 
 p {
-  font-family: "Switzer";
+  font-family: "Switzer", system-ui, -apple-system, sans-serif;
   @apply mb-4;
 }
 
 body {
-  font-family: "Switzer";
+  font-family: "Switzer", system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
 }
 /* Swiper */
@@ -371,6 +371,32 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  @apply bg-white p-5 text-sm rounded-full border border-gray-200;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 1.5rem !important;
+  @apply text-[var(--blue-primary)];
+}
+
+.featuresCarousel {
+  .swiper-button-prev,
+  .swiper-button-next {
+    @apply bg-white p-5 rounded-full border border-gray-200 -top-12;
+  }
+
+  .swiper-button-next {
+    @apply left-15;
+  }
+
+  .swiper-button-prev {
+    @apply left-0;
+  }
 }
 
 .splash {
