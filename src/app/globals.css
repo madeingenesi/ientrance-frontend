@@ -433,6 +433,17 @@ body {
   );
 }
 
+.splashBottomLeft {
+  --clip-size: min(5vw, 6rem);
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 100%,
+    calc(0% + var(--clip-size)) 100%,
+    0% calc(100% - var(--clip-size))
+  );
+}
+
 /* Animations */
 
 .fadeIn {

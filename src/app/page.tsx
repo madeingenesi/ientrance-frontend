@@ -63,7 +63,7 @@ export default function Home() {
 
   return (
     <main className="w-full mx-auto">
-      <section className="container w-full mx-auto !overflow-visible z-10 relative">
+      <section className="w-full mx-auto !overflow-visible z-10 relative">
         <HomeSlider data={slides} />
       </section>
 
@@ -80,7 +80,7 @@ export default function Home() {
         </div>
       ))} */}
 
-      <section className="flex flex-col gap-16 justify-center items-center  pt-20 pb-5 splashMaxi relative">
+      <section className="flex flex-col gap-16 justify-center items-center pt-0 pb-5 splashMaxi relative">
         <div className=" container w-full mx-auto flex flex-col gap-4 justify-center items-center px-4 md:px-8  z-10">
           <div className="flex flex-col gap-4 items-center mb-8">
             <LibraryBig className="w-12 h-12 stroke-1" />
