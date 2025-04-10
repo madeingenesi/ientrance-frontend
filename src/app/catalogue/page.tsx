@@ -133,8 +133,10 @@ export default function Catalogue() {
             <DynamicBreadcrumb />
           </BrowserRouter>
         </div>
-        <div className="container w-full mx-auto flex flex-col gap-2 p-8 border border-t-0">
-          <h1 className="text-5xl font-medium tracking-tight">Catalogue</h1>
+        <div className="container w-full mx-auto flex flex-col gap-2 p-4 md:p-8 border-y md:border md:border-t-0">
+          <h1 className="text-3xl md:text-5xl font-medium tracking-tight">
+            Catalogue
+          </h1>
           <div className="flex gap-2 mt-4">
             <Badge
               variant="outline"
@@ -153,7 +155,7 @@ export default function Catalogue() {
       </header>
       <main className="container w-full mx-auto flex flex-col mb-12">
         <div className="container w-full mx-auto sticky top-0 bg-white z-10">
-          <div className="grid grid-cols-5 gap-0 border border-t-0 divide-x divide-gray-200">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-0 !divide-y md:border md:border-t-0 md:!divide-y-0 md:divide-x divide-gray-200">
             <SelectPopover
               values={mainCategory}
               filterFields={filterFields}
@@ -178,7 +180,7 @@ export default function Catalogue() {
               setFilterFields={setFilterFields}
               filterName="Tenant Name"
             />
-            <div className="relative">
+            <div className="relative border-b md:border-b-0">
               <Input
                 placeholder="Search"
                 className="rounded-none border-0 shadow-none py-6 bg-sidebar"
@@ -188,7 +190,7 @@ export default function Catalogue() {
             </div>
           </div>
           {filterFields.length > 0 && (
-            <div className="container w-full mx-auto flex gap-2 p-4 border border-t-0 overflow-hidden">
+            <div className="container w-full mx-auto flex gap-2 p-4 border-b md:border md:border-t-0 overflow-scroll md:overflow-hidden">
               {filterFields.map((field) => (
                 <Badge
                   key={field}
@@ -219,7 +221,7 @@ export default function Catalogue() {
               {filteredMachineries.map((machine: any) => (
                 <TableRow
                   key={machine.id}
-                  className="cursor-pointer hover:bg-gray-100 divide-x *:p-4 *:text-sm"
+                  className="cursor-pointer hover:bg-gray-100 divide-x *:p-4 *:text-xs md:*:text-sm"
                   onClick={() => {
                     setSelectedItem({
                       description: machine?.description,

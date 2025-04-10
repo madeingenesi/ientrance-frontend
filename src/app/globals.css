@@ -328,6 +328,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden !important;
 }
 
 h1,
@@ -346,7 +347,7 @@ p {
 
 body {
   font-family: "Switzer", system-ui, -apple-system, sans-serif;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
 /* Swiper */
 

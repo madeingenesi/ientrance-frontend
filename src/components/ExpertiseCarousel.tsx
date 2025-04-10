@@ -86,7 +86,7 @@ export default function ExpertiseCarousel() {
                   src={slide.image}
                   alt={slide.title}
                   width={800}
-                  height={800}
+                  height={400}
                   className="object-cover splashMini"
                 />
               </div>

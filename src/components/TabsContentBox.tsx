@@ -217,7 +217,11 @@ export default function TabsContentBox() {
           {contentSections.map((section, index) => (
             <a
               key={section.id}
-              ref={(el) => (linksRef.current[index] = el)}
+              ref={(el) => {
+                if (el) {
+                  linksRef.current[index] = el;
+                }
+              }}
               href={`#${section.id}`}
               className="flex flex-row gap-4 pb-4 border-b border-black items-center justify-between"
             >
@@ -236,7 +240,11 @@ export default function TabsContentBox() {
           {contentSections.map((section, index) => (
             <div
               key={section.id}
-              ref={(el) => (sectionsRef.current[index] = el)}
+              ref={(el) => {
+                if (el) {
+                  sectionsRef.current[index] = el;
+                }
+              }}
               className="flex flex-col pb-4 relative"
               id={section.id}
             >

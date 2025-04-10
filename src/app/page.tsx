@@ -63,7 +63,7 @@ export default function Home() {
 
   return (
     <main className="w-full mx-auto">
-      <section className="w-full mx-auto !overflow-visible z-10 relative">
+      <section className="w-full mx-auto !overflow-visible z-10 relative ">
         <HomeSlider data={slides} />
       </section>
 
@@ -159,8 +159,8 @@ export default function Home() {
             unoptimized
           />
         </div>
-        <div className="w-full h-full hidden md:block absolute top-0 left-0 opacity-50 rotate-180 z-0">
-          <Aurora speed={1} amplitude={0.1} />
+        <div className="w-full h-full hidden md:block absolute top-0 left-0 opacity-80 rotate-180 z-0">
+          <Aurora speed={1} amplitude={1} />
         </div>
       </section>
 

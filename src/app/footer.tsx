@@ -57,7 +57,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[var(--blue-primary)] text-white splashMaxiTopRight pt-16">
+    <footer className="bg-[var(--blue-primary)] text-white pt-16">
       <section className="container w-full grid grid-cols-1 md:grid-cols-5 grid-rows-2 mx-auto p-8 gap-0">
         <div className="col-span-1">
           <h5 className="text-2xl font-semibold tracking-tight mb-6 flex items-center gap-8">
