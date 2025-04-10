@@ -55,7 +55,7 @@ export default function PageHeader({
 
   return (
     <header className="w-full">
-      <div className="container mx-auto py-4">
+      <div className="container mx-auto px-4 md:px-0 py-4">
         <Breadcrumb>
           <BreadcrumbList>
             {breadcrumb.map((item, index) => (
@@ -74,10 +74,10 @@ export default function PageHeader({
       <Separator />
       <div className="border-l container mx-auto">
         <div
-          className="container mx-auto flex flex-col gap-2 p-12 splash min-h-[650] justify-end  bg-cover bg-center "
+          className="container mx-auto flex flex-col gap-2 p-4 md:p-12 splash min-h-[450px] md:min-h-[650px] justify-end  bg-cover bg-center "
           style={{ backgroundImage: `url(${image})` }}
         >
-          <div className="bg-white p-8 splashMini px-14 flex flex-row justify-between items-end relative z-10">
+          <div className="bg-white p-8 splashMini md:px-14 gap-2 flex flex-col md:flex-row justify-between items-start md:items-end relative z-10">
             <DecryptedText
               text={title}
               animateOn="view"
@@ -86,8 +86,8 @@ export default function PageHeader({
               characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
               speed={50}
               revealDirection="start"
-              encryptedClassName="text-5xl  font-medium tracking-tight"
-              className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
+              encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight"
+              className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
             />
             <Link
               href="/"

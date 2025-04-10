@@ -125,7 +125,7 @@ export default function TheMosaicPage() {
         image={"/images/esempio.jpg"}
       />
       <main className="container w-full mx-auto border-x border-gray-200">
-        <section className=" w-full flex flex-col md:flex-row gap-32 p-22 justify-center items-center">
+        <section className=" w-full flex flex-col md:flex-row gap-32 p-12 md:p-22 justify-center items-center">
           <div className="w-full max-w-3xl text-center">
             <div className="flex flex-col gap-8">
               <DecryptedText
@@ -136,10 +136,10 @@ export default function TheMosaicPage() {
                 characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
                 speed={50}
                 revealDirection="start"
-                encryptedClassName="text-5xl  font-medium tracking-tight"
-                className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
+                encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight"
+                className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
               />
-              <p className="mb-4 text-xl  tracking-tight">
+              <p className="mb-4 text-lg md:text-xl tracking-tight">
                 iENTRANCE operates as an integrated advanced materials research
                 infrastructure, structured upon 14 interconnected nodes. This
                 configuration facilitates the convergence of physics, chemistry,
@@ -149,14 +149,14 @@ export default function TheMosaicPage() {
           </div>
         </section>
 
-        <section className="w-full flex flex-col px-10 pb-22">
-          <div className="grid grid-cols-12 grid-rows-12 gap-1 h-sc[80vh]">
-            <div className="col-span-4 row-span-3 bg-gray-200  splashMiniXS p-[1px] pb-2">
+        <section className="w-full flex flex-col p-4 md:px-10 pb-22">
+          <div className="grid md:grid-cols-12 md:grid-rows-12 grid-cols-1 gap-4 md:gap-1 md:h-sc[80vh]">
+            <div className="md:col-span-4 md:row-span-3 bg-gray-200 splashMiniXS p-[1px] pb-2 w-full">
               <div className="bg-white splashMiniXS w-full h-full p-8">
                 <h4 className="text-lg font-semibold mb-2 tracking-tight">
                   Mosaic Architecture
                 </h4>
-                <p className="text-sm ">
+                <p className="text-sm">
                   The "mosaic" represents iENTRANCE architecture: individual
                   nodes, like tiles, own distinct operational domains and
                   specialized instrumentation, but provide together an
@@ -164,7 +164,7 @@ export default function TheMosaicPage() {
                 </p>
               </div>
             </div>
-            <div className="col-span-3 row-span-2 col-start-1 row-start-4 bg-gray-200 p-[1px] splashMiniXS pb-2">
+            <div className="md:col-span-3 md:row-span-2 md:col-start-1 md:row-start-4 bg-gray-200 p-[1px] splashMiniXS pb-2 w-full">
               <div className="bg-white splashMiniXS w-full h-full p-8 flex flex-col justify-between">
                 <Computer className="w-10 h-10" />
                 <div className="flex flex-col items-start justify-start">
@@ -175,11 +175,11 @@ export default function TheMosaicPage() {
                 </div>
               </div>
             </div>
-            <div className="col-span-4 row-span-3 col-start-4 row-start-4 bg-gray-200 p-[1px] pb-2 splashMiniXS">
+            <div className="md:col-span-4 md:row-span-3 md:col-start-4 md:row-start-4 bg-gray-200 p-[1px] pb-2 splashMiniXS w-full">
               <div className="bg-white splashMiniXS w-full h-full p-8">3</div>
             </div>
             <div
-              className="col-span-5 row-span-3 col-start-5 row-start-1 bg-gray-200 p-8 splashMiniXS"
+              className="md:col-span-5 md:row-span-3 md:col-start-5 md:row-start-1 bg-gray-200 p-8 splashMiniXS w-full"
               style={{
                 backgroundImage: "url('/images/esempio.jpg')",
                 backgroundSize: "cover",
@@ -188,10 +188,10 @@ export default function TheMosaicPage() {
             >
               4
             </div>
-            <div className="col-span-3 row-span-2 col-start-10 row-start-1 bg-gray-200 p-[1px] splashMiniXS">
+            <div className="md:col-span-3 md:row-span-2 md:col-start-10 md:row-start-1 bg-gray-200 p-[1px] splashMiniXS w-full">
               <div className="bg-white splashMiniXS w-full h-full p-8">5</div>
             </div>
-            <div className="col-span-3 row-span-4 col-start-10 row-start-3 bg-gray-200 splashMiniXS p-[1px] pb-2">
+            <div className="md:col-span-3 md:row-span-4 md:col-start-10 md:row-start-3 bg-gray-200 splashMiniXS p-[1px] pb-2 w-full">
               <div className="bg-white splashMiniXS w-full h-full p-8">
                 <h4 className="text-lg font-semibold mb-2 tracking-tight">
                   Integration and Collaboration
@@ -205,7 +205,7 @@ export default function TheMosaicPage() {
                 </p>
               </div>
             </div>
-            <div className="col-span-2 row-span-3 col-start-8 row-start-4 bg-gray-200 p-[1px] splashMiniXS pb-2">
+            <div className="md:col-span-2 md:row-span-3 md:col-start-8 md:row-start-4 bg-gray-200 p-[1px] splashMiniXS pb-2 w-full">
               <div className="bg-white splashMiniXS w-full h-full p-8 flex flex-col justify-between">
                 <Computer className="w-10 h-10" />
                 <div className="flex flex-col items-start justify-start">
@@ -216,7 +216,7 @@ export default function TheMosaicPage() {
                 </div>
               </div>
             </div>
-            <div className="col-span-3 row-span-4 row-start-6 bg-gray-200 p-[1px] pb-2 splashMiniXS">
+            <div className="md:col-span-3 md:row-span-4 md:row-start-6 bg-gray-200 p-[1px] pb-2 splashMiniXS w-full">
               <div className="bg-white splashMiniXS w-full h-full p-8">
                 <h4 className="text-lg font-semibold mb-2 tracking-tight">
                   Technology Transfer
@@ -229,7 +229,7 @@ export default function TheMosaicPage() {
                 </p>
               </div>
             </div>
-            <div className="col-span-5 row-span-2 col-start-4 row-start-7 bg-gray-200 p-[1px] pb-2 splashMiniXS">
+            <div className="md:col-span-5 md:row-span-2 md:col-start-4 md:row-start-7 bg-gray-200 p-[1px] pb-2 splashMiniXS w-full">
               <div className="bg-white splashMiniXS w-full h-full p-8">
                 <h4 className="text-lg font-semibold mb-2 tracking-tight">
                   Collaborative Research
@@ -241,9 +241,9 @@ export default function TheMosaicPage() {
                 </p>
               </div>
             </div>
-            <div className="col-span-5 row-span-4 col-start-4 row-start-9 bg-gray-200 p-8 splashMiniXS"></div>
-            <div className="col-span-4 row-span-3 col-start-9 row-start-7 bg-gray-200 p-8 splashMiniXS"></div>
-            <div className="col-span-4 row-span-3 col-start-9 row-start-10 bg-gray-200 p-[1px] pb-2 splashMiniXS">
+            <div className="md:col-span-5 md:row-span-4 md:col-start-4 md:row-start-9 bg-gray-200 p-8 splashMiniXS w-full"></div>
+            <div className="md:col-span-4 md:row-span-3 md:col-start-9 md:row-start-7 bg-gray-200 p-8 splashMiniXS w-full"></div>
+            <div className="md:col-span-4 md:row-span-3 md:col-start-9 md:row-start-10 bg-gray-200 p-[1px] pb-2 splashMiniXS w-full">
               <div className="bg-white splashMiniXS w-full h-full p-8">
                 <h4 className="text-lg font-semibold mb-2 tracking-tight">
                   Operational Focus
@@ -257,7 +257,7 @@ export default function TheMosaicPage() {
                 </p>
               </div>
             </div>
-            <div className="col-span-3 row-span-3 col-start-1 row-start-10 bg-gray-200 p-[1px] pb-2 splashMiniXS ">
+            <div className="md:col-span-3 md:row-span-3 md:col-start-1 md:row-start-10 bg-gray-200 p-[1px] pb-2 splashMiniXS w-full">
               <div className="bg-white splashMiniXS w-full h-full p-8">
                 <h4 className="text-lg font-semibold mb-2 tracking-tight">
                   Accelerating Innovation
@@ -279,7 +279,7 @@ export default function TheMosaicPage() {
           id="values"
         >
           <div className="bg-gray-200 splash py-[1px]">
-            <div className="flex flex-col gap-8 p-22 bg-muted splash border-none justify-center items-center">
+            <div className="flex flex-col gap-8 p-4 py-12 md:p-22 bg-muted splash border-none justify-center items-center">
               <DecryptedText
                 text="Values"
                 animateOn="view"
@@ -288,10 +288,10 @@ export default function TheMosaicPage() {
                 characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
                 speed={50}
                 revealDirection="start"
-                encryptedClassName="text-5xl  font-medium tracking-tight"
-                className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
+                encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight"
+                className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
               />
-              <p className="text-2xl max-w-3xl tracking-tight text-center">
+              <p className="text-lg md:text-2xl max-w-3xl tracking-tight text-center">
                 iENTRANCE is founded on the values of collaborative excellence,
                 technological innovation, and a commitment to addressing
                 pressing societal challenges through advanced materials
@@ -300,7 +300,7 @@ export default function TheMosaicPage() {
             </div>
           </div>
 
-          <div className="w-full flex flex-col md:flex-col gap-32 p-22 justify-center max-w-5xl mx-auto">
+          <div className="w-full flex flex-col md:flex-col gap-32 p-4 py-12 md:p-22 justify-center max-w-5xl mx-auto">
             <div className="w-full ">
               <Accordion type="single" collapsible className="w-full">
                 {accordionItems.map((item, index) => (
@@ -318,9 +318,9 @@ export default function TheMosaicPage() {
           </div>
         </section>
 
-        <section className=" w-full flex flex-col gap-0  z-20 relative">
+        <section className=" w-full flex flex-col gap-0 z-20 relative">
           <div className="bg-gray-200 splash py-[1px]">
-            <div className="flex flex-col gap-8 p-22 bg-muted splash border-none justify-center items-center">
+            <div className="flex flex-col gap-8 p-4 py-12 md:p-22 bg-muted splash border-none justify-center items-center">
               <DecryptedText
                 text="Challenges / Topics"
                 animateOn="view"
@@ -329,10 +329,10 @@ export default function TheMosaicPage() {
                 characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
                 speed={50}
                 revealDirection="start"
-                encryptedClassName="text-5xl  font-medium tracking-tight"
-                className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
+                encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight"
+                className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
               />
-              <p className="text-2xl max-w-3xl tracking-tight text-center">
+              <p className="text-lg md:text-2xl max-w-3xl tracking-tight text-center">
                 iENTRANCE is committed to addressing complex challenges across
                 both technological and methodological frontiers. We aim to be a
                 catalyst for innovation and sustainable development through
@@ -341,13 +341,13 @@ export default function TheMosaicPage() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-0 bg-white p-22 gap-22">
+          <div className="flex flex-col gap-0 bg-white py-12 md:py-0 p-4 md:p-22 gap-12 md:gap-22">
             <h3 className="text-3xl font-semibold mb-4 w-fit !m-0 tracking-tight">
               Technological Domains
             </h3>
             {/* IMG - Text Right */}
-            <div className="flex flex-row gap-0 gap-32">
-              <div className="grid grid-cols-2 grid-rows-2 gap-0 w-1/2 min-h-[500px] gap-1">
+            <div className="flex flex-col md:flex-row gap-0 gap-12 md:gap-32">
+              <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-0 w-full md:w-1/2 min-h-[500px] gap-1">
                 <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
                   1
                 </div>
@@ -358,7 +358,7 @@ export default function TheMosaicPage() {
                   3
                 </div>
               </div>
-              <div className="w-1/2 flex flex-col justify-center">
+              <div className="w-full md:w-1/2 flex flex-col justify-center">
                 <h4 className="text-2xl font-semibold mb-4 tracking-tight">
                   Development of a Green, Sustainable, and Circular Economy &
                   Industry 
@@ -506,7 +506,7 @@ export default function TheMosaicPage() {
 
         <section className="w-full overflow-x-hidden">
           <div className="bg-gray-200 splash py-[1px]">
-            <div className="flex flex-col gap-8 p-22 bg-muted splash border-none justify-center items-center">
+            <div className="flex flex-col gap-8 p-4 py-12 md:p-22 bg-muted splash border-none justify-center items-center">
               <DecryptedText
                 text="Expertise"
                 animateOn="view"
@@ -515,10 +515,10 @@ export default function TheMosaicPage() {
                 characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
                 speed={50}
                 revealDirection="start"
-                encryptedClassName="text-5xl  font-medium tracking-tight"
-                className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
+                encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight"
+                className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
               />
-              <p className="text-2xl max-w-3xl tracking-tight text-center">
+              <p className="text-lg md:text-2xl max-w-3xl tracking-tight text-center">
                 The technical expertise of iENTRANCE encompasses a wide range of
                 advanced materials research capabilities, with a strong emphasis
                 on nanoscience and technology.
@@ -526,10 +526,10 @@ export default function TheMosaicPage() {
             </div>
           </div>
 
-          <div className="w-full flex flex-col md:flex-col gap-16 p-22 justify-center mx-auto">
+          <div className="w-full flex flex-col md:flex-col gap-8 md:gap-16 p-4 py-12 md:p-22 justify-center mx-auto">
             <ExpertiseCarousel />
             <div className="flex max-w-3xl gap-4">
-              <p className="text-2xl">
+              <p className="text-lg md:text-2xl">
                 In essence, iENTRANCE provides a comprehensive platform for
                 advanced materials research, combining cutting-edge
                 instrumentation, expert knowledge, and a commitment to
@@ -541,7 +541,7 @@ export default function TheMosaicPage() {
 
         <section className="w-full overflow-x-hidden">
           <div className="bg-gray-200 splash py-[1px]">
-            <div className="flex flex-col gap-8 p-22 bg-muted splash border-none justify-center items-center">
+            <div className="flex flex-col gap-8 p-4 py-12 md:p-22 bg-muted splash border-none justify-center items-center">
               <DecryptedText
                 text="Data"
                 animateOn="view"
@@ -550,10 +550,10 @@ export default function TheMosaicPage() {
                 characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
                 speed={50}
                 revealDirection="start"
-                encryptedClassName="text-5xl  font-medium tracking-tight"
-                className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
+                encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight"
+                className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
               />
-              <p className="text-2xl max-w-3xl tracking-tight text-center ">
+              <p className="text-lg md:text-2xl max-w-3xl tracking-tight text-center ">
                 iENTRANCE is committed to ensuring that all data generated and
                 managed within its infrastructure adhere to the FAIR principles:{" "}
                 <strong>Findable</strong>, <strong>Accessible</strong>,{" "}
@@ -562,20 +562,20 @@ export default function TheMosaicPage() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-16 p-22 justify-center mx-auto">
+          <div className="flex flex-col gap-16 p-4 py-12 md:p-22 justify-center mx-auto">
             <div className="flex flex-col gap-4 max-w-3xl gap-4">
-              <p className="text-2xl tracking-tight">
+              <p className="text-lg md:text-2xl tracking-tight">
                 This commitment forms the cornerstone of our data management
                 strategy, ensuring that research outputs are not only robust but
                 also contribute to a broader ecosystem of accessible scientific
                 knowledge.
               </p>
-              <p className="text-2xl tracking-tight">
+              <p className="text-lg md:text-  2xl tracking-tight">
                 By embracing FAIR data practices, iENTRANCE offers significant
                 advantages to researchers accessing our infrastructure:
               </p>
             </div>
-            <div className="grid grid-cols-3 gap-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 gap-4">
               {data.map((item, index) => (
                 <div
                   key={index}

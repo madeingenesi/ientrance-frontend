@@ -7,7 +7,7 @@ import Image from "next/image";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-
+import "swiper/css/navigation";
 // import required modules
 import { Pagination, Navigation } from "swiper/modules";
 
@@ -59,35 +59,35 @@ export default function ExpertiseCarousel() {
         pagination={false}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className="mySwiper h-full overflow-hidden md:!overflow-visible"
+        className="mySwiper overflow-hidden md:!overflow-visible"
       >
         {slides?.map((slide: any, index: number) => (
-          <SwiperSlide key={slide.id} className="">
-            <div className="flex flex-row gap-4 bg-muted min-h-[350px] p-[1px] splashMini">
-              <div className="flex flex-col gap-4 min-h-[350px] w-1/3 p-16">
+          <SwiperSlide key={slide.id}>
+            <div className="flex flex-col md:flex-row gap-4 bg-muted p-[1px] splashMini h-full">
+              <div className="flex flex-col gap-4 w-full md:w-1/3 p-8 md:p-16">
                 <div className="flex flex-row gap-2 items-center">
                   <span className="bg-[var(--blue-primary)] text-white flex flex-row justify-center items-center rounded-full border-white border w-6 h-6 p-1 text-xs">
                     {index + 1}
                   </span>
                   <div className="w-4 h-[1px] bg-[var(--blue-primary)]"></div>
-                  <span className="b text-[var(--blue-primary)] flex flex-row justify-center items-center rounded-full border-[var(--blue-primary)] border w-6 h-6 p-1 text-xs">
+                  <span className="bg-white text-[var(--blue-primary)] flex flex-row justify-center items-center rounded-full border-[var(--blue-primary)] border w-6 h-6 p-1 text-xs">
                     {slides.length}
                   </span>
                 </div>
-                <div className="flex flex-col justify-between h-full flex-1">
-                  <h3 className="text-4xl font-semibold text-left mt-3">
+                <div className="flex flex-col justify-between h-full flex-1 gap-8 md:gap-32">
+                  <h3 className="text-2xl md:text-4xl font-semibold text-left mt-3">
                     {slide.title}
                   </h3>
                   <p className="text-sm text-left">{slide.description}</p>
                 </div>
               </div>
-              <div className="w-2/3">
+              <div className="w-full md:w-2/3">
                 <Image
                   src={slide.image}
                   alt={slide.title}
                   width={800}
                   height={400}
-                  className="object-cover splashMini"
+                  className="object-cover splashMini h-full"
                 />
               </div>
             </div>

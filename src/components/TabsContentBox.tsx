@@ -212,7 +212,7 @@ export default function TabsContentBox() {
 
   return (
     <div className="flex flex-row relative gap-16">
-      <div className="w-4/12 flex flex-col relative">
+      <div className="w-4/12 flex flex-col relative ">
         <div className="flex flex-col gap-4 sticky top-[20px] w-full h-fit">
           {contentSections.map((section, index) => (
             <a

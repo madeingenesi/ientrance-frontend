@@ -7,6 +7,7 @@ import Image from "next/image";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 // import required modules
 import { Pagination, Navigation } from "swiper/modules";
@@ -56,7 +57,7 @@ export default function ExpertiseCarousel() {
       >
         {slides?.map((slide: any, index: number) => (
           <SwiperSlide key={slide.id} className="">
-            <div className="flex flex-col md:flex-row gap-4 bg-muted h-[450px] p-[1px] splashMini">
+            <div className="flex flex-col md:flex-row gap-4 bg-muted  p-[1px] splashMini">
               <div className="flex flex-col gap-4 min-h-[350px] w-full md:w-1/3 p-6 md:p-16">
                 <div className="flex flex-row gap-2 items-center">
                   <span className="bg-[var(--blue-primary)] text-white flex flex-row justify-center items-center rounded-full border-white border w-6 h-6 p-1 text-xs">
@@ -67,7 +68,7 @@ export default function ExpertiseCarousel() {
                     {slides.length}
                   </span>
                 </div>
-                <div className="flex flex-col justify-between h-full flex-1">
+                <div className="flex flex-col justify-between h-full flex-1 gap-32">
                   <h3 className="text-3xl font-semibold text-left mt-3 tracking-tight">
                     {slide.title}
                   </h3>
@@ -79,8 +80,8 @@ export default function ExpertiseCarousel() {
                   src={slide.image}
                   alt={slide.title}
                   width={800}
-                  height={450}
-                  className="object-cover splashMini"
+                  height={400}
+                  className="object-cover splashMini h-full"
                 />
               </div>
             </div>

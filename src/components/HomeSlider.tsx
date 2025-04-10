@@ -37,22 +37,22 @@ export default function HomeSlider({ data }: { data: any }) {
     {
       id: 2,
       title: "We unlock materials and technologies for sustainability",
-      image: "/images/esempio.jpg",
+      image: "/images/slidesHome/slide-2.jpg",
     },
     {
       id: 3,
       title: "We listen to needs for shaping solutions",
-      image: "/images/esempio.jpg",
+      image: "/images/slidesHome/slide-3.jpg",
     },
     {
       id: 4,
       title: "We empower FAIR in a knowledge based framework",
-      image: "/images/esempio.jpg",
+      image: "/images/slidesHome/slide-4.jpg",
     },
     {
       id: 5,
       title: "We think nano to build macro",
-      image: "/images/esempio.jpg",
+      image: "/images/slidesHome/slide-5.jpg",
     },
     {
       id: 6,
