@@ -17,7 +17,7 @@
   --neutral-950: #030712;
   --neutral-dim: rgba(217, 222, 223, 0.3);
   --select: #1476ff10;
-  --primary: #1476ff;
+  --primary-marker-marker: #1476ff;
   --error: #ef6f6c;
   --success: #7eca63;
 }
@@ -177,7 +177,7 @@
   left: 50%;
 }
 .mapplic-marker {
-  background-color: var(--primary);
+  background-color: var(--primary-marker-marker);
   border-radius: 50%;
   box-sizing: border-box;
   color: #fff;
@@ -371,7 +371,7 @@
   background-color: var(--neutral-100);
 }
 .mapplic-popup-details > a {
-  color: var(--primary);
+  color: var(--primary-marker-marker);
   font-weight: 700;
   width: 100%;
   text-align: center;
@@ -687,7 +687,7 @@
   background-color: var(--neutral-200);
 }
 .mapplic-button-small {
-  background-color: var(--primary);
+  background-color: var(--primary-marker);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -698,7 +698,7 @@
   padding: 4px;
 }
 .mapplic-button.mapplic-button-primary:not(:disabled) {
-  background-color: var(--primary);
+  background-color: var(--primary-marker-marker);
   border: none;
   padding: 8px 12px;
   color: #fff;
@@ -1085,7 +1085,7 @@ h5 {
   width: 100%;
 }
 .mapplic-search > input:focus {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--primary-marker);
 }
 .mapplic-search > svg {
   position: absolute;
