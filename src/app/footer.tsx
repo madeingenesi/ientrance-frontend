@@ -60,7 +60,7 @@ export default function Footer() {
     <footer className="bg-[var(--blue-primary)] text-white pt-16">
       <section className="container w-full grid grid-cols-1 md:grid-cols-5 grid-rows-1 md:grid-rows-2 mx-auto p-8 gap-4 md:gap-0">
         <div className="col-span-5 md:col-span-1">
-          <h5 className="text-2xl font-semibold tracking-tight mb-6 flex items-center gap-8">
+          <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
             The Mosaic <ArrowRight className="w-5 h-5" />
           </h5>
           <ul className="flex flex-col gap-2">
@@ -75,7 +75,7 @@ export default function Footer() {
           </ul>
         </div>
         <div className="col-span-5 md:col-span-1">
-          <h5 className="text-2xl font-semibold tracking-tight mb-6 flex items-center gap-8">
+          <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
             Come In <ArrowRight className="w-5 h-5" />
           </h5>
           <ul className="flex flex-col gap-2">
@@ -90,7 +90,7 @@ export default function Footer() {
           </ul>
         </div>
         <div className="col-span-5 md:col-span-1">
-          <h5 className="text-2xl font-semibold tracking-tight mb-6 flex items-center gap-8">
+          <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
             Learn & Grow <ArrowRight className="w-5 h-5" />
           </h5>
           <ul className="flex flex-col gap-2">
@@ -105,7 +105,7 @@ export default function Footer() {
           </ul>
         </div>
         <div className="col-span-5 md:col-span-1">
-          <h5 className="text-2xl font-semibold tracking-tight mb-6 flex items-center gap-8">
+          <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
             Outcomes <ArrowRight className="w-5 h-5" />
           </h5>
           <ul className="flex flex-col gap-2">
@@ -119,14 +119,9 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div className="col-span-5 md:col-span-1 col-start-1 col-end-5 row-span-1 row-start-2 row-end-3">
-          <div className="pt-12">
-            <h3>Altro</h3>
-          </div>
-        </div>
         <div className="bg-white splashMiniXS text-black p-4 col-span-5 md:col-span-1 col-start-1 md:col-start-5 row-start-1 md:row-end-3 flex flex-col justify-between gap-4">
           <div className="flex-1">
-            <h5 className="text-2xl font-semibold tracking-tight mb-6 flex items-center gap-8">
+            <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
               Catalogue
             </h5>
             <p className="text-sm">

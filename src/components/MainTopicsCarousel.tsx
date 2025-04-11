@@ -19,14 +19,14 @@ export default function ExpertiseCarousel() {
       title: "Nanomaterials for energy",
       description:
         "iENTRANCE provides access to a comprehensive suite of tools and expertise for micro- and nanoscale processing of materials, including synthesis, characterization, manipulation and micro- and nano-technological processes and devices fabrication.",
-      image: "/images/esempio.jpg",
+      image: "/images/main-topics-carousel/nanomaterials-for-energy.jpg",
     },
     {
       id: 2,
       title: "Green Energy Materials and Processing",
       description:
         "The infrastructure offers top-level expertise in micro- and nanoscale structural, compositional, optoelectronic, in-situ, and in-operando characterization. This involves the use of advanced techniques to analyze the properties and behavior of materials at the atomic and molecular levels.",
-      image: "/images/esempio.jpg",
+      image: "/images/main-topics-carousel/green-energy.jpg",
     },
     {
       id: 3,
@@ -40,7 +40,7 @@ export default function ExpertiseCarousel() {
       title: "Device and System Fabrication Technologies",
       description:
         "The infrastructure supports research on sustainable materials and processes, including waste valorization, (photo)catalysis, sustainable polymers, material recyclability and durability, and low-impact fabrication.",
-      image: "/images/esempio.jpg",
+      image: "/images/main-topics-carousel/device-and-system.jpg",
     },
   ];
 

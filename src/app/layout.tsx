@@ -17,8 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SOA Nanotech",
-  description: "SOA Nanotech",
+  title: "iEntrance",
+  description:
+    "A fully interoperable Technological Research Infrastructure of European excellence in Italy devoted to Clean Energy Transition Research.",
 };
 
 export default function RootLayout({

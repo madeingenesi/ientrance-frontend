@@ -64,7 +64,7 @@ export default function ExpertiseCarousel() {
         {slides?.map((slide: any, index: number) => (
           <SwiperSlide key={slide.id}>
             <div className="flex flex-col md:flex-row gap-4 bg-muted p-[1px] splashMini h-full">
-              <div className="flex flex-col gap-4 w-full md:w-1/3 p-8 md:p-16">
+              <div className="flex flex-col gap-4 w-full md:w-2/4 p-8 md:p-16">
                 <div className="flex flex-row gap-2 items-center">
                   <span className="bg-[var(--blue-primary)] text-white flex flex-row justify-center items-center rounded-full border-white border w-6 h-6 p-1 text-xs">
                     {index + 1}
@@ -81,7 +81,7 @@ export default function ExpertiseCarousel() {
                   <p className="text-sm text-left">{slide.description}</p>
                 </div>
               </div>
-              <div className="w-full md:w-2/3">
+              <div className="w-full md:w-2/4">
                 <Image
                   src={slide.image}
                   alt={slide.title}
