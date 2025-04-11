@@ -14,7 +14,7 @@ import HomeSlider from "../components/HomeSlider";
 import HomeCarousel from "../components/HomeCarousel";
 import Aurora from "../components/Aurora";
 import MainTopicsCarousel from "../components/MainTopicsCarousel";
-
+import MapplicMap from "../components/Map";
 // UI
 import { Button } from "../components/ui/button";
 import DecryptedText from "../components/DecryptedText";
@@ -514,24 +514,6 @@ export default function Home() {
         </div> */}
       </section>
 
-      <section className="container w-full mx-auto py-20 overflow-visible flex flex-col gap-20 px-2 md:px-0">
-        <div className="flex flex-col md:flex-row justify-between gap-4 md:gap-8 px-2 md:px-0">
-          <div>
-            <h2 className="text-lg font-medium tracking-tight">Features</h2>
-          </div>
-          <div className="max-w-2xl">
-            <p className="text-2xl font-medium tracking-tight">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
-              tempor incididunt ut labor.
-            </p>
-          </div>
-        </div>
-        <div className="w-full overflow-hidden md:overflow-visible">
-          <HomeCarousel boxes={boxes} />
-        </div>
-      </section>
-
       <section className="bg-[var(--blue-primary)] h-[60vh] w-full relative px-8 hidden">
         <div className="container w-full max-w-7xl mx-auto h-full relative">
           <div className="absolute bottom-0 left-8 md:left-0 w-6/12 h-[350px] bg-white z-20 splash p-12 pr-16 pb-18">
@@ -550,7 +532,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full bg-muted h-screen py-20 splashMaxi">
+      <section className="w-full bg-[#F9FAFB] py-20 splashMaxi">
         <div className="container mx-auto w-full flex flex-col gap-4 justify-center items-center px-8 md:px-0">
           <DecryptedText
             text="Nodes"
@@ -568,10 +550,26 @@ export default function Home() {
             eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
             tempor incididunt ut labor.
           </p>
+          <MapplicMap />
         </div>
       </section>
 
-      <section className="container mx-auto w-full bg-white py-20 flex flex-col gap-16 px-4 md:px-8">
+      <section className="container w-full mx-auto py-20 overflow-visible flex flex-col gap-20 px-2 md:px-0">
+        <div className="flex flex-col md:flex-row justify-between gap-4 md:gap-8 px-2 md:px-0">
+          <div>
+            <h2 className="text-lg font-medium tracking-tight">Features</h2>
+          </div>
+          <div className="max-w-2xl">
+            <p className="text-2xl font-medium tracking-tight">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
+              tempor incididunt ut labor.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="container mx-auto w-full bg-white py-20 flex flex-col gap-16 px-4 md:px-0">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <DecryptedText
             text="News, proposals & Events"
@@ -622,6 +620,9 @@ export default function Home() {
                 </div>
               </div>
             ))}
+        </div>
+        <div className="w-full overflow-hidden md:overflow-visible mt-8">
+          <HomeCarousel boxes={boxes} />
         </div>
       </section>
     </main>

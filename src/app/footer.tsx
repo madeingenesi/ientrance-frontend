@@ -125,7 +125,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="bg-white splashMiniXS text-black p-4 col-span-5 md:col-span-1 col-start-1 md:col-start-5 row-start-1 md:row-end-3 flex flex-col justify-between gap-4">
-          <div className="flex-1 p-4 bg-muted splashMiniXS">
+          <div className="flex-1">
             <h5 className="text-2xl font-semibold tracking-tight mb-6 flex items-center gap-8">
               Catalogue
             </h5>
@@ -135,22 +135,30 @@ export default function Footer() {
             </p>
             <ul className="flex flex-col">
               <li className="flex flex-row gap-2 items-center">
-                <ChevronRight className="w-4 h-4" /> Testo1
+                <ChevronRight className="w-4 h-4" /> +466 Machines
               </li>
               <li className="flex flex-row gap-2 items-center">
-                <ChevronRight className="w-4 h-4" /> Testo2
+                <ChevronRight className="w-4 h-4" /> 12 Nodes
               </li>
               <li className="flex flex-row gap-2 items-center">
-                <ChevronRight className="w-4 h-4" /> Testo3
+                <ChevronRight className="w-4 h-4" /> +400 Techniques
               </li>
               <li className="flex flex-row gap-2 items-center">
-                <ChevronRight className="w-4 h-4" /> Testo4
+                <ChevronRight className="w-4 h-4" /> 1000+ Users
               </li>
             </ul>
           </div>
           <Button className="w-full flex flex-row gap-2 justify-between items-center splashMiniXS rounded-none p-6 self-end">
             Go to Catalogue <ArrowRight className="w-5 h-5" />
           </Button>
+        </div>
+      </section>
+      <section className="container w-full flex flex-row mx-auto p-8 gap-4 md:gap-0">
+        <div className="col-span-5 md:col-span-1">
+          <p className="text-sm">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
         </div>
       </section>
     </footer>
