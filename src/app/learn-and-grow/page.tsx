@@ -3,6 +3,8 @@ import Link from "next/link";
 
 import PageHeader from "@/components/PageHeader";
 import DecryptedText from "@/components/DecryptedText";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export default function LearnAndGrow() {
   return (
@@ -43,31 +45,33 @@ export default function LearnAndGrow() {
         >
           <div className="bg-gray-200 splash py-[1px]">
             <div className="flex flex-col gap-8 p-22 bg-sidebar splash border-none justify-center items-center">
-              <DecryptedText
-                text="Summer School"
-                animateOn="view"
-                sequential={true}
-                maxIterations={20}
-                characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
-                speed={50}
-                revealDirection="start"
-                encryptedClassName="text-5xl  font-medium tracking-tight"
-                className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
-              />
-              <div>
-                <p className="text-xl max-w-3xl tracking-tight text-center">
-                  The Summer School{" "}
-                  <strong>
-                    "iENTRANCE to research. The young scientist's guide to the
-                    galaxy. Rethinking research in an AI-empowered world."
-                  </strong>
-                </p>
-                <p className="text-xl max-w-3xl tracking-tight text-center">
-                  Is designed for young scientists entering the world of
-                  Research and offers a unique training opportunity thet
-                  combines academic excellence with an immersive hands-on
-                  experience, set in stunning natural setting.
-                </p>
+              <div className="flex flex-col gap-8 justify-center items-center bg-sidebar splashMiniXS">
+                <DecryptedText
+                  text="Summer School"
+                  animateOn="view"
+                  sequential={true}
+                  maxIterations={20}
+                  characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
+                  speed={50}
+                  revealDirection="start"
+                  encryptedClassName="text-5xl  font-medium tracking-tight"
+                  className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
+                />
+                <div>
+                  <p className="text-xl max-w-3xl tracking-tight text-center">
+                    The Summer School{" "}
+                    <strong>
+                      "iENTRANCE to research. The young scientist's guide to the
+                      galaxy. Rethinking research in an AI-empowered world."
+                    </strong>
+                  </p>
+                  <p className="text-xl max-w-3xl tracking-tight text-center">
+                    Is designed for young scientists entering the world of
+                    Research and offers a unique training opportunity thet
+                    combines academic excellence with an immersive hands-on
+                    experience, set in stunning natural setting.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -94,19 +98,30 @@ export default function LearnAndGrow() {
               </p>
             </div>
             <div className="w-1/3">
-              <div className="bg-muted p-8 splashMiniXS relative">
+              <div className="bg-muted splashMiniXS relative">
                 <div className="bg-[var(--blue-primary)] text-white p-4 absolute top-0 right-0 splashMiniXS font-semibold text-2xl tracking-tight flex items-center gap-2">
                   <Calendar1 strokeWidth={1.5} className="w-6 h-6 " />
                   3-6 June
                 </div>
-                <Ticket className="w-12 h-12 " />
-                <p className="text-lg font-semibold tracking-tight pt-12">
-                  iENTRANCE to research. The young scientist's guide to the
-                  galaxy. Rethinking research in an AI-empowered world
-                </p>
-                <span className="text-sm tracking-tight pt-4">
-                  Ventotene (Italy) <br />@ Sala Polivalente Umberto Terracini
-                </span>
+                <div className="flex flex-col p-8">
+                  <Ticket className="w-12 h-12 " />
+                  <p className="text-lg font-semibold tracking-tight pt-12">
+                    iENTRANCE to research. The young scientist's guide to the
+                    galaxy. Rethinking research in an AI-empowered world
+                  </p>
+                  <span className="text-sm tracking-tight pt-4">
+                    Ventotene (Italy) <br />@ Sala Polivalente Umberto Terracini
+                  </span>
+                </div>
+                <Link
+                  href="https://forms.office.com/Pages/DesignPageV2.aspx?subpage=design&token=f103f38f3f9f43b3974bc7e978bd77d2&id=n07GNH_S3U6h8BOX8MhPlJxQWquJAV5Fv8BvuGqTs09URjAzRVpYMUlJUTk4UUNURFhFRUNHUTlJUC4u"
+                  target="_blank"
+                  className="w-full hover:pointer"
+                >
+                  <Button className="w-full splashMiniXS border-none bg-[var(--blue-primary)] !rounded-none py-6 text-lg tracking-tight text-white ">
+                    Register now <ArrowRight className="!w-5 !h-5" />
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

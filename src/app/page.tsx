@@ -546,9 +546,8 @@ export default function Home() {
             className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
           />
           <p className="text-sm md:text-xl max-w-2xl text-center">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
-            tempor incididunt ut labor.
+            iENTRANCE is based on six geographical nodes distributed along the
+            Italian peninsula.
           </p>
           <MapplicMap />
         </div>

@@ -399,16 +399,8 @@ export default function TheMosaicPage() {
             <div className="flex flex-col gap-32">
               {/* IMG - Text Right */}
               <div className="flex flex-col md:flex-row gap-0 gap-12 md:gap-32">
-                <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-0 w-full md:w-1/2 min-h-[500px] gap-1">
-                  <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
-                    1
-                  </div>
-                  <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
-                    2
-                  </div>
-                  <div className="col-span-2 row-span-1 bg-gray-200 splashMini">
-                    3
-                  </div>
+                <div className="flex flex-col gap-0 w-full md:w-1/2 min-h-[400px] gap-1">
+                  <div className="flex-1 bg-gray-200 splashMini">1</div>
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-center">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
@@ -438,16 +430,8 @@ export default function TheMosaicPage() {
               </div>
               {/* IMG - Text Left */}
               <div className="flex flex-row gap-0 gap-32">
-                <div className="grid grid-cols-2 grid-rows-2 gap-0 w-1/2 min-h-[500px] gap-1 order-2">
-                  <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
-                    1
-                  </div>
-                  <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
-                    2
-                  </div>
-                  <div className="col-span-2 row-span-1 bg-gray-200 splashMini">
-                    3
-                  </div>
+                <div className="flex flex-col gap-0 w-1/2 min-h-[400px] gap-1 order-2">
+                  <div className="flex-1 bg-gray-200 splashMini">1</div>
                 </div>
                 <div className="w-1/2 flex flex-col justify-center">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
@@ -475,16 +459,8 @@ export default function TheMosaicPage() {
               </div>
               {/* IMG - Text Right */}
               <div className="flex flex-row gap-0 gap-32">
-                <div className="grid grid-cols-2 grid-rows-2 gap-0 w-1/2 min-h-[500px] gap-1">
-                  <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
-                    1
-                  </div>
-                  <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
-                    2
-                  </div>
-                  <div className="col-span-2 row-span-1 bg-gray-200 splashMini">
-                    3
-                  </div>
+                <div className="flex flex-col gap-0 w-1/2 min-h-[400px] gap-1">
+                  <div className="flex-1 bg-gray-200 splashMini">1</div>
                 </div>
                 <div className="w-1/2 flex flex-col justify-center">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
@@ -519,17 +495,10 @@ export default function TheMosaicPage() {
               </div>
               {/* IMG - Text Left */}
               <div className="flex flex-row gap-0 gap-32">
-                <div className="grid grid-cols-2 grid-rows-2 gap-0 w-1/2 min-h-[500px] gap-1 order-2">
-                  <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
-                    1
-                  </div>
-                  <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
-                    2
-                  </div>
-                  <div className="col-span-2 row-span-1 bg-gray-200 splashMini">
-                    3
-                  </div>
+                <div className="flex flex-col gap-0 w-1/2 min-h-[400px] gap-1 order-2">
+                  <div className="flex-1 bg-gray-200 splashMini">1</div>
                 </div>
+
                 <div className="w-1/2 flex flex-col justify-center">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
                     Facilitation of Technology Transfer and Innovation
@@ -563,158 +532,95 @@ export default function TheMosaicPage() {
             <div className="flex flex-col gap-32">
               {/* IMG - Text Right */}
               <div className="flex flex-col md:flex-row gap-0 gap-12 md:gap-32">
-                <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-0 w-full md:w-1/2 min-h-[500px] gap-1">
-                  <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
-                    1
-                  </div>
-                  <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
-                    2
-                  </div>
-                  <div className="col-span-2 row-span-1 bg-gray-200 splashMini">
-                    3
-                  </div>
+                <div className="flex flex-col gap-0 w-full md:w-1/2 min-h-[400px] gap-1">
+                  <div className="flex-1 bg-gray-200 splashMini">1</div>
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-center">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
-                    Development of a Green, Sustainable, and Circular Economy &
-                    Industry 
+                    Evolution into a Knowledge-Generating and Sharing
+                    Organization
                   </h4>
                   <ul className=" flex flex-col gap-2">
                     <li className="flex flex-row gap-2">
                       <ArrowRight className="w-5 h-5 min-w-5 mt-1" />
-                      Facilitating the transition towards eco-friendly
-                      industrial practices by providing access to cutting-edge
-                      research and resources.
+                      Developing robust systems for the continuous generation,
+                      sharing, and leveraging of knowledge.
                     </li>
                     <li className="flex flex-row gap-2">
                       <ArrowRight className="w-5 h-5 min-w-5 mt-1" />
-                      Promoting the development of sustainable manufacturing
-                      processes and materials that minimize environmental
-                      impact.
+                      Creating platforms and tools for effective knowledge
+                      dissemination and collaboration.
                     </li>
                     <li className="flex flex-row gap-2">
                       <ArrowRight className="w-5 h-5 min-w-5 mt-1" />
-                      Supporting research into circular economy models, focusing
-                      on resource efficiency and waste reduction.
+                      Creating accessible databases of knowledge, and best
+                      practices.
                     </li>
                   </ul>
                 </div>
               </div>
               {/* IMG - Text Left */}
               <div className="flex flex-row gap-0 gap-32">
-                <div className="grid grid-cols-2 grid-rows-2 gap-0 w-1/2 min-h-[500px] gap-1 order-2">
-                  <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
-                    1
-                  </div>
-                  <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
-                    2
-                  </div>
-                  <div className="col-span-2 row-span-1 bg-gray-200 splashMini">
-                    3
-                  </div>
+                <div className="flex flex-col gap-0 w-1/2 min-h-[400px] gap-1 order-2">
+                  <div className="flex-1 bg-gray-200 splashMini">1</div>
                 </div>
                 <div className="w-1/2 flex flex-col justify-center">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
-                    Advanced Materials and Devices
+                    Integration of AI and Machine Learning for Enhanced
+                    Collaboration
                   </h4>
                   <ul className="flex flex-col gap-2">
                     <li className="flex flex-row gap-2">
                       <ArrowRight className="w-5 h-5 min-w-5 mt-1" />
-                      Driving innovation in functional materials for
-                      electronics, photonics, and sensor technologies.
+                      Utilizing AI and machine learning to analyze data,
+                      identify trends, and facilitate collaborations across
+                      diverse stakeholders.
                     </li>
                     <li className="flex flex-row gap-2">
                       <ArrowRight className="w-5 h-5 min-w-5 mt-1" />
-                      Focusing on emerging areas such as nanoelectronics,
-                      neuromorphic architectures, and flexible electronics,
-                      enabling the development of next-generation devices.
+                      Expanding collaborative networks beyond traditional
+                      scientific boundaries, including industrial partners,
+                      policymakers, and the public.
                     </li>
                     <li className="flex flex-row gap-2">
                       <ArrowRight className="w-5 h-5 min-w-5 mt-1" />
-                      Providing state-of-the-art characterization and
-                      fabrication facilities for advanced materials research.
+                      Developing AI-driven tools for knowledge discovery and
+                      information retrieval.
                     </li>
                   </ul>
                 </div>
               </div>
               {/* IMG - Text Right */}
               <div className="flex flex-row gap-0 gap-32">
-                <div className="grid grid-cols-2 grid-rows-2 gap-0 w-1/2 min-h-[500px] gap-1">
-                  <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
-                    1
-                  </div>
-                  <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
-                    2
-                  </div>
-                  <div className="col-span-2 row-span-1 bg-gray-200 splashMini">
-                    3
-                  </div>
+                <div className="flex flex-col gap-0 w-1/2 min-h-[400px] gap-1">
+                  <div className="flex-1 bg-gray-200 splashMini">1</div>
                 </div>
                 <div className="w-1/2 flex flex-col justify-center">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
-                    Creation of New Materials for Energy Applications
+                    Reduction of Complexity in Knowledge Access
                   </h4>
                   <ul className="flex flex-col gap-2">
                     <li className="flex flex-row gap-2">
                       <ArrowRight className="w-5 h-5 min-w-5 mt-1" />
-                      Supporting research into materials for renewable energy
-                      sources, including solar, wind, and geothermal
-                      technologies.
+                      Streamlining the process of accessing relevant knowledge,
+                      ensuring efficient delivery of information to appropriate
+                      stakeholders.
                     </li>
                     <li className="flex flex-row gap-2">
                       <ArrowRight className="w-5 h-5 min-w-5 mt-1" />
-                      Advancing materials for energy efficiency applications,
-                      such as thermal insulation and advanced energy storage.
+                      Developing user-friendly interfaces and search tools to
+                      simplify knowledge retrieval.
                     </li>
                     <li className="flex flex-row gap-2">
                       <ArrowRight className="w-5 h-5 min-w-5 mt-1" />
-                      Facilitating the development of new energy vectors and
-                      conversion systems, including hydrogen storage and fuel
-                      cell technologies.
+                      Providing personalized knowledge recommendations based on
+                      user needs and interests.
                     </li>
                     <li className="flex flex-row gap-2">
                       <ArrowRight className="w-5 h-5 min-w-5 mt-1" />
-                      Addressing the challenges of energy production, usage, and
-                      storage, aiming for a more efficient and sustainable
-                      energy landscape.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              {/* IMG - Text Left */}
-              <div className="flex flex-row gap-0 gap-32">
-                <div className="grid grid-cols-2 grid-rows-2 gap-0 w-1/2 min-h-[500px] gap-1 order-2">
-                  <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
-                    1
-                  </div>
-                  <div className="col-span-1 row-span-1 bg-gray-200 splashMini">
-                    2
-                  </div>
-                  <div className="col-span-2 row-span-1 bg-gray-200 splashMini">
-                    3
-                  </div>
-                </div>
-                <div className="w-1/2 flex flex-col justify-center">
-                  <h4 className="text-2xl font-semibold mb-4 tracking-tight">
-                    Facilitation of Technology Transfer and Innovation
-                  </h4>
-                  <ul className="text-lg flex flex-col gap-2">
-                    <li className="flex flex-row gap-2">
-                      <ArrowRight className="w-5 h-5 min-w-5 mt-1" />
-                      Providing tailored support for material-related technology
-                      transfer and innovation, catering to the specific needs of
-                      industries and SMEs.
-                    </li>
-                    <li className="flex flex-row gap-2">
-                      <ArrowRight className="w-5 h-5 min-w-5 mt-1" />
-                      Offering access to expertise, resources, and networks to
-                      accelerate the commercialization of new technologies.
-                    </li>
-                    <li className="flex flex-row gap-2">
-                      <ArrowRight className="w-5 h-5 min-w-5 mt-1" />
-                      Fostering the creation of new ventures based on emerging
-                      materials technologies, supporting entrepreneurship and
-                      economic growth.
+                      Creating a system that can provide the correct expert, and
+                      or information, to the user, with the least amount of user
+                      effort.
                     </li>
                   </ul>
                 </div>
