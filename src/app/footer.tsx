@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronRight, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Footer() {
@@ -58,7 +58,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-[var(--blue-primary)] text-white pt-16">
-      <section className="container w-full grid grid-cols-1 md:grid-cols-5 grid-rows-1 md:grid-rows-2 mx-auto p-8 gap-4 md:gap-0">
+      <section className="container w-full grid grid-cols-1 md:grid-cols-5 grid-rows-2 md:grid-rows-2 mx-auto p-8 gap-4 md:gap-0 ">
         <div className="col-span-5 md:col-span-1">
           <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
             The Mosaic <ArrowRight className="w-5 h-5" />
@@ -118,6 +118,10 @@ export default function Footer() {
               </li>
             ))}
           </ul>
+        </div>
+        <div className="col-span-5 md:col-span-2 row-span-1 row-start-2 pt-12 flex flex-row gap-2 items-center">
+          <Mail className="w-8 h-8" />
+          <span className="text-2xl">info@ientrance.com</span>
         </div>
         <div className="bg-white splashMiniXS text-black p-4 col-span-5 md:col-span-1 col-start-1 md:col-start-5 row-start-1 md:row-end-3 flex flex-col justify-between gap-4">
           <div className="flex-1">
