@@ -82,7 +82,7 @@ export default function Home() {
         </div>
       ))} */}
 
-      <section className="container w-full mx-auto mb-32 relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:w-screen before:h-[2px] before:bg-[var(--green-secondary)] before:z-0 before:translate-x-[-50%] before:translate-y-[-50%] z-10">
+      <section className="container w-full mx-auto mb-32 relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:w-screen before:h-[2px] before:bg-[var(--green-secondary)] before:z-0 before:translate-x-[-50%] before:translate-y-[-50%] z-0">
         <div className="bg-gray-200 splash relative pb-2 max-w-5xl mx-auto">
           <div className="flex flex-col gap-4 items-center mb-4 bg-[var(--green-secondary)] p-8 max-w-5xl mx-auto splash text-white">
             <Megaphone className="w-12 h-12 stroke-1" />
