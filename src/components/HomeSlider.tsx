@@ -158,7 +158,7 @@ export default function HomeSlider({ data }: { data: any }) {
               autoPlay
               muted
               loop
-              playsinline
+              playsInline
               id="bg-video"
               className="absolute inset-0 w-screen h-full object-cover"
             >
