@@ -12,7 +12,6 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 
-
 export default function LearnAndGrow() {
   return (
     <>
@@ -50,7 +49,7 @@ export default function LearnAndGrow() {
         </section>
 
         <section
-          className=" w-full flex flex-col bg-white relative"
+          className=" w-full flex flex-col bg-white relative pb-28"
           id="values"
         >
           <div className="bg-gray-200 splash py-[1px]">

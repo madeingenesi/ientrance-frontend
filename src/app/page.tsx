@@ -31,6 +31,7 @@ import {
   Rss,
   Calendar,
   Paperclip,
+  Megaphone,
 } from "lucide-react";
 
 interface SlideProps {
@@ -64,7 +65,7 @@ export default function Home() {
 
   return (
     <main className="w-full mx-auto">
-      <section className="w-full mx-auto !overflow-visible z-10 relative ">
+      <section className="w-full mx-auto !overflow-visible z-10 relative !-mb-[150px]">
         <HomeSlider data={slides} />
       </section>
 
@@ -81,16 +82,12 @@ export default function Home() {
         </div>
       ))} */}
 
-      <section className="container w-full mx-auto mb-32">
-        <TrilloSlider />
-      </section>
-
-      <section className="flex flex-col gap-16 justify-center items-center pt-0 pb-5 splashMaxi relative">
-        <div className=" container w-full mx-auto flex flex-col gap-4 justify-center items-center px-4 md:px-8  z-10">
-          <div className="flex flex-col gap-4 items-center mb-8">
-            <LibraryBig className="w-12 h-12 stroke-1" />
+      <section className="container w-full mx-auto mb-32 relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:w-screen before:h-[2px] before:bg-[var(--green-secondary)] before:z-0 before:translate-x-[-50%] before:translate-y-[-50%] z-10">
+        <div className="bg-gray-200 splash relative pb-2 max-w-5xl mx-auto">
+          <div className="flex flex-col gap-4 items-center mb-4 bg-[var(--green-secondary)] p-8 max-w-5xl mx-auto splash text-white">
+            <Megaphone className="w-12 h-12 stroke-1" />
             <DecryptedText
-              text="Our Catalogue"
+              text="Summer School Summer School"
               animateOn="view"
               sequential={true}
               maxIterations={20}
@@ -101,10 +98,44 @@ export default function Home() {
               className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
             />
             <p className="text-sm md:text-xl max-w-2xl text-center px-8">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
-              tempor incididunt ut labor.
+              The Summer School "iENTRANCE to research. The young scientist's
+              guide to the galaxy. Rethinking research in an AI-empowered
+              world."Is designed for young scientists entering the world of
+              Research and offers a unique training opportunity thet combines
+              academic excellence with an immersive hands-on experience, set in
+              stunning natural setting.
             </p>
+            <Link href="/catalogue">
+              <Button className="">
+                Discover more <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-16 justify-center items-center pt-0 pb-5 splashMaxi relative">
+        <div className=" container w-full mx-auto flex flex-col gap-4 justify-center items-start px-4 md:px-8  z-10">
+          <div className="flex flex-row w-full justify-between gap-4 items-center mb-8">
+            <div className="flex flex-col gap-4 items-start">
+              <LibraryBig className="w-12 h-12 stroke-1" />
+              <DecryptedText
+                text="Our Catalogue"
+                animateOn="view"
+                sequential={true}
+                maxIterations={20}
+                characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
+                speed={50}
+                revealDirection="start"
+                encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight"
+                className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
+              />
+              <p className="text-sm md:text-xl max-w-2xl text-left">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua
+                eiusmod tempor incididunt ut labor.
+              </p>
+            </div>
             <Link href="/catalogue">
               <Button className="">
                 Go to Catalogue <ArrowRight className="w-4 h-4" />
@@ -576,7 +607,7 @@ export default function Home() {
       <section className="container mx-auto w-full bg-white py-20 flex flex-col gap-16 px-4 md:px-0">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <DecryptedText
-            text="News, proposals & Events"
+            text="News & Events"
             animateOn="view"
             sequential={true}
             maxIterations={20}

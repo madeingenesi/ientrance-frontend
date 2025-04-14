@@ -7,7 +7,7 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 export default function Header() {
   return (
-    <header className="bg-white dark:bg-gray-900 border-b border-gray-200 px-4 md:px-0">
+    <header className="bg-white dark:bg-gray-900 border-b border-gray-200 px-4 md:px-0 sticky top-0 z-50">
       <div className="container mx-auto py-4">
         <div className="flex items-center md:items-start md:align-top justify-between">
           <div className="flex items-center gap-4 relative research-infrastructure-after">

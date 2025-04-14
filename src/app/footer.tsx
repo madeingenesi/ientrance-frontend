@@ -151,8 +151,15 @@ export default function Footer() {
       <section className="container w-full flex flex-row mx-auto p-8 gap-4 md:gap-0">
         <div className="col-span-5 md:col-span-1">
           <p className="text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Project funded by the European Union - NextGenerationEU under the
+            National Recovery and Resilience Plan (NRRP), Mission 4 "Education
+            and Research" - Component 2 "From research to business" - Investment
+            3.1 "Fund for the realization of an integrated system of research
+            and innovation infrastructures" - Call n. 3264 of 28/12/2021 of
+            Italian Ministry of University and Research | Award Decree n. 128
+            (21/06/2022) - Project code: IR0000027 - CUP: B33C22000710006 -
+            Project title: iENTRANCE@ENL: Infrastructure for Energy TRAnsition
+            aNd Circular Economy @ EuroNanoLab
           </p>
         </div>
       </section>

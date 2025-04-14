@@ -98,7 +98,7 @@ export default function HomeSlider({ data }: { data: any }) {
         {slides?.map((slide: any, index: number) => (
           <SwiperSlide
             key={slide.id}
-            className="min-h-[70vh] bg-slate-500 !bg-cover !bg-center splashBottomLeft"
+            className="min-h-[650px] bg-slate-500 !bg-cover !bg-center splashBottomLeft"
             style={{
               backgroundImage: `url(${slide.image})`,
             }}
@@ -145,7 +145,7 @@ export default function HomeSlider({ data }: { data: any }) {
           </div>
         </div>
       </div> */}
-      <div className="container w-full mx-auto -translate-y-2/3 z-50 relative -mb-20">
+      <div className="container w-full mx-auto -translate-y-[280px] z-50 relative -mb-20">
         <div className="w-full md:w-6/12 md:h-[350px] bg-[var(--blue-primary)] p-8 pb-18 md:p-12 md:pr-10 md:pb-18 splash">
           <div className="w-full h-full relative z-50">
             <div className="flex flex-col gap-4 justify-between items-start h-full">

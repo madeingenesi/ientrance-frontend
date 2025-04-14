@@ -69,10 +69,10 @@ export default function ExpertiseCarousel() {
                   </span>
                 </div>
                 <div className="flex flex-col justify-between h-full">
-                  <h3 className="text-3xl font-semibold text-left mt-3 tracking-tight">
+                  <h3 className="text-4xl font-semibold text-left mt-3 tracking-tight">
                     {slide.title}
                   </h3>
-                  <p className="text-sm text-left">{slide.description}</p>
+                  <p className=" text-left">{slide.description}</p>
                 </div>
               </div>
               <div className="w-full md:w-2/3 h-full">
