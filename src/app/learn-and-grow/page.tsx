@@ -12,6 +12,7 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 
+
 export default function LearnAndGrow() {
   return (
     <>
@@ -21,7 +22,10 @@ export default function LearnAndGrow() {
         image={"/images/esempio.jpg"}
       />
       <main className="container w-full mx-auto border-x border-gray-200">
-        <section className=" w-full flex flex-col md:flex-row gap-32 p-22 justify-center items-center">
+        <section
+          className=" w-full flex flex-col md:flex-row gap-32 p-22 justify-center items-center"
+          id="main"
+        >
           <div className="w-full max-w-3xl text-center">
             <div className="flex flex-col gap-8">
               <DecryptedText
@@ -68,8 +72,8 @@ export default function LearnAndGrow() {
                   characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
                   speed={50}
                   revealDirection="start"
-                  encryptedClassName="text-5xl font-medium tracking-tight"
-                  className="text-5xl max-w-3xl font-medium tracking-tight"
+                  encryptedClassName="text-4xl font-medium tracking-tight"
+                  className="text-4xl max-w-3xl font-medium tracking-tight"
                 />
                 <div className="flex flex-col mt-24 self-end mb-12">
                   <div className="flex flex-col">

@@ -133,7 +133,10 @@ export default function TheMosaicPage() {
         image={"/images/esempio.jpg"}
       />
       <main className="container w-full mx-auto border-x border-gray-200">
-        <section className=" w-full flex flex-col md:flex-row gap-32 p-12 md:p-22 justify-center items-center">
+        <section
+          className=" w-full flex flex-col md:flex-row gap-32 p-12 md:p-22 justify-center items-center"
+          id="main"
+        >
           <div className="w-full max-w-3xl text-center">
             <div className="flex flex-col gap-8">
               <DecryptedText

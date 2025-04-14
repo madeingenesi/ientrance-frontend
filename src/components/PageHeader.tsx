@@ -90,7 +90,7 @@ export default function PageHeader({
               className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
             />
             <Link
-              href="/"
+              href="#main"
               className="text-lg text-gray-500 hover:text-black transition-all duration-300 flex flex-row gap-2 items-center"
             >
               Discover more

@@ -16,8 +16,8 @@ import { Computer, ArrowRight, Zap, Globe, Lightbulb } from "lucide-react";
 export default function ComeInPage() {
   const doubleText = {
     TestoInEvidenza: [
-      "iENTRANCE operates as an integrated advanced materials research infrastructure, structured upon 14 interconnected nodes.",
-      "This configuration facilitates the convergence of physics, chemistry, and engineering expertise.",
+      "In the dynamic landscape of advanced materials research, iENTRANCE stands to catalyze innovation. ",
+      "Groundbreaking discoveries stem from the synergistic interplay of cutting-edge instrumentation and specialized expertise. ",
     ],
     Contenuto: [
       "Our mission is to provide researchers, both from academia and industry, with unparalleled access to these essential resources, facilitating the realization of their ambitious projects.",
@@ -84,7 +84,10 @@ export default function ComeInPage() {
         image={"/images/esempio.jpg"}
       />
       <main className="container w-full mx-auto border-x border-gray-200">
-        <section className=" w-full flex flex-col md:flex-row gap-32 p-12 p-22">
+        <section
+          className=" w-full flex flex-col md:flex-row gap-32 p-12 p-22"
+          id="main"
+        >
           <div className="w-full md:w-1/2">
             <div className="">
               {doubleText.TestoInEvidenza.map((text, index) => (

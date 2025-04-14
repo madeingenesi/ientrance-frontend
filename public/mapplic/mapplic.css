@@ -195,6 +195,7 @@
   margin-top: -10px;
   text-decoration: none;
   transition: background-color 0.2s;
+  border: 1px solid white;
 }
 .dragging .mapplic-marker {
   opacity: 0.3 !important;
@@ -445,7 +446,7 @@
 }
 .mapplic-tooltip {
   background-color: var(--neutral-000);
-  border-radius: 12px;
+  border-radius: 0px;
   display: flex;
   cursor: auto;
   position: absolute;
@@ -454,6 +455,15 @@
   z-index: 10002;
   width: max-content;
   text-align: left;
+  --clip-size: min(1vw, 1rem) !important;
+  clip-path: polygon(
+    0% 0%,
+    calc(100% - var(--clip-size)) 0%,
+    100% calc(0% + var(--clip-size)),
+    100% 100%,
+    calc(0% + var(--clip-size)) 100%,
+    0% calc(100% - var(--clip-size))
+  ) !important;
 }
 .mapplic-tooltip:after {
   content: "";
@@ -467,6 +477,15 @@
   border-top: solid 8px var(--neutral-000);
   border-left: solid 8px transparent;
   border-right: solid 8px transparent;
+  --clip-size: min(1vw, 1rem) !important;
+  clip-path: polygon(
+    0% 0%,
+    calc(100% - var(--clip-size)) 0%,
+    100% calc(0% + var(--clip-size)),
+    100% 100%,
+    calc(0% + var(--clip-size)) 100%,
+    0% calc(100% - var(--clip-size))
+  ) !important;
 }
 .mapplic-tooltip-mini .mapplic-popup-image {
   display: none;
@@ -660,18 +679,27 @@
   box-shadow: 0 1px 3px #0000000a;
   background-color: var(--neutral-000);
   border: 1px solid var(--neutral-300);
-  border-radius: 6px;
+  border-radius: 0px;
   cursor: pointer;
   color: var(--neutral-900);
   display: inline-flex;
   justify-content: center;
   gap: 6px;
   text-decoration: none;
-  padding: 8px 12px;
+  padding: 8px 26px;
   font-size: 14px;
   line-height: 16px;
   font-weight: 500;
   transition: background-color 0.2s, border-color 0.2s;
+  --clip-size: min(1vw, 1rem) !important;
+  clip-path: polygon(
+    0% 0%,
+    calc(100% - var(--clip-size)) 0%,
+    100% calc(0% + var(--clip-size)),
+    100% 100%,
+    calc(0% + var(--clip-size)) 100%,
+    0% calc(100% - var(--clip-size))
+  ) !important;
 }
 .mapplic-button:disabled {
   color: var(--neutral-400);

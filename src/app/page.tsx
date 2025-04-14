@@ -15,6 +15,7 @@ import HomeCarousel from "../components/HomeCarousel";
 import Aurora from "../components/Aurora";
 import MainTopicsCarousel from "../components/MainTopicsCarousel";
 import MapplicMap from "../components/Map";
+import TrilloSlider from "../components/TrilloSlider";
 // UI
 import { Button } from "../components/ui/button";
 import DecryptedText from "../components/DecryptedText";
@@ -79,6 +80,10 @@ export default function Home() {
           })}
         </div>
       ))} */}
+
+      <section className="container w-full mx-auto mb-32">
+        <TrilloSlider />
+      </section>
 
       <section className="flex flex-col gap-16 justify-center items-center pt-0 pb-5 splashMaxi relative">
         <div className=" container w-full mx-auto flex flex-col gap-4 justify-center items-center px-4 md:px-8  z-10">

@@ -32,7 +32,7 @@ export default function HomeSlider({ data }: { data: any }) {
     {
       id: 1,
       title: "We are a single entry point to cutting-edge materials research",
-      image: "/images/esempio.jpg",
+      image: "/images/slidesHome/slide-1.jpg",
     },
     {
       id: 2,
