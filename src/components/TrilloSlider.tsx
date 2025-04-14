@@ -16,9 +16,9 @@ export default function TrilloSlider() {
   const slides = [
     {
       id: 1,
-      title: "Trillo di esempio",
+      title: "Summer SchoolSummer School",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+        "The Summer School iENTRANCE to research. The young scientist's guide to the galaxy. Rethinking research in an AI-empowered world.Is designed for young scientists entering the world of Research and offers a unique training opportunity thet combines academic excellence with an immersive hands-on experience, set in stunning natural setting.",
       image: "/images/main-topics-carousel/nanomaterials-for-energy.jpg",
     },
   ];

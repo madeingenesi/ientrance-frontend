@@ -31,32 +31,38 @@ export default function HomeSlider({ data }: { data: any }) {
   const slides = [
     {
       id: 1,
-      title: "We are a single entry point to cutting-edge materials research",
+      title:
+        "We are <br /> a <strong>single entry point</strong><br /> to cutting-edge <strong>materials research</strong>",
       image: "/images/slidesHome/slide-1.jpg",
     },
     {
       id: 2,
-      title: "We unlock materials and technologies for sustainability",
+      title:
+        "We support <br /> <strong>transition</strong>  <br /> matching <strong>competences</strong>",
       image: "/images/slidesHome/slide-2.jpg",
     },
     {
       id: 3,
-      title: "We listen to needs for shaping solutions",
+      title:
+        "We unlock <br/> <strong>materials</strong> and <strong>technologies</strong> <br/> for <strong>sustainability</strong>",
       image: "/images/slidesHome/slide-3.jpg",
     },
     {
       id: 4,
-      title: "We empower FAIR in a knowledge based framework",
+      title:
+        "We listen <br/> to <strong>needs</strong> <br/> for shaping <strong> solutions</strong>",
       image: "/images/slidesHome/slide-4.jpg",
     },
     {
       id: 5,
-      title: "We think nano to build macro",
+      title:
+        "We empower <br/> <strong>FAIR</strong> <br/> in a <strong>knowledge based</strong> framework",
       image: "/images/slidesHome/slide-5.jpg",
     },
     {
       id: 6,
-      title: "We are a single entry point to cutting-edge materials research",
+      title:
+        "We think <br/> <strong>nano</strong><br/> to build <strong>macro</strong>",
       image: "/images/esempio.jpg",
     },
   ];
@@ -140,15 +146,14 @@ export default function HomeSlider({ data }: { data: any }) {
         </div>
       </div> */}
       <div className="container w-full mx-auto -translate-y-2/3 z-50 relative -mb-20">
-        <div className="w-full md:w-6/12 md:h-[350px] bg-[var(--blue-primary)] p-8 pb-18 md:p-12 md:pr-20 md:pb-18 splash">
+        <div className="w-full md:w-6/12 md:h-[350px] bg-[var(--blue-primary)] p-8 pb-18 md:p-12 md:pr-10 md:pb-18 splash">
           <div className="w-full h-full relative z-50">
             <div className="flex flex-col gap-4 justify-between items-start h-full">
               <h2
                 className="text-2xl md:text-4xl fadeIn text-white tracking-tight"
                 key={activeSlide}
-              >
-                {slides[activeSlide].title}
-              </h2>
+                dangerouslySetInnerHTML={{ __html: slides[activeSlide].title }}
+              />
               <Button variant="outline" className="">
                 Read more <ArrowRight className="w-4 h-4" />
               </Button>
@@ -159,7 +164,7 @@ export default function HomeSlider({ data }: { data: any }) {
                 <div className="w-[25px] h-[1px] bg-white"></div>{" "}
                 {slides.length}
               </div>
-              <div className="flex flex-row gap-2 ">
+              <div className="flex flex-row gap-2 pr-6">
                 <ChevronLeft
                   className="text-white"
                   onClick={() => swiperRef.current?.swiper.slidePrev()}
