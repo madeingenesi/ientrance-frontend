@@ -4,6 +4,7 @@
 import PageHeader from "@/components/PageHeader";
 import HeroSection from "@/components/HeroSection";
 import ExpertiseCarousel from "@/components/ExpertiseCarousel";
+import BoardOfPartners from "@/components/BoardOfPartners";
 
 import {
   Accordion,
@@ -367,6 +368,39 @@ export default function TheMosaicPage() {
                   </AccordionItem>
                 ))}
               </Accordion>
+            </div>
+          </div>
+        </section>
+
+        <section
+          className=" w-full flex flex-col bg-white relative"
+          id="values"
+        >
+          <div className="bg-gray-200 splash py-[1px]">
+            <div className="flex flex-col gap-8 p-4 py-12 md:p-22 bg-muted splash border-none justify-center items-center">
+              <DecryptedText
+                text="Board of Partners"
+                animateOn="view"
+                sequential={true}
+                maxIterations={20}
+                characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
+                speed={50}
+                revealDirection="start"
+                encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight"
+                className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
+              />
+              <p className="text-lg md:text-2xl max-w-3xl tracking-tight text-center">
+                iENTRANCE is founded on the values of collaborative excellence,
+                technological innovation, and a commitment to addressing
+                pressing societal challenges through advanced materials
+                research.
+              </p>
+            </div>
+          </div>
+
+          <div className="w-full flex flex-col md:flex-col gap-32 p-4 py-12 md:p-22 justify-center mx-auto">
+            <div className="w-full">
+              <BoardOfPartners />
             </div>
           </div>
         </section>
