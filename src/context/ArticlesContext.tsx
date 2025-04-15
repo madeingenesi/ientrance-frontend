@@ -21,7 +21,8 @@ export function ArticlesContext({ children }: { children: React.ReactNode }) {
 
   const getArticles = async () => {
     setIsLoading(true);
-    const baseUrl = "http://localhost:1337";
+    //const baseUrl = "http://localhost:1337";
+    const baseUrl = "https://ambitious-cat-3135f7987e.strapiapp.com";
     try {
       const response = await axios.get(`${baseUrl}/api/articoli?populate=*`);
       console.log(response.data.data);
