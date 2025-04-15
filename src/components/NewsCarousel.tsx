@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import Image from "next/image";
 
 // Import Swiper styles
 import "swiper/css";
@@ -78,9 +79,9 @@ export default function NewsCarousel({ articles }: any) {
           )
           .map((slide: any, index: number) => (
             <SwiperSlide key={slide.id} className="">
-              <div className="bg-gray-200 splashMini h-full p-[1px]">
-                <div className="flex flex-col gap-4 bg-muted min-h-[350px] p-8 splashMini justify-between">
-                  <div className="flex flex-col gap-2">
+              <div className="bg-gray-200 splashMiniXS h-full p-[1px]">
+                <div className="flex flex-col gap-0 bg-muted min-h-[350px] p-2 splashMiniXS justify-between">
+                  {/* <div className="flex flex-col gap-2">
                     <div className="flex flex-col gap-2">
                       <div className="flex flex-row gap-2 justify-start items-center">
                         <span className="bg-white text-black flex flex-row justify-center items-center rounded-full border-white border w-6 h-6 p-1 text-xs">
@@ -91,25 +92,38 @@ export default function NewsCarousel({ articles }: any) {
                           {articles.length}
                         </span>
                       </div>
-                      <h3 className="text-2xl font-semibold text-left mt-3">
-                        {slide.Titolo}
-                      </h3>
                     </div>
-                  </div>
-                  <div className="flex flex-row border-t border-gray-300 w-full justify-between pt-6">
-                    <span className="text-sm font-medium flex flex-row gap-2 items-center">
-                      {slide?.categorie_articoli?.Titolo == "News" ? (
-                        <Rss className="w-4 h-4" />
-                      ) : slide?.categorie_articoli?.Titolo == "Proposals" ? (
-                        <Paperclip className="w-4 h-4" />
-                      ) : (
-                        <Calendar className="w-4 h-4" />
-                      )}
-                      {slide?.categorie_articoli?.Titolo}
-                    </span>
-                    <span className="text-sm font-medium">
-                      {new Date(slide?.createdAt).toLocaleDateString()}
-                    </span>
+                  </div> */}
+                  <Image
+                    src={"/images/esempio.jpg"}
+                    alt={"esempio"}
+                    width={600}
+                    height={400}
+                    className="object-cover splashMiniXS h-full"
+                  />
+                  <div className="flex flex-col gap-2 p-4">
+                    <h3 className="text-2xl font-semibold text-left mt-3">
+                      {slide.Titolo}
+                    </h3>
+                    <p className="text-left mt-3">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Quisquam, quos. Lorem ipsum dolor sit amet consectetur.
+                    </p>
+                    <div className="flex flex-row border-t border-gray-300 w-full justify-between pt-4">
+                      <span className="text-sm font-medium flex flex-row gap-2 items-center">
+                        {slide?.categorie_articoli?.Titolo == "News" ? (
+                          <Rss className="w-4 h-4" />
+                        ) : slide?.categorie_articoli?.Titolo == "Proposals" ? (
+                          <Paperclip className="w-4 h-4" />
+                        ) : (
+                          <Calendar className="w-4 h-4" />
+                        )}
+                        {slide?.categorie_articoli?.Titolo}
+                      </span>
+                      <span className="text-sm font-medium">
+                        {new Date(slide?.createdAt).toLocaleDateString()}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
