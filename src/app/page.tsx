@@ -16,6 +16,7 @@ import Aurora from "../components/Aurora";
 import MainTopicsCarousel from "../components/MainTopicsCarousel";
 import MapplicMap from "../components/Map";
 import TrilloSlider from "../components/TrilloSlider";
+import PartnersCarousel from "../components/PartnersCarousel";
 // UI
 import { Button } from "../components/ui/button";
 import DecryptedText from "../components/DecryptedText";
@@ -592,6 +593,26 @@ export default function Home() {
             Italian peninsula.
           </p>
           <MapplicMap />
+        </div>
+      </section>
+
+      <section className="container mx-auto w-full bg-white py-20 flex flex-col gap-16 px-4 md:px-0">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+          <DecryptedText
+            text="Partners"
+            animateOn="view"
+            sequential={true}
+            maxIterations={20}
+            characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
+            speed={50}
+            revealDirection="start"
+            encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight text-center"
+            className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight text-center"
+          />
+        </div>
+
+        <div className="w-full overflow-hidden md:overflow-visible bg-muted p-6 splashMini">
+          <PartnersCarousel />
         </div>
       </section>
 

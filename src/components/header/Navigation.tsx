@@ -60,14 +60,12 @@ const comeIn: { title: string; href: string; description: string }[] = [
   {
     title: "Guide",
     href: "/the-mosaic/#the-big-picture",
-    description:
-      "iENTRANCE operates as an integrated advanced materials research infrastructure, structured upon 14 interconnected nodes.",
+    description: "iENTRANCE Infrastructure Access: A Step-by-Step Guide",
   },
   {
     title: "FAQ",
     href: "/the-mosaic/#values",
-    description:
-      "iENTRANCE is founded on the values of collaborative excellence, technological innovation, and a commitment to addressing pressing societal challenges through advanced materials research.",
+    description: "---",
   },
 ];
 
@@ -120,11 +118,24 @@ export function Navigation() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/come-in" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Come In
-            </NavigationMenuLink>
-          </Link>
+          <NavigationMenuTrigger>
+            <span onClick={() => router.push("/come-in")}>Come In</span>
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+              {comeIn.map((component) => (
+                <ListItem
+                  key={component.title}
+                  title={component.title}
+                  href={component.href}
+                  onClick={() => handleAnchorClick(component.href)}
+                  className="pb-0 splashMiniXS hover:!bg-[var(--blue-primary)] hover:text-white hover:*:text-white"
+                >
+                  {component.description}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/learn-and-grow" legacyBehavior passHref>
