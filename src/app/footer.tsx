@@ -17,6 +17,10 @@ export default function Footer() {
       href: "/the-mosaic/values",
     },
     {
+      title: "Board of Partners",
+      href: "/the-mosaic/board-of-partners",
+    },
+    {
       title: "Challenges / Topics",
       href: "/the-mosaic/challenges-topics",
     },
@@ -123,18 +127,28 @@ export default function Footer() {
           </ul>
         </div>
         <div className="col-span-5 md:col-span-1 row-span-1 row-start-2 pt-12 flex flex-col gap-2 ">
+          <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
+            Contact Us <ArrowRight className="w-5 h-5" />
+          </h5>
           <span className="text-2xl flex flex-row gap-2 items-center">
             <Mail className="w-8 h-8" />
             info@ientrance.com
           </span>
         </div>
-        <div className="col-span-5 md:col-span-2 row-span-1 row-start-2 pt-12 flex flex-row gap-2 items-center pl-32">
-          <Image
-            src="/images/boardofpartners/CNR-white.png"
-            alt="Euronanolab"
-            width={100}
-            height={100}
-          />
+        <div className="col-span-5 md:col-span-2 row-span-1 row-start-2 pt-12 flex flex-col gap-2 items-start pl-32">
+          <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
+            Follow Us <ArrowRight className="w-5 h-5" />
+          </h5>
+          <div className="flex flex-col gap-2 items-start">
+            <span className="text-2xl flex flex-row gap-2 items-center">
+              <Mail className="w-8 h-8" />
+              Youtube
+            </span>
+            <span className="text-2xl flex flex-row gap-2 items-center">
+              <Mail className="w-8 h-8" />
+              Linkedin
+            </span>
+          </div>
         </div>
         <div className="bg-white splashMiniXS text-black p-4 col-span-5 md:col-span-1 col-start-1 md:col-start-5 row-start-1 md:row-end-3 flex flex-col justify-between gap-4">
           <div className="flex-1">

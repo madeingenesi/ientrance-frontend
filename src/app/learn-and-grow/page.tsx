@@ -28,7 +28,7 @@ export default function LearnAndGrow() {
           <div className="w-full max-w-3xl text-center">
             <div className="flex flex-col gap-8">
               <DecryptedText
-                text="Clean Energy Transition"
+                text="Training"
                 animateOn="view"
                 sequential={true}
                 maxIterations={20}
@@ -39,10 +39,9 @@ export default function LearnAndGrow() {
                 className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
               />
               <p className="mb-4 text-xl tracking-tight">
-                iENTRANCE operates as an integrated advanced materials research
-                infrastructure, structured upon 14 interconnected nodes. This
-                configuration facilitates the convergence of physics, chemistry,
-                and engineering expertise.
+                The Training section offers resources and programs designed to
+                enhance your skills and knowledge, empowering personal and
+                professional growth.
               </p>
             </div>
           </div>

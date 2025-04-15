@@ -106,18 +106,23 @@ export default function HomeSlider({ data }: { data: any }) {
     },
     {
       id: 4,
-      description:
-        "Our approach is centered on understanding your specific needs. We work closely with partners to develop tailored solutions that address real-world challenges in materials science.",
+      title:
+        "We empower <strong>FAIR</strong> in a <strong>knowledge based</strong> framework",
+      text: "We are committed to implementing FAIR principles in all our research activities. By making our data Findable, Accessible, Interoperable, and Reusable, we foster a knowledge-based ecosystem where information is systematically transformed into actionable knowledge. <br/>This empowers our partners, beneficiaries, and the wider research community to accelerate the transition to a sustainable future. Our commitment to a knowledge-based organization includes",
+      list: [
+        "Data Management",
+        "Open Access and Data Sharing",
+        "Knowledge Capture and Curation",
+        "Knowledge Dissemination ",
+        "Collaboration and Networking",
+        "Data Analytics and Visualization",
+        "Continuous Learning and Improvement",
+      ],
     },
     {
       id: 5,
-      description:
-        "We champion FAIR principles in materials research, ensuring that data and knowledge are Findable, Accessible, Interoperable, and Reusable within a comprehensive framework.",
-    },
-    {
-      id: 6,
-      description:
-        "From nanoscale innovations to macro-scale solutions, we bridge the gap between molecular engineering and practical applications, creating impact at every scale.",
+      title: "We think <strong>nano</strong> to build <strong>macro</strong>",
+      text: "We are a nanoscience research infrastructure with a clear vision: to translate nanoscale discoveries into functional devices. Our internal expertise, combined with our strong presence within a dynamic ecosystem of research and industry partners, enables us to bridge the gap between nano and macro. We actively foster collaboration and knowledge exchange to accelerate the technology transition to higher TRL levels, bringing the breakthrough potential of nanoscience and nanofabrication to the device scale. <br/>These options highlight your ability to bridge the gap between nanoscience and device development, emphasizing your collaborative approach and commitment to real-world impact. You can choose the option that best reflects your organization's unique strengths and aspirations",
     },
   ];
 

@@ -59,13 +59,41 @@ const theMosaic: { title: string; href: string; description: string }[] = [
 const comeIn: { title: string; href: string; description: string }[] = [
   {
     title: "Guide",
-    href: "/the-mosaic/#the-big-picture",
+    href: "/come-in/#guide",
     description: "iENTRANCE Infrastructure Access: A Step-by-Step Guide",
   },
   {
     title: "FAQ",
-    href: "/the-mosaic/#values",
-    description: "---",
+    href: "/come-in/#faq",
+    description:
+      "The FAQ section provides clear answers to common questions, helping you quickly understand our services and more",
+  },
+];
+
+const learnGrow: { title: string; href: string; description: string }[] = [
+  {
+    title: "Summer School",
+    href: "/learn-and-grow/#summer-school",
+    description:
+      "The Summer School iENTRANCE to research. The young scientist's guide to the galaxy. Rethinking research in an AI-empowered world.",
+  },
+];
+
+const outcomes: { title: string; href: string; description: string }[] = [
+  {
+    title: "News & Events",
+    href: "/outcomes/#news-events",
+    description: "Stay updated with the latest news and events from iENTRANCE.",
+  },
+  {
+    title: "Press Releases",
+    href: "/outcomes/#press-releases",
+    description: "Stay updated with the latest news and events from iENTRANCE.",
+  },
+  {
+    title: "Publications",
+    href: "/outcomes/#publications",
+    description: "Explore our latest publications and research results.",
   },
 ];
 
@@ -138,18 +166,46 @@ export function Navigation() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/learn-and-grow" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <NavigationMenuTrigger>
+            <span onClick={() => router.push("/learn-and-grow")}>
               Learn & Grow
-            </NavigationMenuLink>
-          </Link>
+            </span>
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+              {learnGrow.map((component) => (
+                <ListItem
+                  key={component.title}
+                  title={component.title}
+                  href={component.href}
+                  onClick={() => handleAnchorClick(component.href)}
+                  className="pb-0 splashMiniXS hover:!bg-[var(--blue-primary)] hover:text-white hover:*:text-white"
+                >
+                  {component.description}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Outcomes
-            </NavigationMenuLink>
-          </Link>
+        <NavigationMenuItem className="mr-4">
+          <NavigationMenuTrigger>
+            <span onClick={() => router.push("/outcomes")}>Outcomes</span>
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+              {outcomes.map((component) => (
+                <ListItem
+                  key={component.title}
+                  title={component.title}
+                  href={component.href}
+                  onClick={() => handleAnchorClick(component.href)}
+                  className="pb-0 splashMiniXS hover:!bg-[var(--blue-primary)] hover:text-white hover:*:text-white"
+                >
+                  {component.description}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>

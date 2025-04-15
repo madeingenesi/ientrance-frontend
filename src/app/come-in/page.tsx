@@ -2,7 +2,7 @@
 import PageHeader from "@/components/PageHeader";
 import HeroSection from "@/components/HeroSection";
 import TabsContentBox from "@/components/TabsContentBox";
-
+import DecryptedText from "@/components/DecryptedText";
 import {
   Accordion,
   AccordionContent,
@@ -85,27 +85,80 @@ export default function ComeInPage() {
       />
       <main className="container w-full mx-auto border-x border-gray-200">
         <section
-          className=" w-full flex flex-col md:flex-row gap-32 p-12 p-22"
+          className=" w-full flex md:flex-col gap-12 p-22 items-center"
           id="main"
         >
-          <div className="w-full md:w-1/2">
-            <div className="">
-              {doubleText.TestoInEvidenza.map((text, index) => (
-                <p
-                  key={index}
-                  className="mb-4 text-3xl font-medium tracking-tight"
-                >
+          <div className="w-full max-w-3xl text-center">
+            <div className="flex flex-col gap-8">
+              <DecryptedText
+                text="What’s your idea"
+                animateOn="view"
+                sequential={true}
+                maxIterations={20}
+                characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
+                speed={50}
+                revealDirection="start"
+                encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight"
+                className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
+              />
+              <p className="mb-4 text-lg md:text-xl tracking-tight">
+                In the dynamic landscape of advanced materials research,
+                iENTRANCE stands to catalyze innovation. Groundbreaking
+                discoveries stem from the synergistic interplay of cutting-edge
+                instrumentation and specialized expertise.
+              </p>
+            </div>
+          </div>
+          {/* <div className="flex flex-row gap-32">
+            <div className="w-full md:w-1/2">
+              <div className="">
+                {doubleText.TestoInEvidenza.map((text, index) => (
+                  <p
+                    key={index}
+                    className="mb-4 text-3xl font-medium tracking-tight"
+                  >
+                    {text}
+                  </p>
+                ))}
+              </div>
+            </div>
+            <div className="w-full md:w-1/2">
+              {doubleText.Contenuto.map((text, index) => (
+                <p key={index} className="text-lg mb-2">
                   {text}
                 </p>
               ))}
             </div>
-          </div>
-          <div className="w-full md:w-1/2">
-            {doubleText.Contenuto.map((text, index) => (
-              <p key={index} className="text-lg mb-2">
-                {text}
+          </div> */}
+          <div className="w-full flex flex-col gap-16">
+            <p className="mb-4 text-3xl font-medium tracking-tight">
+              Our mission is to provide researchers, both from academia and
+              industry, with unparalleled access to these essential resources,
+              facilitating the realization of their ambitious projects.
+            </p>
+            <div className="grid grid-cols-4 gap-8">
+              <p className="text-lg border-l pl-6">
+                We invite you, the researchers who are pushing the boundaries of
+                scientific knowledge, to engage with iENTRANCE. Present your
+                access proposals and let us work together to design and execute
+                investigations of the highest ambition.
               </p>
-            ))}
+              <p className="text-lg border-l pl-6">
+                Our infrastructure is your platform to transform innovative
+                concepts into impactful realities.
+              </p>
+              <p className="text-lg border-l pl-6">
+                iENTRANCE is not just a collection of tools; it is a
+                collaborative ecosystem. Our integrated network of 14 nodes,
+                each a hub of specialized knowledge in physics, chemistry, and
+                engineering, offers a comprehensive suite of capabilities.{" "}
+              </p>
+              <p className="text-lg border-l pl-6">
+                This mosaic approach ensures that your research benefits from a
+                holistic, multidisciplinary perspective, enabling investigations
+                that transcend the limitations of isolated efforts.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -188,8 +241,8 @@ export default function ComeInPage() {
               <h2 className="text-5xl font-medium tracking-tight ">FAQ</h2>
               <div className="max-w-4xl">
                 <h3 className="text-3xl font-medium tracking-tight mb-4 text-center">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  The FAQ section provides clear answers to common questions,
+                  helping you quickly understand our services and more
                 </h3>
               </div>
             </div>
