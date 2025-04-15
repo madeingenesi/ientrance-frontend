@@ -213,7 +213,7 @@ export default function TabsContentBox() {
   return (
     <div className="flex flex-row relative gap-16">
       <div className="w-4/12 flex flex-col relative ">
-        <div className="flex flex-col gap-4 sticky top-[20px] w-full h-fit">
+        <div className="flex flex-col gap-4 sticky top-[150px] w-full h-fit">
           {contentSections.map((section, index) => (
             <a
               key={section.id}
@@ -249,7 +249,7 @@ export default function TabsContentBox() {
               id={section.id}
             >
               <span className="text-2xl font-medium tracking-tighter before:content-[''] before:absolute before:left-0 before:top-0 before:w-[30px] before:h-[1px] before:bg-gray-200 before:z-0 before:translate-y-[15px] before:-translate-x-[48px]">
-                <div className="bg-gray-200 p-2 py-4 splashMiniXS translate-x-[-24px] pl-5 mb-8">
+                <div className="bg-muted p-2 py-4 splashMiniXS translate-x-[-24px] pl-5 mb-8">
                   {section.number}. {section.title}
                 </div>
               </span>

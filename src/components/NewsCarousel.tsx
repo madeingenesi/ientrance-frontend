@@ -1,0 +1,121 @@
+import React, { useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import { Rss, Paperclip, Calendar } from "lucide-react";
+
+// import required modules
+import { Pagination, Navigation } from "swiper/modules";
+
+export default function NewsCarousel({ articles }: any) {
+  const baseImageUrl = "http://localhost:1337";
+  const data = articles?.data?.Articles;
+
+  console.log("articles", data);
+
+  const slides = [
+    {
+      id: 1,
+      title: "Expertise n°1",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+      image: "/images/carousel/slide1.jpg",
+    },
+    {
+      id: 2,
+      title: "Expertise n°2",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+    },
+    {
+      id: 3,
+      title: "Expertise n°3",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+    },
+    {
+      id: 4,
+      title: "Expertise n°4",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+    },
+  ];
+
+  return (
+    <>
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={10}
+        centeredSlides={false}
+        pagination={false}
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        className="mySwiper featuresCarousel h-full overflow-hidden md:!overflow-visible"
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+        }}
+      >
+        {articles
+          ?.sort(
+            (a: any, b: any) =>
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          )
+          .map((slide: any, index: number) => (
+            <SwiperSlide key={slide.id} className="">
+              <div className="bg-gray-200 splashMini h-full p-[1px]">
+                <div className="flex flex-col gap-4 bg-muted min-h-[350px] p-8 splashMini justify-between">
+                  <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2">
+                      <div className="flex flex-row gap-2 justify-start items-center">
+                        <span className="bg-white text-black flex flex-row justify-center items-center rounded-full border-white border w-6 h-6 p-1 text-xs">
+                          {index + 1}
+                        </span>
+                        <div className="w-4 h-[1px] bg-white"></div>
+                        <span className="b text-black flex flex-row justify-center items-center rounded-full border-white border w-6 h-6 p-1 text-xs">
+                          {articles.length}
+                        </span>
+                      </div>
+                      <h3 className="text-2xl font-semibold text-left mt-3">
+                        {slide.Titolo}
+                      </h3>
+                    </div>
+                  </div>
+                  <div className="flex flex-row border-t border-gray-300 w-full justify-between pt-6">
+                    <span className="text-sm font-medium flex flex-row gap-2 items-center">
+                      {slide?.categorie_articoli?.Titolo == "News" ? (
+                        <Rss className="w-4 h-4" />
+                      ) : slide?.categorie_articoli?.Titolo == "Proposals" ? (
+                        <Paperclip className="w-4 h-4" />
+                      ) : (
+                        <Calendar className="w-4 h-4" />
+                      )}
+                      {slide?.categorie_articoli?.Titolo}
+                    </span>
+                    <span className="text-sm font-medium">
+                      {new Date(slide?.createdAt).toLocaleDateString()}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+      </Swiper>
+    </>
+  );
+}

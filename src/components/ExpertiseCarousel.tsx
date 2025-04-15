@@ -78,7 +78,7 @@ export default function ExpertiseCarousel() {
                   <h3 className="text-2xl md:text-3xl font-semibold text-left mt-3">
                     {slide.title}
                   </h3>
-                  <p className="text-sm text-left">{slide.description}</p>
+                  <p className="text-left">{slide.description}</p>
                 </div>
               </div>
               <div className="w-full md:w-2/4">

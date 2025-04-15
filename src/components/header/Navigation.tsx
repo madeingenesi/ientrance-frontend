@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import {
@@ -14,72 +15,95 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-import { LogIn, FolderOpenDot } from "lucide-react";
+import { LogIn, FolderOpenDot, ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "The Big Picture",
-    href: "/docs/primitives/alert-dialog",
+    href: "/the-mosaic/#the-big-picture",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
   },
   {
     title: "Values",
     href: "/the-mosaic/#values",
     description:
-      "For sighted users to preview content available behind a link.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
   },
   {
     title: "Challenges / Topics",
     href: "/docs/primitives/progress",
     description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
   },
   {
     title: "Nodes",
     href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
   },
   {
     title: "Expertise",
     href: "/docs/primitives/tabs",
     description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
   },
   {
     title: "Data",
     href: "/docs/primitives/tooltip",
     description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
   },
 ];
 
 export function Navigation() {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleAnchorClick = (href: string) => {
+    const [path, hash] = href.split("#");
+    const currentPath = pathname?.split("#")[0] || "/";
+
+    if (path === currentPath) {
+      // Siamo sulla stessa pagina, scroll all'ancoraggio
+      const element = document.getElementById(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Pagina diversa, naviga normalmente
+      router.push(href);
+    }
+  };
+
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href="/the-mosaic" legacyBehavior passHref>
+          {/* <Link href="/the-mosaic" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               The Mosaic
             </NavigationMenuLink>
-          </Link>
-          {/* <NavigationMenuTrigger>The Mosaic</NavigationMenuTrigger>
+          </Link> */}
+          <NavigationMenuTrigger>
+            <span onClick={() => router.push("/the-mosaic")}>The Mosaic</span>
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {components.map((component) => (
                 <ListItem
                   key={component.title}
                   title={component.title}
                   href={component.href}
-                  className="pb-0"
+                  onClick={() => handleAnchorClick(component.href)}
+                  className="pb-0 splashMiniXS hover:!bg-[var(--blue-primary)] hover:text-white hover:*:text-white"
                 >
                   {component.description}
                 </ListItem>
               ))}
             </ul>
-          </NavigationMenuContent> */}
+          </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/come-in" legacyBehavior passHref>
@@ -125,20 +149,28 @@ export function Navigation() {
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<"a"> & { onClick?: () => void }
+>(({ className, title, children, href, onClick, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
         <a
           ref={ref}
+          href={href}
+          onClick={(e) => {
+            e.preventDefault();
+            onClick?.();
+          }}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground group",
             className
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
+          <div className="flex items-center justify-start">
+            <div className="text-sm font-medium leading-none">{title}</div>
+            <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-[10px] group-hover:!text-white" />
+          </div>
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>

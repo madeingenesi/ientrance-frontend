@@ -50,12 +50,14 @@ export default function HomeSlider({ data }: { data: any }) {
       title:
         "We listen <br/> to <strong>needs</strong> <br/> for shaping <strong> solutions</strong>",
       image: "/images/slidesHome/slide-4.jpg",
+      video: "/videos/video3.webm",
     },
     {
       id: 4,
       title:
         "We empower <br/> <strong>FAIR</strong> <br/> in a <strong>knowledge based</strong> framework",
       image: "/images/slidesHome/slide-5.jpg",
+      video: "/videos/video4.webm",
     },
     {
       id: 5,
@@ -164,7 +166,6 @@ export default function HomeSlider({ data }: { data: any }) {
             >
               <source src={slide.video} type="video/webm" />
             </video>
-            <div className="flex flex-col items-center justify-center">aa</div>
           </SwiperSlide>
         ))}
       </Swiper>

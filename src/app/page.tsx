@@ -11,7 +11,7 @@ import { useArticlesContext } from "../context/ArticlesContext";
 
 // Components
 import HomeSlider from "../components/HomeSlider";
-import HomeCarousel from "../components/HomeCarousel";
+import NewsCarousel from "../components/NewsCarousel";
 import Aurora from "../components/Aurora";
 import MainTopicsCarousel from "../components/MainTopicsCarousel";
 import MapplicMap from "../components/Map";
@@ -592,21 +592,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container w-full mx-auto py-20 overflow-visible flex flex-col gap-20 px-2 md:px-0">
-        <div className="flex flex-col md:flex-row justify-between gap-4 md:gap-8 px-2 md:px-0">
-          <div>
-            <h2 className="text-lg font-medium tracking-tight">Features</h2>
-          </div>
-          <div className="max-w-2xl">
-            <p className="text-2xl font-medium tracking-tight">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
-              tempor incididunt ut labor.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section className="container mx-auto w-full bg-white py-20 flex flex-col gap-16 px-4 md:px-0">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <DecryptedText
@@ -624,7 +609,7 @@ export default function Home() {
             Vedi tutto <ArrowRight className="w-4 h-4" />
           </Button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {articles
             .sort(
               (a: any, b: any) =>
@@ -658,9 +643,9 @@ export default function Home() {
                 </div>
               </div>
             ))}
-        </div>
+        </div> */}
         <div className="w-full overflow-hidden md:overflow-visible mt-8">
-          <HomeCarousel boxes={boxes} />
+          <NewsCarousel articles={articles} />
         </div>
       </section>
     </main>

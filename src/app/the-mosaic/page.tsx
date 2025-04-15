@@ -130,7 +130,7 @@ export default function TheMosaicPage() {
     <>
       <PageHeader
         title={"The Mosaic"}
-        description={"Come In"}
+        description={""}
         image={"/images/esempio.jpg"}
       />
       <main className="container w-full mx-auto border-x border-gray-200">

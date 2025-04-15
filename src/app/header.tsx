@@ -27,22 +27,22 @@ export default function Header() {
               <Image
                 src="/mur/nextGeneration_positivo.png"
                 alt="logo"
-                width={100}
-                height={100}
+                width={130}
+                height={110}
                 unoptimized
               />
               <Image
                 src="/mur/logo_italiadomani.png"
                 alt="logo"
-                width={100}
-                height={100}
+                width={110}
+                height={110}
                 unoptimized
               />
               <Image
                 src="/mur/universita_ricerca.jpg"
                 alt="logo"
-                width={100}
-                height={100}
+                width={110}
+                height={110}
                 unoptimized
               />
             </div>

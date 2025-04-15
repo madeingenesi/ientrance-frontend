@@ -62,7 +62,7 @@ export default function LearnAndGrow() {
                 backgroundRepeat: "no-repeat",
               }}
             >
-              <div className="flex flex-col bg-sidebar splash p-12 w-4/12 min-h-[65vh] justify-between">
+              <div className="flex flex-col bg-muted splash p-12 w-4/12 min-h-[65vh] justify-between">
                 <DecryptedText
                   text="Summer School"
                   animateOn="view"

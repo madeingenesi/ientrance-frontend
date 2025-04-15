@@ -16,7 +16,7 @@ export default function BoardOfPartners() {
       logo: "/images/boardofpartners/polito.jpg",
     },
     {
-      name: "Prof. Pietro ASINARI",
+      name: "Prof. Davide Calonico",
       role: "PI of INRiM",
       mail: "p.asinari@inrim.it",
       logo: "/images/boardofpartners/inrim.png",
@@ -53,8 +53,8 @@ export default function BoardOfPartners() {
             <Image
               src={partner.logo}
               alt={partner.name}
-              width={70}
-              height={70}
+              width={100}
+              height={100}
               className="object-contain absolute top-0 right-0 p-3 bg-white splashMiniXS"
             />
           </div>
