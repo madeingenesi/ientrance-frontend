@@ -33,25 +33,25 @@ const components: { title: string; href: string; description: string }[] = [
   },
   {
     title: "Challenges / Topics",
-    href: "/docs/primitives/progress",
+    href: "/the-mosaic/#challenges",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
   },
   {
-    title: "Nodes",
-    href: "/docs/primitives/scroll-area",
+    title: "Board of Partners",
+    href: "/the-mosaic/#boardofpartners",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
   },
   {
     title: "Expertise",
-    href: "/docs/primitives/tabs",
+    href: "/the-mosaic/#expertise",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
   },
   {
     title: "Data",
-    href: "/docs/primitives/tooltip",
+    href: "/the-mosaic/#data",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
   },
@@ -128,7 +128,7 @@ export function Navigation() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>
-            <Button variant="outline">
+            <Button variant="outline" className="cursor-pointer">
               <LogIn className="w-4 h-4" />
               Login
             </Button>
@@ -136,7 +136,7 @@ export function Navigation() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>
-            <Button className="bg-[var(--blue-primary)] text-white">
+            <Button className="bg-[var(--blue-primary)] text-white cursor-pointer">
               <FolderOpenDot className="w-4 h-4" />
               Send your project
             </Button>

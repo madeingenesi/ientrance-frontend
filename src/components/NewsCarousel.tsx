@@ -2,15 +2,17 @@ import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import { Rss, Paperclip, Calendar } from "lucide-react";
+import { Rss, Paperclip, Calendar, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
-// import required modules
+// Swiper modules
 import { Pagination, Navigation } from "swiper/modules";
 
 export default function NewsCarousel({ articles }: any) {
@@ -109,6 +111,11 @@ export default function NewsCarousel({ articles }: any) {
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Quisquam, quos. Lorem ipsum dolor sit amet consectetur.
                     </p>
+                    <Link href={`/articoli/${slide.id}`} className="w-fit">
+                      <Button className="w-fit mb-4 cursor-pointer">
+                        Read More <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
                     <div className="flex flex-row border-t border-gray-300 w-full justify-between pt-4">
                       <span className="text-sm font-medium flex flex-row gap-2 items-center">
                         {slide?.categorie_articoli?.Titolo == "News" ? (

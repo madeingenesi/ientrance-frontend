@@ -90,7 +90,7 @@ export default function Home() {
             </span>
             <Megaphone className="w-12 h-12 stroke-1" />
             <DecryptedText
-              text="Summer School Summer School"
+              text="iENTRANCE Summer School"
               animateOn="view"
               sequential={true}
               maxIterations={20}
@@ -100,7 +100,10 @@ export default function Home() {
               encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight"
               className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
             />
-            <p className="text-sm md:text-xl max-w-2xl text-center px-8">
+            <span className="text-3xl max-w-2xl text-center px-8 font-semibold">
+              3-6 june 2025
+            </span>
+            <p className="text-sm md:text-xl max-w-2xl text-center px-2">
               The Summer School "iENTRANCE to research. The young scientist's
               guide to the galaxy. Rethinking research in an AI-empowered
               world."Is designed for young scientists entering the world of
@@ -108,7 +111,7 @@ export default function Home() {
               academic excellence with an immersive hands-on experience, set in
               stunning natural setting.
             </p>
-            <Link href="/catalogue">
+            <Link href="/articoli/16">
               <Button className="">
                 Discover more <ArrowRight className="w-4 h-4" />
               </Button>

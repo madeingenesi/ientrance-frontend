@@ -374,7 +374,7 @@ export default function TheMosaicPage() {
 
         <section
           className=" w-full flex flex-col bg-white relative"
-          id="values"
+          id="boardofpartners"
         >
           <div className="bg-gray-200 splash py-[1px]">
             <div className="flex flex-col gap-8 p-4 py-12 md:p-22 bg-muted splash border-none justify-center items-center">
@@ -405,7 +405,10 @@ export default function TheMosaicPage() {
           </div>
         </section>
 
-        <section className=" w-full flex flex-col gap-0 z-20 relative">
+        <section
+          className=" w-full flex flex-col gap-0 z-20 relative"
+          id="challenges"
+        >
           <div className="bg-gray-200 splash py-[1px]">
             <div className="flex flex-col gap-8 p-4 py-12 md:p-22 bg-muted splash border-none justify-center items-center">
               <DecryptedText
@@ -666,7 +669,7 @@ export default function TheMosaicPage() {
           </div>
         </section>
 
-        <section className="w-full overflow-x-hidden">
+        <section className="w-full overflow-x-hidden" id="expertise">
           <div className="bg-gray-200 splash py-[1px]">
             <div className="flex flex-col gap-8 p-4 py-12 md:p-22 bg-muted splash border-none justify-center items-center">
               <DecryptedText
@@ -701,7 +704,7 @@ export default function TheMosaicPage() {
           </div>
         </section>
 
-        <section className="w-full overflow-x-hidden">
+        <section className="w-full overflow-x-hidden" id="data">
           <div className="bg-gray-200 splash py-[1px]">
             <div className="flex flex-col gap-8 p-4 py-12 md:p-22 bg-muted splash border-none justify-center items-center">
               <DecryptedText
