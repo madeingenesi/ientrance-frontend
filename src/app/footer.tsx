@@ -4,6 +4,7 @@ import { ArrowRight, ChevronRight, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { SocialLogo } from "social-logos";
 
 export default function Footer() {
   const theMosaic = [
@@ -121,41 +122,13 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div className="col-span-5 md:col-span-1 row-span-1 row-start-2 pt-12 flex flex-row gap-2 items-center">
-          <Mail className="w-8 h-8" />
-          <span className="text-2xl">info@ientrance.com</span>
+        <div className="col-span-5 md:col-span-1 row-span-1 row-start-2 pt-12 flex flex-col gap-2 ">
+          <span className="text-2xl flex flex-row gap-2 items-center">
+            <Mail className="w-8 h-8" />
+            info@ientrance.com
+          </span>
         </div>
         <div className="col-span-5 md:col-span-2 row-span-1 row-start-2 pt-12 flex flex-row gap-2 items-center pl-32">
-          <Image
-            src="/images/boardofpartners/CNR-white.png"
-            alt="Euronanolab"
-            width={100}
-            height={100}
-          />
-          <Image
-            src="/images/boardofpartners/CNR-white.png"
-            alt="Euronanolab"
-            width={100}
-            height={100}
-          />
-          <Image
-            src="/images/boardofpartners/CNR-white.png"
-            alt="Euronanolab"
-            width={100}
-            height={100}
-          />
-          <Image
-            src="/images/boardofpartners/CNR-white.png"
-            alt="Euronanolab"
-            width={100}
-            height={100}
-          />
-          <Image
-            src="/images/boardofpartners/CNR-white.png"
-            alt="Euronanolab"
-            width={100}
-            height={100}
-          />
           <Image
             src="/images/boardofpartners/CNR-white.png"
             alt="Euronanolab"

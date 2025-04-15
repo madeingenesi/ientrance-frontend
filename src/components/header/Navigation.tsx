@@ -18,42 +18,56 @@ import {
 import { LogIn, FolderOpenDot, ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 
-const components: { title: string; href: string; description: string }[] = [
+const theMosaic: { title: string; href: string; description: string }[] = [
   {
     title: "The Big Picture",
     href: "/the-mosaic/#the-big-picture",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+      "iENTRANCE operates as an integrated advanced materials research infrastructure, structured upon 14 interconnected nodes.",
   },
   {
     title: "Values",
     href: "/the-mosaic/#values",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+      "iENTRANCE is founded on the values of collaborative excellence, technological innovation, and a commitment to addressing pressing societal challenges through advanced materials research.",
+  },
+  {
+    title: "Board of Partners",
+    href: "/the-mosaic/#boardofpartners",
+    description: "---",
   },
   {
     title: "Challenges / Topics",
     href: "/the-mosaic/#challenges",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
-  },
-  {
-    title: "Board of Partners",
-    href: "/the-mosaic/#boardofpartners",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+      "iENTRANCE is committed to addressing complex challenges across both technological and methodological frontiers. We aim to be a catalyst for innovation and sustainable development through targeted initiatives.",
   },
   {
     title: "Expertise",
     href: "/the-mosaic/#expertise",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+      "The technical expertise of iENTRANCE encompasses a wide range of advanced materials research capabilities, with a strong emphasis on nanoscience and technology.",
   },
   {
     title: "Data",
     href: "/the-mosaic/#data",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+      "iENTRANCE is committed to ensuring that all data generated and managed within its infrastructure adhere to the FAIR principles: Findable, Accessible, Interoperable, and Reusable.",
+  },
+];
+
+const comeIn: { title: string; href: string; description: string }[] = [
+  {
+    title: "Guide",
+    href: "/the-mosaic/#the-big-picture",
+    description:
+      "iENTRANCE operates as an integrated advanced materials research infrastructure, structured upon 14 interconnected nodes.",
+  },
+  {
+    title: "FAQ",
+    href: "/the-mosaic/#values",
+    description:
+      "iENTRANCE is founded on the values of collaborative excellence, technological innovation, and a commitment to addressing pressing societal challenges through advanced materials research.",
   },
 ];
 
@@ -91,7 +105,7 @@ export function Navigation() {
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {components.map((component) => (
+              {theMosaic.map((component) => (
                 <ListItem
                   key={component.title}
                   title={component.title}

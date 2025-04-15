@@ -57,6 +57,7 @@ export default function NewsCarousel({ articles }: any) {
         centeredSlides={false}
         pagination={false}
         navigation={true}
+        autoHeight={false}
         modules={[Pagination, Navigation]}
         className="mySwiper featuresCarousel h-full overflow-hidden md:!overflow-visible"
         breakpoints={{
@@ -80,9 +81,9 @@ export default function NewsCarousel({ articles }: any) {
               new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
           )
           .map((slide: any, index: number) => (
-            <SwiperSlide key={slide.id} className="">
-              <div className="bg-gray-200 splashMiniXS h-full p-[1px]">
-                <div className="flex flex-col gap-0 bg-muted min-h-[350px] p-2 splashMiniXS justify-between">
+            <SwiperSlide key={slide.id} className="!h-auto">
+              <div className="bg-gray-200 splashMiniXS flex-1 p-[1px] h-full">
+                <div className="flex flex-col gap-0 bg-muted min-h-full p-2 splashMiniXS">
                   {/* <div className="flex flex-col gap-2">
                     <div className="flex flex-col gap-2">
                       <div className="flex flex-row gap-2 justify-start items-center">
@@ -101,22 +102,33 @@ export default function NewsCarousel({ articles }: any) {
                     alt={"esempio"}
                     width={600}
                     height={400}
-                    className="object-cover splashMiniXS h-full"
+                    className="object-cover splashMiniXS"
                   />
-                  <div className="flex flex-col gap-2 p-4">
-                    <h3 className="text-2xl font-semibold text-left mt-3">
-                      {slide.Titolo}
-                    </h3>
-                    <p className="text-left mt-3">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Quisquam, quos. Lorem ipsum dolor sit amet consectetur.
-                    </p>
-                    <Link href={`/articoli/${slide.id}`} className="w-fit">
-                      <Button className="w-fit mb-4 cursor-pointer">
-                        Read More <ArrowRight className="w-4 h-4" />
-                      </Button>
-                    </Link>
-                    <div className="flex flex-row border-t border-gray-300 w-full justify-between pt-4">
+                  <div className="flex flex-col p-4 flex-1 justify-between">
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-2xl font-semibold text-left mt-3">
+                        {slide.Titolo}
+                      </h3>
+                      <p className="text-left mt-3">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Quisquam, quos. Lorem ipsum dolor sit amet consectetur.
+                      </p>
+                      <Link href={`/articoli/${slide.id}`} className="w-fit">
+                        <Button
+                          variant="outline"
+                          className="w-fit mb-4 cursor-pointer"
+                        >
+                          Read More <ArrowRight className="w-4 h-4" />
+                        </Button>
+                      </Link>
+                    </div>
+                    <div
+                      className={`flex flex-row w-full justify-between pt-4 p-4 splashMiniXS ${
+                        slide?.categorie_articoli?.Titolo === "News"
+                          ? "bg-[var(--blue-primary)] text-white"
+                          : "bg-[var(--green-primary)] text-white"
+                      }`}
+                    >
                       <span className="text-sm font-medium flex flex-row gap-2 items-center">
                         {slide?.categorie_articoli?.Titolo == "News" ? (
                           <Rss className="w-4 h-4" />
