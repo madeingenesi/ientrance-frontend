@@ -113,7 +113,11 @@ export default function NewsCarousel({ articles }: any) {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Quisquam, quos. Lorem ipsum dolor sit amet consectetur.
                       </p>
-                      <Link href={`/articoli/${slide.id}`} className="w-fit">
+                      <Link
+                        href={`/articoli/${slide.id}`}
+                        className="w-fit"
+                        prefetch={true}
+                      >
                         <Button
                           variant="outline"
                           className="w-fit mb-4 cursor-pointer"

@@ -7,7 +7,7 @@ export default function BoardOfPartners() {
       name: "Dr. Vittorio MORANDI",
       role: "Project Coordinator and PI of CNR",
       mail: "morandi@bo.imm.cnr.it",
-      logo: "/images/boardofpartners/cnr.jpg",
+      logo: "/images/boardofpartners/CNR.jpg",
     },
     {
       name: "Prof. Fabrizio Candido PIRRI",
