@@ -112,8 +112,8 @@ export default function Home() {
               academic excellence with an immersive hands-on experience, set in
               stunning natural setting.
             </p>
-            <Link href="/articoli/16">
-              <Button className="">
+            <Link href="/articoli/18">
+              <Button className="cursor-pointer">
                 Discover more <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
