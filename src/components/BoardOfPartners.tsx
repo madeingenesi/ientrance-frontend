@@ -55,7 +55,7 @@ export default function BoardOfPartners() {
               alt={partner.name}
               width={100}
               height={100}
-              className="object-contain absolute top-0 right-0 p-3 bg-white splashMiniXS"
+              className="object-contain absolute top-0 right-0 p-3 bg-white splashMiniXS h-[80px]"
             />
           </div>
           <div className="flex flex-col gap-1 bg-white p-4 splashMiniXS">
