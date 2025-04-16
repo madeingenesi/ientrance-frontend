@@ -390,10 +390,9 @@ export default function TheMosaicPage() {
                 className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
               />
               <p className="text-lg md:text-2xl max-w-3xl tracking-tight text-center">
-                iENTRANCE is founded on the values of collaborative excellence,
-                technological innovation, and a commitment to addressing
-                pressing societal challenges through advanced materials
-                research.
+                The Boards of Partners showcases our collaborative network,
+                highlighting partner expertise driving innovation. Together, we
+                advance cutting-edge research.
               </p>
             </div>
           </div>

@@ -20,12 +20,6 @@ import { Button } from "../ui/button";
 
 const theMosaic: { title: string; href: string; description: string }[] = [
   {
-    title: "The Big Picture",
-    href: "/the-mosaic/#the-big-picture",
-    description:
-      "iENTRANCE operates as an integrated advanced materials research infrastructure, structured upon 14 interconnected nodes.",
-  },
-  {
     title: "Values",
     href: "/the-mosaic/#values",
     description:
@@ -34,7 +28,8 @@ const theMosaic: { title: string; href: string; description: string }[] = [
   {
     title: "Board of Partners",
     href: "/the-mosaic/#boardofpartners",
-    description: "---",
+    description:
+      "The Boards of Partners showcases our collaborative network, highlighting partner expertise driving innovation. Together, we advance cutting-edge research.",
   },
   {
     title: "Challenges / Topics",
@@ -89,11 +84,6 @@ const outcomes: { title: string; href: string; description: string }[] = [
     title: "Press Releases",
     href: "/outcomes/#press-releases",
     description: "Stay updated with the latest news and events from iENTRANCE.",
-  },
-  {
-    title: "Publications",
-    href: "/outcomes/#publications",
-    description: "Explore our latest publications and research results.",
   },
 ];
 

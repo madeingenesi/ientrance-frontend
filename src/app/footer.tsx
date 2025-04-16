@@ -47,19 +47,19 @@ export default function Footer() {
 
   const learnGrow = [
     {
-      title: "The Big Picture",
-      href: "/learn-grow/the-big-picture",
+      title: "Summer School",
+      href: "/learn-grow/summer-school",
     },
   ];
 
   const outcomes = [
     {
-      title: "The Big Picture",
-      href: "/outcomes/the-big-picture",
+      title: "News & Events",
+      href: "/outcomes/news-events",
     },
     {
-      title: "Values",
-      href: "/outcomes/values",
+      title: "Press Releases",
+      href: "/outcomes/press-releases",
     },
   ];
 
@@ -101,7 +101,7 @@ export default function Footer() {
             Learn & Grow <ArrowRight className="w-5 h-5" />
           </h5>
           <ul className="flex flex-col gap-2">
-            {outcomes.map((item) => (
+            {learnGrow.map((item) => (
               <li
                 key={item.title}
                 className="hover:text-gray-300 hover:underline"
@@ -140,12 +140,23 @@ export default function Footer() {
             Follow Us <ArrowRight className="w-5 h-5" />
           </h5>
           <div className="flex flex-col gap-2 items-start">
-            <span className="text-2xl flex flex-row gap-2 items-center">
-              <Mail className="w-8 h-8" />
+            <span className="text-lg flex flex-row gap-2 items-center">
+              <Image
+                src="/svg/youtub.svg"
+                alt="Youtube"
+                width={24}
+                height={24}
+              />
               Youtube
             </span>
-            <span className="text-2xl flex flex-row gap-2 items-center">
-              <Mail className="w-8 h-8" />
+            <span className="text-lg flex flex-row gap-2 items-center">
+              <Image
+                src="/svg/linkedin.svg"
+                alt="Linkedin"
+                width={30}
+                height={30}
+                className="-ml-1"
+              />
               Linkedin
             </span>
           </div>

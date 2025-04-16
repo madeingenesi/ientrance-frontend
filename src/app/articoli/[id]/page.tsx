@@ -40,7 +40,7 @@ export default async function ArticoloPage({ params }: any) {
           //image={articolo?.Immagine?.data?.attributes?.url}
           image={"/images/esempio.jpg"}
         />
-        <div className="container mx-auto py-8 border-x py-32">
+        <div className="container mx-auto py-8 border-x py-22">
           <div className="prose max-w-3xl mx-auto">
             {articolo?.Contenuto?.map((block: any, index: number) => {
               if (block.type === "paragraph") {
