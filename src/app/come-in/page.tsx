@@ -1,4 +1,5 @@
 //Components
+import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
 import HeroSection from "@/components/HeroSection";
 import TabsContentBox from "@/components/TabsContentBox";
@@ -12,7 +13,6 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 import { Computer, ArrowRight, Zap, Globe, Lightbulb } from "lucide-react";
-
 export default function ComeInPage() {
   const doubleText = {
     TestoInEvidenza: [
@@ -85,7 +85,7 @@ export default function ComeInPage() {
       />
       <main className="container w-full mx-auto border-x border-gray-200">
         <section
-          className=" w-full flex md:flex-col gap-12 p-22 items-center"
+          className=" w-full flex md:flex-col gap-12 p-22 items-center pb-36"
           id="main"
         >
           <div className="w-full max-w-3xl text-center">
@@ -136,28 +136,47 @@ export default function ComeInPage() {
               industry, with unparalleled access to these essential resources,
               facilitating the realization of their ambitious projects.
             </p>
-            <div className="grid grid-cols-4 gap-8">
-              <p className="text-lg border-l pl-6">
-                We invite you, the researchers who are pushing the boundaries of
-                scientific knowledge, to engage with iENTRANCE. Present your
-                access proposals and let us work together to design and execute
-                investigations of the highest ambition.
-              </p>
-              <p className="text-lg border-l pl-6">
-                Our infrastructure is your platform to transform innovative
-                concepts into impactful realities.
-              </p>
-              <p className="text-lg border-l pl-6">
-                iENTRANCE is not just a collection of tools; it is a
-                collaborative ecosystem. Our integrated network of 14 nodes,
-                each a hub of specialized knowledge in physics, chemistry, and
-                engineering, offers a comprehensive suite of capabilities.{" "}
-              </p>
-              <p className="text-lg border-l pl-6">
-                This mosaic approach ensures that your research benefits from a
-                holistic, multidisciplinary perspective, enabling investigations
-                that transcend the limitations of isolated efforts.
-              </p>
+            <div className="flex flex-row gap-32">
+              <div className="w-1/2  flex flex-col gap-2">
+                <p className="text-lg">
+                  We invite you, the researchers who are pushing the boundaries
+                  of scientific knowledge, to engage with iENTRANCE. Present
+                  your access proposals and let us work together to design and
+                  execute investigations of the highest ambition.
+                </p>
+                <p className="text-lg">
+                  Our infrastructure is your platform to transform innovative
+                  concepts into impactful realities.
+                </p>
+                <p className="text-lg">
+                  iENTRANCE is not just a collection of tools; it is a
+                  collaborative ecosystem. Our integrated network of 14 nodes,
+                  each a hub of specialized knowledge in physics, chemistry, and
+                  engineering, offers a comprehensive suite of capabilities.{" "}
+                </p>
+                <p className="text-lg">
+                  This mosaic approach ensures that your research benefits from
+                  a holistic, multidisciplinary perspective, enabling
+                  investigations that transcend the limitations of isolated
+                  efforts.
+                </p>
+              </div>
+              <div className="w-1/2 flex flex-row gap-2">
+                <Image
+                  src="/images/esempio.jpg"
+                  alt="iENTRANCE"
+                  width={1000}
+                  height={1000}
+                  className="h-full object-cover splashMini w-1/2 "
+                />
+                <Image
+                  src="/images/esempio.jpg"
+                  alt="iENTRANCE"
+                  width={1000}
+                  height={1000}
+                  className="h-full object-cover splashMini w-1/2 mt-20"
+                />
+              </div>
             </div>
           </div>
         </section>
