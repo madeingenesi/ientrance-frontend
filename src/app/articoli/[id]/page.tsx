@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import PageHeader from "@/components/PageHeader";
 import Image from "next/image";
+import Link from "next/link";
+
 export default async function ArticoloPage({ params }: any) {
   try {
     // Log the ID from URL params
@@ -47,9 +49,44 @@ export default async function ArticoloPage({ params }: any) {
               if (block.type === "paragraph") {
                 return (
                   <p key={index} className="text-lg leading-relaxed">
-                    {block.children?.map((child: any, childIndex: number) => (
-                      <span key={childIndex}>{child.text}</span>
-                    ))}
+                    {block.children?.map((child: any, childIndex: number) => {
+                      switch (child.type) {
+                        case "text":
+                          return (
+                            <span
+                              key={childIndex}
+                              className={child.bold ? "font-bold" : ""}
+                            >
+                              {child.text}
+                            </span>
+                          );
+                        case "link":
+                          return (
+                            <Link
+                              key={childIndex}
+                              href={child.url}
+                              className="text-blue-600 hover:text-blue-800 underline"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {child.children?.map(
+                                (linkChild: any, linkChildIndex: number) => (
+                                  <span
+                                    key={linkChildIndex}
+                                    className={
+                                      linkChild.bold ? "font-bold" : ""
+                                    }
+                                  >
+                                    {linkChild.text}
+                                  </span>
+                                )
+                              )}
+                            </Link>
+                          );
+                        default:
+                          return <span key={childIndex}>{child.text}</span>;
+                      }
+                    })}
                   </p>
                 );
               }
