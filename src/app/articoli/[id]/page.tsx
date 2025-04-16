@@ -1,15 +1,16 @@
 import { notFound } from "next/navigation";
 import PageHeader from "@/components/PageHeader";
-
+import Image from "next/image";
 export default async function ArticoloPage({ params }: any) {
   try {
     // Log the ID from URL params
     console.log("URL ID Parameter:", params.id);
+    const id = params.id;
 
     // Using filters instead of direct ID access
     //const url = `https://ambitious-cat-3135f7987e.strapiapp.com/api/articoli?populate=*&filters[id][$eq]=${params.id}`;
 
-    const url = `https://ambitious-cat-3135f7987e.strapiapp.com/api/articoli?filters[id][$eq]=${params.id}&populate=*`;
+    const url = `https://ambitious-cat-3135f7987e.strapiapp.com/api/articoli?filters[id][$eq]=${id}&populate=*`;
     console.log("Fetching URL:", url);
 
     const response = await fetch(url, {
@@ -38,7 +39,7 @@ export default async function ArticoloPage({ params }: any) {
           title={articolo?.Titolo || articolo?.titolo}
           description={articolo?.Contenuto || articolo?.contenuto}
           //image={articolo?.Immagine?.data?.attributes?.url}
-          image={"/images/esempio.jpg"}
+          image={"/images/examples/copertina-summer-school.jpg"}
         />
         <div className="container mx-auto py-8 border-x py-22">
           <div className="prose max-w-3xl mx-auto">
@@ -55,6 +56,13 @@ export default async function ArticoloPage({ params }: any) {
               return null;
             })}
           </div>
+          <Image
+            src={"/images/examples/locandina-summer-school.jpg"}
+            alt={"Locandina Summer School"}
+            width={1000}
+            height={1000}
+            className="w-full h-auto mx-auto max-w-3xl border"
+          />
         </div>
       </>
     );

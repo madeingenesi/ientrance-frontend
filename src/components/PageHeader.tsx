@@ -72,7 +72,7 @@ export default function PageHeader({
         </Breadcrumb>
       </div>
       <Separator />
-      <div className="border-l container mx-auto">
+      <div className="border-l container mx-auto relative">
         <div
           className="container mx-auto flex flex-col gap-2 p-4 md:p-12 splash min-h-[450px] md:min-h-[650px] justify-end  bg-cover bg-center "
           style={{ backgroundImage: `url(${image})` }}
