@@ -12,40 +12,58 @@ export default function MapplicMap({
   const mapElementRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    const loadMapplicResources = async () => {
-      // Carica il CSS se non è già presente
-      if (!document.getElementById("mapplic-css")) {
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = "/mapplic/mapplic.css";
-        link.id = "mapplic-css";
-        document.head.appendChild(link);
+    const initializeMap = () => {
+      if (mapContainerRef.current && !mapElementRef.current) {
+        const mapElement = document.createElement("mapplic-map");
+        mapElement.setAttribute("data-json", mapData);
+        mapContainerRef.current.appendChild(mapElement);
+        mapElementRef.current = mapElement;
       }
+    };
 
-      // Carica lo script se non è già presente
-      if (!document.getElementById("mapplic-script")) {
+    const loadMapplicResources = async () => {
+      try {
+        // Rimuovi script e mappa esistenti
+        const existingScript = document.getElementById("mapplic-script");
+        if (existingScript) {
+          existingScript.remove();
+        }
+        if (mapElementRef.current) {
+          mapElementRef.current.remove();
+          mapElementRef.current = null;
+        }
+
+        // Carica il CSS
+        if (!document.getElementById("mapplic-css")) {
+          const link = document.createElement("link");
+          link.rel = "stylesheet";
+          link.href = "/mapplic/mapplic.css";
+          link.id = "mapplic-css";
+          document.head.appendChild(link);
+        }
+
+        // Carica lo script
         const script = document.createElement("script");
         script.src = "/mapplic/mapplic.js";
         script.id = "mapplic-script";
         script.async = true;
 
+        // Attendi il caricamento dello script
         await new Promise((resolve, reject) => {
-          script.onload = resolve;
+          script.onload = () => {
+            resolve(true);
+            // Inizializza la mappa dopo che lo script è caricato completamente
+            setTimeout(initializeMap, 100);
+          };
           script.onerror = reject;
           document.body.appendChild(script);
         });
-
-        // Inizializza la mappa dopo che lo script è caricato
-        if (mapContainerRef.current && !mapElementRef.current) {
-          const mapElement = document.createElement("mapplic-map");
-          mapElement.setAttribute("data-json", mapData);
-          mapContainerRef.current.appendChild(mapElement);
-          mapElementRef.current = mapElement;
-        }
+      } catch (error) {
+        console.error("Errore nel caricamento delle risorse Mapplic:", error);
       }
     };
 
-    loadMapplicResources().catch(console.error);
+    loadMapplicResources();
 
     // Cleanup function
     return () => {
@@ -55,6 +73,23 @@ export default function MapplicMap({
       }
     };
   }, [mapData]);
+
+  // Aggiungi un gestore per il routing di Next.js
+  useEffect(() => {
+    const handleRouteChange = () => {
+      if (mapElementRef.current) {
+        mapElementRef.current.remove();
+        mapElementRef.current = null;
+      }
+    };
+
+    // Aggiungi listener per la navigazione
+    window.addEventListener("popstate", handleRouteChange);
+
+    return () => {
+      window.removeEventListener("popstate", handleRouteChange);
+    };
+  }, []);
 
   return (
     <div
