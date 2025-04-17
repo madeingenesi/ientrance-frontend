@@ -112,7 +112,7 @@ export default function Home() {
               academic excellence with an immersive hands-on experience, set in
               stunning natural setting.
             </p>
-            <Link href="/articoli/18">
+            <Link href="/articoli/19">
               <Button className="cursor-pointer">
                 Discover more <ArrowRight className="w-4 h-4" />
               </Button>
@@ -138,9 +138,9 @@ export default function Home() {
                 className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
               />
               <p className="text-sm md:text-xl max-w-2xl text-left">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua
-                eiusmod tempor incididunt ut labor.
+                Discover our state-of-the-art research infrastructure machine
+                catalog, showcasing cutting-edge equipment designed to drive
+                innovation.
               </p>
             </div>
             <Link href="/catalogue">
@@ -225,9 +225,10 @@ export default function Home() {
             className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight text-center"
           />
           <p className="text-center text-sm md:text-xl max-w-2xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
-            tempor incididunt ut labor.
+            iENTRANCE is committed to addressing complex challenges across both
+            technological and methodological frontiers. We aim to be a catalyst
+            for innovation and sustainable development through targeted
+            initiatives
           </p>
         </div>
 

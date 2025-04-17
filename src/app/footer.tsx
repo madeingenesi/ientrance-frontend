@@ -132,7 +132,7 @@ export default function Footer() {
           </h5>
           <span className="text-2xl flex flex-row gap-2 items-center">
             <Mail className="w-8 h-8" />
-            info@ientrance.com
+            info@ientrance.eu
           </span>
         </div>
         <div className="col-span-5 md:col-span-2 row-span-1 row-start-2 pt-12 flex flex-col gap-2 items-start pl-32">
