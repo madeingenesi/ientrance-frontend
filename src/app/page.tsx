@@ -85,38 +85,42 @@ export default function Home() {
 
       <section className="container w-full mx-auto mb-32 relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:w-screen before:h-[2px] before:bg-[var(--green-secondary)] before:z-0 before:translate-x-[-50%] before:translate-y-[-50%] z-0">
         <div className="bg-gray-200 splash relative pb-2 max-w-5xl mx-auto">
-          <div className="flex flex-col gap-4 items-center mb-4 bg-[var(--green-secondary)] p-8 max-w-5xl mx-auto splash text-white">
-            <span className="text-sm font-semibold uppercase absolute top-0 left-5 p-2 px-4 bg-[var(--blue-primary)] text-white splashMiniXS">
-              Highlighted
-            </span>
-            <Megaphone className="w-12 h-12 stroke-1" />
-            <DecryptedText
-              text="iENTRANCE Summer School"
-              animateOn="view"
-              sequential={true}
-              maxIterations={20}
-              characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
-              speed={50}
-              revealDirection="start"
-              encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight"
-              className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
-            />
-            <span className="text-3xl max-w-2xl text-center px-8 font-semibold">
-              3-6 june 2025
-            </span>
-            <p className="text-sm md:text-xl max-w-2xl text-center px-2">
-              The Summer School "iENTRANCE to research. The young scientist's
-              guide to the galaxy. Rethinking research in an AI-empowered
-              world."Is designed for young scientists entering the world of
-              Research and offers a unique training opportunity thet combines
-              academic excellence with an immersive hands-on experience, set in
-              stunning natural setting.
-            </p>
-            <Link href="/articoli/19">
-              <Button className="cursor-pointer">
-                Discover more <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
+          <div className="flex flex-row gap-4 items-start mb-4 bg-[var(--green-secondary)] p-16 max-w-5xl mx-auto splash text-white">
+            <div className="flex flex-1 flex-col gap-2 items-start">
+              <span className="text-sm font-semibold uppercase absolute top-0 left-5 p-2 px-4 bg-[var(--blue-primary)] text-white splashMiniXS">
+                Highlighted
+              </span>
+              <Megaphone className="w-12 h-12 stroke-1 hidden" />
+              <DecryptedText
+                text="iENTRANCE Summer School"
+                animateOn="view"
+                sequential={true}
+                maxIterations={20}
+                characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
+                speed={50}
+                revealDirection="start"
+                encryptedClassName="text-3xl md:text-3xl font-medium tracking-tight"
+                className="text-3xl md:text-3xl !text-center max-w-3xl font-medium tracking-tight"
+              />
+              <span className="text-3xl max-w-2xl text-center font-semibold">
+                3-6 june 2025
+              </span>
+              <Link href="/articoli/19" className="mt-8">
+                <Button className="cursor-pointer">
+                  Discover more <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+            <div className="flex-1">
+              <p className="text-sm md:text-lg max-w-2xl text-left px-2">
+                The Summer School "iENTRANCE to research. The young scientist's
+                guide to the galaxy. Rethinking research in an AI-empowered
+                world."Is designed for young scientists entering the world of
+                Research and offers a unique training opportunity thet combines
+                academic excellence with an immersive hands-on experience, set
+                in stunning natural setting.
+              </p>
+            </div>
           </div>
         </div>
       </section>

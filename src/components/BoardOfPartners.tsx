@@ -7,18 +7,21 @@ export default function BoardOfPartners() {
       name: "Dr. Vittorio MORANDI",
       role: "Project Coordinator and PI of CNR",
       mail: "morandi@bo.imm.cnr.it",
+      image: "/images/people/morandi.jpg",
       logo: "/images/boardofpartners/CNR.jpg",
     },
     {
       name: "Prof. Fabrizio Candido PIRRI",
       role: "PI of Politecnico di Torino",
       mail: "fabrizio.pirri@polito.it",
+      image: "/images/people/candido.jpg",
       logo: "/images/boardofpartners/polito.jpg",
     },
     {
       name: "Prof. Davide Calonico",
       role: "PI of INRiM",
       mail: "p.asinari@inrim.it",
+      image: "/images/people/calonico.jpg",
       logo: "/images/boardofpartners/inrim.png",
     },
 
@@ -27,18 +30,21 @@ export default function BoardOfPartners() {
       role: "PI of ALMA MATER Università di Bologna",
       mail: "loris.giorgini@unibo.it",
       logo: "/images/boardofpartners/unibologna.gif",
+      image: "/images/people/giorgini.jpg",
     },
     {
       name: "Prof. Marco ROSSI",
       role: "PI of SAPIENZA Università di Roma",
       mail: "marco.rossi@uniroma1.it",
       logo: "/images/boardofpartners/sapienza.jpg",
+      image: "/images/people/marco.jpg",
     },
     {
       name: "Prof. Marco SEBASTIANI",
       role: "PI of Università ROMATRE",
       mail: "marco.sebastiani@uniroma3.it",
       logo: "/images/boardofpartners/romatre.jpg",
+      image: "/images/people/sebastiani.jpg",
     },
   ];
 
@@ -49,7 +55,10 @@ export default function BoardOfPartners() {
           key={index}
           className="flex flex-col p-[1px] bg-gray-200 splashMiniXS"
         >
-          <div className="w-full h-[300px] bg-gray-200 flex justify-center items-center splashMiniXS relative">
+          <div
+            className="w-full h-[300px] bg-gray-200 flex justify-center items-center splashMiniXS relative bg-cover bg-center"
+            style={{ backgroundImage: `url(${partner.image})` }}
+          >
             <Image
               src={partner.logo}
               alt={partner.name}

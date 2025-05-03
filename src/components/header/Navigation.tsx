@@ -120,7 +120,7 @@ export function Navigation() {
             <span onClick={() => router.push("/the-mosaic")}>The Mosaic</span>
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+            <ul className="grid gap-3 p-4 md:w-[300px] md:grid-cols-2 lg:w-[450px]">
               {theMosaic.map((component) => (
                 <ListItem
                   key={component.title}
@@ -140,7 +140,7 @@ export function Navigation() {
             <span onClick={() => router.push("/come-in")}>Come In</span>
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+            <ul className="grid gap-3 p-4 md:w-[300px] md:grid-cols-2 lg:w-[450px]">
               {comeIn.map((component) => (
                 <ListItem
                   key={component.title}
@@ -162,7 +162,7 @@ export function Navigation() {
             </span>
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+            <ul className="grid gap-3 p-4 md:w-[300px] md:grid-cols-2 lg:w-[450px]">
               {learnGrow.map((component) => (
                 <ListItem
                   key={component.title}
@@ -177,12 +177,12 @@ export function Navigation() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem className="mr-4">
+        <NavigationMenuItem className="mr-0">
           <NavigationMenuTrigger>
             <span onClick={() => router.push("/outcomes")}>Outcomes</span>
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+            <ul className="grid gap-3 p-4 md:w-[300px] md:grid-cols-2 lg:w-[450px]">
               {outcomes.map((component) => (
                 <ListItem
                   key={component.title}
@@ -197,22 +197,24 @@ export function Navigation() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <Button variant="outline" className="cursor-pointer">
-              <LogIn className="w-4 h-4" />
-              Login
-            </Button>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <Button className="bg-[var(--blue-primary)] text-white cursor-pointer">
-              <FolderOpenDot className="w-4 h-4" />
-              Send your project
-            </Button>
-          </Link>
-        </NavigationMenuItem>
+        <div className="flex items-center gap-2 hidden">
+          <NavigationMenuItem>
+            <Link href="/docs" legacyBehavior passHref>
+              <Button variant="outline" className="cursor-pointer">
+                <LogIn className="w-4 h-4" />
+                Login
+              </Button>
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link href="/docs" legacyBehavior passHref>
+              <Button className="bg-[var(--blue-primary)] text-white cursor-pointer">
+                <FolderOpenDot className="w-4 h-4" />
+                Send your project
+              </Button>
+            </Link>
+          </NavigationMenuItem>
+        </div>
       </NavigationMenuList>
     </NavigationMenu>
   );
