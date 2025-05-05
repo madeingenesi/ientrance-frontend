@@ -148,8 +148,9 @@ export default function Home() {
               </p>
             </div>
             <Link href="/catalogue">
-              <Button className="">
-                Go to Catalogue <ArrowRight className="w-4 h-4" />
+              <Button className="hover:cursor-pointer">
+                Go to Catalogue{" "}
+                <ArrowRight className="w-4 h-4 hover:cursor-pointer" />
               </Button>
             </Link>
           </div>
@@ -196,15 +197,22 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="container w-full max-w-7xl mx-auto z-10">
-          <Image
-            src="/images/Browsers.png"
-            alt="catalogue"
-            width={1920}
-            height={1080}
-            className="w-full"
-            unoptimized
-          />
+        <div className="container w-full max-w-7xl mx-auto z-10 flex flex-col justify-center items-center">
+          <Link href="/catalogue">
+            <Image
+              src="/images/Browsers.png"
+              alt="catalogue"
+              width={1920}
+              height={1080}
+              className="w-full hover:translate-y-[-10px] transition-all duration-300"
+              unoptimized
+            />
+          </Link>
+          <Link href="/catalogue">
+            <Button className="translate-y-[-50px] hover:cursor-pointer">
+              Go to Catalogue <ArrowRight className="w-4 h-4" />
+            </Button>
+          </Link>
         </div>
         <div className="w-full h-full hidden md:block absolute top-0 left-0 opacity-80 rotate-180 z-0">
           <Aurora speed={1} amplitude={1} />
