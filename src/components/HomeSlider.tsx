@@ -61,17 +61,18 @@ export default function HomeSlider({ data }: { data: any }) {
       video: "/videos/video4.webm",
     },
     {
+      id: 6,
+      title:
+        "We support <br/> <strong>industry</strong> <br/>to drive <strong>competitive innovation</strong>",
+      image: "/images/esempio.jpg",
+      video: "/videos/video6.webm",
+    },
+    {
       id: 5,
       title:
         "We think <br/> <strong>nano</strong><br/> to build <strong>macro</strong>",
       image: "/images/esempio.jpg",
       video: "/videos/video5.webm",
-    },
-    {
-      id: 6,
-      title: "We support industry <br/> to Drive <br/> Competitive Innovation",
-      image: "/images/esempio.jpg",
-      video: "/videos/video6.webm",
     },
   ];
 

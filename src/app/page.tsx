@@ -211,6 +211,53 @@ export default function Home() {
         </div>
       </section>
 
+      <section
+        className="container mx-auto w-full flex flex-col bg-white relative  mt-28"
+        id="values"
+      >
+        <div className="bg-gray-200 splash py-[1px]">
+          <div
+            className="flex flex-row gap-8 p-8 splash border-none justify-between items-end"
+            style={{
+              backgroundImage: "url('/images/summer_school.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <div className="flex flex-col bg-muted splash p-12 w-6/12 min-h-[35vh] justify-between">
+              <DecryptedText
+                text="iENTRANCE Infrastructure Access: A Step-by-Step Guide"
+                animateOn="view"
+                sequential={true}
+                maxIterations={20}
+                characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
+                speed={50}
+                revealDirection="start"
+                encryptedClassName="text-4xl font-medium tracking-tight"
+                className="text-4xl max-w-3xl font-medium tracking-tight"
+              />
+              <div className="flex flex-col mt-24 self-end mb-12">
+                <div className="flex flex-col">
+                  <p className="text-left">
+                    iENTRANCE is excited to offer access to its state-of-the-art
+                    research infrastructure through a series of annual open
+                    calls. We welcome applications from researchers and industry
+                    professionals seeking to leverage our advanced facilities
+                    and expertise.
+                  </p>
+                  <Link href="/come-in#guide">
+                    <Button className="">
+                      Come in! <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="container w-full mx-auto flex flex-col items-center justify-center py-12 md:py-32 gap-18 px-4 md:px-0 overflow-hidden md:overflow-visible">
         <div className="flex flex-col items-center gap-4 text-center max-w-5xl px-8">
           <span className="font-semibold flex flex-row gap-2 items-center">
