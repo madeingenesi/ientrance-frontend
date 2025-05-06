@@ -27,21 +27,19 @@ export function PagesContext({ children }: { children: React.ReactNode }) {
     setIsLoading(true);
     try {
       console.log("Fetching pages...");
-      const response = await axios.get(
-        "http://localhost:1337/api/pages?populate=*",
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log("Raw API Response:", response);
-      console.log("Data received:", response.data);
+      // Utilizziamo la variabile d'ambiente o un URL di fallback
+      const baseUrl =
+        process.env.NEXT_PUBLIC_STRAPI_URL ||
+        "https://ambitious-cat-3135f7987e.strapiapp.com";
+      const response = await axios.get(`${baseUrl}/api/pages?populate=*`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.data && response.data.data) {
         setPages(response.data.data);
-        console.log("Pages set in state:", response.data.data);
       }
     } catch (error: any) {
       console.error("Error details:", error.response || error);

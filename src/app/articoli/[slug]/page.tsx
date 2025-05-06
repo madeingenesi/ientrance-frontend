@@ -7,8 +7,8 @@ import Link from "next/link";
 export default async function ArticoloPage({ params }: any) {
   try {
     const slug = params.slug;
-    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
-    const localUrl = "http://localhost:1337";
+    // Utilizziamo la variabile d'ambiente o un URL di fallback
+    const baseUrl = "https://ambitious-cat-3135f7987e.strapiapp.com";
     const url = `${baseUrl}/api/articoli/${slug}?populate=*`;
 
     const response = await fetch(url, {
