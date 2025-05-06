@@ -114,7 +114,11 @@ export default function NewsCarousel({ articles }: any) {
                         Quisquam, quos. Lorem ipsum dolor sit amet consectetur.
                       </p>
                       <Link
-                        href={`/articoli/${article.Slug}`}
+                        href={`${
+                          article.Link_Esterno
+                            ? article.Link_Esterno
+                            : `/articoli/${article.Slug}`
+                        }`}
                         className="w-fit"
                         prefetch={true}
                       >
