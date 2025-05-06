@@ -105,7 +105,10 @@ export default function Home() {
               <span className="text-3xl max-w-2xl text-center font-semibold">
                 3-6 june 2025
               </span>
-              <Link href="/articoli/19" className="mt-8">
+              <Link
+                href="/articoli/i-entrance-summer-school-3-6-june-2025"
+                className="mt-8"
+              >
                 <Button className="cursor-pointer">
                   Discover more <ArrowRight className="w-4 h-4" />
                 </Button>
