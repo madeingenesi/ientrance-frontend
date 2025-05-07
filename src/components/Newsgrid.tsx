@@ -14,6 +14,8 @@ export default function NewsGrid({ articles }: any) {
         )
         .map((article: any) => {
           const imageUrl = article?.Immagine?.url || "/images/placeholder.jpg";
+          const firstParagraph =
+            article?.Contenuto?.[0]?.children?.[0]?.text || "";
           return (
             <div
               key={article.id}
@@ -33,8 +35,9 @@ export default function NewsGrid({ articles }: any) {
                       {article.Titolo}
                     </h3>
                     <p className="text-left mt-3">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Quisquam, quos. Lorem ipsum dolor sit amet consectetur.
+                      {firstParagraph.length > 100
+                        ? firstParagraph.substring(0, 100) + "..."
+                        : firstParagraph}
                     </p>
                     <Link
                       href={`/articoli/${article.id}`}
