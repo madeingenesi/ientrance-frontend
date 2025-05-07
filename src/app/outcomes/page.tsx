@@ -9,10 +9,12 @@ import NewsGrid from "@/components/Newsgrid";
 import Presslist from "@/components/Presslist";
 
 import { useArticlesContext } from "@/context/ArticlesContext";
+import { usePressContext } from "@/context/PressContext";
 
 export default function Outcomes() {
   const [newsStatus, setNewsStatus] = useState<boolean>(true);
   const { articles } = useArticlesContext();
+  const { presses } = usePressContext();
 
   return (
     <>
@@ -57,7 +59,11 @@ export default function Outcomes() {
       </header>
       <main>
         <div className="container w-full mx-auto flex flex-col gap-2 p-4 md:p-8 border-y md:border md:border-t-0">
-          {newsStatus ? <NewsGrid articles={articles} /> : <Presslist />}
+          {newsStatus ? (
+            <NewsGrid articles={articles} />
+          ) : (
+            <Presslist presses={presses} />
+          )}
         </div>
       </main>
     </>

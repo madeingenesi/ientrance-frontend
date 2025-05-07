@@ -81,7 +81,7 @@ export default function ComeInPage() {
       <PageHeader
         title={"Come In"}
         description={"Come In"}
-        image={"/images/esempio.jpg"}
+        image={"/images/pictures/ientrance-content-27.jpg"}
       />
       <main className="container w-full mx-auto border-x border-gray-200">
         <section
