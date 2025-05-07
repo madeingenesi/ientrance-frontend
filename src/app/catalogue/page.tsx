@@ -85,14 +85,16 @@ export default function Catalogue() {
     );
 
     setMainCategory(
-      [...(uniqueMainCategory as unknown as string[])].filter(Boolean)
+      [...(uniqueMainCategory as unknown as string[])].filter(Boolean).sort()
     );
     setSubCategory(
-      [...(uniqueSubCategory as unknown as string[])].filter(Boolean)
+      [...(uniqueSubCategory as unknown as string[])].filter(Boolean).sort()
     );
-    setTechnique([...(uniqueTechnique as unknown as string[])].filter(Boolean));
+    setTechnique(
+      [...(uniqueTechnique as unknown as string[])].filter(Boolean).sort()
+    );
     setTenantName(
-      [...(uniqueTenantName as unknown as string[])].filter(Boolean)
+      [...(uniqueTenantName as unknown as string[])].filter(Boolean).sort()
     );
   }, [filteredMachineries]);
 
