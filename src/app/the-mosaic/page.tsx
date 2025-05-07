@@ -193,7 +193,15 @@ export default function TheMosaicPage() {
               </div>
             </div>
             <div className="md:col-span-4 md:row-span-3 md:col-start-4 md:row-start-4 bg-gray-200 p-[1px] pb-2 splashMiniXS w-full">
-              <div className="bg-white splashMiniXS w-full h-full p-8">3</div>
+              <div
+                className="bg-white splashMiniXS w-full h-full p-8"
+                style={{
+                  backgroundImage:
+                    "url('/images/pictures/ientrance-content-26.jpg')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              ></div>
             </div>
             <div
               className="md:col-span-5 md:row-span-3 md:col-start-5 md:row-start-1 bg-gray-200 p-8 splashMiniXS w-full"

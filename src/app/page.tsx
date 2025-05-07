@@ -230,7 +230,8 @@ export default function Home() {
           <div
             className="flex flex-row gap-8 p-8 splash border-none justify-between items-end"
             style={{
-              backgroundImage: "url('/images/summer_school.jpg')",
+              backgroundImage:
+                "url('/images/pictures/ientrance-content-28.jpg')",
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",

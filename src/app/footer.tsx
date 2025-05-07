@@ -167,8 +167,9 @@ export default function Footer() {
               Catalogue
             </h5>
             <p className="text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Discover our state-of-the-art research infrastructure machine
+              catalog, showcasing cutting-edge equipment designed to drive
+              innovation.
             </p>
             <ul className="flex flex-col">
               <li className="flex flex-row gap-2 items-center">
