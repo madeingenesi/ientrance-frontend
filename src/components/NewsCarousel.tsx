@@ -53,6 +53,10 @@ export default function NewsCarousel({ articles }: any) {
           .map((article: any, index: number) => {
             const imageUrl =
               article?.Immagine?.url || "/images/placeholder.jpg";
+
+            const firstParagraph =
+              article?.Contenuto?.[0]?.children?.[0]?.text || "";
+
             return (
               <SwiperSlide key={article.id} className="!h-auto">
                 <div className="bg-gray-200 splashMiniXS flex-1 p-[1px] h-full">
@@ -83,9 +87,9 @@ export default function NewsCarousel({ articles }: any) {
                           {article.Titolo}
                         </h3>
                         <p className="text-left mt-3">
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Quisquam, quos. Lorem ipsum dolor sit amet
-                          consectetur.
+                          {firstParagraph.length > 100
+                            ? firstParagraph.substring(0, 100) + "..."
+                            : firstParagraph}
                         </p>
                         <Link
                           href={`${
