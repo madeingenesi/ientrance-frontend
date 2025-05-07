@@ -163,14 +163,14 @@ export default function ComeInPage() {
               </div>
               <div className="w-1/2 flex flex-row gap-2">
                 <Image
-                  src="/images/esempio.jpg"
+                  src="/images/pictures/ientrance-content-22.jpg"
                   alt="iENTRANCE"
                   width={1000}
                   height={1000}
                   className="h-full object-cover splashMini w-1/2 "
                 />
                 <Image
-                  src="/images/esempio.jpg"
+                  src="/images/pictures/ientrance-content-6.jpg"
                   alt="iENTRANCE"
                   width={1000}
                   height={1000}

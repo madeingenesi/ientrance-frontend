@@ -12,66 +12,69 @@ export default function NewsGrid({ articles }: any) {
           (a: any, b: any) =>
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         )
-        .map((article: any) => (
-          <div
-            key={article.id}
-            className="bg-gray-200 splashMiniXS flex-1 p-[1px] h-full"
-          >
-            <div className="flex flex-col gap-0 bg-muted min-h-full p-2 splashMiniXS">
-              <Image
-                src={"/images/esempio.jpg"}
-                alt={"esempio"}
-                width={600}
-                height={400}
-                className="object-cover splashMiniXS w-full"
-              />
-              <div className="flex flex-col p-4 flex-1 justify-between">
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-2xl font-semibold text-left mt-3">
-                    {article.Titolo}
-                  </h3>
-                  <p className="text-left mt-3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quisquam, quos. Lorem ipsum dolor sit amet consectetur.
-                  </p>
-                  <Link
-                    href={`/articoli/${article.id}`}
-                    className="w-fit"
-                    prefetch={true}
-                  >
-                    <Button
-                      variant="outline"
-                      className="w-fit mb-4 cursor-pointer"
+        .map((article: any) => {
+          const imageUrl = article?.Immagine?.url || "/images/placeholder.jpg";
+          return (
+            <div
+              key={article.id}
+              className="bg-gray-200 splashMiniXS flex-1 p-[1px] h-full"
+            >
+              <div className="flex flex-col gap-0 bg-muted min-h-full p-2 splashMiniXS">
+                <Image
+                  src={imageUrl}
+                  alt={"esempio"}
+                  width={600}
+                  height={400}
+                  className="object-cover splashMiniXS w-full"
+                />
+                <div className="flex flex-col p-4 flex-1 justify-between">
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-2xl font-semibold text-left mt-3">
+                      {article.Titolo}
+                    </h3>
+                    <p className="text-left mt-3">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Quisquam, quos. Lorem ipsum dolor sit amet consectetur.
+                    </p>
+                    <Link
+                      href={`/articoli/${article.id}`}
+                      className="w-fit"
+                      prefetch={true}
                     >
-                      Read More <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </Link>
-                </div>
-                <div
-                  className={`flex flex-row w-full justify-between pt-4 p-4 splashMiniXS ${
-                    article?.categorie_articoli?.Titolo === "News"
-                      ? "bg-[var(--blue-primary)] text-white"
-                      : "bg-[var(--green-primary)] text-white"
-                  }`}
-                >
-                  <span className="text-sm font-medium flex flex-row gap-2 items-center">
-                    {article?.categorie_articoli?.Titolo == "News" ? (
-                      <Rss className="w-4 h-4" />
-                    ) : article?.categorie_articoli?.Titolo == "Proposals" ? (
-                      <Paperclip className="w-4 h-4" />
-                    ) : (
-                      <Calendar className="w-4 h-4" />
-                    )}
-                    {article?.categorie_articoli?.Titolo}
-                  </span>
-                  <span className="text-sm font-medium">
-                    {new Date(article?.createdAt).toLocaleDateString()}
-                  </span>
+                      <Button
+                        variant="outline"
+                        className="w-fit mb-4 cursor-pointer"
+                      >
+                        Read More <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
+                  </div>
+                  <div
+                    className={`flex flex-row w-full justify-between pt-4 p-4 splashMiniXS ${
+                      article?.categorie_articoli?.Titolo === "News"
+                        ? "bg-[var(--blue-primary)] text-white"
+                        : "bg-[var(--green-primary)] text-white"
+                    }`}
+                  >
+                    <span className="text-sm font-medium flex flex-row gap-2 items-center">
+                      {article?.categorie_articoli?.Titolo == "News" ? (
+                        <Rss className="w-4 h-4" />
+                      ) : article?.categorie_articoli?.Titolo == "Proposals" ? (
+                        <Paperclip className="w-4 h-4" />
+                      ) : (
+                        <Calendar className="w-4 h-4" />
+                      )}
+                      {article?.categorie_articoli?.Titolo}
+                    </span>
+                    <span className="text-sm font-medium">
+                      {new Date(article?.createdAt).toLocaleDateString()}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
     </div>
   );
 }

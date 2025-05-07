@@ -18,35 +18,35 @@ export default function ExpertiseCarousel() {
       title: "Nanoscience and Nanotechnology",
       description:
         "iENTRANCE provides access to a comprehensive suite of tools and expertise for micro- and nanoscale processing of materials, including synthesis, characterization, manipulation and micro- and nano-technological processes and devices fabrication.",
-      image: "/images/esempio.jpg",
+      image: "/images/pictures/ientrance-content-12.jpg",
     },
     {
       id: 2,
       title: "Advanced Materials Characterization",
       description:
         "The infrastructure offers top-level expertise in micro- and nanoscale structural, compositional, optoelectronic, in-situ, and in-operando characterization. This involves the use of advanced techniques to analyze the properties and behavior of materials at the atomic and molecular levels.",
-      image: "/images/esempio.jpg",
+      image: "/images/pictures/ientrance-content-14.jpg",
     },
     {
       id: 3,
       title: "Materials for Energy Applications",
       description:
         "iENTRANCE focuses on developing materials for next-generation energy technologies, including photovoltaics, battery technologies, supercapacitors, hydrogen production and storage, fuel cell technologies, and power electronics.",
-      image: "/images/esempio.jpg",
+      image: "/images/pictures/ientrance-content-9.jpg",
     },
     {
       id: 4,
       title: "Sustainable Materials and Practices",
       description:
         "The infrastructure supports research on sustainable materials and processes, including waste valorization, (photo)catalysis, sustainable polymers, material recyclability and durability, and low-impact fabrication.",
-      image: "/images/esempio.jpg",
+      image: "/images/pictures/ientrance-content-19.jpg",
     },
     {
       id: 5,
       title: "Data Management and Interoperability",
       description:
         "A strong focus is placed on FAIR data principles, ensuring that research data is Findable, Accessible, Interoperable, and Reusable. This includes the development of an online catalogue of methodologies, technologies, and facilities, with a focus on interoperability and open access.",
-      image: "/images/esempio.jpg",
+      image: "/images/pictures/ientrance-content-16.jpg",
     },
   ];
 

@@ -61,14 +61,14 @@ export default function HomeSlider({ data }: { data: any }) {
       video: "/videos/video4.webm",
     },
     {
-      id: 6,
+      id: 5,
       title:
         "We support <br/> <strong>industry</strong> <br/>to drive <strong>competitive innovation</strong>",
       image: "/images/esempio.jpg",
       video: "/videos/video6.webm",
     },
     {
-      id: 5,
+      id: 6,
       title:
         "We think <br/> <strong>nano</strong><br/> to build <strong>macro</strong>",
       image: "/images/esempio.jpg",
@@ -129,6 +129,12 @@ export default function HomeSlider({ data }: { data: any }) {
     },
     {
       id: 5,
+      title:
+        "We support <strong>industry</strong> to drive <strong>competitive innovation</strong>",
+      text: "Leverage on iENTRANCE to gain your competitive edge.We integrate advanced physics, chemistry, and engineering expertise to co-develop innovative solutions with industry partners. Access cutting-edge tools and collaborative research focused on key growth areas: next-generation materials for energy, circular economy, advanced electronics & power electronics, and optimized chemical processes & catalysis. Partner with us to accelerate your R&D, transform ideas into market success, and boost your competitiveness.",
+    },
+    {
+      id: 6,
       title: "We think <strong>nano</strong> to build <strong>macro</strong>",
       text: "We are a nanoscience research infrastructure with a clear vision: to translate nanoscale discoveries into functional devices. Our internal expertise, combined with our strong presence within a dynamic ecosystem of research and industry partners, enables us to bridge the gap between nano and macro. We actively foster collaboration and knowledge exchange to accelerate the technology transition to higher TRL levels, bringing the breakthrough potential of nanoscience and nanofabrication to the device scale. <br/>These options highlight your ability to bridge the gap between nanoscience and device development, emphasizing your collaborative approach and commitment to real-world impact. You can choose the option that best reflects your organization's unique strengths and aspirations",
     },

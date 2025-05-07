@@ -19,7 +19,7 @@ export default function ExpertiseCarousel() {
       title: "Nanomaterials for energy",
       description:
         "iENTRANCE provides access to a comprehensive suite of tools and expertise for micro- and nanoscale processing of materials, including synthesis, characterization, manipulation and micro- and nano-technological processes and devices fabrication.",
-      image: "/images/main-topics-carousel/nanomaterials-for-energy.jpg",
+      image: "/images/pictures/ientrance-content-7.jpg",
     },
     {
       id: 2,
@@ -33,14 +33,14 @@ export default function ExpertiseCarousel() {
       title: "Multiscale Characterization of Micro/Nanosystems",
       description:
         "iENTRANCE focuses on developing materials for next-generation energy technologies, including photovoltaics, battery technologies, supercapacitors, hydrogen production and storage, fuel cell technologies, and power electronics.",
-      image: "/images/esempio.jpg",
+      image: "/images/pictures/ientrance-content-3.jpg",
     },
     {
       id: 4,
       title: "Device and System Fabrication Technologies",
       description:
         "The infrastructure supports research on sustainable materials and processes, including waste valorization, (photo)catalysis, sustainable polymers, material recyclability and durability, and low-impact fabrication.",
-      image: "/images/main-topics-carousel/device-and-system.jpg",
+      image: "/images/pictures/ientrance-content-4.jpg",
     },
   ];
 

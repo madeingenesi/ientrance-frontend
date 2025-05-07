@@ -131,7 +131,7 @@ export default function TheMosaicPage() {
       <PageHeader
         title={"The Mosaic"}
         description={""}
-        image={"/images/esempio.jpg"}
+        image={"/images/pictures/ientrance-content-18.jpg"}
       />
       <main className="container w-full mx-auto border-x border-gray-200">
         <section
@@ -439,7 +439,15 @@ export default function TheMosaicPage() {
               {/* IMG - Text Right */}
               <div className="flex flex-col md:flex-row gap-0 gap-12 md:gap-32">
                 <div className="flex flex-col gap-0 w-full md:w-1/2 min-h-[400px] gap-1">
-                  <div className="flex-1 bg-gray-200 splashMini">1</div>
+                  <div
+                    className="flex-1 splashMini"
+                    style={{
+                      backgroundImage:
+                        "url('/images/pictures/ientrance-content-21.jpg')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  ></div>
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-center">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
@@ -470,7 +478,15 @@ export default function TheMosaicPage() {
               {/* IMG - Text Left */}
               <div className="flex flex-row gap-0 gap-32">
                 <div className="flex flex-col gap-0 w-1/2 min-h-[400px] gap-1 order-2">
-                  <div className="flex-1 bg-gray-200 splashMini">1</div>
+                  <div
+                    className="flex-1 bg-gray-200 splashMini"
+                    style={{
+                      backgroundImage:
+                        "url('/images/pictures/ientrance-content-15.jpg')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  ></div>
                 </div>
                 <div className="w-1/2 flex flex-col justify-center">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
@@ -499,7 +515,15 @@ export default function TheMosaicPage() {
               {/* IMG - Text Right */}
               <div className="flex flex-row gap-0 gap-32">
                 <div className="flex flex-col gap-0 w-1/2 min-h-[400px] gap-1">
-                  <div className="flex-1 bg-gray-200 splashMini">1</div>
+                  <div
+                    className="flex-1 bg-gray-200 splashMini"
+                    style={{
+                      backgroundImage:
+                        "url('/images/pictures/ientrance-content-8.jpg')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  ></div>
                 </div>
                 <div className="w-1/2 flex flex-col justify-center">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
@@ -535,7 +559,15 @@ export default function TheMosaicPage() {
               {/* IMG - Text Left */}
               <div className="flex flex-row gap-0 gap-32">
                 <div className="flex flex-col gap-0 w-1/2 min-h-[400px] gap-1 order-2">
-                  <div className="flex-1 bg-gray-200 splashMini">1</div>
+                  <div
+                    className="flex-1 bg-gray-200 splashMini"
+                    style={{
+                      backgroundImage:
+                        "url('/images/pictures/ientrance-content-10.jpg')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  ></div>
                 </div>
 
                 <div className="w-1/2 flex flex-col justify-center">
@@ -572,7 +604,15 @@ export default function TheMosaicPage() {
               {/* IMG - Text Right */}
               <div className="flex flex-col md:flex-row gap-0 gap-12 md:gap-32">
                 <div className="flex flex-col gap-0 w-full md:w-1/2 min-h-[400px] gap-1">
-                  <div className="flex-1 bg-gray-200 splashMini">1</div>
+                  <div
+                    className="flex-1 bg-gray-200 splashMini"
+                    style={{
+                      backgroundImage:
+                        "url('/images/pictures/ientrance-content-23.jpg')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  ></div>
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-center">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
@@ -601,7 +641,15 @@ export default function TheMosaicPage() {
               {/* IMG - Text Left */}
               <div className="flex flex-row gap-0 gap-32">
                 <div className="flex flex-col gap-0 w-1/2 min-h-[400px] gap-1 order-2">
-                  <div className="flex-1 bg-gray-200 splashMini">1</div>
+                  <div
+                    className="flex-1 bg-gray-200 splashMini"
+                    style={{
+                      backgroundImage:
+                        "url('/images/pictures/ientrance-content-17.jpg')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  ></div>
                 </div>
                 <div className="w-1/2 flex flex-col justify-center">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
@@ -632,7 +680,15 @@ export default function TheMosaicPage() {
               {/* IMG - Text Right */}
               <div className="flex flex-row gap-0 gap-32">
                 <div className="flex flex-col gap-0 w-1/2 min-h-[400px] gap-1">
-                  <div className="flex-1 bg-gray-200 splashMini">1</div>
+                  <div
+                    className="flex-1 bg-gray-200 splashMini"
+                    style={{
+                      backgroundImage:
+                        "url('/images/pictures/ientrance-content-13.jpg')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  ></div>
                 </div>
                 <div className="w-1/2 flex flex-col justify-center">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
