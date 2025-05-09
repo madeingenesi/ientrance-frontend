@@ -52,12 +52,10 @@ export default function Catalogue() {
     "Caracterization",
     "Fabrication",
   ]);
-  const [subCategory, setSubCategory] = useState<string[]>([]);
   const [technique, setTechnique] = useState<string[]>([]);
   const [tenantName, setTenantName] = useState<string[]>([]);
   const [model, setModel] = useState<string[]>([]);
   const [node, setNode] = useState<string[]>([]);
-  const [state, setState] = useState<string[]>([]);
   const [filterFields, setFilterFields] = useState<string[]>([]);
 
   // Gestione dello Sheet
@@ -67,17 +65,12 @@ export default function Catalogue() {
   useEffect(() => {
     const uniqueMainCategory = new Set(
       filteredMachineries.map(
-        (machine: any) => machine.techniqueName?.split(">")[0]
-      )
-    );
-    const uniqueSubCategory = new Set(
-      filteredMachineries.map(
-        (machine: any) => machine.techniqueName?.split(">")[1]
+        (machine: any) => machine.techniqueName?.split(">", 2)[0]
       )
     );
     const uniqueTechnique = new Set(
       filteredMachineries.map(
-        (machine: any) => machine.techniqueName?.split(">")[2]
+        (machine: any) => machine.techniqueName?.split(">", 2)[1]
       )
     );
     const uniqueTenantName = new Set(
@@ -86,9 +79,6 @@ export default function Catalogue() {
 
     setMainCategory(
       [...(uniqueMainCategory as unknown as string[])].filter(Boolean).sort()
-    );
-    setSubCategory(
-      [...(uniqueSubCategory as unknown as string[])].filter(Boolean).sort()
     );
     setTechnique(
       [...(uniqueTechnique as unknown as string[])].filter(Boolean).sort()
@@ -101,17 +91,17 @@ export default function Catalogue() {
   useEffect(() => {
     const lowercasedSearch = search.toLowerCase();
     const filtered = machineries.filter((machine: any) => {
+      // Escludi solo le macchine offline
+      if (machine.equipmentStatus === "Offline") return false;
       const matchesSearch =
         machine.techniqueName?.toLowerCase().includes(lowercasedSearch) ||
         machine.tenantName?.toLowerCase().includes(lowercasedSearch) ||
-        machine.productModel?.toLowerCase().includes(lowercasedSearch) ||
-        machine.equipmentStatus?.toLowerCase().includes(lowercasedSearch);
+        machine.productModel?.toLowerCase().includes(lowercasedSearch);
       const matchesFilterFields = filterFields.every(
         (field) =>
           machine.techniqueName?.toLowerCase().includes(field.toLowerCase()) ||
           machine.tenantName?.toLowerCase().includes(field.toLowerCase()) ||
-          machine.productModel?.toLowerCase().includes(field.toLowerCase()) ||
-          machine.equipmentStatus?.toLowerCase().includes(field.toLowerCase())
+          machine.productModel?.toLowerCase().includes(field.toLowerCase())
       );
       return matchesSearch && matchesFilterFields;
     });
@@ -144,7 +134,10 @@ export default function Catalogue() {
               variant="outline"
               className="text-sm bg-sidebar text-gray-500 rounded-full"
             >
-              {machineries.length} machines
+              {filterFields.length > 0 || search
+                ? filteredMachineries.length
+                : machineries.length}{" "}
+              machines
             </Badge>
             <Badge
               variant="outline"
@@ -157,18 +150,12 @@ export default function Catalogue() {
       </header>
       <main className="container w-full mx-auto flex flex-col mb-12">
         <div className="container w-full mx-auto sticky top-0 bg-white z-10">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-0 !divide-y md:border md:border-t-0 md:!divide-y-0 md:divide-x divide-gray-200">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-0 !divide-y md:border md:border-t-0 md:!divide-y-0 md:divide-x divide-gray-200">
             <SelectPopover
               values={mainCategory}
               filterFields={filterFields}
               setFilterFields={setFilterFields}
               filterName="Main Category"
-            />
-            <SelectPopover
-              values={subCategory}
-              filterFields={filterFields}
-              setFilterFields={setFilterFields}
-              filterName="Sub Category"
             />
             <SelectPopover
               values={technique}
@@ -212,11 +199,9 @@ export default function Catalogue() {
             <TableHeader>
               <TableRow className="*:p-4 divide-x">
                 <TableHead>Main Category</TableHead>
-                <TableHead>Sub Category</TableHead>
                 <TableHead>Technique</TableHead>
                 <TableHead>Name</TableHead>
                 <TableHead>Node</TableHead>
-                <TableHead>State</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody className="">
@@ -230,11 +215,9 @@ export default function Catalogue() {
                       id: machine?.id,
                       tenantName: machine?.tenantName,
                       name: machine?.name,
-                      mainCategory: machine?.techniqueName?.split(">")[0],
-                      subCategory: machine?.techniqueName?.split(">")[1],
-                      technique: machine?.techniqueName?.split(">")[2],
+                      mainCategory: machine?.techniqueName?.split(">", 2)[0],
+                      technique: machine?.techniqueName?.split(">", 2)[1],
                       model: machine?.productModel,
-                      state: machine?.equipmentStatus,
                       node: machine?.tenantName,
                       laboratory: machine?.equipmentLaboratoryName,
                     });
@@ -242,30 +225,16 @@ export default function Catalogue() {
                   }}
                 >
                   <TableCell className="col-span-1 text-wrap whitespace-normal">
-                    {machine.techniqueName?.split(">")[0] || "Null"}
+                    {machine.techniqueName?.split(">", 2)[0] || "Null"}
                   </TableCell>
                   <TableCell className="col-span-1 text-wrap whitespace-normal">
-                    {machine.techniqueName?.split(">")[1] || "Null"}
-                  </TableCell>
-                  <TableCell className="col-span-1 text-wrap whitespace-normal">
-                    {machine.techniqueName?.split(">")[2] || "Null"}
+                    {machine.techniqueName?.split(">", 2)[1] || "Null"}
                   </TableCell>
                   <TableCell className="col-span-1 text-wrap whitespace-normal">
                     {machine.name || "Null"}
                   </TableCell>
                   <TableCell className="col-span-1 text-wrap whitespace-normal">
                     {machine.tenantName || "Null"}
-                  </TableCell>
-                  <TableCell className="col-span-1 text-wrap whitespace-normal">
-                    <Badge
-                      className={`rounded-full ${
-                        machine.equipmentStatus === "Online"
-                          ? "bg-green-100 text-green-500 border-green-500"
-                          : "bg-red-100 text-red-500 border-red-500"
-                      }`}
-                    >
-                      {machine.equipmentStatus || "Null"}
-                    </Badge>
                   </TableCell>
                 </TableRow>
               ))}
@@ -293,21 +262,12 @@ export default function Catalogue() {
           <div className="flex flex-col border-y">
             <div className="flex flex-row gap-2 items-center justify-between p-4">
               <h3 className="text-2xl font-medium">{selectedItem?.name}</h3>
-              <Badge
-                className={`rounded-full ${
-                  selectedItem?.state === "Online"
-                    ? "bg-green-100 text-green-500 border-green-500"
-                    : "bg-red-100 text-red-500 border-red-500"
-                }`}
-              >
-                {selectedItem?.state || "Null"}
-              </Badge>
             </div>
-            <div className="flex flex-row border-t divide-x">
+            <div className="flex flex-row border-t ">
               <div className="w-3/4 p-4 font-semibold">
                 Technique: {selectedItem?.technique}
               </div>
-              <div className="w-1/4 p-4 bg-foreground text-white flex flex-row gap-2 items-center justify-between">
+              <div className="w-1/4 p-4 bg-foreground text-white flex flex-row gap-2 items-center justify-between hidden">
                 Discover more <ArrowUpRight className="w-4 h-4" />
               </div>
             </div>
@@ -315,10 +275,11 @@ export default function Catalogue() {
           <div className="flex-1 min-h-0">
             <ScrollArea className="h-full">
               {selectedItem && (
-                <div className="divide-y">
+                <div className="divide-y last:border-b">
                   {Object.entries(selectedItem)
                     .filter(
-                      ([key]) => !["id", "state", "technique"].includes(key)
+                      ([key]) =>
+                        !["id", "technique", "laboratory"].includes(key)
                     )
                     .map(([key, value]) => (
                       <div
@@ -333,9 +294,14 @@ export default function Catalogue() {
               )}
             </ScrollArea>
           </div>
-          <SheetFooter className="border-t">
+          <SheetFooter className="border-t p-0">
             <SheetClose asChild>
-              <Button type="submit">More Details</Button>
+              <Button
+                type="submit"
+                className="w-full bg-black rounded-none p-6 text-lg font-light"
+              >
+                Close Details
+              </Button>
             </SheetClose>
           </SheetFooter>
         </SheetContent>
