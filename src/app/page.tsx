@@ -171,7 +171,7 @@ export default function Home() {
               </h4>
             </div>
             <div className="flex flex-col gap-4 p-2 h-full">
-              <span className="text-6xl font-medium">+70 m/€</span>
+              <span className="text-6xl font-medium">+70 M€</span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
                 Investments
               </h4>

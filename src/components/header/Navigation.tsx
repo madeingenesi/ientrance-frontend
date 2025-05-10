@@ -197,8 +197,8 @@ export function Navigation() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <div className="flex items-center gap-2 hidden">
-          <NavigationMenuItem>
+        <div className="flex items-center gap-2">
+          <NavigationMenuItem className="hidden">
             <Link href="/docs" legacyBehavior passHref>
               <Button variant="outline" className="cursor-pointer">
                 <LogIn className="w-4 h-4" />
@@ -207,7 +207,11 @@ export function Navigation() {
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/docs" legacyBehavior passHref>
+            <Link
+              href="https://ambitious-cat-3135f7987e.media.strapiapp.com/i_Entrance_Proposal_Template_5380b72ea6.rtf"
+              legacyBehavior
+              passHref
+            >
               <Button className="bg-[var(--blue-primary)] text-white cursor-pointer">
                 <FolderOpenDot className="w-4 h-4" />
                 Send your project
