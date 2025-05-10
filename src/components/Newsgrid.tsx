@@ -27,7 +27,7 @@ export default function NewsGrid({ articles }: any) {
                   alt={"esempio"}
                   width={600}
                   height={400}
-                  className="object-cover splashMiniXS w-full"
+                  className="object-cover splashMiniXS w-full h-[300px]"
                 />
                 <div className="flex flex-col p-4 flex-1 justify-between">
                   <div className="flex flex-col gap-2">
@@ -40,9 +40,14 @@ export default function NewsGrid({ articles }: any) {
                         : firstParagraph}
                     </p>
                     <Link
-                      href={`/articoli/${article.id}`}
+                      href={`${
+                        article.Link_Esterno
+                          ? article.Link_Esterno
+                          : `/articoli/${article.Slug}`
+                      }`}
                       className="w-fit"
                       prefetch={true}
+                      target={article.Link_Esterno ? "_blank" : "_self"}
                     >
                       <Button
                         variant="outline"

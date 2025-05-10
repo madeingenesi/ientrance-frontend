@@ -79,7 +79,7 @@ export default function NewsCarousel({ articles }: any) {
                       alt={"placeholder"}
                       width={600}
                       height={400}
-                      className="object-cover splashMiniXS"
+                      className="object-cover splashMiniXS !h-[300px]"
                     />
                     <div className="flex flex-col p-4 flex-1 justify-between">
                       <div className="flex flex-col gap-2">
@@ -99,6 +99,7 @@ export default function NewsCarousel({ articles }: any) {
                           }`}
                           className="w-fit"
                           prefetch={true}
+                          target={article.Link_Esterno ? "_blank" : "_self"}
                         >
                           <Button
                             variant="outline"

@@ -159,44 +159,28 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 w-full">
             <div className="flex flex-col gap-4 p-2 h-full">
-              <span className="text-6xl font-medium">+94</span>
+              <span className="text-6xl font-medium">+70</span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
                 Scientific techniques
               </h4>
-              <p className="text-xs md:text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut.
-              </p>
             </div>
             <div className="flex flex-col gap-4 p-2 h-full">
-              <span className="text-6xl font-medium">30</span>
+              <span className="text-6xl font-medium">+400</span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
-                Instruments available
+                Instruments
               </h4>
-              <p className="text-xs md:text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut.
-              </p>
             </div>
             <div className="flex flex-col gap-4 p-2 h-full">
-              <span className="text-6xl font-medium">20</span>
+              <span className="text-6xl font-medium">+70 m/€</span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
                 Investments
               </h4>
-              <p className="text-xs md:text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut.
-              </p>
             </div>
             <div className="flex flex-col gap-4 p-2 h-full">
-              <span className="text-6xl font-medium">+60</span>
+              <span className="text-6xl font-medium">+80</span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
                 Researchers involved
               </h4>
-              <p className="text-xs md:text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut.
-              </p>
             </div>
           </div>
         </div>
