@@ -177,19 +177,20 @@ export default function Footer() {
             </p>
             <ul className="flex flex-col">
               <li className="flex flex-row gap-2 items-center">
-                <ChevronRight className="w-4 h-4" /> +70 Scientific techniques
+                <ChevronRight className="w-4 h-4" />
+                70+ Scientific techniques
               </li>
               <li className="flex flex-row gap-2 items-center">
                 <ChevronRight className="w-4 h-4" />
-                +400 Instruments
+                400+ Instruments
               </li>
               <li className="flex flex-row gap-2 items-center">
                 <ChevronRight className="w-4 h-4" />
-                +70 M€ Investment
+                70M+ Investment
               </li>
               <li className="flex flex-row gap-2 items-center">
                 <ChevronRight className="w-4 h-4" />
-                +80 Researchers involved
+                80+ Researchers involved
               </li>
             </ul>
           </div>

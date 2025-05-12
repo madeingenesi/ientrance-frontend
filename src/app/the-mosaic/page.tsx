@@ -185,10 +185,7 @@ export default function TheMosaicPage() {
                 <div className="flex flex-col items-start justify-start gap-2">
                   <span className="text-3xl font-semibold">+436 Machines</span>
 
-                  <p className="text-xs">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Vero molestiae est mollitia.
-                  </p>
+            
                 </div>
               </div>
             </div>
@@ -243,10 +240,7 @@ export default function TheMosaicPage() {
                 <div className="flex flex-col items-start justify-start gap-2">
                   <span className="text-3xl font-semibold">14 Nodes</span>
 
-                  <p className="text-xs">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Vero molestiae est mollitia.
-                  </p>
+    
                 </div>
               </div>
             </div>

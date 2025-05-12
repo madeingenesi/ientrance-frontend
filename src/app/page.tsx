@@ -159,25 +159,25 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 w-full">
             <div className="flex flex-col gap-4 p-2 h-full">
-              <span className="text-5xl md:text-6xl font-medium">+70</span>
+              <span className="text-5xl md:text-6xl font-medium">70+</span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
                 Scientific techniques
               </h4>
             </div>
             <div className="flex flex-col gap-4 p-2 h-full">
-              <span className="text-5xl md:text-6xl font-medium">+400</span>
+              <span className="text-5xl md:text-6xl font-medium">400+</span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
                 Instruments
               </h4>
             </div>
             <div className="flex flex-col gap-4 p-2 h-full">
-              <span className="text-5xl md:text-6xl font-medium">+70 M€</span>
+              <span className="text-5xl md:text-6xl font-medium">70M+</span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
                 Investments
               </h4>
             </div>
             <div className="flex flex-col gap-4 p-2 h-full">
-              <span className="text-5xl md:text-6xl font-medium">+80</span>
+              <span className="text-5xl md:text-6xl font-medium">80+</span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
                 Researchers involved
               </h4>
