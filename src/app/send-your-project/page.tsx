@@ -32,8 +32,18 @@ export default function SendYourProject() {
             </p>
             <p className="text-2xl">
               Applicants are required to submit their proposals downloading the
-              submission form (linkare il form da scaricare) and send it to
-              submission@ientrance.eu
+              submission{" "}
+              <Link href="https://ambitious-cat-3135f7987e.media.strapiapp.com/i_Entrance_Proposal_Template_5380b72ea6.rtf">
+                <span className="text-[var(--blue-primary)] underline font-semibold">
+                  form
+                </span>
+              </Link>{" "}
+              and send it to{" "}
+              <Link href="mailto:submission@ientrance.eu">
+                <span className="text-[var(--blue-primary)] underline font-semibold">
+                  submission@ientrance.eu
+                </span>
+              </Link>
             </p>
             <p className="text-2xl">
               The submission form will request detailed information such as the
@@ -45,7 +55,7 @@ export default function SendYourProject() {
               provided application guidelines to ensure their submission meets
               all necessary criteria.
             </p>
-            <Link href="https://ambitious-cat-3135f7987e.media.strapiapp.com/i_Entrance_Proposal_Template_5380b72ea6.rtf">
+            <Link href="/come-in#guide">
               <Button className="bg-[var(--blue-primary)] text-white cursor-pointer">
                 <FolderOpenDot className="w-4 h-4" />
                 Go to the Guide

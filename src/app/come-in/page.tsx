@@ -230,7 +230,7 @@ export default function ComeInPage() {
           </div>
         </section>
 
-        <section className=" w-full flex flex-col bg-white relative">
+        <section className=" w-full flex flex-col bg-white relative" id="guide">
           <div className="bg-gray-200 splash py-[1px]">
             <div className="flex flex-col gap-8 p-22 bg-muted splash border-none justify-center items-center">
               <h2 className="text-5xl font-medium tracking-tight ">Guide</h2>

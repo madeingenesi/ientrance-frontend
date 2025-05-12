@@ -140,7 +140,10 @@ export default function Footer() {
             Follow Us <ArrowRight className="w-5 h-5" />
           </h5>
           <div className="flex flex-col gap-2 items-start">
-            <Link href="https://www.youtube.com/@IENTRANCERESEARCH">
+            <Link
+              href="https://www.youtube.com/@IENTRANCERESEARCH"
+              target="_blank"
+            >
               <span className="text-lg flex flex-row gap-2 items-center">
                 <Image
                   src="/svg/youtub.svg"
@@ -151,7 +154,10 @@ export default function Footer() {
                 Youtube
               </span>
             </Link>
-            <Link href="https://www.linkedin.com/company/ientrance-enl/">
+            <Link
+              href="https://www.linkedin.com/company/ientrance-enl/"
+              target="_blank"
+            >
               <span className="text-lg flex flex-row gap-2 items-center">
                 <Image
                   src="/svg/linkedin.svg"
