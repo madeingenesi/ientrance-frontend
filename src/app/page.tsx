@@ -677,9 +677,11 @@ export default function Home() {
             encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight text-center"
             className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight text-center"
           />
-          <Button>
-            Vedi tutto <ArrowRight className="w-4 h-4" />
-          </Button>
+          <Link href="/outcomes">
+            <Button>
+              Vedi tutto <ArrowRight className="w-4 h-4" />
+            </Button>
+          </Link>
         </div>
         {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {articles

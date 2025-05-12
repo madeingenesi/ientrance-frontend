@@ -65,8 +65,8 @@ export default function Footer() {
 
   return (
     <footer className="bg-[var(--blue-primary)] text-white pt-16">
-      <section className="container w-full grid grid-cols-1 md:grid-cols-5 grid-rows-2 md:grid-rows-2 mx-auto p-8 gap-4 md:gap-0 ">
-        <div className="col-span-5 md:col-span-1">
+      <section className="container w-full flex flex-col md:grid md:grid-cols-5 md:grid-rows-2 mx-auto p-4 md:p-8 gap-0 md:gap-0 ">
+        <div className="col-span-5 md:col-span-1 w-full mb-6 md:mb-0">
           <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
             The Mosaic <ArrowRight className="w-5 h-5" />
           </h5>
@@ -81,7 +81,7 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div className="col-span-5 md:col-span-1">
+        <div className="col-span-5 md:col-span-1 w-full mb-6 md:mb-0">
           <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
             Come In <ArrowRight className="w-5 h-5" />
           </h5>
@@ -96,7 +96,7 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div className="col-span-5 md:col-span-1">
+        <div className="col-span-5 md:col-span-1 w-full mb-6 md:mb-0">
           <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
             Learn & Grow <ArrowRight className="w-5 h-5" />
           </h5>
@@ -111,7 +111,7 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div className="col-span-5 md:col-span-1">
+        <div className="col-span-5 md:col-span-1 w-full mb-6 md:mb-0">
           <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
             Outcomes <ArrowRight className="w-5 h-5" />
           </h5>
@@ -126,7 +126,7 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div className="col-span-5 md:col-span-1 row-span-1 row-start-2 pt-12 flex flex-col gap-2 ">
+        <div className="col-span-5 md:col-span-1 row-span-1 row-start-2 pt-12 flex flex-col gap-2 w-full mb-6 md:mb-0 md:pt-12">
           <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
             Contact Us <ArrowRight className="w-5 h-5" />
           </h5>
@@ -135,33 +135,37 @@ export default function Footer() {
             info@ientrance.eu
           </span>
         </div>
-        <div className="col-span-5 md:col-span-2 row-span-1 row-start-2 pt-12 flex flex-col gap-2 items-start pl-32">
+        <div className="col-span-5 md:col-span-2 row-span-1 row-start-2 pt-12 flex flex-col gap-2 items-start w-full mb-6 md:mb-0 md:pl-32 md:pt-12">
           <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
             Follow Us <ArrowRight className="w-5 h-5" />
           </h5>
           <div className="flex flex-col gap-2 items-start">
-            <span className="text-lg flex flex-row gap-2 items-center">
-              <Image
-                src="/svg/youtub.svg"
-                alt="Youtube"
-                width={24}
-                height={24}
-              />
-              Youtube
-            </span>
-            <span className="text-lg flex flex-row gap-2 items-center">
-              <Image
-                src="/svg/linkedin.svg"
-                alt="Linkedin"
-                width={30}
-                height={30}
-                className="-ml-1"
-              />
-              Linkedin
-            </span>
+            <Link href="https://www.youtube.com/@IENTRANCERESEARCH">
+              <span className="text-lg flex flex-row gap-2 items-center">
+                <Image
+                  src="/svg/youtub.svg"
+                  alt="Youtube"
+                  width={24}
+                  height={24}
+                />
+                Youtube
+              </span>
+            </Link>
+            <Link href="https://www.linkedin.com/company/ientrance-enl/">
+              <span className="text-lg flex flex-row gap-2 items-center">
+                <Image
+                  src="/svg/linkedin.svg"
+                  alt="Linkedin"
+                  width={30}
+                  height={30}
+                  className="-ml-1"
+                />
+                Linkedin
+              </span>
+            </Link>
           </div>
         </div>
-        <div className="bg-white splashMiniXS text-black p-4 col-span-5 md:col-span-1 col-start-1 md:col-start-5 row-start-1 md:row-end-3 flex flex-col justify-between gap-4">
+        <div className="bg-white splashMiniXS text-black p-4 w-full mb-6 md:mb-0 md:col-span-1 md:col-start-5 md:row-start-1 md:row-end-3 flex flex-col justify-between gap-4 order-last md:order-none">
           <div className="flex-1">
             <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
               Catalogue

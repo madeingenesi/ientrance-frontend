@@ -207,11 +207,7 @@ export function Navigation() {
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link
-              href="https://ambitious-cat-3135f7987e.media.strapiapp.com/i_Entrance_Proposal_Template_5380b72ea6.rtf"
-              legacyBehavior
-              passHref
-            >
+            <Link href="/send-your-project" >
               <Button className="bg-[var(--blue-primary)] text-white cursor-pointer">
                 <FolderOpenDot className="w-4 h-4" />
                 Send your project

@@ -183,7 +183,7 @@ export default function TheMosaicPage() {
               <div className="bg-[var(--blue-primary)] splashMiniXS w-full h-full p-8 flex flex-col justify-between gap-8 *:text-white">
                 <MapPin className="w-10 h-10" />
                 <div className="flex flex-col items-start justify-start gap-2">
-                  <span className="text-3xl font-semibold">+466 Machines</span>
+                  <span className="text-3xl font-semibold">+436 Machines</span>
 
                   <p className="text-xs">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -241,7 +241,7 @@ export default function TheMosaicPage() {
               <div className="bg-[var(--green-primary)] splashMiniXS w-full h-full p-8 flex flex-col justify-between *:text-white">
                 <Computer className="w-10 h-10" />
                 <div className="flex flex-col items-start justify-start gap-2">
-                  <span className="text-3xl font-semibold">12 Nodes</span>
+                  <span className="text-3xl font-semibold">14 Nodes</span>
 
                   <p className="text-xs">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
