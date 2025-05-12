@@ -507,4 +507,15 @@ body {
   border-left: 1px solid var(--blue-primary);
 }
 
+@media screen and (max-width: 768px) {
+  .research-infrastructure-after::after {
+    width: 50%;
+    height: 10px;
+    top: 60%;
+    left: calc(3% - 2px);
+    font-size: 1rem;
+    border-left: none;
+  }
+}
+
 /* Mapplic */

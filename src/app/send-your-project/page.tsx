@@ -20,7 +20,7 @@ export default function SendYourProject() {
       </header>
       <main className="">
         <div className="container w-full mx-auto flex flex-col gap-2 p-4 md:p-8 border-y md:border md:border-t-0">
-          <div className="w-1/2 max-w-3xl mx-auto py-12">
+          <div className="w-full md:w-1/2 md:max-w-3xl mx-auto py-12">
             <p className="text-2xl">
               iENTRANCE will publish open calls through its official website and
               other relevant communication channels. Each call will clearly

@@ -85,7 +85,7 @@ export default function Home() {
 
       <section className="container w-full mx-auto mb-32 relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:w-screen before:h-[2px] before:bg-[var(--green-secondary)] before:z-0 before:translate-x-[-50%] before:translate-y-[-50%] z-0">
         <div className="bg-gray-200 splash relative pb-2 max-w-5xl mx-auto">
-          <div className="flex flex-row gap-4 items-start mb-4 bg-[var(--green-secondary)] p-16 max-w-5xl mx-auto splash text-white">
+          <div className="flex flex-col md:flex-row gap-4 items-start mb-4 bg-[var(--green-secondary)] p-5 pt-20 md:p-16 max-w-5xl mx-auto splash text-white">
             <div className="flex flex-1 flex-col gap-2 items-start">
               <span className="text-sm font-semibold uppercase absolute top-0 left-5 p-2 px-4 bg-[var(--blue-primary)] text-white splashMiniXS">
                 Highlighted
@@ -115,7 +115,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="flex-1">
-              <p className="text-sm md:text-lg max-w-2xl text-left px-2">
+              <p className="text-sm md:text-lg max-w-2xl text-left md:px-2">
                 The Summer School "iENTRANCE to research. The young scientist's
                 guide to the galaxy. Rethinking research in an AI-empowered
                 world."Is designed for young scientists entering the world of
@@ -159,25 +159,25 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 w-full">
             <div className="flex flex-col gap-4 p-2 h-full">
-              <span className="text-6xl font-medium">+70</span>
+              <span className="text-5xl md:text-6xl font-medium">+70</span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
                 Scientific techniques
               </h4>
             </div>
             <div className="flex flex-col gap-4 p-2 h-full">
-              <span className="text-6xl font-medium">+400</span>
+              <span className="text-5xl md:text-6xl font-medium">+400</span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
                 Instruments
               </h4>
             </div>
             <div className="flex flex-col gap-4 p-2 h-full">
-              <span className="text-6xl font-medium">+70 M€</span>
+              <span className="text-5xl md:text-6xl font-medium">+70 M€</span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
                 Investments
               </h4>
             </div>
             <div className="flex flex-col gap-4 p-2 h-full">
-              <span className="text-6xl font-medium">+80</span>
+              <span className="text-5xl md:text-6xl font-medium">+80</span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
                 Researchers involved
               </h4>
@@ -196,7 +196,7 @@ export default function Home() {
             />
           </Link>
           <Link href="/catalogue">
-            <Button className="translate-y-[-50px] hover:cursor-pointer">
+            <Button className="md:translate-y-[-50px] hover:cursor-pointer">
               Go to Catalogue <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>
@@ -221,7 +221,7 @@ export default function Home() {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="flex flex-col bg-muted splash p-12 w-6/12 min-h-[35vh] justify-between">
+            <div className="flex flex-col bg-muted splash p-12 w-full md:w-6/12 min-h-[35vh] justify-between">
               <DecryptedText
                 text="iENTRANCE Infrastructure Access: A Step-by-Step Guide"
                 animateOn="view"
@@ -633,8 +633,8 @@ export default function Home() {
             characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
             speed={50}
             revealDirection="start"
-            encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight !text-center"
-            className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
+            encryptedClassName="text-4xl md:text-5xl font-medium tracking-tight !text-center"
+            className="text-4xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
           />
           <p className="text-sm md:text-xl max-w-2xl text-center">
             iENTRANCE is based on six geographical nodes distributed along the
@@ -655,7 +655,7 @@ export default function Home() {
             speed={50}
             revealDirection="start"
             encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight text-center"
-            className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight text-center"
+            className="text-4xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight text-center"
           />
         </div>
 
@@ -664,7 +664,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container mx-auto w-full bg-white py-20 flex flex-col gap-16 px-4 md:px-0">
+      <section className="container mx-auto w-full bg-white py-20 flex flex-col md:gap-16 px-4 md:px-0">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <DecryptedText
             text="News & Events"
@@ -675,7 +675,7 @@ export default function Home() {
             speed={50}
             revealDirection="start"
             encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight text-center"
-            className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight text-center"
+            className="text-4xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight text-center"
           />
           <Link href="/outcomes">
             <Button>
