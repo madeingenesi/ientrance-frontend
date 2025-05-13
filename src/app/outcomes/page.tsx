@@ -26,7 +26,7 @@ export default function Outcomes() {
         </div> */}
         <div className="container w-full mx-auto flex flex-col gap-2 p-4 md:p-8 md:pt-32 border-y md:border md:border-t-0">
           <h1 className="text-3xl md:text-5xl font-medium tracking-tight">
-            Outocomes
+            Outcomes
           </h1>
         </div>
         <div className="container w-full mx-auto flex flex-row gap-2 p-4 gap-8 border-y md:border md:border-t-0 md:p-8">
