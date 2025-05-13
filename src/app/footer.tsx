@@ -74,7 +74,7 @@ export default function Footer() {
             {theMosaic.map((item) => (
               <li
                 key={item.title}
-                className="hover:text-gray-300 hover:underline"
+                className="hover:text-gray-300 hover:underline cursor-pointer"
               >
                 {item.title}
               </li>
@@ -89,7 +89,7 @@ export default function Footer() {
             {comeIn.map((item) => (
               <li
                 key={item.title}
-                className="hover:text-gray-300 hover:underline"
+                className="hover:text-gray-300 hover:underline cursor-pointer"
               >
                 {item.title}
               </li>
@@ -104,7 +104,7 @@ export default function Footer() {
             {learnGrow.map((item) => (
               <li
                 key={item.title}
-                className="hover:text-gray-300 hover:underline"
+                className="hover:text-gray-300 hover:underline cursor-pointer"
               >
                 {item.title}
               </li>
@@ -119,7 +119,7 @@ export default function Footer() {
             {outcomes.map((item) => (
               <li
                 key={item.title}
-                className="hover:text-gray-300 hover:underline"
+                className="hover:text-gray-300 hover:underline cursor-pointer"
               >
                 {item.title}
               </li>
@@ -132,7 +132,12 @@ export default function Footer() {
           </h5>
           <span className="text-2xl flex flex-row gap-2 items-center">
             <Mail className="w-8 h-8" />
-            info@ientrance.eu
+            <Link
+              href="mailto:info@ientrance.eu"
+              className="hover:text-gray-300 hover:underline cursor-pointer"
+            >
+              info@ientrance.eu
+            </Link>
           </span>
         </div>
         <div className="col-span-5 md:col-span-2 row-span-1 row-start-2 pt-12 flex flex-col gap-2 items-start w-full mb-6 md:mb-0 md:pl-32 md:pt-12">
@@ -143,6 +148,7 @@ export default function Footer() {
             <Link
               href="https://www.youtube.com/@IENTRANCERESEARCH"
               target="_blank"
+              className="hover:text-gray-300 hover:underline cursor-pointer"
             >
               <span className="text-lg flex flex-row gap-2 items-center">
                 <Image
@@ -157,6 +163,7 @@ export default function Footer() {
             <Link
               href="https://www.linkedin.com/company/ientrance-enl/"
               target="_blank"
+              className="hover:text-gray-300 hover:underline cursor-pointer"
             >
               <span className="text-lg flex flex-row gap-2 items-center">
                 <Image

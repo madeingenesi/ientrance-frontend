@@ -679,7 +679,7 @@ export default function Home() {
           />
           <Link href="/outcomes">
             <Button>
-              Vedi tutto <ArrowRight className="w-4 h-4" />
+              Discover more <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>
         </div>

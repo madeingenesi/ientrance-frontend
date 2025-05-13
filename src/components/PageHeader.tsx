@@ -60,7 +60,7 @@ export default function PageHeader({
           <BreadcrumbList>
             {breadcrumb.map((item, index) => (
               <BreadcrumbItem key={index}>
-                <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
+                {item.label == "Articoli" ? "News" : item.label}
                 {index < breadcrumb.length - 1 && (
                   <span className="ml-1">
                     <ChevronRight className="h-3.5 w-3.5" />
@@ -89,13 +89,15 @@ export default function PageHeader({
               encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight"
               className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
             />
-            <Link
-              href="#main"
-              className="text-lg text-gray-500 hover:text-black transition-all duration-300 flex flex-row gap-2 items-center"
-            >
-              Discover more
-              <ArrowDown className="w-4 h-4" />
-            </Link>
+            {!pathname.includes("articoli") && (
+              <Link
+                href="#main"
+                className="text-lg text-gray-500 hover:text-black transition-all duration-300 flex flex-row gap-2 items-center"
+              >
+                Discover more
+                <ArrowDown className="w-4 h-4" />
+              </Link>
+            )}
           </div>
           <div className="w-full h-full absolute top-0 left-0 opacity-90 rotate-180 z-0">
             <Aurora speed={1} amplitude={0.5} />

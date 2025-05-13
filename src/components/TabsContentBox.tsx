@@ -171,7 +171,7 @@ export default function TabsContentBox() {
         if (section && linksRef.current[index]) {
           ScrollTrigger.create({
             trigger: section,
-            start: "top 10%",
+            start: "top 25%",
             end: "bottom 5%",
             markers: false,
             onEnter: () => {
