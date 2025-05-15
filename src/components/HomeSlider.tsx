@@ -272,7 +272,7 @@ export default function HomeSlider({ data }: { data: any }) {
       {/* Dialog */}
       {isDialogOpen && (
         <div className="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-[1000]">
-          <div className="bg-white p-16 w-full max-w-2xl mx-4 relative splash flex flex-col gap-4">
+          <div className="bg-white p-4 md:p-16 w-full max-w-2xl mx-4 relative splash flex flex-col gap-4">
             <h2
               className="text-2xl mb-4"
               dangerouslySetInnerHTML={{
@@ -280,7 +280,7 @@ export default function HomeSlider({ data }: { data: any }) {
               }}
             />
             <p
-              className="leading-relaxed"
+              className="leading-relaxed text-sm md:text-base h-[300px] md:h-auto overflow-y-auto pr-4 md:pr-0"
               dangerouslySetInnerHTML={{
                 __html: slideContent[activeSlide]?.text || "",
               }}

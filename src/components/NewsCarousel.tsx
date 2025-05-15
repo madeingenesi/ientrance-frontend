@@ -95,7 +95,7 @@ export default function NewsCarousel({ articles }: any) {
                           href={`${
                             article.Link_Esterno
                               ? article.Link_Esterno
-                              : `/articoli/${article.Slug}`
+                              : `/${article.Slug}`
                           }`}
                           className="w-fit"
                           prefetch={true}

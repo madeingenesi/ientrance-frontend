@@ -1,12 +1,29 @@
 "use client";
 
-import { ArrowRight, ChevronRight, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+
+import { ArrowRight, ChevronRight, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { SocialLogo } from "social-logos";
+import { useEquipments } from "@/context/EquimentContext";
 
 export default function Footer() {
+  const { machineries } = useEquipments();
+  const [techniques, setTechniques] = useState<string[]>([]);
+
+  useEffect(() => {
+    const uniqueTechniques = new Set(
+      machineries
+        .filter((machine: any) => machine.equipmentStatus !== "Offline")
+        .map((machine: any) => machine.techniqueName?.split(">", 2)[1])
+    );
+    setTechniques(
+      Array.from(uniqueTechniques as unknown as string[]).filter(Boolean)
+    );
+  }, [machineries]);
+
   const theMosaic = [
     {
       title: "The Big Picture",
@@ -191,11 +208,11 @@ export default function Footer() {
             <ul className="flex flex-col">
               <li className="flex flex-row gap-2 items-center">
                 <ChevronRight className="w-4 h-4" />
-                70+ Scientific techniques
+                {techniques.length}+ Scientific techniques
               </li>
               <li className="flex flex-row gap-2 items-center">
                 <ChevronRight className="w-4 h-4" />
-                400+ Instruments
+                {machineries.length}+ Instruments
               </li>
               <li className="flex flex-row gap-2 items-center">
                 <ChevronRight className="w-4 h-4" />
@@ -214,9 +231,9 @@ export default function Footer() {
           </Link>
         </div>
       </section>
-      <section className="container w-full flex flex-row mx-auto p-8 gap-4 md:gap-0">
+      <section className="container w-full flex flex-row mx-auto p-4 md:p-8 gap-4 md:gap-0">
         <div className="col-span-5 md:col-span-1">
-          <p className="text-sm">
+          <p className="text-xs md:text-sm">
             Project funded by the European Union - NextGenerationEU under the
             National Recovery and Resilience Plan (NRRP), Mission 4 "Education
             and Research" - Component 2 "From research to business" - Investment

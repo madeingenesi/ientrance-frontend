@@ -43,7 +43,7 @@ export default function NewsGrid({ articles }: any) {
                       href={`${
                         article.Link_Esterno
                           ? article.Link_Esterno
-                          : `/articoli/${article.Slug}`
+                          : `/${article.Slug}`
                       }`}
                       className="w-fit"
                       prefetch={true}

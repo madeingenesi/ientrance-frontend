@@ -26,7 +26,7 @@ export default function LearnAndGrow() {
           id="main"
         >
           <div className="w-full max-w-3xl text-center">
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-4 md:gap-8">
               <DecryptedText
                 text="Training"
                 animateOn="view"
@@ -35,10 +35,10 @@ export default function LearnAndGrow() {
                 characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
                 speed={50}
                 revealDirection="start"
-                encryptedClassName="text-5xl  font-medium tracking-tight"
-                className="text-5xl !text-center max-w-3xl font-medium tracking-tight"
+                encryptedClassName="text-3xl md:text-5xl font-medium tracking-tight"
+                className="text-3xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
               />
-              <p className="mb-4 text-xl tracking-tight">
+              <p className="mb-4 text-base md:text-xl tracking-tight">
                 The Training section offers resources and programs designed to
                 enhance your skills and knowledge, empowering personal and
                 professional growth.
@@ -53,7 +53,7 @@ export default function LearnAndGrow() {
         >
           <div className="bg-gray-200 splash py-[1px]">
             <div
-              className="flex flex-row gap-8 p-8 splash border-none justify-between items-end"
+              className="flex flex-col md:flex-row gap-8 p-8 splash border-none justify-between items-end"
               style={{
                 backgroundImage:
                   "url('/images/pictures/copertina-summer-school.jpg')",
@@ -62,7 +62,7 @@ export default function LearnAndGrow() {
                 backgroundRepeat: "no-repeat",
               }}
             >
-              <div className="flex flex-col bg-muted splash p-12 w-4/12 min-h-[65vh] justify-between">
+              <div className="flex flex-col bg-muted splash p-12 w-full md:w-4/12 min-h-[65vh] justify-between">
                 <DecryptedText
                   text="Summer School"
                   animateOn="view"
@@ -71,8 +71,8 @@ export default function LearnAndGrow() {
                   characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
                   speed={50}
                   revealDirection="start"
-                  encryptedClassName="text-4xl font-medium tracking-tight"
-                  className="text-4xl max-w-3xl font-medium tracking-tight"
+                  encryptedClassName="text-3xl md:text-4xl font-medium tracking-tight"
+                  className="text-3xl md:text-4xl max-w-3xl font-medium tracking-tight"
                 />
                 <div className="flex flex-col mt-24 self-end mb-12">
                   <div className="flex flex-col">
@@ -123,7 +123,7 @@ export default function LearnAndGrow() {
                   </div>
                 </div>
               </div>
-              <div className="w-3/12">
+              <div className="w-full md:w-3/12">
                 <div className="bg-muted splashMiniXS relative">
                   <div className="bg-[var(--blue-primary)] text-white p-4 absolute top-0 right-0 splashMiniXS font-semibold text-2xl tracking-tight flex items-center gap-2">
                     <Calendar1 strokeWidth={1.5} className="w-6 h-6 " />

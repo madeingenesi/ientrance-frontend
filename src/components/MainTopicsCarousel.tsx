@@ -68,11 +68,13 @@ export default function ExpertiseCarousel() {
                     {slides.length}
                   </span>
                 </div>
-                <div className="flex flex-col justify-between h-full">
-                  <h3 className="text-4xl font-semibold text-left mt-3 tracking-tight">
+                <div className="flex flex-col gap-4 md:gap-0 justify-between h-full">
+                  <h3 className="text-2xl md:text-4xl font-semibold text-left mt-3 tracking-tight">
                     {slide.title}
                   </h3>
-                  <p className=" text-left">{slide.description}</p>
+                  <p className="text-sm md:text-base text-left">
+                    {slide.description}
+                  </p>
                 </div>
               </div>
               <div className="w-full md:w-2/3 h-full">
@@ -81,7 +83,7 @@ export default function ExpertiseCarousel() {
                   alt={slide.title}
                   width={1920}
                   height={1080}
-                  className="!object-cover w-full h-full splashMini !h-[600px]"
+                  className="!object-cover w-full h-full splashMini !h-[300px] md:!h-[600px]"
                   priority
                 />
               </div>

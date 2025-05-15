@@ -187,9 +187,9 @@ export default function TheMosaicPage() {
                 </div>
               </div>
             </div>
-            <div className="md:col-span-4 md:row-span-3 md:col-start-4 md:row-start-4 bg-gray-200 p-[1px] pb-2 splashMiniXS w-full">
+            <div className="md:col-span-4 md:row-span-3 md:col-start-4 md:row-start-4 bg-gray-200 p-[1px] pb-2 splashMiniXS w-full hidden md:block">
               <div
-                className="bg-white splashMiniXS w-full h-full p-8"
+                className="bg-white splashMiniXS w-full h-full p-8 "
                 style={{
                   backgroundImage:
                     "url('/images/pictures/ientrance-content-26.jpg')",
@@ -199,7 +199,7 @@ export default function TheMosaicPage() {
               ></div>
             </div>
             <div
-              className="md:col-span-5 md:row-span-3 md:col-start-5 md:row-start-1 bg-gray-200 p-8 splashMiniXS w-full"
+              className="md:col-span-5 md:row-span-3 md:col-start-5 md:row-start-1 bg-gray-200 p-8 splashMiniXS w-full hidden md:block"
               style={{
                 backgroundImage: "url('/images/esempio.jpg')",
                 backgroundSize: "cover",
@@ -207,7 +207,7 @@ export default function TheMosaicPage() {
               }}
             ></div>
             <div
-              className="md:col-span-3 md:row-span-2 md:col-start-10 md:row-start-1 p-[1px] splashMiniXS w-full"
+              className="md:col-span-3 md:row-span-2 md:col-start-10 md:row-start-1 p-[1px] splashMiniXS w-full hidden md:block"
               style={{
                 backgroundImage:
                   "url('/images/the-mosaic/integration-collaboration.jpg')",
@@ -272,7 +272,7 @@ export default function TheMosaicPage() {
               </div>
             </div>
             <div
-              className="md:col-span-5 md:row-span-4 md:col-start-4 md:row-start-9 bg-gray-200 p-8 splashMiniXS w-full"
+              className="md:col-span-5 md:row-span-4 md:col-start-4 md:row-start-9 bg-gray-200 p-8 splashMiniXS w-full hidden md:block"
               style={{
                 backgroundImage:
                   "url('/images/the-mosaic/accelerating-innovation.jpg')",
@@ -281,7 +281,7 @@ export default function TheMosaicPage() {
               }}
             ></div>
             <div
-              className="md:col-span-4 md:row-span-3 md:col-start-9 md:row-start-7 bg-gray-200 p-8 splashMiniXS w-full"
+              className="md:col-span-4 md:row-span-3 md:col-start-9 md:row-start-7 bg-gray-200 p-8 splashMiniXS w-full hidden md:block"
               style={{
                 backgroundImage:
                   "url('/images/the-mosaic/operational-focus.jpg')",
@@ -429,7 +429,7 @@ export default function TheMosaicPage() {
           </div>
 
           <div className="flex flex-col gap-0 bg-white py-12 py-0 p-4 md:p-22 gap-12 md:gap-22">
-            <h3 className="text-5xl font-medium mb-4 w-full !m-0 tracking-tight border-gray-200 bg-white z-10 flex flex-row gap-2 items-center">
+            <h3 className="text-3xl md:text-5xl font-medium mb-4 w-full !m-0 tracking-tight border-gray-200 bg-white z-10 flex flex-row gap-2 items-center">
               <Cpu className="w-10 h-10" />
               <span>Technological Domains</span>
             </h3>
@@ -474,8 +474,8 @@ export default function TheMosaicPage() {
                 </div>
               </div>
               {/* IMG - Text Left */}
-              <div className="flex flex-row gap-0 gap-32">
-                <div className="flex flex-col gap-0 w-1/2 min-h-[400px] gap-1 order-2">
+              <div className="flex flex-col md:flex-row gap-0 gap-12 md:gap-32">
+                <div className="flex flex-col gap-0 w-full md:w-1/2 min-h-[400px] gap-1 order-0 md:order-2">
                   <div
                     className="flex-1 bg-gray-200 splashMini"
                     style={{
@@ -486,7 +486,7 @@ export default function TheMosaicPage() {
                     }}
                   ></div>
                 </div>
-                <div className="w-1/2 flex flex-col justify-center">
+                <div className="w-full md:w-1/2 flex flex-col justify-center order-1 md:order-1">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
                     Advanced Materials and Devices
                   </h4>
@@ -511,8 +511,8 @@ export default function TheMosaicPage() {
                 </div>
               </div>
               {/* IMG - Text Right */}
-              <div className="flex flex-row gap-0 gap-32">
-                <div className="flex flex-col gap-0 w-1/2 min-h-[400px] gap-1">
+              <div className="flex flex-col md:flex-row gap-0 gap-12 md:gap-32">
+                <div className="flex flex-col gap-0 w-full md:w-1/2 min-h-[400px] gap-1 order-0 md:order-2">
                   <div
                     className="flex-1 bg-gray-200 splashMini"
                     style={{
@@ -523,7 +523,7 @@ export default function TheMosaicPage() {
                     }}
                   ></div>
                 </div>
-                <div className="w-1/2 flex flex-col justify-center">
+                <div className="w-full md:w-1/2 flex flex-col justify-center order-1 md:order-1">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
                     Creation of New Materials for Energy Applications
                   </h4>
@@ -555,8 +555,8 @@ export default function TheMosaicPage() {
                 </div>
               </div>
               {/* IMG - Text Left */}
-              <div className="flex flex-row gap-0 gap-32">
-                <div className="flex flex-col gap-0 w-1/2 min-h-[400px] gap-1 order-2">
+              <div className="flex flex-col md:flex-row gap-0 gap-12 md:gap-32">
+                <div className="flex flex-col gap-0 w-full md:w-1/2 min-h-[400px] gap-1 order-0 md:order-2">
                   <div
                     className="flex-1 bg-gray-200 splashMini"
                     style={{
@@ -568,7 +568,7 @@ export default function TheMosaicPage() {
                   ></div>
                 </div>
 
-                <div className="w-1/2 flex flex-col justify-center">
+                <div className="w-full md:w-1/2 flex flex-col justify-center order-1 md:order-1">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
                     Facilitation of Technology Transfer and Innovation
                   </h4>
@@ -594,14 +594,14 @@ export default function TheMosaicPage() {
                 </div>
               </div>
             </div>
-            <h3 className="text-5xl font-medium mb-4 w-full !m-0 tracking-tight border-gray-200 bg-white z-10 flex flex-row gap-2 items-center">
+            <h3 className="text-3xl md:text-5xl font-medium mb-4 w-full !m-0 tracking-tight border-gray-200 bg-white z-10 flex flex-row gap-2 items-center">
               <NotebookText className="w-10 h-10" />
               <span>Methodological Domains</span>
             </h3>
             <div className="flex flex-col gap-32">
               {/* IMG - Text Right */}
               <div className="flex flex-col md:flex-row gap-0 gap-12 md:gap-32">
-                <div className="flex flex-col gap-0 w-full md:w-1/2 min-h-[400px] gap-1">
+                <div className="flex flex-col gap-0 w-full md:w-1/2 min-h-[400px] gap-1 order-0 md:order-2">
                   <div
                     className="flex-1 bg-gray-200 splashMini"
                     style={{
@@ -612,7 +612,7 @@ export default function TheMosaicPage() {
                     }}
                   ></div>
                 </div>
-                <div className="w-full md:w-1/2 flex flex-col justify-center">
+                <div className="w-full md:w-1/2 flex flex-col justify-center order-1 md:order-1">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
                     Evolution into a Knowledge-Generating and Sharing
                     Organization
@@ -637,8 +637,8 @@ export default function TheMosaicPage() {
                 </div>
               </div>
               {/* IMG - Text Left */}
-              <div className="flex flex-row gap-0 gap-32">
-                <div className="flex flex-col gap-0 w-1/2 min-h-[400px] gap-1 order-2">
+              <div className="flex flex-col md:flex-row gap-0 gap-12 md:gap-32">
+                <div className="flex flex-col gap-0 w-full md:w-1/2 min-h-[400px] gap-1 order-0 md:order-2">
                   <div
                     className="flex-1 bg-gray-200 splashMini"
                     style={{
@@ -649,7 +649,7 @@ export default function TheMosaicPage() {
                     }}
                   ></div>
                 </div>
-                <div className="w-1/2 flex flex-col justify-center">
+                <div className="w-full md:w-1/2 flex flex-col justify-center order-1 md:order-1">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
                     Integration of AI and Machine Learning for Enhanced
                     Collaboration
@@ -676,8 +676,8 @@ export default function TheMosaicPage() {
                 </div>
               </div>
               {/* IMG - Text Right */}
-              <div className="flex flex-row gap-0 gap-32">
-                <div className="flex flex-col gap-0 w-1/2 min-h-[400px] gap-1">
+              <div className="flex flex-col md:flex-row gap-0 gap-12 md:gap-32">
+                <div className="flex flex-col gap-0 w-full md:w-1/2 min-h-[400px] gap-1 order-0 md:order-2">
                   <div
                     className="flex-1 bg-gray-200 splashMini"
                     style={{
@@ -688,7 +688,7 @@ export default function TheMosaicPage() {
                     }}
                   ></div>
                 </div>
-                <div className="w-1/2 flex flex-col justify-center">
+                <div className="w-full md:w-1/2 flex flex-col justify-center order-1 md:order-1 ">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
                     Reduction of Complexity in Knowledge Access
                   </h4>

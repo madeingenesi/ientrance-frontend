@@ -21,7 +21,7 @@ export default function Presslist({ presses }: { presses: any }) {
 
   return (
     <div className="min-h-screen w-full">
-      <div className="grid grid-cols-12 border-y py-4">
+      <div className="grid grid-cols-12 border-y py-4 hidden md:grid">
         <div className="col-span-2 text-muted-foreground font-semibold">
           Source
         </div>
@@ -42,21 +42,26 @@ export default function Presslist({ presses }: { presses: any }) {
         return (
           <div
             key={item.id}
-            className="grid grid-cols-12 border-b py-4 bg-white hover:bg-muted/50 transition-all duration-300 cursor-pointer"
+            className="grid grid-rows-3 md:grid-rows-1 grid-cols-12 border-b py-4 bg-white hover:bg-muted/50 transition-all duration-300 cursor-pointer"
           >
-            <div className="col-span-2">{item.Source}</div>
-            <div className="col-span-7">{item.Titolo}</div>
-            <div className="col-span-2">
+            <div className="col-span-12 md:col-span-2 row-start-1 md:row-start-1 text-xs md:text-base">
+              {item.Source}
+            </div>
+            <div className="col-span-12 md:col-span-7 row-start-2 md:row-start-1 pb-2">
+              {item.Titolo}
+            </div>
+            <div className="col-span-6 md:col-span-2 row-start-3 md:row-start-1">
               {new Date(item.Data).toLocaleDateString()}
             </div>
-            <div className="col-span-1 text-right flex justify-end">
+            <div className="col-span-6 md:col-span-1 row-start-3 md:row-start-1 text-right flex items-start justify-end gap-2">
+              <span className="block md:hidden">Go to the article</span>
               <Link
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="self-end"
+                className="md:self-end"
               >
-                <ArrowUpRight className="w-4 h-4" />
+                <ArrowUpRight className="w-5 h-5 md:w-4 md:h-4 mt-1 md:mt-0" />
               </Link>
             </div>
           </div>

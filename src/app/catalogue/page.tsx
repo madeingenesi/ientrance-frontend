@@ -43,7 +43,6 @@ import DynamicBreadcrumb from "@/components/DynamicBreadcrumb";
 import { Equipment } from "@/helpers/types";
 
 export default function Catalogue() {
-  const { equipments } = useEquipments();
   const { machineries } = useEquipments();
   const [search, setSearch] = useState("");
   const [filteredMachineries, setFilteredMachineries] =

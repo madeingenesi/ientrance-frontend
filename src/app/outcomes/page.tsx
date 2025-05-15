@@ -29,9 +29,9 @@ export default function Outcomes() {
             Outcomes
           </h1>
         </div>
-        <div className="container w-full mx-auto flex flex-row gap-2 p-4 gap-8 border-y md:border md:border-t-0 md:p-8">
+        <div className="container w-full mx-auto flex flex-col md:flex-row gap-2 p-4 md:gap-8 border-y md:border md:border-t-0 md:p-8">
           <div
-            className={`w-1/2 flex flex-row p-8 splashMiniXS cursor-pointer justify-between items-center ${
+            className={`w-full md:w-1/2 flex flex-row p-4 md:p-8 splashMiniXS cursor-pointer justify-between items-center ${
               newsStatus ? "bg-[var(--blue-primary)] text-white" : "bg-muted"
             }`}
             onClick={() => setNewsStatus(true)}
@@ -48,7 +48,7 @@ export default function Outcomes() {
             </span>
           </div>
           <div
-            className={`w-1/2 p-8 splashMiniXS cursor-pointer ${
+            className={`w-full md:w-1/2 p-4 md:p-8 splashMiniXS cursor-pointer ${
               !newsStatus ? "bg-[var(--blue-primary)] text-white" : "bg-muted"
             }`}
             onClick={() => setNewsStatus(false)}

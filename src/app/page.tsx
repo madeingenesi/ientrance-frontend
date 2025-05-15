@@ -8,6 +8,7 @@ import Link from "next/link";
 
 // Context
 import { useArticlesContext } from "../context/ArticlesContext";
+import { useEquipments } from "@/context/EquimentContext";
 
 // Components
 import HomeSlider from "../components/HomeSlider";
@@ -15,13 +16,11 @@ import NewsCarousel from "../components/NewsCarousel";
 import Aurora from "../components/Aurora";
 import MainTopicsCarousel from "../components/MainTopicsCarousel";
 import MapplicMap from "../components/Map";
-import TrilloSlider from "../components/TrilloSlider";
 import PartnersCarousel from "../components/PartnersCarousel";
+
 // UI
 import { Button } from "../components/ui/button";
 import DecryptedText from "../components/DecryptedText";
-import SpotlightCard from "../components/SpotlightCard";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 // Icons
 import {
@@ -45,6 +44,19 @@ export default function Home() {
   const { articles } = useArticlesContext();
   const [slides, setSlides] = useState<SlideProps[]>([]);
   const [boxes, setBoxes] = useState([]);
+  const { machineries } = useEquipments();
+  const [techniques, setTechniques] = useState<string[]>([]);
+
+  useEffect(() => {
+    const uniqueTechniques = new Set(
+      machineries
+        .filter((machine: any) => machine.equipmentStatus !== "Offline")
+        .map((machine: any) => machine.techniqueName?.split(">", 2)[1])
+    );
+    setTechniques(
+      Array.from(uniqueTechniques as unknown as string[]).filter(Boolean)
+    );
+  }, [machineries]);
 
   const fetchData = async (url: string, setData: any) => {
     const baseUrl = "http://localhost:1337";
@@ -60,9 +72,6 @@ export default function Home() {
     );
     fetchData("home-page?populate[0]=BoxesSection", setBoxes);
   }, []);
-
-  console.log(articles);
-  //console.log("data", data);
 
   return (
     <main className="w-full mx-auto">
@@ -83,7 +92,7 @@ export default function Home() {
         </div>
       ))} */}
 
-      <section className="container w-full mx-auto mb-32 relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:w-screen before:h-[2px] before:bg-[var(--green-secondary)] before:z-0 before:translate-x-[-50%] before:translate-y-[-50%] z-0">
+      <section className="container w-full mx-auto mb-12 md:mb-32 relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:w-screen before:h-[2px] before:bg-[var(--green-secondary)] before:z-0 before:translate-x-[-50%] before:translate-y-[-50%] z-0 p-2 md:p-0">
         <div className="bg-gray-200 splash relative pb-2 max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row gap-4 items-start mb-4 bg-[var(--green-secondary)] p-5 pt-20 md:p-16 max-w-5xl mx-auto splash text-white">
             <div className="flex flex-1 flex-col gap-2 items-start">
@@ -130,7 +139,7 @@ export default function Home() {
 
       <section className="flex flex-col gap-16 justify-center items-center pt-0 pb-5 splashMaxi relative">
         <div className=" container w-full mx-auto flex flex-col gap-4 justify-center items-start px-4 md:px-8  z-10">
-          <div className="flex flex-row w-full justify-between gap-4 items-center mb-8">
+          <div className="flex flex-col md:flex-row w-full justify-between gap-4 items-start md:items-center mb-8">
             <div className="flex flex-col gap-4 items-start">
               <LibraryBig className="w-12 h-12 stroke-1" />
               <DecryptedText
@@ -159,13 +168,17 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 w-full">
             <div className="flex flex-col gap-4 p-2 h-full">
-              <span className="text-5xl md:text-6xl font-medium">70+</span>
+              <span className="text-5xl md:text-6xl font-medium">
+                {techniques.length}+
+              </span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
                 Scientific techniques
               </h4>
             </div>
             <div className="flex flex-col gap-4 p-2 h-full">
-              <span className="text-5xl md:text-6xl font-medium">400+</span>
+              <span className="text-5xl md:text-6xl font-medium">
+                {machineries.length}+
+              </span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
                 Instruments
               </h4>
@@ -207,12 +220,12 @@ export default function Home() {
       </section>
 
       <section
-        className="container mx-auto w-full flex flex-col bg-white relative  mt-28"
+        className="container mx-auto w-full flex flex-col bg-white relative mt-12 md:mt-28"
         id="values"
       >
         <div className="bg-gray-200 splash py-[1px]">
           <div
-            className="flex flex-row gap-8 p-8 splash border-none justify-between items-end"
+            className="flex flex-row gap-8 p-2 md:p-8 splash border-none justify-between items-end"
             style={{
               backgroundImage:
                 "url('/images/pictures/ientrance-content-28.jpg')",
@@ -221,7 +234,7 @@ export default function Home() {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="flex flex-col bg-muted splash p-12 w-full md:w-6/12 min-h-[35vh] justify-between">
+            <div className="flex flex-col bg-muted splash p-4 md:p-12 w-full md:w-6/12 min-h-[35vh] justify-between">
               <DecryptedText
                 text="iENTRANCE Infrastructure Access: A Step-by-Step Guide"
                 animateOn="view"
@@ -254,7 +267,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container w-full mx-auto flex flex-col items-center justify-center py-12 md:py-32 gap-18 px-4 md:px-0 overflow-hidden md:overflow-visible">
+      <section className="container w-full mx-auto flex flex-col items-center justify-center py-12 md:py-32 gap-10 md:gap-18 px-4 md:px-0 overflow-hidden md:overflow-visible">
         <div className="flex flex-col items-center gap-4 text-center max-w-5xl px-8">
           <span className="font-semibold flex flex-row gap-2 items-center">
             <MessagesSquare className="w-12 h-12 stroke-1" />
@@ -623,7 +636,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full bg-[#F9FAFB] py-20 splashMaxi">
+      <section className="w-full bg-[#F9FAFB] py-12 md:py-20 splashMaxi">
         <div className="container mx-auto w-full flex flex-col gap-4 justify-center items-center px-8 md:px-0">
           <DecryptedText
             text="Nodes"
@@ -644,7 +657,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container mx-auto w-full bg-white py-20 flex flex-col gap-16 px-4 md:px-0">
+      <section className="container mx-auto w-full bg-white py-12 md:py-20 flex flex-col gap-16 px-4 md:px-0">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <DecryptedText
             text="Partners"
@@ -664,7 +677,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container mx-auto w-full bg-white py-20 flex flex-col md:gap-16 px-4 md:px-0">
+      <section className="container mx-auto w-full bg-white py-12 md:py-20 flex flex-col gap-10 md:gap-16 px-4 md:px-0">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <DecryptedText
             text="News & Events"
