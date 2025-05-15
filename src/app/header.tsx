@@ -74,21 +74,21 @@ export default function Header() {
             <div className="flex items-center gap-4 md:hidden justify-between -ml-[120px]">
               <Image
                 src="/mur/nextGeneration_positivo.png"
-                alt="logo"
+                alt="logo next generation"
                 width={50}
                 height={50}
                 unoptimized
               />
               <Image
                 src="/mur/logo_italiadomani.png"
-                alt="logo"
+                alt="logo italia domani"
                 width={50}
                 height={50}
                 unoptimized
               />
               <Image
                 src="/mur/universita_ricerca.jpg"
-                alt="logo"
+                alt="logo università ricerca"
                 width={50}
                 height={50}
                 unoptimized
