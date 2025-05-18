@@ -7,7 +7,11 @@ import { Menu, Info } from "lucide-react";
 import Link from "next/link";
 import MobileMenu from "@/components/MobileMenu";
 import InfoButtonHeader from "@/components/InfoButtonHeader";
+
 // Shadcn
+
+import { Button } from "@/components/ui/button";
+import { FolderOpenDot } from "lucide-react";
 
 import {
   Sheet,
@@ -104,7 +108,15 @@ export default function Header() {
                   <SheetHeader>
                     <SheetTitle></SheetTitle>
                   </SheetHeader>
-                  <MobileMenu />
+                  <div className="flex flex-col p-4 gap-4">
+                    <MobileMenu />
+                    <Link href="/send-your-project">
+                      <Button className="bg-[var(--blue-primary)] text-white cursor-pointer">
+                        <FolderOpenDot className="w-4 h-4" />
+                        Send your project
+                      </Button>
+                    </Link>
+                  </div>
                 </SheetContent>
               </Sheet>
             </div>

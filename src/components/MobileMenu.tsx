@@ -73,7 +73,7 @@ const outcomes: { title: string; href: string }[] = [
 export default function MobileMenu() {
   return (
     <>
-      <nav className="flex flex-col gap-4 px-4">
+      <nav className="flex flex-col gap-4">
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
             <AccordionTrigger className="text-lg font-bold py-2">

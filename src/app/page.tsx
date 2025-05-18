@@ -92,7 +92,7 @@ export default function Home() {
         </div>
       ))} */}
 
-      <section className="container w-full mx-auto mb-12 md:mb-32 relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:w-screen before:h-[2px] before:bg-[var(--green-secondary)] before:z-0 before:translate-x-[-50%] before:translate-y-[-50%] z-0 p-2 md:p-0">
+      <section className="container w-full flex flex-col md:flex-row mx-auto mb-12 md:mb-32 relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:w-screen md:before:h-[2px] md:before:bg-[var(--green-secondary)] md:before:z-0 md:before:translate-x-[-50%] md:before:translate-y-[-50%] z-0 p-2 md:p-0 gap-12">
         <div className="bg-gray-200 splash relative pb-2 max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row gap-4 items-start mb-4 bg-[var(--green-secondary)] p-5 pt-20 md:p-16 max-w-5xl mx-auto splash text-white">
             <div className="flex flex-1 flex-col gap-2 items-start">
@@ -111,9 +111,17 @@ export default function Home() {
                 encryptedClassName="text-3xl md:text-3xl font-medium tracking-tight"
                 className="text-3xl md:text-3xl !text-center max-w-3xl font-medium tracking-tight"
               />
-              <span className="text-3xl max-w-2xl text-center font-semibold">
+              <span className="text-2xl max-w-2xl text-center font-semibold">
                 3-6 june 2025
               </span>
+              <p className="text-sm max-w-2xl text-left ">
+                The Summer School "iENTRANCE to research. The young scientist's
+                guide to the galaxy. Rethinking research in an AI-empowered
+                world."Is designed for young scientists entering the world of
+                Research and offers a unique training opportunity thet combines
+                academic excellence with an immersive hands-on experience, set
+                in stunning natural setting.
+              </p>
               <Link
                 href="/articoli/i-entrance-summer-school-3-6-june-2025"
                 className="mt-8"
@@ -123,15 +131,42 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
-            <div className="flex-1">
-              <p className="text-sm md:text-lg max-w-2xl text-left md:px-2">
-                The Summer School "iENTRANCE to research. The young scientist's
-                guide to the galaxy. Rethinking research in an AI-empowered
-                world."Is designed for young scientists entering the world of
-                Research and offers a unique training opportunity thet combines
-                academic excellence with an immersive hands-on experience, set
-                in stunning natural setting.
+          </div>
+        </div>
+        <div className="bg-gray-200 splash relative pb-2 max-w-5xl mx-auto h-fit">
+          <div className="flex flex-col md:flex-row gap-4 items-start mb-4 bg-[var(--green-secondary)] p-5 pt-20 md:p-16 max-w-5xl mx-auto splash text-white">
+            <div className="flex flex-1 flex-col gap-2 items-start">
+              <span className="text-sm font-semibold uppercase absolute top-0 left-5 p-2 px-4 bg-[var(--blue-primary)] text-white splashMiniXS">
+                Highlighted
+              </span>
+              <Megaphone className="w-12 h-12 stroke-1 hidden" />
+              <DecryptedText
+                text="The first call is open"
+                animateOn="view"
+                sequential={true}
+                maxIterations={20}
+                characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
+                speed={50}
+                revealDirection="start"
+                encryptedClassName="text-3xl md:text-3xl font-medium tracking-tight"
+                className="text-3xl md:text-3xl !text-center max-w-3xl font-medium tracking-tight"
+              />
+
+              <p className="text-sm max-w-2xl text-left ">
+                The first call for access to the iENTRANCE research
+                infrastructure is now open. You can find the application
+                procedure in the “Send your project” section, where you can
+                download the submission form and consult the specific
+                guidelines.
               </p>
+              <Link
+                href="/articoli/i-entrance-summer-school-3-6-june-2025"
+                className="mt-8"
+              >
+                <Button className="cursor-pointer">
+                  Discover more <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -184,7 +219,7 @@ export default function Home() {
               </h4>
             </div>
             <div className="flex flex-col gap-4 p-2 h-full">
-              <span className="text-5xl md:text-6xl font-medium">70M+</span>
+              <span className="text-5xl md:text-6xl font-medium">70M€+</span>
               <h4 className="text-lg font-semibold tracking-tight border-t pt-4">
                 Investments
               </h4>

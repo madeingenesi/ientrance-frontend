@@ -166,7 +166,7 @@ export default function Catalogue() {
               values={tenantName}
               filterFields={filterFields}
               setFilterFields={setFilterFields}
-              filterName="Tenant Name"
+              filterName="Nodes"
             />
             <div className="relative border-b md:border-b-0">
               <Input

@@ -27,56 +27,56 @@ export default function Footer() {
   const theMosaic = [
     {
       title: "The Big Picture",
-      href: "/the-mosaic/the-big-picture",
+      href: "/the-mosaic/#thebigpicture",
     },
     {
       title: "Values",
-      href: "/the-mosaic/values",
+      href: "/the-mosaic/#values",
     },
     {
       title: "Board of Partners",
-      href: "/the-mosaic/board-of-partners",
+      href: "/the-mosaic/#boardofpartners",
     },
     {
       title: "Challenges / Topics",
-      href: "/the-mosaic/challenges-topics",
+      href: "/the-mosaic/#challenges",
     },
     {
       title: "Expertise",
-      href: "/the-mosaic/expertise",
+      href: "/the-mosaic/#expertise",
     },
     {
       title: "Data",
-      href: "/the-mosaic/data",
+      href: "/the-mosaic/#data",
     },
   ];
 
   const comeIn = [
     {
       title: "Guide",
-      href: "/come-in/guide",
+      href: "/come-in/#guide",
     },
     {
       title: "FAQ",
-      href: "/come-in/faq",
+      href: "/come-in/#faq",
     },
   ];
 
   const learnGrow = [
     {
       title: "Summer School",
-      href: "/learn-grow/summer-school",
+      href: "/learn-grow/#summer-school",
     },
   ];
 
   const outcomes = [
     {
       title: "News & Events",
-      href: "/outcomes/news-events",
+      href: "/outcomes/",
     },
     {
       title: "Press Releases",
-      href: "/outcomes/press-releases",
+      href: "/outcomes/",
     },
   ];
 
@@ -93,7 +93,13 @@ export default function Footer() {
                 key={item.title}
                 className="hover:text-gray-300 hover:underline cursor-pointer"
               >
-                {item.title}
+                <Link
+                  key={item.title}
+                  href={item.href}
+                  className="hover:text-gray-300 hover:underline cursor-pointer"
+                >
+                  {item.title}
+                </Link>
               </li>
             ))}
           </ul>
@@ -104,11 +110,14 @@ export default function Footer() {
           </h5>
           <ul className="flex flex-col gap-2">
             {comeIn.map((item) => (
-              <li
-                key={item.title}
-                className="hover:text-gray-300 hover:underline cursor-pointer"
-              >
-                {item.title}
+              <li key={item.title}>
+                <Link
+                  key={item.title}
+                  href={item.href}
+                  className="hover:text-gray-300 hover:underline cursor-pointer"
+                >
+                  {item.title}
+                </Link>
               </li>
             ))}
           </ul>
@@ -119,12 +128,13 @@ export default function Footer() {
           </h5>
           <ul className="flex flex-col gap-2">
             {learnGrow.map((item) => (
-              <li
+              <Link
                 key={item.title}
+                href={item.href}
                 className="hover:text-gray-300 hover:underline cursor-pointer"
               >
                 {item.title}
-              </li>
+              </Link>
             ))}
           </ul>
         </div>
@@ -134,11 +144,14 @@ export default function Footer() {
           </h5>
           <ul className="flex flex-col gap-2">
             {outcomes.map((item) => (
-              <li
-                key={item.title}
-                className="hover:text-gray-300 hover:underline cursor-pointer"
-              >
-                {item.title}
+              <li key={item.title}>
+                <Link
+                  key={item.title}
+                  href={item.href}
+                  className="hover:text-gray-300 hover:underline cursor-pointer"
+                >
+                  {item.title}
+                </Link>
               </li>
             ))}
           </ul>
@@ -216,7 +229,7 @@ export default function Footer() {
               </li>
               <li className="flex flex-row gap-2 items-center">
                 <ChevronRight className="w-4 h-4" />
-                70M+ Investment
+                70M€+ Investment
               </li>
               <li className="flex flex-row gap-2 items-center">
                 <ChevronRight className="w-4 h-4" />
