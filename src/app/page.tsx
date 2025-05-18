@@ -157,14 +157,12 @@ export default function Home() {
                 infrastructure is now open. You can find the application
                 procedure in the “Send your project” section, where you can
                 download the submission form and consult the specific
-                guidelines.
+                guidelines. Once the eligibility criteria are met, applications
+                must be submitted no later than 11:59 PM on June 16, 2025.
               </p>
-              <Link
-                href="/articoli/i-entrance-summer-school-3-6-june-2025"
-                className="mt-8"
-              >
+              <Link href="/catalogue" className="mt-8">
                 <Button className="cursor-pointer">
-                  Discover more <ArrowRight className="w-4 h-4" />
+                  Browse our catalogue <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
             </div>
