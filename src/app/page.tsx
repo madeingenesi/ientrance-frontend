@@ -93,8 +93,8 @@ export default function Home() {
       ))} */}
 
       <section className="container w-full flex flex-col md:flex-row mx-auto mb-12 md:mb-32 relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:w-screen md:before:h-[2px] md:before:bg-[var(--green-secondary)] md:before:z-0 md:before:translate-x-[-50%] md:before:translate-y-[-50%] z-0 p-2 md:p-0 gap-12">
-        <div className="bg-gray-200 splash relative pb-2 max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row gap-4 items-start mb-4 bg-[var(--green-secondary)] p-5 pt-20 md:p-16 max-w-5xl mx-auto splash text-white">
+        <div className="bg-gray-200 splash relative pb-6 max-w-5xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-4 items-start mb-4 bg-[var(--green-secondary)] p-5 pt-20 md:p-16 max-w-5xl mx-auto splash text-white h-full">
             <div className="flex flex-1 flex-col gap-2 items-start">
               <span className="text-sm font-semibold uppercase absolute top-0 left-5 p-2 px-4 bg-[var(--blue-primary)] text-white splashMiniXS">
                 Highlighted
@@ -133,8 +133,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="bg-gray-200 splash relative pb-2 max-w-5xl mx-auto h-fit">
-          <div className="flex flex-col md:flex-row gap-4 items-start mb-4 bg-[var(--green-secondary)] p-5 pt-20 md:p-16 max-w-5xl mx-auto splash text-white">
+        <div className="bg-gray-200 splash relative pb-6 max-w-5xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-4 items-start mb-4 bg-[var(--green-secondary)] p-5 pt-20 md:p-16 max-w-5xl mx-auto splash text-white h-full">
             <div className="flex flex-1 flex-col gap-2 items-start">
               <span className="text-sm font-semibold uppercase absolute top-0 left-5 p-2 px-4 bg-[var(--blue-primary)] text-white splashMiniXS">
                 Highlighted
