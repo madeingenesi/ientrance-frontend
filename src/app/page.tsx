@@ -123,7 +123,7 @@ export default function Home() {
                 in stunning natural setting.
               </p>
               <Link
-                href="/articoli/i-entrance-summer-school-3-6-june-2025"
+                href="/i-entrance-summer-school-3-6-june-2025"
                 className="mt-8"
               >
                 <Button className="cursor-pointer">
@@ -151,7 +151,9 @@ export default function Home() {
                 encryptedClassName="text-3xl md:text-3xl font-medium tracking-tight"
                 className="text-3xl md:text-3xl !text-center max-w-3xl font-medium tracking-tight"
               />
-
+              <span className="text-2xl max-w-2xl text-center font-semibold">
+                Deadline June 16, 2025
+              </span>
               <p className="text-sm max-w-2xl text-left ">
                 The first call for access to the iENTRANCE research
                 infrastructure is now open. You can find the application
