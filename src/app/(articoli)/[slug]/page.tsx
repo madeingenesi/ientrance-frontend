@@ -71,8 +71,8 @@ export default async function ArticoloPage({ params }: any) {
           }
           image={articolo?.Immagine?.url}
         />
-        <div className="container mx-auto py-8 border-x py-22" id="main">
-          <div className="prose max-w-3xl mx-auto">
+        <div className="container mx-auto border-x py-8 md:py-22" id="main">
+          <div className="prose max-w-3xl mx-auto px-8 md:p-0">
             {articolo?.Contenuto &&
               Array.isArray(articolo.Contenuto) &&
               articolo.Contenuto.map((block: any, index: number) => {
