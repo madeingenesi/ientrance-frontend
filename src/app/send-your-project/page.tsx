@@ -33,7 +33,7 @@ export default function SendYourProject() {
             <p className="text-2xl">
               Applicants are required to submit their proposals downloading the
               submission{" "}
-              <Link href="https://ambitious-cat-3135f7987e.media.strapiapp.com/i_Entrance_Proposal_Template_5380b72ea6.rtf">
+              <Link href="https://ambitious-cat-3135f7987e.media.strapiapp.com/i_E_form_proposal_a6e0ca1d58.docx">
                 <span className="text-[var(--blue-primary)] underline font-semibold">
                   form
                 </span>
