@@ -152,7 +152,7 @@ export default function Home() {
                 className="text-3xl md:text-3xl !text-center max-w-3xl font-medium tracking-tight"
               />
               <span className="text-2xl max-w-2xl text-center font-semibold">
-                Deadline June 16, 2025
+                Deadline June 23, 2025
               </span>
               <p className="text-sm max-w-2xl text-left ">
                 The first call for access to the iENTRANCE research
