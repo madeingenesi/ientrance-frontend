@@ -158,7 +158,7 @@ export default function Footer() {
         </div>
         <div className="col-span-5 md:col-span-1 row-span-1 row-start-2 pt-12 flex flex-col gap-2 w-full mb-6 md:mb-0 md:pt-12">
           <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
-            Contact Us <ArrowRight className="w-5 h-5" />
+            Contact Us
           </h5>
           <span className="text-2xl flex flex-row gap-2 items-center">
             <Mail className="w-8 h-8" />
@@ -170,9 +170,9 @@ export default function Footer() {
             </Link>
           </span>
         </div>
-        <div className="col-span-5 md:col-span-2 row-span-1 row-start-2 pt-12 flex flex-col gap-2 items-start w-full mb-6 md:mb-0 md:pl-32 md:pt-12">
+        <div className="col-span-5 md:col-span-1 row-span-1 row-start-2 pt-12 flex flex-col gap-2 items-start w-full mb-6 md:mb-0 md:pl-32 md:pt-12">
           <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
-            Follow Us <ArrowRight className="w-5 h-5" />
+            Follow Us
           </h5>
           <div className="flex flex-col gap-2 items-start">
             <Link
@@ -208,6 +208,23 @@ export default function Footer() {
             </Link>
           </div>
         </div>
+        <div className="col-span-5 md:col-span-2 row-span-1 row-start-2 pt-12 flex flex-col gap-2 items-start w-full mb-6 md:mb-0 md:pl-32 md:pt-12">
+          <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
+            Press & Communication
+          </h5>
+          <div className="flex flex-col gap-2 items-start">
+            <span className="text-2xl flex flex-row gap-2 items-center">
+              <Mail className="w-8 h-8" />
+              <Link
+                href="mailto:roberta.ribera@cnr.it"
+                className="hover:text-gray-300 hover:underline cursor-pointer"
+              >
+                roberta.ribera@cnr.it
+              </Link>
+            </span>
+          </div>
+        </div>
+
         <div className="bg-white splashMiniXS text-black p-4 w-full mb-6 md:mb-0 md:col-span-1 md:col-start-5 md:row-start-1 md:row-end-3 flex flex-col justify-between gap-4 order-last md:order-none">
           <div className="flex-1">
             <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
