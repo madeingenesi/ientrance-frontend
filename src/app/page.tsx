@@ -672,9 +672,9 @@ export default function Home() {
       </section>
 
       <section className="w-full bg-[#F9FAFB] py-12 md:py-20 splashMaxi">
-        <div className="container mx-auto w-full flex flex-col gap-4 justify-center items-center px-8 md:px-0">
+        <div className="container mx-auto w-full flex flex-col gap-4 justify-center items-center px-8 md:px-0 relative">
           <DecryptedText
-            text="Nodes"
+            text="Nodes and Operational Units "
             animateOn="view"
             sequential={true}
             maxIterations={20}
@@ -684,11 +684,94 @@ export default function Home() {
             encryptedClassName="text-4xl md:text-5xl font-medium tracking-tight !text-center"
             className="text-4xl md:text-5xl !text-center max-w-3xl font-medium tracking-tight"
           />
-          <p className="text-sm md:text-xl max-w-2xl text-center">
-            iENTRANCE is based on six geographical nodes distributed along the
-            Italian peninsula.
+          <p className="text-sm md:text-xl max-w-2xl text-center balanced">
+            iENTRANCE is based on six geographical nodes and thirteen
+            operational units distributed along the Italian peninsula.
           </p>
-          <MapplicMap />
+          <div className="relative w-full h-full grid grid-cols-12 gap-8">
+            <div className="hidden md:flex flex-col w-full h-full col-span-3 bg-white splashMini p-8 gap-8">
+              <div className="flex flex-col gap-2">
+                <h3 className="text-xl font-medium tracking-tight font-semibold text-[var(--blue-primary)] pb-2 border-b mb-2">
+                  TORINO
+                </h3>
+                <ul>
+                  <li>POLITO Politecnico di Torino</li>
+                  <li>INRiM Istituto Nazionale di Ricerca Metrologica</li>
+                </ul>
+              </div>
+              <div className="flex flex-col gap-2">
+                <h3 className="text-xl font-medium tracking-tight font-semibold text-[var(--blue-primary)] pb-2 border-b mb-2">
+                  PARMA
+                </h3>
+                <ul>
+                  <li>
+                    CNR Istituto dei Materiali per l'Elettronica ed il
+                    Magnetismo
+                  </li>
+                </ul>
+              </div>
+              <div className="flex flex-col gap-2">
+                <h3 className="text-xl font-medium tracking-tight font-semibold text-[var(--blue-primary)] pb-2 border-b mb-2">
+                  MODENA
+                </h3>
+                <ul>
+                  <li>CNR Isituto Nanoscienze</li>
+                </ul>
+              </div>
+              <div className="flex flex-col gap-2">
+                <h3 className="text-xl font-medium tracking-tight font-semibold text-[var(--blue-primary)] pb-2 border-b mb-2">
+                  Bologna
+                </h3>
+                <ul>
+                  <li>
+                    CNR Istituto di Scienze e lo Studio Materiali
+                    Nanostrutturati
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <MapplicMap />
+            <div className="hidden md:flex flex-col w-full h-full col-span-3 bg-white splashMini p-8 gap-8">
+              <div className="flex flex-col gap-2">
+                <h3 className="text-xl font-medium tracking-tight font-semibold text-[var(--blue-primary)] pb-2 border-b mb-2">
+                  ROMA
+                </h3>
+                <ul>
+                  <li>Università Sapienza di Roma</li>
+                  <li>Univeristà Roma3</li>
+                  <li>CNR Istituto di Struttura della Materia</li>
+                </ul>
+              </div>
+              <div className="flex flex-col gap-2">
+                <h3 className="text-xl font-medium tracking-tight font-semibold text-[var(--blue-primary)] pb-2 border-b mb-2">
+                  NAPOLI
+                </h3>
+                <ul>
+                  <li>CNR Istituo di Polimeri, Composti e Biomateriali</li>
+                  <li>
+                    CNR Istituto di Scienze e Tecnologie per l'Energia e la
+                    Mobilità Sostenibile
+                  </li>
+                </ul>
+              </div>
+              <div className="flex flex-col gap-2">
+                <h3 className="text-xl font-medium tracking-tight font-semibold text-[var(--blue-primary)] pb-2 border-b mb-2">
+                  POTENZA
+                </h3>
+                <ul>
+                  <li>CNR Istituto di Struttura della Materia</li>
+                </ul>
+              </div>
+              <div className="flex flex-col gap-2">
+                <h3 className="text-xl font-medium tracking-tight font-semibold text-[var(--blue-primary)] pb-2 border-b mb-2">
+                  CATANIA
+                </h3>
+                <ul>
+                  <li>CNR Istituto per la Microelettronica e Microsistemi</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -523,7 +523,7 @@ export default function TheMosaicPage() {
                     }}
                   ></div>
                 </div>
-                <div className="w-full md:w-1/2 flex flex-col justify-center order-1 md:order-1">
+                <div className="w-full md:w-1/2 flex flex-col justify-center order-1 md:order-2">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
                     Creation of New Materials for Energy Applications
                   </h4>
@@ -649,7 +649,7 @@ export default function TheMosaicPage() {
                     }}
                   ></div>
                 </div>
-                <div className="w-full md:w-1/2 flex flex-col justify-center order-1 md:order-1">
+                <div className="w-full md:w-1/2 flex flex-col justify-center order-1 md:order-2">
                   <h4 className="text-2xl font-semibold mb-4 tracking-tight">
                     Integration of AI and Machine Learning for Enhanced
                     Collaboration

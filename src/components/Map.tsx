@@ -94,7 +94,7 @@ export default function MapplicMap({
   return (
     <div
       ref={mapContainerRef}
-      className="mapplic-container relative w-full h-full"
+      className="mapplic-container relative w-full h-full col-span-12 md:col-span-6"
       style={{ minHeight: "400px" }}
     />
   );
