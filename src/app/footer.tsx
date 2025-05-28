@@ -158,7 +158,7 @@ export default function Footer() {
         </div>
         <div className="col-span-5 md:col-span-1 row-span-1 row-start-2 pt-12 flex flex-col gap-2 w-full mb-6 md:mb-0 md:pt-12">
           <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
-            Contact Us
+            Contact us
           </h5>
           <span className="text-2xl flex flex-row gap-2 items-center">
             <Mail className="w-8 h-8" />
@@ -172,7 +172,7 @@ export default function Footer() {
         </div>
         <div className="col-span-5 md:col-span-1 row-span-1 row-start-2 pt-12 flex flex-col gap-2 items-start w-full mb-6 md:mb-0 md:pl-32 md:pt-12">
           <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
-            Follow Us
+            Follow us
           </h5>
           <div className="flex flex-col gap-2 items-start">
             <Link
@@ -210,7 +210,7 @@ export default function Footer() {
         </div>
         <div className="col-span-5 md:col-span-2 row-span-1 row-start-2 pt-12 flex flex-col gap-2 items-start w-full mb-6 md:mb-0 md:pl-32 md:pt-12">
           <h5 className="text-2xl font-semibold tracking-tight !mb-6 flex items-center gap-8">
-            Press & Communication
+            Press & communication
           </h5>
           <div className="flex flex-col gap-2 items-start">
             <span className="text-2xl flex flex-row gap-2 items-center">
@@ -256,7 +256,7 @@ export default function Footer() {
           </div>
           <Link href="/catalogue">
             <Button className="w-full flex flex-row gap-2 justify-between items-center splashMiniXS rounded-none p-6 self-end cursor-pointer">
-              Go to Catalogue <ArrowRight className="w-5 h-5" />
+              Go to catalogue <ArrowRight className="w-5 h-5" />
             </Button>
           </Link>
         </div>

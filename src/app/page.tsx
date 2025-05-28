@@ -112,7 +112,7 @@ export default function Home() {
                 className="text-3xl md:text-3xl !text-center max-w-3xl font-medium tracking-tight"
               />
               <span className="text-2xl max-w-2xl text-center font-semibold">
-                3-6 june 2025
+                3-6 June 2025
               </span>
               <p className="text-sm max-w-2xl text-left ">
                 The Summer School "iENTRANCE to research. The young scientist's
@@ -141,7 +141,7 @@ export default function Home() {
               </span>
               <Megaphone className="w-12 h-12 stroke-1 hidden" />
               <DecryptedText
-                text="The first call is open"
+                text="The First Call is open"
                 animateOn="view"
                 sequential={true}
                 maxIterations={20}
@@ -178,7 +178,7 @@ export default function Home() {
             <div className="flex flex-col gap-4 items-start">
               <LibraryBig className="w-12 h-12 stroke-1" />
               <DecryptedText
-                text="Our Catalogue"
+                text="Our catalogue"
                 animateOn="view"
                 sequential={true}
                 maxIterations={20}
@@ -196,7 +196,7 @@ export default function Home() {
             </div>
             <Link href="/catalogue">
               <Button className="hover:cursor-pointer">
-                Go to Catalogue{" "}
+                Go to catalogue{" "}
                 <ArrowRight className="w-4 h-4 hover:cursor-pointer" />
               </Button>
             </Link>
@@ -245,7 +245,7 @@ export default function Home() {
           </Link>
           <Link href="/catalogue">
             <Button className="md:translate-y-[-50px] hover:cursor-pointer">
-              Go to Catalogue <ArrowRight className="w-4 h-4" />
+              Go to catalogue <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>
         </div>
@@ -271,7 +271,7 @@ export default function Home() {
           >
             <div className="flex flex-col bg-muted splash p-4 md:p-12 w-full md:w-6/12 min-h-[35vh] justify-between">
               <DecryptedText
-                text="iENTRANCE Infrastructure Access: A Step-by-Step Guide"
+                text="iENTRANCE infrastructure access: a step-by-step guide"
                 animateOn="view"
                 sequential={true}
                 maxIterations={20}
@@ -309,7 +309,7 @@ export default function Home() {
           </span>
 
           <DecryptedText
-            text="Main Topics"
+            text="Main topics"
             animateOn="view"
             sequential={true}
             maxIterations={20}
@@ -798,7 +798,7 @@ export default function Home() {
       <section className="container mx-auto w-full bg-white py-12 md:py-20 flex flex-col gap-10 md:gap-16 px-4 md:px-0">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <DecryptedText
-            text="News & Events"
+            text="News & events"
             animateOn="view"
             sequential={true}
             maxIterations={20}

@@ -23,21 +23,21 @@ export default function ExpertiseCarousel() {
     },
     {
       id: 2,
-      title: "Green Energy Materials and Processing",
+      title: "Green energy materials and processing",
       description:
         "The infrastructure offers top-level expertise in micro- and nanoscale structural, compositional, optoelectronic, in-situ, and in-operando characterization. This involves the use of advanced techniques to analyze the properties and behavior of materials at the atomic and molecular levels.",
       image: "/images/main-topics-carousel/green-energy.jpg",
     },
     {
       id: 3,
-      title: "Multiscale Characterization of Micro/Nanosystems",
+      title: "Multiscale characterization of micro/nanosystems",
       description:
         "iENTRANCE focuses on developing materials for next-generation energy technologies, including photovoltaics, battery technologies, supercapacitors, hydrogen production and storage, fuel cell technologies, and power electronics.",
       image: "/images/pictures/ientrance-content-3.jpg",
     },
     {
       id: 4,
-      title: "Device and System Fabrication Technologies",
+      title: "Device and system fabrication technologies",
       description:
         "The infrastructure supports research on sustainable materials and processes, including waste valorization, (photo)catalysis, sustainable polymers, material recyclability and durability, and low-impact fabrication.",
       image: "/images/pictures/ientrance-content-4.jpg",
