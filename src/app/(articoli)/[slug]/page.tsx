@@ -143,7 +143,7 @@ export default async function ArticoloPage({ params }: any) {
           </div>
 
           <Image
-            src="/images/examples/locandina-summer-school.jpg"
+            src="/images/iE_programma_5_page-0001.jpg"
             alt={articolo.Titolo || "Immagine articolo"}
             width={1000}
             height={1000}

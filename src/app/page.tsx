@@ -720,7 +720,7 @@ export default function Home() {
               </div>
               <div className="flex flex-col gap-2">
                 <h3 className="text-xl font-medium tracking-tight font-semibold text-[var(--blue-primary)] pb-2 border-b mb-2">
-                  Bologna
+                  BOLOGNA
                 </h3>
                 <ul>
                   <li>
