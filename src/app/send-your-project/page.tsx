@@ -21,6 +21,10 @@ export default function SendYourProject() {
       <main className="">
         <div className="container w-full mx-auto flex flex-col gap-2 p-4 md:p-8 border-y md:border md:border-t-0">
           <div className="w-full md:w-1/2 md:max-w-3xl mx-auto py-12">
+            <h2 className="text-4xl font-medium tracking-tight mb-4">
+              The first call is open!
+            </h2>
+            <p className="text-2xl">Deadline June 25, 2025</p>
             <p className="text-2xl">
               iENTRANCE will publish open calls through its official website and
               other relevant communication channels. Each call will clearly
