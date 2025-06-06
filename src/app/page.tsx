@@ -738,7 +738,7 @@ export default function Home() {
                 </h3>
                 <ul>
                   <li>Università Sapienza di Roma</li>
-                  <li>Univerisità Roma3</li>
+                  <li>Università Roma3</li>
                   <li>CNR Istituto di Struttura della Materia</li>
                 </ul>
               </div>
