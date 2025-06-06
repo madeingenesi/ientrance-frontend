@@ -695,8 +695,8 @@ export default function Home() {
                   TORINO
                 </h3>
                 <ul>
-                  <li>POLITO Politecnico di Torino</li>
-                  <li>INRiM Istituto Nazionale di Ricerca Metrologica</li>
+                  <li>Politecnico di Torino {"(PoliTo)"}</li>
+                  <li>Istituto Nazionale di Ricerca Metrologica {"(INRIM)"}</li>
                 </ul>
               </div>
               <div className="flex flex-col gap-2">
@@ -715,7 +715,7 @@ export default function Home() {
                   MODENA
                 </h3>
                 <ul>
-                  <li>CNR Isituto Nanoscienze</li>
+                  <li>Istituto Nanoscienze {"(CNR-NANO)"}</li>
                 </ul>
               </div>
               <div className="flex flex-col gap-2">
@@ -724,8 +724,8 @@ export default function Home() {
                 </h3>
                 <ul>
                   <li>
-                    CNR Istituto di Scienze e lo Studio Materiali
-                    Nanostrutturati
+                    Istituto per lo Studio dei Materiali Nanostrutturati{" "}
+                    {"(CNR-ISMN)"}
                   </li>
                 </ul>
               </div>
@@ -738,7 +738,7 @@ export default function Home() {
                 </h3>
                 <ul>
                   <li>Università Sapienza di Roma</li>
-                  <li>Univeristà Roma3</li>
+                  <li>Univerisità Roma3</li>
                   <li>CNR Istituto di Struttura della Materia</li>
                 </ul>
               </div>
@@ -747,10 +747,13 @@ export default function Home() {
                   NAPOLI
                 </h3>
                 <ul>
-                  <li>CNR Istituo di Polimeri, Composti e Biomateriali</li>
                   <li>
-                    CNR Istituto di Scienze e Tecnologie per l'Energia e la
-                    Mobilità Sostenibile
+                    Istituto per i Polimeri Compositi e Biomateriali{" "}
+                    {"(CNR-IPCB)"}
+                  </li>
+                  <li>
+                    Istituto di Scienze e Tecnologie per l'Energia e la Mobilità
+                    Sostenibili {"(CNR-STEMS)"}
                   </li>
                 </ul>
               </div>
@@ -767,7 +770,10 @@ export default function Home() {
                   CATANIA
                 </h3>
                 <ul>
-                  <li>CNR Istituto per la Microelettronica e Microsistemi</li>
+                  <li>
+                    Istituto per la Microelettronica e Microsistemi{" "}
+                    {"(CNR-IMM)"}
+                  </li>
                 </ul>
               </div>
             </div>
