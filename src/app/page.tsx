@@ -705,8 +705,8 @@ export default function Home() {
                 </h3>
                 <ul>
                   <li>
-                    CNR Istituto dei Materiali per l'Elettronica ed il
-                    Magnetismo
+                    Istituto dei Materiali per l'Elettronica ed il Magnetismo
+                    {"(CNR-IMEM)"}
                   </li>
                 </ul>
               </div>
@@ -738,8 +738,8 @@ export default function Home() {
                 </h3>
                 <ul>
                   <li>Università Sapienza di Roma</li>
-                  <li>Università Roma3</li>
-                  <li>CNR Istituto di Struttura della Materia</li>
+                  <li>Università Roma Tre</li>
+                  <li>Istituto della Materia {"(CNR-ISM)"}</li>
                 </ul>
               </div>
               <div className="flex flex-col gap-2">
@@ -762,7 +762,7 @@ export default function Home() {
                   POTENZA
                 </h3>
                 <ul>
-                  <li>CNR Istituto di Struttura della Materia</li>
+                  <li>Istituto della Materia {"(CNR-ISM)"}</li>
                 </ul>
               </div>
               <div className="flex flex-col gap-2">
