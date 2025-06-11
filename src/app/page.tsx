@@ -59,7 +59,8 @@ export default function Home() {
   }, [machineries]);
 
   const fetchData = async (url: string, setData: any) => {
-    const baseUrl = "http://localhost:1337";
+    //const baseUrl = "http://localhost:1337";
+    const baseUrl = "https://ambitious-cat-3135f7987e.strapiapp.com";
     const response = await axios.get(`${baseUrl}/api/${url}`);
     console.log("response", response);
     setData(response.data);
