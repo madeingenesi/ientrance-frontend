@@ -142,13 +142,13 @@ export default async function ArticoloPage({ params }: any) {
             )}
           </div>
 
-          <Image
+          {/* <Image
             src="/images/iE_programma_5_page-0001.jpg"
             alt={articolo.Titolo || "Immagine articolo"}
             width={1000}
             height={1000}
             className="w-full h-auto mx-auto max-w-3xl border mt-8"
-          />
+          /> */}
         </div>
       </>
     );

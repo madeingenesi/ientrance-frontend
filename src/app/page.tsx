@@ -102,7 +102,7 @@ export default function Home() {
               </span>
               <Megaphone className="w-12 h-12 stroke-1 hidden" />
               <DecryptedText
-                text="iENTRANCE Summer School"
+                text="iENTRANCE a NanoInnovation 2025"
                 animateOn="view"
                 sequential={true}
                 maxIterations={20}
@@ -113,15 +113,13 @@ export default function Home() {
                 className="text-3xl md:text-3xl !text-center max-w-3xl font-medium tracking-tight"
               />
               <span className="text-2xl max-w-2xl text-center font-semibold">
-                3-6 June 2025
+                15-17 September 2025
               </span>
               <p className="text-sm max-w-2xl text-left ">
-                The Summer School "iENTRANCE to research. The young scientist's
-                guide to the galaxy. Rethinking research in an AI-empowered
-                world."Is designed for young scientists entering the world of
-                Research and offers a unique training opportunity thet combines
-                academic excellence with an immersive hands-on experience, set
-                in stunning natural setting.
+                The iENTRANCE research infrastructure will take center stage at
+                NanoInnovation 2025, the leading event for nanotechnologies and
+                multidisciplinary innovation, taking place in Rome from
+                September 15 to 19.
               </p>
               <Link
                 href="/i-entrance-summer-school-3-6-june-2025"
