@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import PageHeader from "@/components/PageHeader";
+import SimplePageHeader from "@/components/SimplePageHeader";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -62,7 +62,7 @@ export default async function ArticoloPage({ params }: any) {
 
     return (
       <>
-        <PageHeader
+        <SimplePageHeader
           title={articolo.Titolo}
           description={
             typeof articolo.Contenuto === "string"
@@ -71,6 +71,7 @@ export default async function ArticoloPage({ params }: any) {
           }
           image={articolo?.Immagine?.url}
         />
+
         <div className="container mx-auto border-x py-8 md:py-22" id="main">
           <div className="prose max-w-3xl mx-auto px-8 md:p-0">
             {articolo?.Contenuto &&

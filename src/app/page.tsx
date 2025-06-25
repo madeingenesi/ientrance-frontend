@@ -102,7 +102,7 @@ export default function Home() {
               </span>
               <Megaphone className="w-12 h-12 stroke-1 hidden" />
               <DecryptedText
-                text="iENTRANCE a NanoInnovation 2025"
+                text="iENTRANCE at NanoInnovation 2025"
                 animateOn="view"
                 sequential={true}
                 maxIterations={20}
