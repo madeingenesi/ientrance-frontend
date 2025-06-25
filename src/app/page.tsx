@@ -121,10 +121,7 @@ export default function Home() {
                 multidisciplinary innovation, taking place in Rome from
                 September 15 to 19.
               </p>
-              <Link
-                href="/i-entrance-summer-school-3-6-june-2025"
-                className="mt-8"
-              >
+              <Link href="/ientrance-at-NanoInnovation-2025" className="mt-8">
                 <Button className="cursor-pointer">
                   Discover more <ArrowRight className="w-4 h-4" />
                 </Button>
