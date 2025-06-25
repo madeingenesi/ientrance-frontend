@@ -25,7 +25,7 @@ export default function SendYourProject() {
               The first call is open!
             </h2>
             <p className="text-2xl text-[var(--blue-primary)]">
-              Deadline June 25, 2025
+              Deadline July 5, 2025
             </p>
             <p className="text-2xl">
               iENTRANCE will publish open calls through its official website and

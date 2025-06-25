@@ -153,7 +153,7 @@ export default function Home() {
                 className="text-3xl md:text-3xl !text-center max-w-3xl font-medium tracking-tight"
               />
               <span className="text-2xl max-w-2xl text-center font-semibold">
-                Deadline June 25, 2025
+                Deadline July 5, 2025
               </span>
               <p className="text-sm max-w-2xl text-left ">
                 The first call for access to the iENTRANCE research
@@ -161,7 +161,7 @@ export default function Home() {
                 procedure in the “Send your project” section, where you can
                 download the submission form and consult the specific
                 guidelines. Once the eligibility criteria are met, applications
-                must be submitted no later than 11:59 PM on June 25, 2025.
+                must be submitted no later than 11:59 PM on July 5, 2025.
               </p>
               <Link href="/catalogue" className="mt-8">
                 <Button className="cursor-pointer">
