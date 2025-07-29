@@ -12,7 +12,7 @@ export default async function ArticoloPage({ params }: any) {
     // Using filters instead of direct ID access
     //const url = `https://ambitious-cat-3135f7987e.strapiapp.com/api/articoli?populate=*&filters[id][$eq]=${params.id}`;
 
-    const url = `https://ambitious-cat-3135f7987e.strapiapp.com/api/articoli?filters[id][$eq]=${id}&populate=deep`;
+    const url = `https://ambitious-cat-3135f7987e.strapiapp.com/api/articoli?filters[id][$eq]=${id}&populate=*`;
     console.log("Fetching URL:", url);
 
     const response = await fetch(url, {

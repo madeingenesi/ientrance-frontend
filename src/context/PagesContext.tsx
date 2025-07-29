@@ -31,7 +31,7 @@ export function PagesContext({ children }: { children: React.ReactNode }) {
       const baseUrl =
         process.env.NEXT_PUBLIC_STRAPI_URL ||
         "https://ambitious-cat-3135f7987e.strapiapp.com";
-      const response = await axios.get(`${baseUrl}/api/pages?populate=deep`, {
+      const response = await axios.get(`${baseUrl}/api/pages?populate=*`, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
