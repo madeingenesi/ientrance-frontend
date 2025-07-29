@@ -10,7 +10,7 @@ export default async function EventPage({ params }: any) {
     const slug = params.slug;
     // Using environment variable or fallback URL
     const baseUrl = "https://ambitious-cat-3135f7987e.strapiapp.com";
-    const url = `${baseUrl}/api/events?filters[slug][$eq]=${slug}&populate=*`;
+    const url = `${baseUrl}/api/events?filters[slug][$eq]=${slug}&populate=deep`;
 
     const response = await fetch(url, {
       cache: "no-store",

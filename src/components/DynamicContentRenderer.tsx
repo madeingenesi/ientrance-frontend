@@ -69,9 +69,6 @@ const TextImageComponent = ({ component }: { component: any }) => {
 
 // Component for rendering simple images
 const SimpleImageComponent = ({ component }: { component: any }) => {
-  // Debug: log component data
-  console.log("SimpleImageComponent data:", component);
-
   // Check if the component has image data
   if (component.Image && component.Image.url) {
     return (

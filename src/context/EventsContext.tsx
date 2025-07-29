@@ -31,7 +31,7 @@ export function EventsContext({ children }: { children: React.ReactNode }) {
       const baseUrl =
         process.env.NEXT_PUBLIC_STRAPI_URL ||
         "https://ambitious-cat-3135f7987e.strapiapp.com";
-      const response = await axios.get(`${baseUrl}/api/events?populate=*`, {
+      const response = await axios.get(`${baseUrl}/api/events?populate=deep`, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
