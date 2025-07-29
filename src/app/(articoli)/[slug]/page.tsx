@@ -75,9 +75,9 @@ export default async function ArticoloPage({ params }: any) {
         <div className="container mx-auto border-x py-8 md:py-22" id="main">
           <div className="prose max-w-3xl mx-auto px-8 md:p-0">
             {/* Render dynamic content from postContent */}
-            {articolo?.postContent && Array.isArray(articolo.postContent) ? (
+            {articolo?.Content && Array.isArray(articolo.Content) ? (
               <DynamicContentRenderer
-                postContent={articolo.postContent}
+                postContent={articolo.Content}
                 fallbackImage={articolo.Immagine}
               />
             ) : (

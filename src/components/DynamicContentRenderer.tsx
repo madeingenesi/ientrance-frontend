@@ -7,6 +7,69 @@ interface DynamicContentRendererProps {
   fallbackImage?: any;
 }
 
+// Component for rendering articles.editor
+const EditorComponent = ({ component }: { component: any }) => {
+  const content = component.SimpleText;
+
+  if (!content || !Array.isArray(content)) {
+    return null;
+  }
+
+  return (
+    <div className="mb-8">
+      {content.map((block: any, index: number) => {
+        if (block.type === "paragraph") {
+          return (
+            <p key={index} className="text-lg leading-relaxed mb-4">
+              {block.children &&
+                Array.isArray(block.children) &&
+                block.children.map((child: any, childIndex: number) => {
+                  switch (child.type) {
+                    case "text":
+                      return (
+                        <span
+                          key={childIndex}
+                          className={child.bold ? "font-bold" : ""}
+                        >
+                          {child.text}
+                        </span>
+                      );
+                    case "link":
+                      return (
+                        <Link
+                          key={childIndex}
+                          href={child.url}
+                          className="text-blue-600 hover:text-blue-800 underline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {child.children &&
+                            Array.isArray(child.children) &&
+                            child.children.map(
+                              (linkChild: any, linkChildIndex: number) => (
+                                <span
+                                  key={linkChildIndex}
+                                  className={linkChild.bold ? "font-bold" : ""}
+                                >
+                                  {linkChild.text}
+                                </span>
+                              )
+                            )}
+                        </Link>
+                      );
+                    default:
+                      return null;
+                  }
+                })}
+            </p>
+          );
+        }
+        return null;
+      })}
+    </div>
+  );
+};
+
 // Component for rendering text-image blocks
 const TextImageComponent = ({ component }: { component: any }) => {
   return (
@@ -168,6 +231,8 @@ export default function DynamicContentRenderer({
     <div className="dynamic-content">
       {postContent.map((component: any, index: number) => {
         switch (component.__component) {
+          case "articles.editor":
+            return <EditorComponent key={index} component={component} />;
           case "SimpleContent":
           case "componets.text-image":
             return <TextImageComponent key={index} component={component} />;
