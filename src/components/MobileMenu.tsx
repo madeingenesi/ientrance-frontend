@@ -62,11 +62,15 @@ const learnGrow: { title: string; href: string }[] = [
 const outcomes: { title: string; href: string }[] = [
   {
     title: "News & Events",
-    href: "/outcomes/#news-events",
+    href: "/outcomes/news-and-events",
+  },
+  {
+    title: "Events",
+    href: "/outcomes/events",
   },
   {
     title: "Press Releases",
-    href: "/outcomes/#press-releases",
+    href: "/outcomes/press-releases",
   },
 ];
 

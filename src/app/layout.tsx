@@ -8,6 +8,7 @@ import Header from "./header";
 import Footer from "./footer";
 import { PagesContext } from "../context/PagesContext";
 import { PressContext } from "../context/PressContext";
+import { EventsContext } from "../context/EventsContext";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -56,9 +57,11 @@ export default function RootLayout({
           <ArticlesContext>
             <EquipmentsProvider>
               <PressContext>
-                <Header />
-                {children}
-                <Footer />
+                <EventsContext>
+                  <Header />
+                  {children}
+                  <Footer />
+                </EventsContext>
               </PressContext>
             </EquipmentsProvider>
           </ArticlesContext>

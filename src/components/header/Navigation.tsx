@@ -77,13 +77,21 @@ const learnGrow: { title: string; href: string; description: string }[] = [
 const outcomes: { title: string; href: string; description: string }[] = [
   {
     title: "News & Events",
-    href: "/outcomes/#news-events",
-    description: "Stay updated with the latest news and events from iENTRANCE.",
+    href: "/outcomes/news-and-events",
+    description:
+      "Latest news and articles about events from our research community.",
+  },
+  {
+    title: "Events",
+    href: "/outcomes/events",
+    description:
+      "Discover our past and upcoming events with detailed content and photo galleries.",
   },
   {
     title: "Press Releases",
-    href: "/outcomes/#press-releases",
-    description: "Stay updated with the latest news and events from iENTRANCE.",
+    href: "/outcomes/press-releases",
+    description:
+      "Official press releases and media communications from our organization.",
   },
 ];
 
@@ -188,7 +196,6 @@ export function Navigation() {
                   key={component.title}
                   title={component.title}
                   href={component.href}
-                  onClick={() => handleAnchorClick(component.href)}
                   className="pb-0 splashMiniXS hover:!bg-[var(--blue-primary)] hover:text-white hover:*:text-white"
                 >
                   {component.description}
@@ -207,7 +214,7 @@ export function Navigation() {
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/send-your-project" >
+            <Link href="/send-your-project">
               <Button className="bg-[var(--blue-primary)] text-white cursor-pointer">
                 <FolderOpenDot className="w-4 h-4" />
                 Send your project
@@ -224,6 +231,8 @@ const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a"> & { onClick?: () => void }
 >(({ className, title, children, href, onClick, ...props }, ref) => {
+  const router = useRouter();
+
   return (
     <li>
       <NavigationMenuLink asChild>
@@ -232,7 +241,11 @@ const ListItem = React.forwardRef<
           href={href}
           onClick={(e) => {
             e.preventDefault();
-            onClick?.();
+            if (onClick) {
+              onClick();
+            } else if (href) {
+              router.push(href);
+            }
           }}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground group",

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import SimplePageHeader from "@/components/SimplePageHeader";
-import Image from "next/image";
+import DynamicContentRenderer from "@/components/DynamicContentRenderer";
 import Link from "next/link";
 
 // Componente per la visualizzazione del dettaglio articolo
@@ -9,7 +9,7 @@ export default async function ArticoloPage({ params }: any) {
     const slug = params.slug;
     // Utilizziamo la variabile d'ambiente o un URL di fallback
     const baseUrl = "https://ambitious-cat-3135f7987e.strapiapp.com";
-    const url = `${baseUrl}/api/articoli/${slug}?populate=*`;
+    const url = `${baseUrl}/api/articoli/${slug}?populate=deep`;
 
     const response = await fetch(url, {
       cache: "no-store",
@@ -74,12 +74,17 @@ export default async function ArticoloPage({ params }: any) {
 
         <div className="container mx-auto border-x py-8 md:py-22" id="main">
           <div className="prose max-w-3xl mx-auto px-8 md:p-0">
-            {articolo?.Contenuto &&
+            {/* Render dynamic content from postContent */}
+            {articolo?.postContent && Array.isArray(articolo.postContent) ? (
+              <DynamicContentRenderer postContent={articolo.postContent} />
+            ) : (
+              // Fallback to old content structure if postContent is not available
+              articolo?.Contenuto &&
               Array.isArray(articolo.Contenuto) &&
               articolo.Contenuto.map((block: any, index: number) => {
                 if (block.type === "paragraph") {
                   return (
-                    <p key={index} className="text-lg leading-relaxed">
+                    <p key={index} className="text-lg leading-relaxed mb-4">
                       {block.children &&
                         Array.isArray(block.children) &&
                         block.children.map((child: any, childIndex: number) => {
@@ -131,7 +136,8 @@ export default async function ArticoloPage({ params }: any) {
                   );
                 }
                 return null;
-              })}
+              })
+            )}
 
             {/* Visualizzazione categoria se disponibile */}
             {articolo?.categorie_articoli && (
@@ -142,14 +148,6 @@ export default async function ArticoloPage({ params }: any) {
               </div>
             )}
           </div>
-
-          {/* <Image
-            src="/images/iE_programma_5_page-0001.jpg"
-            alt={articolo.Titolo || "Immagine articolo"}
-            width={1000}
-            height={1000}
-            className="w-full h-auto mx-auto max-w-3xl border mt-8"
-          /> */}
         </div>
       </>
     );
