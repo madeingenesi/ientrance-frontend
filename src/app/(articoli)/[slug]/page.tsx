@@ -9,7 +9,7 @@ export default async function ArticoloPage({ params }: any) {
     const slug = params.slug;
     // Utilizziamo la variabile d'ambiente o un URL di fallback
     const baseUrl = "https://ambitious-cat-3135f7987e.strapiapp.com";
-    const url = `${baseUrl}/api/articoli/${slug}?populate[postContent][on][SimpleImage][populate]=*&populate[postContent][on][SimpleContent][populate]=*&populate[Immagine]=*&populate[categorie_articoli]=*`;
+    const url = `${baseUrl}/api/articoli/${slug}?populate=deep,5`;
 
     const response = await fetch(url, {
       cache: "no-store",
