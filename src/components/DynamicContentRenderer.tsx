@@ -70,6 +70,32 @@ const EditorComponent = ({ component }: { component: any }) => {
   );
 };
 
+// Component for rendering articles.image
+const ArticleImageComponent = ({ component }: { component: any }) => {
+  const imageData = component.SingleImage;
+
+  if (!imageData || !imageData.url) {
+    return null;
+  }
+
+  return (
+    <div className="mb-8">
+      <Image
+        src={imageData.url}
+        alt={imageData.alternativeText || imageData.name || "Article image"}
+        width={imageData.width || 800}
+        height={imageData.height || 400}
+        className="w-full h-auto rounded-lg"
+      />
+      {imageData.caption && (
+        <p className="text-sm text-gray-600 mt-2 text-center italic">
+          {imageData.caption}
+        </p>
+      )}
+    </div>
+  );
+};
+
 // Component for rendering text-image blocks
 const TextImageComponent = ({ component }: { component: any }) => {
   return (
@@ -233,6 +259,8 @@ export default function DynamicContentRenderer({
         switch (component.__component) {
           case "articles.editor":
             return <EditorComponent key={index} component={component} />;
+          case "articles.image":
+            return <ArticleImageComponent key={index} component={component} />;
           case "SimpleContent":
           case "componets.text-image":
             return <TextImageComponent key={index} component={component} />;
