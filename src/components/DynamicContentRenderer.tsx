@@ -69,13 +69,39 @@ const TextImageComponent = ({ component }: { component: any }) => {
 
 // Component for rendering simple images
 const SimpleImageComponent = ({ component }: { component: any }) => {
-  // For now, we'll show a placeholder since the image data isn't in the JSON
-  // In real implementation, this would contain the image data from Strapi
+  // Debug: log component data
+  console.log("SimpleImageComponent data:", component);
+
+  // Check if the component has image data
+  if (component.Image && component.Image.url) {
+    return (
+      <div className="mb-8">
+        <Image
+          src={component.Image.url}
+          alt={
+            component.Image.alternativeText ||
+            component.Image.name ||
+            "Article image"
+          }
+          width={component.Image.width || 800}
+          height={component.Image.height || 400}
+          className="w-full h-auto rounded-lg"
+        />
+        {component.Image.caption && (
+          <p className="text-sm text-gray-600 mt-2 text-center italic">
+            {component.Image.caption}
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  // Fallback to placeholder if no image data
   return (
     <div className="mb-8">
       <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
         <p className="text-gray-500">
-          Simple Image Component (ID: {component.id})
+          Simple Image Component (ID: {component.id}) - Image not loaded
         </p>
       </div>
     </div>
