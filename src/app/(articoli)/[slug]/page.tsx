@@ -9,7 +9,7 @@ export default async function ArticoloPage({ params }: any) {
     const slug = params.slug;
     // Utilizziamo la variabile d'ambiente o un URL di fallback
     const baseUrl = "https://ambitious-cat-3135f7987e.strapiapp.com";
-    const url = `${baseUrl}/api/articoli/${slug}?populate=deep`;
+    const url = `${baseUrl}/api/articoli/${slug}?populate[postContent][on][SimpleImage][populate]=*&populate[postContent][on][SimpleContent][populate]=*&populate[Immagine]=*&populate[categorie_articoli]=*`;
 
     const response = await fetch(url, {
       cache: "no-store",
@@ -76,7 +76,10 @@ export default async function ArticoloPage({ params }: any) {
           <div className="prose max-w-3xl mx-auto px-8 md:p-0">
             {/* Render dynamic content from postContent */}
             {articolo?.postContent && Array.isArray(articolo.postContent) ? (
-              <DynamicContentRenderer postContent={articolo.postContent} />
+              <DynamicContentRenderer
+                postContent={articolo.postContent}
+                fallbackImage={articolo.Immagine}
+              />
             ) : (
               // Fallback to old content structure if postContent is not available
               articolo?.Contenuto &&

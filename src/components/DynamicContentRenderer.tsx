@@ -4,6 +4,7 @@ import Link from "next/link";
 
 interface DynamicContentRendererProps {
   postContent: any[];
+  fallbackImage?: any;
 }
 
 // Component for rendering text-image blocks
@@ -68,27 +69,65 @@ const TextImageComponent = ({ component }: { component: any }) => {
 };
 
 // Component for rendering simple images
-const SimpleImageComponent = ({ component }: { component: any }) => {
-  // Check if the component has image data
-  if (component.Image && component.Image.url) {
+const SimpleImageComponent = ({
+  component,
+  fallbackImage,
+}: {
+  component: any;
+  fallbackImage?: any;
+}) => {
+  // Check for different possible image field names
+  const imageData =
+    component.Image ||
+    component.image ||
+    component.Immagine ||
+    component.foto ||
+    component.picture;
+
+  // Debug: show what fields are available
+  console.log(
+    "SimpleImageComponent - Available fields:",
+    Object.keys(component)
+  );
+  console.log("SimpleImageComponent - Full component:", component);
+
+  if (imageData && imageData.url) {
     return (
       <div className="mb-8">
         <Image
-          src={component.Image.url}
-          alt={
-            component.Image.alternativeText ||
-            component.Image.name ||
-            "Article image"
-          }
-          width={component.Image.width || 800}
-          height={component.Image.height || 400}
+          src={imageData.url}
+          alt={imageData.alternativeText || imageData.name || "Article image"}
+          width={imageData.width || 800}
+          height={imageData.height || 400}
           className="w-full h-auto rounded-lg"
         />
-        {component.Image.caption && (
+        {imageData.caption && (
           <p className="text-sm text-gray-600 mt-2 text-center italic">
-            {component.Image.caption}
+            {imageData.caption}
           </p>
         )}
+      </div>
+    );
+  }
+
+  // Try fallback image if provided
+  if (fallbackImage && fallbackImage.url) {
+    return (
+      <div className="mb-8">
+        <Image
+          src={fallbackImage.url}
+          alt={
+            fallbackImage.alternativeText ||
+            fallbackImage.name ||
+            "Fallback article image"
+          }
+          width={fallbackImage.width || 800}
+          height={fallbackImage.height || 400}
+          className="w-full h-auto rounded-lg opacity-80"
+        />
+        <p className="text-xs text-gray-400 mt-1 text-center">
+          Using article main image (component image not loaded)
+        </p>
       </div>
     );
   }
@@ -97,9 +136,14 @@ const SimpleImageComponent = ({ component }: { component: any }) => {
   return (
     <div className="mb-8">
       <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-        <p className="text-gray-500">
-          Simple Image Component (ID: {component.id}) - Image not loaded
-        </p>
+        <div className="text-center">
+          <p className="text-gray-500 mb-2">
+            Simple Image Component (ID: {component.id}) - Image not loaded
+          </p>
+          <p className="text-xs text-gray-400">
+            Available fields: {Object.keys(component).join(", ")}
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -108,19 +152,34 @@ const SimpleImageComponent = ({ component }: { component: any }) => {
 // Main renderer component
 export default function DynamicContentRenderer({
   postContent,
+  fallbackImage,
 }: DynamicContentRendererProps) {
   if (!postContent || !Array.isArray(postContent)) {
     return null;
   }
 
+  // Debug: log all component types
+  console.log(
+    "All components in postContent:",
+    postContent.map((c) => c.__component)
+  );
+
   return (
     <div className="dynamic-content">
       {postContent.map((component: any, index: number) => {
         switch (component.__component) {
+          case "SimpleContent":
           case "componets.text-image":
             return <TextImageComponent key={index} component={component} />;
+          case "SimpleImage":
           case "componets.simple-image":
-            return <SimpleImageComponent key={index} component={component} />;
+            return (
+              <SimpleImageComponent
+                key={index}
+                component={component}
+                fallbackImage={fallbackImage}
+              />
+            );
           default:
             console.warn(`Unknown component type: ${component.__component}`);
             return null;
