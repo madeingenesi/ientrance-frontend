@@ -96,10 +96,37 @@ export default async function ArticoloPage({ params }: any) {
                               return (
                                 <span
                                   key={childIndex}
-                                  className={child.bold ? "font-bold" : ""}
+                                  className={`${
+                                    child.bold ? "font-bold" : ""
+                                  } ${child.italic ? "italic" : ""} ${
+                                    child.underline ? "underline" : ""
+                                  }`}
                                 >
                                   {child.text}
                                 </span>
+                              );
+                            case "heading":
+                              return (
+                                <h2
+                                  key={childIndex}
+                                  className={`${
+                                    child.level === 1
+                                      ? "text-2xl"
+                                      : child.level === 2
+                                      ? "text-xl"
+                                      : child.level === 3
+                                      ? "text-lg"
+                                      : child.level === 4
+                                      ? "text-base"
+                                      : child.level === 5
+                                      ? "text-sm"
+                                      : child.level === 6
+                                      ? "text-xs"
+                                      : ""
+                                  } font-medium tracking-tight mt-4`}
+                                >
+                                  {child.text}
+                                </h2>
                               );
                             case "link":
                               return (
