@@ -3,6 +3,46 @@ import SimplePageHeader from "@/components/SimplePageHeader";
 import DynamicContentRenderer from "@/components/DynamicContentRenderer";
 import Link from "next/link";
 
+// Helper function per renderizzare il contenuto degli heading in modo ottimizzato
+const renderHeadingContent = (children: any[]) => {
+  if (!children || !Array.isArray(children)) {
+    return null;
+  }
+
+  // Se c'è un solo child di tipo text senza formattazione, renderizza direttamente il testo
+  if (children.length === 1 && children[0].type === "text") {
+    const child = children[0];
+    const hasFormatting = child.bold || child.italic || child.underline;
+
+    if (!hasFormatting) {
+      return child.text;
+    }
+  }
+
+  // Altrimenti, renderizza con gli span per la formattazione
+  return children.map((child: any, childIndex: number) => {
+    if (child.type === "text") {
+      const hasFormatting = child.bold || child.italic || child.underline;
+
+      if (!hasFormatting) {
+        return child.text;
+      }
+
+      return (
+        <span
+          key={childIndex}
+          className={`${child.bold ? "font-bold" : ""} ${
+            child.italic ? "italic" : ""
+          } ${child.underline ? "underline" : ""}`}
+        >
+          {child.text}
+        </span>
+      );
+    }
+    return child.text || "";
+  });
+};
+
 // Componente per la visualizzazione del dettaglio articolo
 export default async function ArticoloPage({ params }: any) {
   try {
@@ -105,29 +145,6 @@ export default async function ArticoloPage({ params }: any) {
                                   {child.text}
                                 </span>
                               );
-                            case "heading":
-                              return (
-                                <h2
-                                  key={childIndex}
-                                  className={`${
-                                    child.level === 1
-                                      ? "text-2xl"
-                                      : child.level === 2
-                                      ? "text-xl"
-                                      : child.level === 3
-                                      ? "text-lg"
-                                      : child.level === 4
-                                      ? "text-base"
-                                      : child.level === 5
-                                      ? "text-sm"
-                                      : child.level === 6
-                                      ? "text-xs"
-                                      : ""
-                                  } font-medium tracking-tight mt-4`}
-                                >
-                                  {child.text}
-                                </h2>
-                              );
                             case "link":
                               return (
                                 <Link
@@ -164,6 +181,68 @@ export default async function ArticoloPage({ params }: any) {
                         })}
                     </p>
                   );
+                } else if (block.type === "heading") {
+                  // Gestione degli heading come blocchi separati
+                  const headingLevel = Math.min(
+                    Math.max(block.level || 1, 1),
+                    6
+                  );
+                  const headingClassName = `${
+                    headingLevel === 1
+                      ? "text-4xl font-bold"
+                      : headingLevel === 2
+                      ? "text-3xl font-semibold"
+                      : headingLevel === 3
+                      ? "text-2xl font-semibold"
+                      : headingLevel === 4
+                      ? "text-xl font-medium"
+                      : headingLevel === 5
+                      ? "text-lg font-medium"
+                      : "text-sm font-medium"
+                  } tracking-tight mt-8 mb-4`;
+
+                  const content = renderHeadingContent(block.children);
+
+                  // Render del heading appropriato
+                  switch (headingLevel) {
+                    case 1:
+                      return (
+                        <h1 key={index} className={headingClassName}>
+                          {content}
+                        </h1>
+                      );
+                    case 2:
+                      return (
+                        <h2 key={index} className={headingClassName}>
+                          {content}
+                        </h2>
+                      );
+                    case 3:
+                      return (
+                        <h3 key={index} className={headingClassName}>
+                          {content}
+                        </h3>
+                      );
+                    case 4:
+                      return (
+                        <h4 key={index} className={headingClassName}>
+                          {content}
+                        </h4>
+                      );
+                    case 5:
+                      return (
+                        <h5 key={index} className={headingClassName}>
+                          {content}
+                        </h5>
+                      );
+                    case 6:
+                    default:
+                      return (
+                        <h6 key={index} className={headingClassName}>
+                          {content}
+                        </h6>
+                      );
+                  }
                 }
                 return null;
               })
