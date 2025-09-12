@@ -56,7 +56,7 @@ export default function Presslist({ presses }: { presses: any }) {
         const url =
           item?.File && Array.isArray(item.File) && item.File.length > 0
             ? item.File[0]?.url
-            : "#";
+            : item.Link_Esterno || "#";
 
         console.log("url", url);
         console.log("item", item);
