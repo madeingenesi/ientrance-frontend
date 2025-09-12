@@ -695,25 +695,7 @@ export default function Home() {
                   <li>Istituto Nazionale di Ricerca Metrologica {"(INRIM)"}</li>
                 </ul>
               </div>
-              <div className="flex flex-col gap-2">
-                <h3 className="text-xl font-medium tracking-tight font-semibold text-[var(--blue-primary)] pb-2 border-b mb-2">
-                  PARMA
-                </h3>
-                <ul>
-                  <li>
-                    Istituto dei Materiali per l'Elettronica ed il Magnetismo
-                    {"(CNR-IMEM)"}
-                  </li>
-                </ul>
-              </div>
-              <div className="flex flex-col gap-2">
-                <h3 className="text-xl font-medium tracking-tight font-semibold text-[var(--blue-primary)] pb-2 border-b mb-2">
-                  MODENA
-                </h3>
-                <ul>
-                  <li>Istituto Nanoscienze {"(CNR-NANO)"}</li>
-                </ul>
-              </div>
+
               <div className="flex flex-col gap-2">
                 <h3 className="text-xl font-medium tracking-tight font-semibold text-[var(--blue-primary)] pb-2 border-b mb-2">
                   BOLOGNA
@@ -723,11 +705,13 @@ export default function Home() {
                     Istituto per lo Studio dei Materiali Nanostrutturati{" "}
                     {"(CNR-ISMN)"}
                   </li>
+                  <li>
+                    Istituto dei Materiali per l'Elettronica ed il Magnetismo
+                    {"(CNR-IMEM)"}
+                  </li>
+                  <li>Istituto Nanoscienze {"(CNR-NANO)"}</li>
                 </ul>
               </div>
-            </div>
-            <MapplicMap />
-            <div className="hidden md:flex flex-col w-full h-full col-span-3 bg-white splashMini p-8 gap-8">
               <div className="flex flex-col gap-2">
                 <h3 className="text-xl font-medium tracking-tight font-semibold text-[var(--blue-primary)] pb-2 border-b mb-2">
                   ROMA
@@ -738,6 +722,9 @@ export default function Home() {
                   <li>Istituto della Materia {"(CNR-ISM)"}</li>
                 </ul>
               </div>
+            </div>
+            <MapplicMap />
+            <div className="hidden md:flex flex-col w-full h-full col-span-3 bg-white splashMini p-8 gap-8">
               <div className="flex flex-col gap-2">
                 <h3 className="text-xl font-medium tracking-tight font-semibold text-[var(--blue-primary)] pb-2 border-b mb-2">
                   NAPOLI
