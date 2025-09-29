@@ -1,7 +1,6 @@
-import axios from "axios";
+import { fetchFromStrapi } from "@/lib/config";
 
 export const getArticles = async (path: string) => {
-  const baseUrl = "http://localhost:1337";
-  const response = await axios.get(`${baseUrl}${path}?populate=*`);
-  return response.data.data;
+  const data = await fetchFromStrapi(`${path}?populate=*`);
+  return data.data;
 };

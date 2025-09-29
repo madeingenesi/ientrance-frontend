@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
-import axios from "axios";
+import { fetchFromStrapi } from "@/lib/config";
 
 // Context
 const Context = createContext<any>(null);
@@ -21,14 +21,12 @@ export function PressContext({ children }: { children: React.ReactNode }) {
 
   const getPresses = async () => {
     setIsLoading(true);
-    //const baseUrl = "http://localhost:1337";
-    const baseUrl = "https://ambitious-cat-3135f7987e.strapiapp.com";
     try {
-      const response = await axios.get(`${baseUrl}/api/presses?populate=*`);
-      console.log(response.data.data);
-      setPresses(response.data.data);
+      const data = await fetchFromStrapi("/api/presses?populate=*");
+      console.log(data.data);
+      setPresses(data.data);
     } catch (error: any) {
-      if (error.code === "ERR_NETWORK") {
+      if (error.name === "TypeError" && error.message.includes("fetch")) {
         console.error(
           "Network error: Please check your connection or server status."
         );

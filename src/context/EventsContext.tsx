@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
-import axios from "axios";
+import { fetchFromStrapi } from "@/lib/config";
 
 // Define an interface for the context type
 interface EventsContextType {
@@ -27,23 +27,12 @@ export function EventsContext({ children }: { children: React.ReactNode }) {
     setIsLoading(true);
     try {
       console.log("Fetching events...");
-      // Using environment variable or fallback URL
-      // const baseUrl =
-      //   process.env.NEXT_PUBLIC_STRAPI_URL ||
-      //   "https://ambitious-cat-3135f7987e.strapiapp.com";
-      const baseUrl = "http://localhost:1337";
-      const response = await axios.get(`${baseUrl}/api/events?populate=*`, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (response.data && response.data.data) {
-        setEvents(response.data.data);
+      const data = await fetchFromStrapi("/api/events?populate=*");
+      if (data && data.data) {
+        setEvents(data.data);
       }
     } catch (error: any) {
-      console.error("Error details:", error.response || error);
+      console.error("Error details:", error);
       setError(error);
     } finally {
       setIsLoading(false);

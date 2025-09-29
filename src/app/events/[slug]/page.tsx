@@ -11,6 +11,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useState, useEffect, use } from "react";
+import { API_CONFIG } from "@/lib/config";
 
 // Component for displaying event details
 export default function EventPage({ params }: any) {
@@ -23,8 +24,7 @@ export default function EventPage({ params }: any) {
     const fetchEvent = async () => {
       try {
         const slug = resolvedParams.slug;
-        // const baseUrl = "http://localhost:1337";
-        const baseUrl = "https://ambitious-cat-3135f7987e.strapiapp.com";
+        const baseUrl = API_CONFIG.STRAPI_BASE_URL;
         const url = `${baseUrl}/api/events?filters[slug][$eq]=${slug}&populate=*`;
 
         const response = await fetch(url, {
@@ -92,8 +92,7 @@ export default function EventPage({ params }: any) {
     return notFound();
   }
 
-  // const baseUrl = "http://localhost:1337";
-  const baseUrl = "https://ambitious-cat-3135f7987e.strapiapp.com";
+  const baseUrl = API_CONFIG.STRAPI_BASE_URL;
 
   // Use the first image from photoGallery for header if available
   const headerImage =

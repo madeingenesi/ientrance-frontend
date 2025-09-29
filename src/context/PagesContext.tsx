@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
-import axios from "axios";
+import { fetchFromStrapi } from "@/lib/config";
 
 // Definisci un'interfaccia per il tipo del context
 interface PagesContextType {
@@ -27,22 +27,12 @@ export function PagesContext({ children }: { children: React.ReactNode }) {
     setIsLoading(true);
     try {
       console.log("Fetching pages...");
-      // Utilizziamo la variabile d'ambiente o un URL di fallback
-      const baseUrl =
-        process.env.NEXT_PUBLIC_STRAPI_URL ||
-        "https://ambitious-cat-3135f7987e.strapiapp.com";
-      const response = await axios.get(`${baseUrl}/api/pages?populate=*`, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (response.data && response.data.data) {
-        setPages(response.data.data);
+      const data = await fetchFromStrapi("/api/pages?populate=*");
+      if (data && data.data) {
+        setPages(data.data);
       }
     } catch (error: any) {
-      console.error("Error details:", error.response || error);
+      console.error("Error details:", error);
       setError(error);
     } finally {
       setIsLoading(false);
