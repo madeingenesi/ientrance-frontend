@@ -12,6 +12,7 @@ const nextConfig = {
     domains: [
       "ambitious-cat-3135f7987e.media.strapiapp.com",
       "ambitious-cat-3135f7987e.strapiapp.com",
+      "localhost",
     ],
     remotePatterns: [
       {
@@ -22,6 +23,12 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "ambitious-cat-3135f7987e.strapiapp.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "1337",
         pathname: "/**",
       },
     ],

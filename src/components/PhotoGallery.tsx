@@ -33,21 +33,45 @@ interface PhotoGalleryProps {
 export default function PhotoGallery({ photos }: PhotoGalleryProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const [selectedImage, setSelectedImage] = useState<Photo | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
   // Debug: log delle foto per verificare le URL
   console.log("Photos in gallery:", photos);
 
-  const openModal = (photo: Photo) => {
+  // Helper function to get the correct URL (add base URL if relative)
+  const getImageUrl = (url: string) => {
+    if (!url) return "";
+    return url.startsWith("http") ? url : `http://localhost:1337${url}`;
+  };
+
+  const openModal = (photo: Photo, index: number) => {
     setSelectedImage(photo);
+    setSelectedImageIndex(index);
   };
 
   const closeModal = () => {
     setSelectedImage(null);
+    setSelectedImageIndex(0);
+  };
+
+  const goToNext = () => {
+    const nextIndex = (selectedImageIndex + 1) % photos.length;
+    setSelectedImageIndex(nextIndex);
+    setSelectedImage(photos[nextIndex]);
+  };
+
+  const goToPrev = () => {
+    const prevIndex =
+      selectedImageIndex === 0 ? photos.length - 1 : selectedImageIndex - 1;
+    setSelectedImageIndex(prevIndex);
+    setSelectedImage(photos[prevIndex]);
   };
 
   return (
     <div className="mt-8">
-      <h3 className="text-2xl font-bold mb-6">Photo Gallery</h3>
+      <h3 className="text-3xl font-medium tracking-tight mb-6">
+        Photo Gallery
+      </h3>
 
       {/* Main Swiper */}
       <div className="relative">
@@ -72,10 +96,10 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
             <SwiperSlide key={index}>
               <div
                 className="relative cursor-pointer group w-full h-full flex items-center justify-center"
-                onClick={() => openModal(photo)}
+                onClick={() => openModal(photo, index)}
               >
                 <Image
-                  src={photo.formats?.large?.url || photo.url}
+                  src={getImageUrl(photo.formats?.large?.url || photo.url)}
                   alt={
                     photo.alternativeText || photo.name || `Photo ${index + 1}`
                   }
@@ -136,11 +160,11 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
           {photos.map((photo, index) => (
             <SwiperSlide key={index}>
               <Image
-                src={
+                src={getImageUrl(
                   photo.formats?.thumbnail?.url ||
-                  photo.formats?.small?.url ||
-                  photo.url
-                }
+                    photo.formats?.small?.url ||
+                    photo.url
+                )}
                 alt={
                   photo.alternativeText ||
                   photo.name ||
@@ -155,19 +179,20 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
         </Swiper>
       </div>
 
-      {/* Modal per immagine ingrandita */}
+      {/* Modal per immagine ingrandita con navigazione */}
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
           onClick={closeModal}
         >
           <div className="relative max-w-7xl max-h-full">
+            {/* Bottone chiudi */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 text-white hover:text-gray-300 z-10"
+              className="absolute top-4 right-4 text-white hover:text-gray-300 z-10 bg-black bg-opacity-50 rounded-full p-2"
             >
               <svg
-                className="w-8 h-8"
+                className="w-6 h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -180,19 +205,77 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
                 />
               </svg>
             </button>
+
+            {/* Freccia sinistra */}
+            {photos.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToPrev();
+                }}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 z-10 bg-black bg-opacity-50 rounded-full p-3"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+            )}
+
+            {/* Freccia destra */}
+            {photos.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToNext();
+                }}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 z-10 bg-black bg-opacity-50 rounded-full p-3"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            )}
+
             <Image
-              src={selectedImage.url}
+              src={getImageUrl(selectedImage.url)}
               alt={selectedImage.alternativeText || selectedImage.name}
               width={selectedImage.width}
               height={selectedImage.height}
               className="max-w-full max-h-full object-contain"
               onClick={(e) => e.stopPropagation()}
             />
-            {selectedImage.caption && (
-              <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-4">
-                <p className="text-center">{selectedImage.caption}</p>
-              </div>
-            )}
+
+            {/* Caption e counter */}
+            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-4">
+              {selectedImage.caption && (
+                <p className="text-center mb-2">{selectedImage.caption}</p>
+              )}
+              {photos.length > 1 && (
+                <p className="text-center text-sm opacity-75">
+                  {selectedImageIndex + 1} / {photos.length}
+                </p>
+              )}
+            </div>
           </div>
         </div>
       )}
