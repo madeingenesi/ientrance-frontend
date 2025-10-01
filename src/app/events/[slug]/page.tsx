@@ -85,7 +85,19 @@ export default function EventPage({ params }: any) {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div
+        className="container mx-auto border-x py-8 md:py-22 flex just
+        justify-center items-center h-[500px]"
+      >
+        <span
+          className="text-lg font-normal
+         tracking-tight"
+        >
+          Loading...
+        </span>
+      </div>
+    );
   }
 
   if (!event) {
@@ -208,7 +220,7 @@ export default function EventPage({ params }: any) {
                     slidesPerView: 2,
                   },
                   1024: {
-                    slidesPerView: 3,
+                    slidesPerView: 2,
                   },
                 }}
                 className="video-gallery-swiper"
@@ -264,7 +276,7 @@ export default function EventPage({ params }: any) {
                               alt={video.Title || "Video thumbnail"}
                               width={width}
                               height={height}
-                              className="w-full h-48 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
+                              className="w-full !h-48 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
                             />
                           ) : (
                             <div className="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center">
@@ -289,7 +301,7 @@ export default function EventPage({ params }: any) {
                         </div>
                       </div>
                       {video.Title && (
-                        <p className="font-medium tracking-tight text-left mt-4">
+                        <p className="font-medium tracking-tight text-left my-4 pb-8">
                           {video.Title}
                         </p>
                       )}
@@ -354,7 +366,10 @@ export default function EventPage({ params }: any) {
                   const { width, height } = getImageDimensions();
 
                   return (
-                    <div key={index}>
+                    <div
+                      key={index}
+                      className="bg-gray-200 splashMiniXS flex-1 p-[1px] h-full"
+                    >
                       {item.Url ? (
                         <Link href={item.Url} target="_blank">
                           <Image
@@ -362,7 +377,7 @@ export default function EventPage({ params }: any) {
                             alt={item.Title || "Press review image"}
                             width={width}
                             height={height}
-                            className="object-cover splashMiniXS h-full w-full rounded"
+                            className="object-cover splashMiniXS h-full w-full"
                           />
                         </Link>
                       ) : (
@@ -413,7 +428,7 @@ export default function EventPage({ params }: any) {
             {/* YouTube iframe */}
             <div className="relative w-full h-0 pb-[56.25%]">
               <iframe
-                className="absolute top-0 left-0 w-full h-full rounded-lg"
+                className="absolute top-0 left-0 w-full h-full "
                 src={`https://www.youtube.com/embed/${getYouTubeVideoId(
                   selectedVideo.Url
                 )}?autoplay=1`}
