@@ -72,3 +72,24 @@ All API calls are centralized through `/src/lib/config.ts` which provides:
 - `API_CONFIG.STRAPI_BASE_URL`: Environment-aware Strapi URL
 - `fetchFromStrapi()`: Unified function for Strapi API calls
 - `createFetchOptions()`: Standard fetch configuration
+- `getImageUrl()`: Helper function for consistent image URL resolution
+
+## Image Handling
+
+### Featured Image Support
+
+Events now support a `featuredImage` field for the header image:
+
+- **Priority**: `featuredImage` takes precedence over `photoGallery[0]`
+- **Fallback**: If no `featuredImage`, uses first image from `photoGallery`
+- **Default**: Falls back to `/images/examples/copertina-summer-school.jpg`
+
+### Image URL Resolution
+
+The `getImageUrl()` helper automatically handles:
+
+- Direct string URLs
+- Strapi v4 data.attributes.url structure
+- Object with url property
+- Array of image objects
+- Automatic base URL prepending for relative paths

@@ -11,7 +11,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useState, useEffect, use } from "react";
-import { API_CONFIG } from "@/lib/config";
+import { API_CONFIG, getImageUrl } from "@/lib/config";
 
 // Component for displaying event details
 export default function EventPage({ params }: any) {
@@ -94,15 +94,14 @@ export default function EventPage({ params }: any) {
 
   const baseUrl = API_CONFIG.STRAPI_BASE_URL;
 
-  // Use the first image from photoGallery for header if available
-  const headerImage =
-    event.photoGallery &&
-    event.photoGallery.length > 0 &&
-    event.photoGallery[0]?.url
-      ? event.photoGallery[0].url.startsWith("http")
-        ? event.photoGallery[0].url
-        : `${baseUrl}${event.photoGallery[0].url}`
-      : "/images/examples/copertina-summer-school.jpg";
+  // Use featuredImage if available, otherwise fallback to first photoGallery image
+  const headerImage = getImageUrl(
+    event.featuredImage ||
+      (event.photoGallery && event.photoGallery.length > 0
+        ? event.photoGallery[0]
+        : null),
+    "/images/examples/copertina-summer-school.jpg"
+  );
 
   return (
     <>
@@ -189,9 +188,7 @@ export default function EventPage({ params }: any) {
                 .filter((photo: any) => photo?.url)
                 .map((photo: any) => ({
                   ...photo,
-                  url: photo.url.startsWith("http")
-                    ? photo.url
-                    : `${baseUrl}${photo.url}`,
+                  url: getImageUrl(photo),
                 }))}
             />
           )}
@@ -217,32 +214,39 @@ export default function EventPage({ params }: any) {
                 className="video-gallery-swiper"
               >
                 {event.videoGallery.map((video: any, index: number) => {
-                  // Debug: log video data to see the structure
-                  console.log("Video data:", video);
+                  // Debug: Remove unused variables
+                  // const imageObj =
+                  //   Array.isArray(video.Image) && video.Image.length > 0
+                  //     ? video.Image[0]
+                  //     : null;
 
-                  // Get the first image from the Image array
-                  const imageObj =
-                    Array.isArray(video.Image) && video.Image.length > 0
-                      ? video.Image[0]
-                      : null;
+                  // const imageUrl = imageObj
+                  //   ? imageObj.formats?.large?.url ||
+                  //     imageObj.formats?.medium?.url ||
+                  //     imageObj.url
+                  //   : "";
 
-                  // Debug: log image object
-                  console.log("Image object:", imageObj);
+                  const finalImageUrl = getImageUrl(video.Image);
 
-                  // Get the best quality image URL
-                  const imageUrl = imageObj
-                    ? imageObj.formats?.large?.url ||
-                      imageObj.formats?.medium?.url ||
-                      imageObj.url
-                    : "";
+                  // Get image dimensions (with fallback)
+                  const getImageDimensions = () => {
+                    if (Array.isArray(video.Image) && video.Image.length > 0) {
+                      const imageObj = video.Image[0];
+                      return {
+                        width:
+                          imageObj?.formats?.large?.width ||
+                          imageObj?.width ||
+                          400,
+                        height:
+                          imageObj?.formats?.large?.height ||
+                          imageObj?.height ||
+                          225,
+                      };
+                    }
+                    return { width: 400, height: 225 };
+                  };
 
-                  // Debug: log image URL
-                  console.log("Image URL:", imageUrl);
-
-                  const finalImageUrl =
-                    imageUrl && imageUrl.startsWith("http")
-                      ? imageUrl
-                      : `${baseUrl}${imageUrl || ""}`;
+                  const { width, height } = getImageDimensions();
 
                   // Debug: log final image URL
                   console.log("Final Image URL:", finalImageUrl);
@@ -258,16 +262,8 @@ export default function EventPage({ params }: any) {
                             <Image
                               src={finalImageUrl}
                               alt={video.Title || "Video thumbnail"}
-                              width={
-                                imageObj?.formats?.large?.width ||
-                                imageObj?.width ||
-                                400
-                              }
-                              height={
-                                imageObj?.formats?.large?.height ||
-                                imageObj?.height ||
-                                225
-                              }
+                              width={width}
+                              height={height}
                               className="w-full h-48 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
                             />
                           ) : (
@@ -335,23 +331,27 @@ export default function EventPage({ params }: any) {
               <h3 className="text-2xl font-bold mb-6">Press Review</h3>
               <div className="overflow-x-auto grid grid-cols-1 md:grid-cols-3 gap-4">
                 {event.pressReview.map((item: any, index: number) => {
-                  // Get the first image from the Image array
-                  const imageObj =
-                    Array.isArray(item.Image) && item.Image.length > 0
-                      ? item.Image[0]
-                      : null;
+                  const finalImageUrl = getImageUrl(item.Image);
 
-                  // Get the best quality image URL
-                  const imageUrl = imageObj
-                    ? imageObj.formats?.large?.url ||
-                      imageObj.formats?.medium?.url ||
-                      imageObj.url
-                    : "";
+                  // Get image dimensions with fallback
+                  const getImageDimensions = () => {
+                    if (Array.isArray(item.Image) && item.Image.length > 0) {
+                      const imageObj = item.Image[0];
+                      return {
+                        width:
+                          imageObj?.formats?.large?.width ||
+                          imageObj?.width ||
+                          800,
+                        height:
+                          imageObj?.formats?.large?.height ||
+                          imageObj?.height ||
+                          400,
+                      };
+                    }
+                    return { width: 800, height: 400 };
+                  };
 
-                  const finalImageUrl =
-                    imageUrl && imageUrl.startsWith("http")
-                      ? imageUrl
-                      : `${baseUrl}${imageUrl || ""}`;
+                  const { width, height } = getImageDimensions();
 
                   return (
                     <div key={index}>
@@ -360,16 +360,8 @@ export default function EventPage({ params }: any) {
                           <Image
                             src={finalImageUrl}
                             alt={item.Title || "Press review image"}
-                            width={
-                              imageObj?.formats?.large?.width ||
-                              imageObj?.width ||
-                              800
-                            }
-                            height={
-                              imageObj?.formats?.large?.height ||
-                              imageObj?.height ||
-                              400
-                            }
+                            width={width}
+                            height={height}
                             className="object-cover splashMiniXS h-full w-full rounded"
                           />
                         </Link>
@@ -377,16 +369,8 @@ export default function EventPage({ params }: any) {
                         <Image
                           src={finalImageUrl}
                           alt={item.Title || "Press review image"}
-                          width={
-                            imageObj?.formats?.large?.width ||
-                            imageObj?.width ||
-                            800
-                          }
-                          height={
-                            imageObj?.formats?.large?.height ||
-                            imageObj?.height ||
-                            400
-                          }
+                          width={width}
+                          height={height}
                           className="object-cover splashMini h-full w-full rounded"
                         />
                       )}

@@ -69,9 +69,7 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
 
   return (
     <div className="mt-8">
-      <h3 className="text-3xl font-medium tracking-tight mb-6">
-        Photo Gallery
-      </h3>
+      <h3 className="text-2xl font-bold mb-6">Photo Gallery</h3>
 
       {/* Main Swiper */}
       <div className="relative">
