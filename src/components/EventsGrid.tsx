@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Calendar, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { getImageUrl } from "@/lib/config";
 
 interface Event {
   id: number;
@@ -39,18 +40,20 @@ export default function EventsGrid({ events }: EventsGridProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 w-full">
+    <div className="flex flex-col gap-2 w-full">
       {events
         ?.sort(
           (a: any, b: any) =>
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         )
         .map((event: any) => {
-          const imageUrl =
-            event.photoGallery && event.photoGallery.length > 0
-              ? event.photoGallery[0].formats?.medium?.url ||
-                event.photoGallery[0].url
-              : "/images/placeholder.jpg";
+          const imageUrl = getImageUrl(
+            event.featuredImage ||
+              (event.photoGallery && event.photoGallery.length > 0
+                ? event.photoGallery[0]
+                : null),
+            "/images/examples/copertina-summer-school.jpg"
+          );
 
           let firstParagraph = "";
           if (event.content && Array.isArray(event.content)) {
@@ -67,13 +70,13 @@ export default function EventsGrid({ events }: EventsGridProps) {
               key={event.id}
               className="bg-gray-200 splashMiniXS flex-1 p-[1px] h-full"
             >
-              <div className="flex flex-col gap-0 bg-muted min-h-full p-2 splashMiniXS">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-10 bg-muted min-h-full p-2 splashMiniXS">
                 <Image
                   src={imageUrl}
                   alt={event.title}
                   width={600}
                   height={400}
-                  className="object-cover splashMiniXS w-full h-[300px]"
+                  className="object-cover splashMiniXS w-full h-[400px]"
                 />
                 <div className="flex flex-col p-4 flex-1 justify-between">
                   <div className="flex flex-col gap-2">

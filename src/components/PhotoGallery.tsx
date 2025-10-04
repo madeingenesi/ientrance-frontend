@@ -183,7 +183,7 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
           className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
           onClick={closeModal}
         >
-          <div className="relative max-w-7xl max-h-full">
+          <div className="relative w-7xl max-h-full">
             {/* Bottone chiudi */}
             <button
               onClick={closeModal}
@@ -259,7 +259,7 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
               alt={selectedImage.alternativeText || selectedImage.name}
               width={selectedImage.width}
               height={selectedImage.height}
-              className="max-w-full max-h-full object-contain"
+              className="w-full h-full max-h-[800px] object-contain"
               onClick={(e) => e.stopPropagation()}
             />
 
