@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Presslist({ presses }: { presses: any }) {
   // const presslist = [
@@ -64,9 +65,21 @@ export default function Presslist({ presses }: { presses: any }) {
         return (
           <div
             key={item.id}
-            className="grid grid-rows-3 md:grid-rows-1 grid-cols-12 border-b py-4 bg-white hover:bg-muted/50 transition-all duration-300 cursor-pointer"
+            className="grid grid-rows-3 md:grid-rows-1 grid-cols-12 border-b py-4 bg-white hover:bg-muted/50 transition-all duration-300 cursor-pointer items-center"
           >
-            <div className="col-span-12 md:col-span-2 row-start-1 md:row-start-1 text-xs md:text-base">
+            <div className="col-span-12 md:col-span-2 row-start-1 md:row-start-1 text-xs md:text-base flex items-center gap-2">
+              {item.Image?.url && (
+                <Image
+                  src={`${
+                    process.env.NEXT_PUBLIC_STRAPI_URL ||
+                    "http://localhost:1337"
+                  }${item.Image.url}`}
+                  alt={item.Source || "Press image"}
+                  width={60}
+                  height={60}
+                  className="rounded object-cover border"
+                />
+              )}
               {item.Source || "Unknown Source"}
             </div>
             <div className="col-span-12 md:col-span-7 row-start-2 md:row-start-1 pb-2">

@@ -25,7 +25,10 @@ export default function EventPage({ params }: any) {
       try {
         const slug = resolvedParams.slug;
         const baseUrl = API_CONFIG.STRAPI_BASE_URL;
-        const url = `${baseUrl}/api/events?filters[slug][$eq]=${slug}&populate=*`;
+
+        const url = `${baseUrl}/api/events?populate[presses][populate][0]=Image&populate[presses][populate][1]=File`;
+
+        console.log("Fetching URL:", url);
 
         const response = await fetch(url, {
           cache: "no-store",
@@ -57,6 +60,8 @@ export default function EventPage({ params }: any) {
         }
 
         setEvent(eventData);
+        console.log("Event data:", eventData);
+        console.log("Presses:", eventData.presses);
         setLoading(false);
       } catch (error) {
         console.error("Error loading event:", error);
@@ -337,8 +342,8 @@ export default function EventPage({ params }: any) {
             </div>
           )}
 
-          {/* Sezione Press Review */}
-          {event?.pressReview && event.pressReview.length > 0 && (
+          {/* Sezione Press Review OLD */}
+          {/* {event?.pressReview && event.pressReview.length > 0 && (
             <div className="mt-8">
               <h3 className="text-2xl font-bold mb-6">Press Review</h3>
               <div className="overflow-x-auto grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -384,6 +389,62 @@ export default function EventPage({ params }: any) {
                         <Image
                           src={finalImageUrl}
                           alt={item.Title || "Press review image"}
+                          width={width}
+                          height={height}
+                          className="object-cover splashMini h-full w-full rounded"
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )} */}
+
+          {event?.presses && event.presses.length > 0 && (
+            <div className="mt-8">
+              <h3 className="text-2xl font-bold mb-6">Press Coverage</h3>
+              <div className="overflow-x-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+                {event.presses.map((item: any, index: number) => {
+                  const finalImageUrl = getImageUrl(item.Image);
+
+                  // Get image dimensions with fallback
+                  const getImageDimensions = () => {
+                    if (item.Image) {
+                      return {
+                        width: item.Image.width || 800,
+                        height: item.Image.height || 400,
+                      };
+                    }
+                    return { width: 800, height: 400 };
+                  };
+
+                  const { width, height } = getImageDimensions();
+                  const pressLink =
+                    item.Link_Esterno ||
+                    (item.File?.[0]?.url
+                      ? `${baseUrl}${item.File[0].url}`
+                      : "#");
+
+                  return (
+                    <div
+                      key={index}
+                      className="bg-gray-200 splashMiniXS flex-1 p-[1px] h-full"
+                    >
+                      {pressLink !== "#" ? (
+                        <Link href={pressLink} target="_blank">
+                          <Image
+                            src={finalImageUrl}
+                            alt={item.Titolo || "Press coverage image"}
+                            width={width}
+                            height={height}
+                            className="object-cover splashMiniXS h-full w-full"
+                          />
+                        </Link>
+                      ) : (
+                        <Image
+                          src={finalImageUrl}
+                          alt={item.Titolo || "Press coverage image"}
                           width={width}
                           height={height}
                           className="object-cover splashMini h-full w-full rounded"

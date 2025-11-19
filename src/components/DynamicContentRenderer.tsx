@@ -396,6 +396,46 @@ const SimpleImageComponent = ({
   );
 };
 
+const SimpleVideoComponent = ({ component }: { component: any }) => {
+  console.log("SimpleVideoComponent - Full component:", component);
+  console.log("SimpleVideoComponent - URL:", component.Url);
+
+  // Helper function to extract YouTube video ID from URL
+  const getYouTubeVideoId = (url: string) => {
+    if (!url) return null;
+    const regex =
+      /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+    const match = url.match(regex);
+    return match ? match[1] : null;
+  };
+
+  const videoId = getYouTubeVideoId(component.Url);
+  console.log("SimpleVideoComponent - Video ID:", videoId);
+
+  if (!videoId) {
+    return (
+      <div className="mb-8 p-4 bg-red-50 rounded-lg">
+        <p className="text-red-600">Invalid YouTube URL: {component.Url}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mb-8">
+      <div className="relative w-full h-0 pb-[56.25%] rounded-lg overflow-hidden">
+        <iframe
+          className="absolute top-0 left-0 w-full h-full"
+          src={`https://www.youtube.com/embed/${videoId}`}
+          title="YouTube video"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </div>
+    </div>
+  );
+};
+
 // Main renderer component
 export default function DynamicContentRenderer({
   postContent,
@@ -431,6 +471,10 @@ export default function DynamicContentRenderer({
                 fallbackImage={fallbackImage}
               />
             );
+          case "SimpleVideo":
+          case "components.simple-video":
+          case "articles.simple-video":
+            return <SimpleVideoComponent key={index} component={component} />;
           default:
             console.warn(`Unknown component type: ${component.__component}`);
             return null;
