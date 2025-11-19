@@ -68,19 +68,24 @@ export default function Presslist({ presses }: { presses: any }) {
             className="grid grid-rows-3 md:grid-rows-1 grid-cols-12 border-b py-4 bg-white hover:bg-muted/50 transition-all duration-300 cursor-pointer items-center"
           >
             <div className="col-span-12 md:col-span-2 row-start-1 md:row-start-1 text-xs md:text-base flex items-center gap-2">
-              {item.Image?.url && (
+              {item.Image?.url ? (
                 <Image
-                  src={`${
-                    process.env.NEXT_PUBLIC_STRAPI_URL ||
-                    "http://localhost:1337"
-                  }${item.Image.url}`}
+                  src={
+                    item.Image.url.startsWith("http")
+                      ? item.Image.url
+                      : `${
+                          process.env.NEXT_PUBLIC_STRAPI_URL ||
+                          "http://localhost:1337"
+                        }${item.Image.url}`
+                  }
                   alt={item.Source || "Press image"}
                   width={60}
                   height={60}
                   className="rounded object-cover border"
                 />
+              ) : (
+                <span>{item.Source || "Unknown Source"}</span>
               )}
-              {item.Source || "Unknown Source"}
             </div>
             <div className="col-span-12 md:col-span-7 row-start-2 md:row-start-1 pb-2">
               {item.Titolo || "No Title"}

@@ -23,23 +23,35 @@ export default function EventPage({ params }: any) {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
+        console.log("1. Starting fetch...");
         const slug = resolvedParams.slug;
+        console.log("2. Slug:", slug);
         const baseUrl = API_CONFIG.STRAPI_BASE_URL;
+        console.log("3. Base URL:", baseUrl);
 
-        const url = `${baseUrl}/api/events?populate[presses][populate][0]=Image&populate[presses][populate][1]=File`;
+        const url = `${baseUrl}/api/events?filters[slug][$eq]=${slug}&populate=*&populate[presses][populate][0]=Image&populate[presses][populate][1]=File`;
 
-        console.log("Fetching URL:", url);
+        console.log("4. Fetching URL:", url);
 
         const response = await fetch(url, {
           cache: "no-store",
         });
 
+        console.log("5. Response status:", response.status);
+
         if (!response.ok) {
-          notFound();
+          console.error(
+            "6. Response not OK:",
+            response.status,
+            response.statusText
+          );
+          setLoading(false);
+          setEvent(null);
           return;
         }
 
         const responseData = await response.json();
+        console.log("7. Response data:", responseData);
         let eventData;
 
         // Handling Strapi response - new structure
@@ -49,23 +61,31 @@ export default function EventPage({ params }: any) {
           responseData.data.length > 0
         ) {
           eventData = responseData.data[0];
+          console.log("8. Event data found");
         } else {
-          notFound();
+          console.error("9. No event data in response");
+          setLoading(false);
+          setEvent(null);
           return;
         }
 
         if (!eventData || !eventData.title) {
-          notFound();
+          console.error("10. Event data invalid");
+          setLoading(false);
+          setEvent(null);
           return;
         }
 
+        console.log("11. Setting event...");
         setEvent(eventData);
         console.log("Event data:", eventData);
         console.log("Presses:", eventData.presses);
+        console.log("12. Setting loading to false");
         setLoading(false);
       } catch (error) {
-        console.error("Error loading event:", error);
-        notFound();
+        console.error("ERROR in fetchEvent:", error);
+        setLoading(false);
+        setEvent(null);
       }
     };
 
