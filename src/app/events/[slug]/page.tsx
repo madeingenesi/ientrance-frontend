@@ -29,7 +29,10 @@ export default function EventPage({ params }: any) {
         const baseUrl = API_CONFIG.STRAPI_BASE_URL;
         console.log("3. Base URL:", baseUrl);
 
-        const url = `${baseUrl}/api/events?filters[slug][$eq]=${slug}&populate=*&populate[presses][populate][0]=Image&populate[presses][populate][1]=File`;
+        //const url = `${baseUrl}/api/events?filters[slug][$eq]=${slug}&populate=*`;
+        //const url = `${baseUrl}/api/events?filters[slug][$eq]=${slug}&populate=*&populate[presses][populate][0]=Image&populate[presses][populate][1]=File`;
+
+        const url = `${baseUrl}/api/events?filters[slug][$eq]=${slug}&populate[presses][populate][Image]=true&populate[presses][populate][File]=true&populate[featuredImage]=true&populate[photoGallery]=true&populate[videoGallery][populate][Image]=true&populate[pressReview]=true`;
 
         console.log("4. Fetching URL:", url);
 
