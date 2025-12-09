@@ -44,9 +44,13 @@ const renderHeadingContent = (children: any[]) => {
 };
 
 // Componente per la visualizzazione del dettaglio articolo
-export default async function ArticoloPage({ params }: any) {
+export default async function ArticoloPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   try {
-    const slug = params.slug;
+    const { slug } = await params;
     // Utilizziamo la variabile d'ambiente o un URL di fallback
     const baseUrl = "https://ambitious-cat-3135f7987e.strapiapp.com";
     //const baseUrl = "http://localhost:1337";
