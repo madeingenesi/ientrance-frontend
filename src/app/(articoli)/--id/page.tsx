@@ -3,11 +3,15 @@ import PageHeader from "@/components/PageHeader";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function ArticoloPage({ params }: any) {
+export default async function ArticoloPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   try {
     // Log the ID from URL params
-    console.log("URL ID Parameter:", params.id);
-    const id = params.id;
+    const { id } = await params;
+    console.log("URL ID Parameter:", id);
 
     // Using filters instead of direct ID access
     //const url = `https://ambitious-cat-3135f7987e.strapiapp.com/api/articoli?populate=*&filters[id][$eq]=${params.id}`;
