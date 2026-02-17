@@ -34,7 +34,7 @@ export default async function ArticoloPage({
     const articolo = data.data?.[0];
 
     if (!articolo) {
-      console.log("No article found with ID:", params.id);
+      console.log("No article found with ID:", id);
       return notFound();
     }
 
