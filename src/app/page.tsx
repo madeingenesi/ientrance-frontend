@@ -728,7 +728,7 @@ export default function Home() {
                 <ul>
                   <li>Università Sapienza di Roma</li>
                   <li>Università Roma Tre</li>
-                  <li>Istituto della Materia {"(CNR-ISM)"}</li>
+                  <li>Istituto della Struttura della Materia {"(CNR-ISM)"}</li>
                 </ul>
               </div>
             </div>
