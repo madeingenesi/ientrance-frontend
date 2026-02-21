@@ -18,7 +18,7 @@ export default function BoardOfPartners() {
       logo: "/images/boardofpartners/polito.jpg",
     },
     {
-      name: "Prof. Davide Calonico",
+      name: "Dr. Davide Calonico",
       role: "PI of INRiM",
       mail: "d.calonico@inrim.it",
       image: "/images/people/calonico.jpg",
