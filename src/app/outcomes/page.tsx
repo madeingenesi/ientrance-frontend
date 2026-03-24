@@ -1,7 +1,5 @@
 "use client";
 
-import { BrowserRouter } from "react-router-dom";
-import DynamicBreadcrumb from "@/components/DynamicBreadcrumb";
 import Link from "next/link";
 import { ArrowRight, Newspaper, Calendar, FileText } from "lucide-react";
 

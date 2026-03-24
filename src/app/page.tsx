@@ -2,12 +2,17 @@
 
 // Next
 import Image from "next/image";
-import axios from "axios";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { fetchFromStrapi } from "@/lib/config";
 
 // Context
+import {
+  collectTechniqueLabels,
+  type CatalogEquipment,
+} from "@/helpers/catalogEquipment";
 import { useArticlesContext } from "../context/ArticlesContext";
+import { useHighlightedsContext } from "@/context/HighlightedsContext";
 import { useEquipments } from "@/context/EquimentContext";
 
 // Components
@@ -34,53 +39,47 @@ import {
   Megaphone,
 } from "lucide-react";
 
-interface SlideProps {
-  image: string;
-  title: string;
-  description: string;
-}
-
 export default function Home() {
   const { articles } = useArticlesContext();
-  const [slides, setSlides] = useState<SlideProps[]>([]);
-  const [boxes, setBoxes] = useState([]);
+  const { highlighteds } = useHighlightedsContext();
+  /** Strapi single-type `{ data }` for `home-page` (HomeSlider reads `data.data.Slider`). */
+  const [slides, setSlides] = useState<{ data: unknown }>({ data: null });
+  const [boxes, setBoxes] = useState<{ data: unknown }>({ data: null });
   const { machineries } = useEquipments();
   const [techniques, setTechniques] = useState<string[]>([]);
 
   useEffect(() => {
-    const uniqueTechniques = new Set(
-      machineries
-        .filter((machine: any) => machine.equipmentStatus !== "Offline")
-        .map((machine: any) => machine.techniqueName?.split(">", 2)[1])
-    );
-    setTechniques(
-      Array.from(uniqueTechniques as unknown as string[]).filter(Boolean)
-    );
+    const list = (machineries || []) as CatalogEquipment[];
+    const labels = list
+      .filter((m) => m.equipmentStatus !== "Offline")
+      .flatMap((m) => collectTechniqueLabels(m));
+    setTechniques([...new Set(labels)].filter(Boolean).sort());
   }, [machineries]);
 
-  const fetchData = async (url: string, setData: any) => {
-    //const baseUrl = "http://localhost:1337";
-    const baseUrl = "https://ambitious-cat-3135f7987e.strapiapp.com";
+  const fetchHomePage = async (
+    query: string,
+    setData: (value: { data: unknown }) => void
+  ) => {
     try {
-      const response = await axios.get(`${baseUrl}/api/${url}`);
-      console.log("response", response);
-      setData(response.data);
-    } catch (error: any) {
-      console.error(
-        `Error fetching ${url}:`,
-        error.response?.status || error.message
+      const data = await fetchFromStrapi<{ data: unknown }>(
+        `/api/home-page?${query}`,
+        {
+          allowNotFound: true,
+          kind: "single",
+        }
       );
-      // Set empty data to prevent crashes
+      setData(data);
+    } catch {
       setData({ data: null });
     }
   };
 
   useEffect(() => {
-    fetchData(
-      "home-page?populate[0]=Slider&populate[1]=Slider.Immagine",
+    fetchHomePage(
+      "populate[0]=Slider&populate[1]=Slider.Immagine",
       setSlides
     );
-    fetchData("home-page?populate[0]=BoxesSection", setBoxes);
+    fetchHomePage("populate[0]=BoxesSection", setBoxes);
   }, []);
 
   return (
@@ -102,80 +101,50 @@ export default function Home() {
         </div>
       ))} */}
 
-      <section className="container w-full flex flex-col md:flex-row mx-auto mb-12 md:mb-32 relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:w-screen md:before:h-[2px] md:before:bg-[var(--green-secondary)] md:before:z-0 md:before:translate-x-[-50%] md:before:translate-y-[-50%] z-0 p-2 md:p-0 gap-12">
-        <div className="bg-gray-200 splash relative pb-6 max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row gap-4 items-start mb-4 bg-[var(--green-secondary)] p-5 pt-20 md:p-16 max-w-5xl mx-auto splash text-white h-full">
-            <div className="flex flex-1 flex-col gap-2 items-start">
-              <span className="text-sm font-semibold uppercase absolute top-0 left-5 p-2 px-4 bg-[var(--blue-primary)] text-white splashMiniXS">
-                Highlighted
-              </span>
-              <Megaphone className="w-12 h-12 stroke-1 hidden" />
-              <DecryptedText
-                text="iENTRANCE at NanoInnovation 2025"
-                animateOn="view"
-                sequential={true}
-                maxIterations={20}
-                characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
-                speed={50}
-                revealDirection="start"
-                encryptedClassName="text-3xl md:text-3xl font-medium tracking-tight"
-                className="text-3xl md:text-3xl !text-center max-w-3xl font-medium tracking-tight"
-              />
-              <span className="text-2xl max-w-2xl text-center font-semibold">
-                15-17 September 2025
-              </span>
-              <p className="text-sm max-w-2xl text-left ">
-                The iENTRANCE research infrastructure will take center stage at
-                NanoInnovation 2025, the leading event for nanotechnologies and
-                multidisciplinary innovation, taking place in Rome from
-                September 15 to 19.
-              </p>
-              <Link href="/ientrance-at-NanoInnovation-2025" className="mt-8">
-                <Button className="cursor-pointer">
-                  Discover more <ArrowRight className="w-4 h-4" />
-                </Button>
-              </Link>
+      {highlighteds.length > 0 ? (
+        <section className="container w-full flex flex-col md:flex-row mx-auto mb-12 md:mb-32 relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:w-screen md:before:h-[2px] md:before:bg-[var(--green-secondary)] md:before:z-0 md:before:translate-x-[-50%] md:before:translate-y-[-50%] z-0 p-2 md:p-0 gap-12">
+          {highlighteds.map((item) => (
+            <div
+              key={item.id}
+              className="bg-gray-200 splash relative pb-6 max-w-5xl mx-auto"
+            >
+              <div className="flex flex-col md:flex-row gap-4 items-start mb-4 bg-[var(--green-secondary)] p-5 pt-20 md:p-16 max-w-5xl mx-auto splash text-white h-full">
+                <div className="flex flex-1 flex-col gap-2 items-start">
+                  <span className="text-sm font-semibold uppercase absolute top-0 left-5 p-2 px-4 bg-[var(--blue-primary)] text-white splashMiniXS">
+                    Highlighted
+                  </span>
+                  <Megaphone className="w-12 h-12 stroke-1 hidden" />
+                  <DecryptedText
+                    text={item.Title || "\u00a0"}
+                    animateOn="view"
+                    sequential={true}
+                    maxIterations={20}
+                    characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
+                    speed={50}
+                    revealDirection="start"
+                    encryptedClassName="text-3xl md:text-3xl font-medium tracking-tight"
+                    className="text-3xl md:text-3xl !text-center max-w-3xl font-medium tracking-tight"
+                  />
+                  {item.Subtitle ? (
+                    <span className="text-2xl max-w-2xl text-center font-semibold">
+                      {item.Subtitle}
+                    </span>
+                  ) : null}
+                  {item.Content ? (
+                    <p className="text-sm max-w-2xl text-left ">{item.Content}</p>
+                  ) : null}
+                  <Link href={item.Url?.trim() || "#"} className="mt-8">
+                    <Button className="cursor-pointer">
+                      {item.ButtonText?.trim() || "Discover more"}{" "}
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="bg-gray-200 splash relative pb-6 max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row gap-4 items-start mb-4 bg-[var(--green-secondary)] p-5 pt-20 md:p-16 max-w-5xl mx-auto splash text-white h-full">
-            <div className="flex flex-1 flex-col gap-2 items-start">
-              <span className="text-sm font-semibold uppercase absolute top-0 left-5 p-2 px-4 bg-[var(--blue-primary)] text-white splashMiniXS">
-                Highlighted
-              </span>
-              <Megaphone className="w-12 h-12 stroke-1 hidden" />
-              <DecryptedText
-                text="The First Call is open"
-                animateOn="view"
-                sequential={true}
-                maxIterations={20}
-                characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
-                speed={50}
-                revealDirection="start"
-                encryptedClassName="text-3xl md:text-3xl font-medium tracking-tight"
-                className="text-3xl md:text-3xl !text-center max-w-3xl font-medium tracking-tight"
-              />
-              <span className="text-2xl max-w-2xl text-center font-semibold">
-                Deadline July 5, 2025
-              </span>
-              <p className="text-sm max-w-2xl text-left ">
-                The first call for access to the iENTRANCE research
-                infrastructure is now open. You can find the application
-                procedure in the “Send your project” section, where you can
-                download the submission form and consult the specific
-                guidelines. Once the eligibility criteria are met, applications
-                must be submitted no later than 11:59 PM on July 5, 2025.
-              </p>
-              <Link href="/catalogue" className="mt-8">
-                <Button className="cursor-pointer">
-                  Browse our catalogue <ArrowRight className="w-4 h-4" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+          ))}
+        </section>
+      ) : null}
 
       <section className="flex flex-col gap-16 justify-center items-center pt-0 pb-5 splashMaxi relative">
         <div className=" container w-full mx-auto flex flex-col gap-4 justify-center items-start px-4 md:px-8  z-10">
@@ -245,6 +214,7 @@ export default function Home() {
               width={1920}
               height={1080}
               className="w-full hover:translate-y-[-10px] transition-all duration-300"
+              style={{ height: "auto" }}
               unoptimized
             />
           </Link>

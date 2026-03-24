@@ -26,7 +26,6 @@ export function PagesContext({ children }: { children: React.ReactNode }) {
   const getPages = async () => {
     setIsLoading(true);
     try {
-      console.log("Fetching pages...");
       const data = await fetchFromStrapi("/api/pages?populate=*");
       if (data && data.data) {
         setPages(data.data);

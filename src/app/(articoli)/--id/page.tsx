@@ -9,22 +9,18 @@ export default async function ArticoloPage({
   params: Promise<{ id: string }>;
 }) {
   try {
-    // Log the ID from URL params
     const { id } = await params;
-    console.log("URL ID Parameter:", id);
 
     // Using filters instead of direct ID access
     //const url = `https://ambitious-cat-3135f7987e.strapiapp.com/api/articoli?populate=*&filters[id][$eq]=${params.id}`;
 
     const url = `https://ambitious-cat-3135f7987e.strapiapp.com/api/articoli?filters[id][$eq]=${id}&populate=*`;
-    console.log("Fetching URL:", url);
 
     const response = await fetch(url, {
       cache: "no-store", // Disabilitiamo la cache per il debug
     });
 
     if (!response.ok) {
-      console.log("Response not OK:", response.status, response.statusText);
       return notFound();
     }
 
@@ -34,7 +30,6 @@ export default async function ArticoloPage({
     const articolo = data.data?.[0];
 
     if (!articolo) {
-      console.log("No article found with ID:", id);
       return notFound();
     }
 

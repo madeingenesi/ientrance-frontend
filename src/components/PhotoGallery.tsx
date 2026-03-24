@@ -35,9 +35,6 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
   const [selectedImage, setSelectedImage] = useState<Photo | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
-  // Debug: log delle foto per verificare le URL
-  console.log("Photos in gallery:", photos);
-
   // Helper function to get the correct URL (add base URL if relative)
   const getImageUrl = (url: string) => {
     if (!url) return "";

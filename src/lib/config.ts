@@ -5,11 +5,11 @@ export const API_CONFIG = {
     process.env.NEXT_PUBLIC_STRAPI_URL ||
     "https://ambitious-cat-3135f7987e.strapiapp.com",
 
-  // IEntrance API URL - uses environment variable with fallback
+  // IEntrance API URL - uses environment variable with fallback (public base URL only)
   IENTRANCE_BASE_URL:
     process.env.IENTRANCE_API_URL || "https://ientrance.fablims.com/api",
-  IENTRANCE_API_KEY:
-    process.env.IENTRANCE_API_KEY || "2afdf943-a8b6-444d-9689-6ec4006df42c",
+  /** Server-only. Set in `.env.local` / deployment; never use a public fallback in source. */
+  IENTRANCE_API_KEY: process.env.IENTRANCE_API_KEY,
 };
 
 // Helper function to create fetch options with common headers
@@ -24,18 +24,41 @@ export const createFetchOptions = (
   },
 });
 
+export type FetchStrapiOptions = {
+  /**
+   * When the Strapi instance has no such route or content (404), return an empty
+   * payload instead of throwing — avoids console spam when types are not deployed yet.
+   */
+  allowNotFound?: boolean;
+  /** With allowNotFound: collection → `{ data: [] }`, single type → `{ data: null }`. */
+  kind?: "collection" | "single";
+};
+
 // Helper function for Strapi API calls
-export const fetchFromStrapi = async (endpoint: string) => {
-  const url = `${API_CONFIG.STRAPI_BASE_URL}${endpoint}`;
+export async function fetchFromStrapi<T = any>(
+  endpoint: string,
+  options?: FetchStrapiOptions
+): Promise<T> {
+  const base = API_CONFIG.STRAPI_BASE_URL.replace(/\/$/, "");
+  const path = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
+  const url = `${base}${path}`;
   const response = await fetch(url, createFetchOptions());
+
+  if (response.status === 404 && options?.allowNotFound) {
+    const kind = options.kind ?? "collection";
+    return (
+      kind === "single"
+        ? ({ data: null } as T)
+        : ({ data: [] } as T)
+    );
+  }
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
 
-  const data = await response.json();
-  return data;
-};
+  return response.json() as Promise<T>;
+}
 
 // Helper function to get image URL from Strapi image field
 // Handles multiple Strapi response structures: direct URL, object with url, and nested data.attributes.url

@@ -26,7 +26,6 @@ export function EventsContext({ children }: { children: React.ReactNode }) {
   const getEvents = async () => {
     setIsLoading(true);
     try {
-      console.log("Fetching events...");
       const data = await fetchFromStrapi("/api/events?populate=*");
       if (data && data.data) {
         setEvents(data.data);

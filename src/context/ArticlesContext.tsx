@@ -23,7 +23,6 @@ export function ArticlesContext({ children }: { children: React.ReactNode }) {
     setIsLoading(true);
     try {
       const data = await fetchFromStrapi("/api/articoli?populate=*");
-      console.log(data.data);
       setArticles(data.data);
     } catch (error: any) {
       if (error.name === "TypeError" && error.message.includes("fetch")) {
@@ -43,7 +42,6 @@ export function ArticlesContext({ children }: { children: React.ReactNode }) {
     getArticles();
   }, []);
 
-  console.log(articles);
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
 

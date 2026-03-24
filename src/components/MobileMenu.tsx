@@ -72,6 +72,14 @@ const outcomes: { title: string; href: string }[] = [
     title: "Press Releases",
     href: "/outcomes/press-releases",
   },
+  {
+    title: "Results",
+    href: "/outcomes/results",
+  },
+  {
+    title: "Publications",
+    href: "/outcomes/publications",
+  },
 ];
 
 export default function MobileMenu() {

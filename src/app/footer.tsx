@@ -7,6 +7,10 @@ import { useState, useEffect } from "react";
 import { ArrowRight, ChevronRight, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SocialLogo } from "social-logos";
+import {
+  collectTechniqueLabels,
+  type CatalogEquipment,
+} from "@/helpers/catalogEquipment";
 import { useEquipments } from "@/context/EquimentContext";
 
 export default function Footer() {
@@ -14,14 +18,11 @@ export default function Footer() {
   const [techniques, setTechniques] = useState<string[]>([]);
 
   useEffect(() => {
-    const uniqueTechniques = new Set(
-      machineries
-        .filter((machine: any) => machine.equipmentStatus !== "Offline")
-        .map((machine: any) => machine.techniqueName?.split(">", 2)[1])
-    );
-    setTechniques(
-      Array.from(uniqueTechniques as unknown as string[]).filter(Boolean)
-    );
+    const list = (machineries || []) as CatalogEquipment[];
+    const labels = list
+      .filter((m) => m.equipmentStatus !== "Offline")
+      .flatMap((m) => collectTechniqueLabels(m));
+    setTechniques([...new Set(labels)].filter(Boolean).sort());
   }, [machineries]);
 
   const theMosaic = [
@@ -65,18 +66,30 @@ export default function Footer() {
   const learnGrow = [
     {
       title: "Summer School",
-      href: "/learn-grow/#summer-school",
+      href: "/learn-and-grow/#summer-school",
     },
   ];
 
   const outcomes = [
     {
       title: "News & Events",
-      href: "/outcomes/",
+      href: "/outcomes/news-and-events",
+    },
+    {
+      title: "Events",
+      href: "/outcomes/events",
     },
     {
       title: "Press Releases",
-      href: "/outcomes/",
+      href: "/outcomes/press-releases",
+    },
+    {
+      title: "Results",
+      href: "/outcomes/results",
+    },
+    {
+      title: "Publications",
+      href: "/outcomes/publications",
     },
   ];
 

@@ -1,6 +1,5 @@
 "use client";
 
-import DynamicBreadcrumb from "@/components/DynamicBreadcrumb";
 import Presslist from "@/components/Presslist";
 import { usePressContext } from "@/context/PressContext";
 

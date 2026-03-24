@@ -1,11 +1,24 @@
 import axios from "axios";
 
+function getBaseURL(): string {
+  if (typeof window !== "undefined") {
+    return "/api/fablims";
+  }
+  return (
+    process.env.IENTRANCE_API_URL?.replace(/\/$/, "") ||
+    "https://ientrance.fablims.com/api"
+  );
+}
+
 const api = axios.create({
-  baseURL: "https://ientrance.fablims.com/api",
+  baseURL: getBaseURL(),
   headers: {
     "Content-Type": "application/json",
-    "x-api-key": "2afdf943-a8b6-444d-9689-6ec4006df42c",
   },
 });
+
+if (typeof window === "undefined" && process.env.IENTRANCE_API_KEY) {
+  api.defaults.headers.common["x-api-key"] = process.env.IENTRANCE_API_KEY;
+}
 
 export default api;

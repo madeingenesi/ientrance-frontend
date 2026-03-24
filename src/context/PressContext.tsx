@@ -23,7 +23,6 @@ export function PressContext({ children }: { children: React.ReactNode }) {
     setIsLoading(true);
     try {
       const data = await fetchFromStrapi("/api/presses?populate=*");
-      console.log(data.data);
       setPresses(data.data);
     } catch (error: any) {
       if (error.name === "TypeError" && error.message.includes("fetch")) {
@@ -43,7 +42,6 @@ export function PressContext({ children }: { children: React.ReactNode }) {
     getPresses();
   }, []);
 
-  console.log(presses);
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
 

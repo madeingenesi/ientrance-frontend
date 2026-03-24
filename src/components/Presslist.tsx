@@ -59,9 +59,6 @@ export default function Presslist({ presses }: { presses: any }) {
             ? item.File[0]?.url
             : item.Link_Esterno || "#";
 
-        console.log("url", url);
-        console.log("item", item);
-
         return (
           <div
             key={item.id}

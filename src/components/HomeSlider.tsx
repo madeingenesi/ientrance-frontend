@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper";
 
@@ -23,13 +23,6 @@ export default function HomeSlider({ data }: { data: any }) {
   const baseImageUrl = "http://localhost:1337";
 
   const newSlides = data;
-
-  useEffect(() => {
-    if (newSlides?.data?.Slider?.length) {
-      console.log("newslider", newSlides.data.Slider);
-      console.log("newSlides", newSlides.data.Slider[0].Immagine.url);
-    }
-  }, [newSlides]);
 
   const slides = [
     {

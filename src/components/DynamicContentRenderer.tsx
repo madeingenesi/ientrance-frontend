@@ -331,13 +331,6 @@ const SimpleImageComponent = ({
     component.foto ||
     component.picture;
 
-  // Debug: show what fields are available
-  console.log(
-    "SimpleImageComponent - Available fields:",
-    Object.keys(component)
-  );
-  console.log("SimpleImageComponent - Full component:", component);
-
   if (imageData && imageData.url) {
     return (
       <div className="mb-8">
@@ -397,9 +390,6 @@ const SimpleImageComponent = ({
 };
 
 const SimpleVideoComponent = ({ component }: { component: any }) => {
-  console.log("SimpleVideoComponent - Full component:", component);
-  console.log("SimpleVideoComponent - URL:", component.Url);
-
   // Helper function to extract YouTube video ID from URL
   const getYouTubeVideoId = (url: string) => {
     if (!url) return null;
@@ -410,7 +400,6 @@ const SimpleVideoComponent = ({ component }: { component: any }) => {
   };
 
   const videoId = getYouTubeVideoId(component.Url);
-  console.log("SimpleVideoComponent - Video ID:", videoId);
 
   if (!videoId) {
     return (
@@ -444,12 +433,6 @@ export default function DynamicContentRenderer({
   if (!postContent || !Array.isArray(postContent)) {
     return null;
   }
-
-  // Debug: log all component types
-  console.log(
-    "All components in postContent:",
-    postContent.map((c) => c.__component)
-  );
 
   return (
     <div className="dynamic-content">

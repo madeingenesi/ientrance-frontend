@@ -9,6 +9,9 @@ import Footer from "./footer";
 import { PagesContext } from "../context/PagesContext";
 import { PressContext } from "../context/PressContext";
 import { EventsContext } from "../context/EventsContext";
+import { HighlightedsContextProvider } from "../context/HighlightedsContext";
+import { ResultsContextProvider } from "../context/ResultsContext";
+import { PubblicationsContextProvider } from "../context/PubblicationsContext";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -31,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <head>
         <Script
           strategy="afterInteractive"
@@ -75,15 +78,21 @@ export default function RootLayout({
       >
         <PagesContext>
           <ArticlesContext>
-            <EquipmentsProvider>
-              <PressContext>
-                <EventsContext>
-                  <Header />
-                  {children}
-                  <Footer />
-                </EventsContext>
-              </PressContext>
-            </EquipmentsProvider>
+            <HighlightedsContextProvider>
+              <EquipmentsProvider>
+                <PressContext>
+                  <ResultsContextProvider>
+                    <PubblicationsContextProvider>
+                      <EventsContext>
+                        <Header />
+                        {children}
+                        <Footer />
+                      </EventsContext>
+                    </PubblicationsContextProvider>
+                  </ResultsContextProvider>
+                </PressContext>
+              </EquipmentsProvider>
+            </HighlightedsContextProvider>
           </ArticlesContext>
         </PagesContext>
       </body>

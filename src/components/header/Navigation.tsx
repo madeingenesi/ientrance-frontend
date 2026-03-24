@@ -49,6 +49,12 @@ const theMosaic: { title: string; href: string; description: string }[] = [
     description:
       "iENTRANCE is committed to ensuring that all data generated and managed within its infrastructure adhere to the FAIR principles: Findable, Accessible, Interoperable, and Reusable.",
   },
+  {
+    title: "Catalogue",
+    href: "/catalogue",
+    description:
+      "Discover our state-of-the-art research infrastructure machine catalog, showcasing cutting-edge equipment designed to drive innovation.",
+  }
 ];
 
 const comeIn: { title: string; href: string; description: string }[] = [
@@ -92,6 +98,18 @@ const outcomes: { title: string; href: string; description: string }[] = [
     href: "/outcomes/press-releases",
     description:
       "Official press releases and media communications from our organization.",
+  },
+  {
+    title: "Results",
+    href: "/outcomes/results",
+    description:
+      "Research results and outputs from the iENTRANCE community.",
+  },
+  {
+    title: "Publications",
+    href: "/outcomes/publications",
+    description:
+      "Scientific publications and references from the iENTRANCE infrastructure.",
   },
 ];
 
@@ -206,20 +224,23 @@ export function Navigation() {
         </NavigationMenuItem>
         <div className="flex items-center gap-2">
           <NavigationMenuItem className="hidden">
-            <Link href="/docs" legacyBehavior passHref>
-              <Button variant="outline" className="cursor-pointer">
+            <Button variant="outline" className="cursor-pointer" asChild>
+              <Link href="/docs">
                 <LogIn className="w-4 h-4" />
                 Login
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/send-your-project">
-              <Button className="bg-[var(--blue-primary)] text-white cursor-pointer">
+            <Button
+              className="bg-[var(--blue-primary)] text-white cursor-pointer"
+              asChild
+            >
+              <Link href="/send-your-project">
                 <FolderOpenDot className="w-4 h-4" />
                 Send your project
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </NavigationMenuItem>
         </div>
       </NavigationMenuList>

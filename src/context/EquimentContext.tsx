@@ -1,7 +1,11 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
-import api from "../lib/axiosinstance"; // Importa l'istanza Axios
+import api from "../lib/axiosinstance";
+import {
+  normalizeCatalogEquipmentList,
+  type CatalogEquipment,
+} from "@/helpers/catalogEquipment";
 
 const EquipmentsContext = createContext<any>(null);
 
@@ -11,30 +15,41 @@ export function EquipmentsProvider({
   children: React.ReactNode;
 }) {
   const [equipments, setEquipments] = useState([]);
-  const [machineries, setMachineries] = useState([]);
+  const [machineries, setMachineries] = useState<CatalogEquipment[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchData = async (
-      endpoint: string,
-      setter: React.Dispatch<React.SetStateAction<any>>
-    ) => {
+    let cancelled = false;
+
+    const load = async () => {
+      setLoading(true);
+      setError(null);
       try {
-        const response = await api.get(endpoint);
-        setter(response.data);
-      } catch (err: any) {
-        setError(err.message);
+        const [categoriesRes, catalogRes] = await Promise.all([
+          api.get("equipments/catalog-equipment-technique-main-categories"),
+          api.get("equipments/catalog-equipment2"),
+        ]);
+        if (cancelled) return;
+        setEquipments(categoriesRes.data);
+        setMachineries(
+          normalizeCatalogEquipmentList(catalogRes.data) as CatalogEquipment[]
+        );
+      } catch (err: unknown) {
+        if (!cancelled) {
+          const message =
+            err instanceof Error ? err.message : "Failed to load equipment";
+          setError(message);
+        }
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     };
 
-    fetchData(
-      "/equipments/catalog-equipment-technique-main-categories",
-      setEquipments
-    );
-    fetchData("/equipments/catalog-equipment", setMachineries);
+    load();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (

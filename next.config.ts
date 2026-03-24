@@ -9,10 +9,12 @@ const nextConfig: NextConfig = {
         port: "1337",
         pathname: "/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "ambitious-cat-3135f7987e.strapiapp.com",
+        pathname: "/uploads/**",
+      },
     ],
-  },
-  typescript: {
-    ignoreBuildErrors: true, // Only use this temporarily to get the build working
   },
 };
 

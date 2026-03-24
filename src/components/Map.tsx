@@ -48,11 +48,6 @@ export default function MapplicMap({
         mapElement.setAttribute("data-json", validMapData);
         mapContainerRef.current.appendChild(mapElement);
         mapElementRef.current = mapElement;
-
-        // Listen for mapReady event as per Mapplic documentation
-        mapElement.addEventListener("mapReady", () => {
-          console.log("Mapplic map ready");
-        });
       }
     };
 

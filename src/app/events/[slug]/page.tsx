@@ -23,24 +23,17 @@ export default function EventPage({ params }: any) {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        console.log("1. Starting fetch...");
         const slug = resolvedParams.slug;
-        console.log("2. Slug:", slug);
         const baseUrl = API_CONFIG.STRAPI_BASE_URL;
-        console.log("3. Base URL:", baseUrl);
 
         //const url = `${baseUrl}/api/events?filters[slug][$eq]=${slug}&populate=*`;
         //const url = `${baseUrl}/api/events?filters[slug][$eq]=${slug}&populate=*&populate[presses][populate][0]=Image&populate[presses][populate][1]=File`;
 
         const url = `${baseUrl}/api/events?filters[slug][$eq]=${slug}&populate[presses][populate][Image]=true&populate[presses][populate][File]=true&populate[featuredImage]=true&populate[photoGallery]=true&populate[videoGallery][populate][Image]=true&populate[pressReview]=true`;
 
-        console.log("4. Fetching URL:", url);
-
         const response = await fetch(url, {
           cache: "no-store",
         });
-
-        console.log("5. Response status:", response.status);
 
         if (!response.ok) {
           console.error(
@@ -54,7 +47,6 @@ export default function EventPage({ params }: any) {
         }
 
         const responseData = await response.json();
-        console.log("7. Response data:", responseData);
         let eventData;
 
         // Handling Strapi response - new structure
@@ -64,7 +56,6 @@ export default function EventPage({ params }: any) {
           responseData.data.length > 0
         ) {
           eventData = responseData.data[0];
-          console.log("8. Event data found");
         } else {
           console.error("9. No event data in response");
           setLoading(false);
@@ -79,11 +70,7 @@ export default function EventPage({ params }: any) {
           return;
         }
 
-        console.log("11. Setting event...");
         setEvent(eventData);
-        console.log("Event data:", eventData);
-        console.log("Presses:", eventData.presses);
-        console.log("12. Setting loading to false");
         setLoading(false);
       } catch (error) {
         console.error("ERROR in fetchEvent:", error);
@@ -287,9 +274,6 @@ export default function EventPage({ params }: any) {
                   };
 
                   const { width, height } = getImageDimensions();
-
-                  // Debug: log final image URL
-                  console.log("Final Image URL:", finalImageUrl);
 
                   return (
                     <SwiperSlide key={index}>
