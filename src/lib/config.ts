@@ -5,6 +5,13 @@ export const API_CONFIG = {
     process.env.NEXT_PUBLIC_STRAPI_URL ||
     "https://ambitious-cat-3135f7987e.strapiapp.com",
 
+  /**
+   * Optional Strapi API token (read-only) for REST calls from the browser.
+   * Set `NEXT_PUBLIC_STRAPI_API_TOKEN` in `.env.local` if the Public role returns 403.
+   * Note: value is exposed in the client bundle (use a read-only token only).
+   */
+  STRAPI_API_TOKEN: process.env.NEXT_PUBLIC_STRAPI_API_TOKEN,
+
   // IEntrance API URL - uses environment variable with fallback (public base URL only)
   IENTRANCE_BASE_URL:
     process.env.IENTRANCE_API_URL || "https://ientrance.fablims.com/api",
@@ -26,8 +33,8 @@ export const createFetchOptions = (
 
 export type FetchStrapiOptions = {
   /**
-   * When the Strapi instance has no such route or content (404), return an empty
-   * payload instead of throwing — avoids console spam when types are not deployed yet.
+   * When the API returns 404 (missing route/content) or 403 (forbidden: no public permission),
+   * return an empty payload instead of throwing.
    */
   allowNotFound?: boolean;
   /** With allowNotFound: collection → `{ data: [] }`, single type → `{ data: null }`. */
@@ -42,9 +49,18 @@ export async function fetchFromStrapi<T = any>(
   const base = API_CONFIG.STRAPI_BASE_URL.replace(/\/$/, "");
   const path = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
   const url = `${base}${path}`;
-  const response = await fetch(url, createFetchOptions());
+  const token = API_CONFIG.STRAPI_API_TOKEN;
+  const response = await fetch(
+    url,
+    createFetchOptions(
+      token ? { Authorization: `Bearer ${token}` } : {}
+    )
+  );
 
-  if (response.status === 404 && options?.allowNotFound) {
+  if (
+    options?.allowNotFound &&
+    (response.status === 404 || response.status === 403)
+  ) {
     const kind = options.kind ?? "collection";
     return (
       kind === "single"

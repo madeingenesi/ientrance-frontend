@@ -1,24 +1,18 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { Navigation } from "@/components/header/Navigation";
-import { Menu, Info } from "lucide-react";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import MobileMenu from "@/components/MobileMenu";
 import InfoButtonHeader from "@/components/InfoButtonHeader";
-
-// Shadcn
 
 import { Button } from "@/components/ui/button";
 import { FolderOpenDot } from "lucide-react";
 
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -41,7 +35,6 @@ export default function Header() {
                 height={100}
                 unoptimized
                 className="max-md:w-1/2 md:max-w-[400px]"
-                style={{ height: "auto" }}
               />
               <span className="md:text-xl font-semibold tracking-tight text-[var(--blue-primary)] md:border-l md:pl-4 border-[var(--blue-primary)] ml-9 -mt-7 md:mt-0 md:ml-0 flex items-center gap-2">
                 Research Infrastructure
@@ -57,8 +50,7 @@ export default function Header() {
                 width={130}
                 height={110}
                 unoptimized
-                className="h-auto w-auto max-h-[110px] max-w-full"
-                style={{ height: "auto" }}
+                className="max-h-[60px]"
               />
               <Image
                 src="/mur/logo_italiadomani.png"
@@ -66,8 +58,7 @@ export default function Header() {
                 width={110}
                 height={110}
                 unoptimized
-                className="h-auto w-auto max-h-[110px] max-w-full"
-                style={{ height: "auto" }}
+                className="max-h-[60px]"
               />
               <Image
                 src="/mur/universita_ricerca.jpg"
@@ -75,8 +66,7 @@ export default function Header() {
                 width={110}
                 height={110}
                 unoptimized
-                className="h-auto w-auto max-h-[110px] max-w-full"
-                style={{ height: "auto" }}
+                className="max-h-[60px]"
               />
             </div>
             <Navigation />
@@ -89,8 +79,7 @@ export default function Header() {
                 width={50}
                 height={50}
                 unoptimized
-                className="h-auto w-auto"
-                style={{ height: "auto" }}
+                className="max-h-[60px]"
               />
               <Image
                 src="/mur/logo_italiadomani.png"
@@ -98,8 +87,7 @@ export default function Header() {
                 width={50}
                 height={50}
                 unoptimized
-                className="h-auto w-auto"
-                style={{ height: "auto" }}
+                className="max-h-[60px]"
               />
               <Image
                 src="/mur/universita_ricerca.jpg"
@@ -107,8 +95,7 @@ export default function Header() {
                 width={50}
                 height={50}
                 unoptimized
-                className="h-auto w-auto"
-                style={{ height: "auto" }}
+                className="max-h-[60px]"
               />
             </div>
             <div className="flex items-center gap-4">
