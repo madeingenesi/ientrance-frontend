@@ -45,64 +45,64 @@ export default function Header() {
             </Link>
           </div>
           <div className="flex-col items-end gap-4 hidden md:flex">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <Image
                 src="/mur/nextGeneration_positivo.png"
                 alt="logo"
-                width={130}
-                height={110}
+                width={90}
+                height={76}
                 unoptimized
-                className="max-h-[60px] w-auto object-contain"
+                className="max-h-[36px] w-auto object-contain"
                 style={{ width: "auto" }}
               />
               <Image
                 src="/mur/logo_italiadomani.png"
                 alt="logo"
-                width={110}
-                height={110}
+                width={76}
+                height={76}
                 unoptimized
-                className="max-h-[60px] w-auto object-contain"
+                className="max-h-[36px] w-auto object-contain"
                 style={{ width: "auto" }}
               />
               <Image
                 src="/mur/universita_ricerca.jpg"
                 alt="logo"
-                width={110}
-                height={110}
+                width={76}
+                height={76}
                 unoptimized
-                className="max-h-[60px] w-auto object-contain"
+                className="max-h-[36px] w-auto object-contain"
                 style={{ width: "auto" }}
               />
             </div>
             <Navigation />
           </div>
           <div className="flex flex-col items-center gap-4 md:hidden">
-            <div className="flex items-center gap-4 md:hidden justify-between -ml-[120px]">
+            <div className="flex items-center gap-2 md:hidden justify-between -ml-[120px]">
               <Image
                 src="/mur/nextGeneration_positivo.png"
                 alt="logo next generation"
-                width={50}
-                height={50}
+                width={40}
+                height={34}
                 unoptimized
-                className="max-h-[60px] w-auto object-contain"
+                className="max-h-[28px] w-auto object-contain"
                 style={{ width: "auto" }}
               />
               <Image
                 src="/mur/logo_italiadomani.png"
                 alt="logo italia domani"
-                width={50}
-                height={50}
+                width={34}
+                height={34}
                 unoptimized
-                className="max-h-[60px] w-auto object-contain"
+                className="max-h-[28px] w-auto object-contain"
                 style={{ width: "auto" }}
               />
               <Image
                 src="/mur/universita_ricerca.jpg"
                 alt="logo università ricerca"
-                width={50}
-                height={50}
+                width={34}
+                height={34}
                 unoptimized
-                className="max-h-[60px] w-auto object-contain"
+                className="max-h-[28px] w-auto object-contain"
                 style={{ width: "auto" }}
               />
             </div>
