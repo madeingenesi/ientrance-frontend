@@ -49,7 +49,10 @@ export default function Page() {
 
   useEffect(() => {
     const findPage = () => {
-      const foundPage = pages.find((page: PageData) => page.Slug === slug);
+      const normalized = decodeURIComponent(slug).toLowerCase();
+      const foundPage = pages.find(
+        (page: PageData) => page.Slug?.toLowerCase() === normalized
+      );
       setCurrentPage(foundPage || null);
     };
 

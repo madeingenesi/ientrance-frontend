@@ -26,7 +26,9 @@ export function PagesContext({ children }: { children: React.ReactNode }) {
   const getPages = async () => {
     setIsLoading(true);
     try {
-      const data = await fetchFromStrapi("/api/pages?populate=*");
+      const data = await fetchFromStrapi(
+        "/api/pages?populate=*&pagination[pageSize]=100"
+      );
       if (data && data.data) {
         setPages(data.data);
       }
