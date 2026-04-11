@@ -1,7 +1,6 @@
-import { useState } from "react";
-
 //Blocks
 import DoubleText from "@/components/blocks/doubleText";
+import PageEditorBlocks from "@/components/PageEditorBlocks";
 
 interface BlocksRenderProps {
   block: any;
@@ -9,11 +8,15 @@ interface BlocksRenderProps {
 }
 
 export default function BlocksRender({ block, index }: BlocksRenderProps) {
-  const [currentBlock, setCurrentBlock] = useState(block);
-
-  switch (currentBlock.__component) {
+  switch (block.__component) {
     case "page-components.double-text":
-      return <DoubleText block={currentBlock} />;
+      return <DoubleText block={block} />;
+    case "page-components.editor":
+      return (
+        <section key={index} className="mb-10">
+          <PageEditorBlocks blocks={block.text_editor} />
+        </section>
+      );
     default:
       return null;
   }
