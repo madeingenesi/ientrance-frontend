@@ -332,7 +332,12 @@ export default function Catalogue() {
                     {Object.entries(selectedItem)
                       .filter(
                         ([key]) =>
-                          !["id", "technique", "laboratory"].includes(key)
+                          ![
+                            "id",
+                            "technique",
+                            "laboratory",
+                            "equipmentMainContactInfo",
+                          ].includes(key)
                       )
                       .map(([key, value]) => (
                         <div
