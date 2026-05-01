@@ -102,14 +102,14 @@ function renderBlock(block: any, index: number) {
     const ListTag = block.format === "ordered" ? "ol" : "ul";
     const listClass =
       block.format === "ordered"
-        ? "list-decimal pl-6 mb-4 space-y-2"
-        : "list-disc pl-6 mb-4 space-y-2";
+        ? "list-decimal pl-6 mt-3 mb-6 py-1 space-y-2.5"
+        : "list-disc pl-6 mt-3 mb-6 py-1 space-y-2.5";
     const items =
       block.children?.filter((c: any) => c.type === "list-item") ?? [];
     return (
       <ListTag key={index} className={listClass}>
         {items.map((item: any, i: number) => (
-          <li key={i} className="text-lg leading-relaxed pl-1">
+          <li key={i} className="text-lg leading-relaxed pl-1 marker:font-medium">
             {renderInline(item.children)}
           </li>
         ))}

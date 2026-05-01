@@ -1,142 +1,17 @@
 "use client";
 
-import { useEffect, useRef, createRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Separator } from "@/components/ui/separator";
 
 import { ChevronsRight } from "lucide-react";
+import type { GuideTabSection } from "@/lib/comeInStrapiContent";
 
-const contentSections = [
-  {
-    id: "open-call-announcement",
-    number: "1",
-    title: "Open Call Announcement",
-    content:
-      "iENTRANCE will publish open calls through its official website and other relevant communication channels. Each call will clearly outline the scope, key focus areas, and application deadlines. Comprehensive information, including access policies and specific guidelines, will be made available on the dedicated application portal to ensure transparency and support for potential applicants.",
-  },
-  {
-    id: "access-proposal-submission",
-    number: "2",
-    title: "Access Proposal Submission",
-    content: [
-      {
-        type: "paragraph",
-        text: "Applicants are required to submit their proposals via the online application portal available on the iENTRANCE website.",
-      },
-      {
-        type: "paragraph",
-        text: "The submission form will request detailed information such as the project title and abstract, research objectives and methodology, a clear justification for requesting infrastructure access, expected outcomes and their potential impact, required resources and facilities, as well as the applicant's qualifications and relevant experience.",
-      },
-      {
-        type: "paragraph",
-        text: "It is strongly recommended that applicants consult the provided application guidelines to ensure their submission meets all necessary criteria.",
-      },
-    ],
-  },
-  {
-    id: "evaluation-process",
-    number: "3",
-    title: "Evaluation Process",
-    content: [
-      {
-        type: "paragraph",
-        text: "Applications will undergo a rigorous evaluation process conducted by three distinct committees",
-      },
-      {
-        type: "subtitle",
-        text: "Scientific Committee",
-      },
-      {
-        type: "paragraph",
-        text: "Composed of external experts, this committee will evaluate the scientific merit, novelty, and potential impact of the proposed research.",
-      },
-      {
-        type: "paragraph",
-        text: "Emphasis will be placed on the alignment with iENTRANCE's strategic objectives and the advancement of knowledge in relevant fields as well as on the overall scientific excellence",
-      },
-      {
-        type: "subtitle",
-        text: "Technical Feasibility Committee",
-      },
-      {
-        type: "paragraph",
-        text: "Comprising iENTRANCE partnership members, this committee will assess the technical feasibility of the projects.",
-      },
-      {
-        type: "paragraph",
-        text: "Evaluations will include assessments on weather or not the projects can be realised using the infrastructure, and which specific nodes of the infrastructure are best equipped to carry out the necessary work.",
-      },
-      {
-        type: "paragraph",
-        text: "This committee will be responsible for assigning projects to the proper iENTRANCE infrastructure nodes.",
-      },
-      {
-        type: "subtitle",
-        text: "Technical Management Committee",
-      },
-      {
-        type: "paragraph",
-        text: "Made up of iENTRANCE partnership members. This committee will be responsible for overseeing the technical side of approved projects execution.",
-      },
-    ],
-  },
-  {
-    id: "access-allocation-and-project-execution",
-    number: "4",
-    title: "Access Allocation and Project Execution",
-    content: [
-      {
-        type: "paragraph",
-        text: "Successful applicants will be granted access to the iENTRANCE infrastructure based on the evaluation outcome and resource availability.",
-      },
-      {
-        type: "paragraph",
-        text: "The Technical Management Committee will provide ongoing support throughout the project execution phase.",
-      },
-      {
-        type: "paragraph",
-        text: "The results of the experiments must be reported, as specified in the application forms.",
-      },
-    ],
-  },
-  {
-    id: "post-project-requirements",
-    number: "5",
-    title: "Post-Project Requirements",
-    content: [
-      {
-        type: "paragraph",
-        text: "Users are requested to report the results of their experiments to the scientific committee.",
-      },
-      {
-        type: "paragraph",
-        text: "Users must cite the iENTRANCE infrastructure when publishing their results.",
-      },
-    ],
-  },
-  {
-    id: "key-considerations",
-    number: "6",
-    title: "Key Considerations",
-    content: [
-      {
-        type: "paragraph",
-        text: "Applicants should clearly articulate the scientific and/or technological merit of their projects.",
-      },
-      {
-        type: "paragraph",
-        text: "Proposals must demonstrate the necessity of utilizing the iENTRANCE infrastructure.",
-      },
-      {
-        type: "paragraph",
-        text: "Applications should adhere to the guidelines provided in the open call announcement.",
-      },
-    ],
-  },
-];
+type TabsContentBoxProps = {
+  contentSections: GuideTabSection[];
+};
 
-export default function TabsContentBox() {
+export default function TabsContentBox({ contentSections }: TabsContentBoxProps) {
   const linksRef = useRef<HTMLAnchorElement[]>([]);
   const sectionsRef = useRef<HTMLDivElement[]>([]);
 
@@ -144,13 +19,15 @@ export default function TabsContentBox() {
   useEffect(() => {
     linksRef.current = linksRef.current.slice(0, contentSections.length);
     sectionsRef.current = sectionsRef.current.slice(0, contentSections.length);
-  }, []);
+  }, [contentSections.length]);
 
   useEffect(() => {
     // Register ScrollTrigger
     if (typeof window !== "undefined") {
       gsap.registerPlugin(ScrollTrigger);
     }
+
+    if (contentSections.length === 0) return;
 
     // Make sure all refs are available
     if (linksRef.current.length === 0 || sectionsRef.current.length === 0)
@@ -208,7 +85,22 @@ export default function TabsContentBox() {
       ctx.revert();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [contentSections.length]);
+
+  if (contentSections.length === 0) {
+    return (
+      <p className="text-center text-muted-foreground py-12 text-base md:text-lg max-w-2xl mx-auto">
+        Guide content could not be loaded. Please see the full{" "}
+        <a
+          className="text-[var(--blue-primary)] underline"
+          href="/guidelines"
+        >
+          Guidelines
+        </a>{" "}
+        page.
+      </p>
+    );
+  }
 
   return (
     <div className="flex flex-col md:flex-row relative py-12 md:py-0 gap-16">
@@ -254,33 +146,36 @@ export default function TabsContentBox() {
                 </div>
               </span>
               {Array.isArray(section.content) ? (
-                section.content.map(
-                  (
-                    item: { type: string; text: string; items?: string[] },
-                    i: number
-                  ) => {
+                <div className="flex flex-col gap-4">
+                  {section.content.map((item, i) => {
                     switch (item.type) {
                       case "paragraph":
                         return (
-                          <p key={i} className="flex flex-col gap-0">
-                            {item.text}
+                          <p
+                            key={i}
+                            className="text-base leading-relaxed last:mb-0"
+                          >
+                            {item.text ?? ""}
                           </p>
                         );
                       case "subtitle":
                         return (
                           <h3
                             key={i}
-                            className="text-xl font-medium mt-4 mb-4 tracking-tight"
+                            className="text-xl font-medium pt-1 tracking-tight"
                           >
-                            {item.text}
+                            {item.text ?? ""}
                           </h3>
                         );
                       case "list":
                         return (
-                          <ul key={i} className="list-disc pl-6 space-y-2">
+                          <ul
+                            key={i}
+                            className="list-disc pl-6 space-y-2.5"
+                          >
                             {item.items?.map(
                               (listItem: string, index: number) => (
-                                <li key={index} className="">
+                                <li key={index} className="leading-relaxed">
                                   {listItem}
                                 </li>
                               )
@@ -290,10 +185,10 @@ export default function TabsContentBox() {
                       default:
                         return null;
                     }
-                  }
-                )
+                  })}
+                </div>
               ) : (
-                <p className="">{section.content}</p>
+                <p className="leading-relaxed">{section.content}</p>
               )}
             </div>
           ))}
