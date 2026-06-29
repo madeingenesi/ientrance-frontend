@@ -16,6 +16,7 @@ export default function PublicationsPage() {
       isLoading={isLoading}
       error={error}
       loadErrorMessage="Unable to load publications. Please try again later."
+      pageSize={10}
     />
   );
 }

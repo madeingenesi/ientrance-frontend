@@ -61,6 +61,10 @@ export default function Footer() {
       title: "FAQ",
       href: "/come-in/#faq",
     },
+    {
+      title: "Contact us",
+      href: "/come-in/contact-us",
+    },
   ];
 
   const learnGrow = [

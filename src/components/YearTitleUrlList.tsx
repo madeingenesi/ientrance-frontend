@@ -1,13 +1,60 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { useEffect, useRef, useState, type RefObject } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import type { YearTitleUrlRow } from "@/helpers/strapiOutcomeNormalize";
+
+type YearTitleUrlListProps = {
+  rows: YearTitleUrlRow[];
+  pageSize?: number;
+  scrollAnchorRef?: RefObject<HTMLElement | null>;
+};
 
 /**
  * Same grid layout as {@link Presslist}: 12-col header + stacked rows on mobile.
  * Columns: Year, Title, URL.
  */
-export default function YearTitleUrlList({ rows }: { rows: YearTitleUrlRow[] }) {
+export default function YearTitleUrlList({
+  rows,
+  pageSize,
+  scrollAnchorRef,
+}: YearTitleUrlListProps) {
+  const [page, setPage] = useState(1);
+  const listRef = useRef<HTMLDivElement>(null);
+  const skipScrollRef = useRef(true);
+  const itemsPerPage = pageSize && pageSize > 0 ? pageSize : 0;
+  const isPaginated = itemsPerPage > 0;
+  const safeRows = Array.isArray(rows) ? rows : [];
+
+  const sorted = [...safeRows].sort((a, b) => {
+    const ya = Number(a.year) || 0;
+    const yb = Number(b.year) || 0;
+    return yb - ya;
+  });
+
+  useEffect(() => {
+    setPage(1);
+    skipScrollRef.current = true;
+  }, [rows, pageSize]);
+
+  useEffect(() => {
+    if (!isPaginated) return;
+    if (skipScrollRef.current) {
+      skipScrollRef.current = false;
+      return;
+    }
+
+    const target = scrollAnchorRef?.current ?? listRef.current;
+    target?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [page, isPaginated, scrollAnchorRef]);
+
+  const totalPages = isPaginated ? Math.ceil(sorted.length / itemsPerPage) : 1;
+  const safePage = Math.min(page, totalPages);
+  const visibleRows = isPaginated
+    ? sorted.slice((safePage - 1) * itemsPerPage, safePage * itemsPerPage)
+    : sorted;
+
   if (!rows || !Array.isArray(rows)) {
     return (
       <div className="min-h-[40vh] w-full flex items-center justify-center">
@@ -15,12 +62,6 @@ export default function YearTitleUrlList({ rows }: { rows: YearTitleUrlRow[] }) 
       </div>
     );
   }
-
-  const sorted = [...rows].sort((a, b) => {
-    const ya = Number(a.year) || 0;
-    const yb = Number(b.year) || 0;
-    return yb - ya;
-  });
 
   if (sorted.length === 0) {
     return (
@@ -31,7 +72,10 @@ export default function YearTitleUrlList({ rows }: { rows: YearTitleUrlRow[] }) 
   }
 
   return (
-    <div className="min-h-screen w-full">
+    <div
+      ref={listRef}
+      className={isPaginated ? "w-full" : "min-h-screen w-full"}
+    >
       <div className="grid grid-cols-12 border-y py-4 hidden md:grid">
         <div className="col-span-2 text-muted-foreground font-semibold">
           Year
@@ -43,13 +87,13 @@ export default function YearTitleUrlList({ rows }: { rows: YearTitleUrlRow[] }) 
           URL
         </div>
       </div>
-      {sorted.map((item) => {
+      {visibleRows.map((item, index) => {
         const href = item.url?.trim() || "";
         const hasUrl = href.length > 0 && href !== "#";
 
         return (
           <div
-            key={item.id}
+            key={`${safePage}-${item.id}-${index}`}
             className="grid grid-rows-3 md:grid-rows-1 grid-cols-12 border-b py-4 bg-white hover:bg-muted/50 transition-all duration-300 items-center"
           >
             <div className="col-span-12 md:col-span-2 row-start-1 md:row-start-1 text-xs md:text-base">
@@ -98,6 +142,43 @@ export default function YearTitleUrlList({ rows }: { rows: YearTitleUrlRow[] }) 
           </div>
         );
       })}
+      {isPaginated && totalPages > 1 ? (
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t pt-6 mt-2">
+          <p className="text-sm text-muted-foreground">
+            Showing {(safePage - 1) * itemsPerPage + 1}–
+            {Math.min(safePage * itemsPerPage, sorted.length)} of {sorted.length}
+          </p>
+          <div className="flex items-center gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => setPage((current) => Math.max(1, current - 1))}
+              disabled={safePage <= 1}
+              aria-label="Previous page"
+            >
+              <ChevronLeft />
+              Previous
+            </Button>
+            <span className="text-sm text-muted-foreground px-2 tabular-nums">
+              {safePage} / {totalPages}
+            </span>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() =>
+                setPage((current) => Math.min(totalPages, current + 1))
+              }
+              disabled={safePage >= totalPages}
+              aria-label="Next page"
+            >
+              Next
+              <ChevronRight />
+            </Button>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

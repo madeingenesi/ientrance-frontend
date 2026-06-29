@@ -69,6 +69,12 @@ const comeIn: { title: string; href: string; description: string }[] = [
     description:
       "The FAQ section provides clear answers to common questions, helping you quickly understand our services and more",
   },
+  {
+    title: "Contact us",
+    href: "/come-in/contact-us",
+    description:
+      "Get in touch for general inquiries, node-specific questions, or technical support.",
+  },
 ];
 
 const learnGrow: { title: string; href: string; description: string }[] = [

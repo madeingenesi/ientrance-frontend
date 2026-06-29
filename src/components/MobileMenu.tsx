@@ -50,6 +50,10 @@ const comeIn: { title: string; href: string }[] = [
     title: "FAQ",
     href: "/come-in/#faq",
   },
+  {
+    title: "Contact us",
+    href: "/come-in/contact-us",
+  },
 ];
 
 const learnGrow: { title: string; href: string }[] = [
