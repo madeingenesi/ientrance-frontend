@@ -36,13 +36,27 @@ export function PubblicationsContextProvider({
       setIsLoading(true);
       setError(null);
       try {
-        const data = await fetchFromStrapi(
-          "/api/pubblications?populate=*&sort=Year:desc",
-          { allowNotFound: true, kind: "collection" }
-        );
+        // Strapi caps each response at pageSize (default 25). Loop every page
+        // so all publications load, not just the first page.
+        const PAGE_SIZE = 100;
+        const all: unknown[] = [];
+        let page = 1;
+        let pageCount = 1;
+        do {
+          const data = await fetchFromStrapi<{
+            data?: unknown[];
+            meta?: { pagination?: { pageCount?: number } };
+          }>(
+            `/api/pubblications?populate=*&sort=Year:desc&pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}`,
+            { allowNotFound: true, kind: "collection" }
+          );
+          if (cancelled) return;
+          if (Array.isArray(data?.data)) all.push(...data.data);
+          pageCount = data?.meta?.pagination?.pageCount ?? page;
+          page += 1;
+        } while (page <= pageCount);
         if (cancelled) return;
-        const list = Array.isArray(data?.data) ? data.data : [];
-        setPubblications(list);
+        setPubblications(all);
       } catch (e) {
         if (!cancelled) {
           setError(e);
