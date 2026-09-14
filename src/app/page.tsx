@@ -4,7 +4,6 @@
 import Image from "next/image";
 import { useMemo } from "react";
 import Link from "next/link";
-import { safeHref } from "@/lib/safeHref";
 
 // Context
 import {
@@ -18,6 +17,7 @@ import { useEquipments } from "@/context/EquimentContext";
 // Components
 import HomeSlider from "../components/HomeSlider";
 import NewsCarousel from "../components/NewsCarousel";
+import HighlightedsCarousel from "../components/HighlightedsCarousel";
 import Aurora from "../components/Aurora";
 import MainTopicsCarousel from "../components/MainTopicsCarousel";
 import MapplicMap from "../components/Map";
@@ -32,7 +32,6 @@ import {
   LibraryBig,
   MessagesSquare,
   ArrowRight,
-  Megaphone,
 } from "lucide-react";
 
 export default function Home() {
@@ -67,47 +66,8 @@ export default function Home() {
       ))} */}
 
       {highlighteds.length > 0 ? (
-        <section className="container w-full flex flex-col md:flex-row mx-auto mb-12 md:mb-32 relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:w-screen md:before:h-[2px] md:before:bg-[var(--green-secondary)] md:before:z-0 md:before:translate-x-[-50%] md:before:translate-y-[-50%] z-0 p-2 md:p-0 gap-12">
-          {highlighteds.map((item) => (
-            <div
-              key={item.id}
-              className="bg-gray-200 splash relative pb-6 max-w-5xl mx-auto"
-            >
-              <div className="flex flex-col md:flex-row gap-4 items-start mb-4 bg-[var(--green-secondary)] p-5 pt-20 md:p-16 max-w-5xl mx-auto splash text-white h-full">
-                <div className="flex flex-1 flex-col gap-2 items-start">
-                  <span className="text-sm font-semibold uppercase absolute top-0 left-5 p-2 px-4 bg-[var(--blue-primary)] text-white splashMiniXS">
-                    Highlighted
-                  </span>
-                  <Megaphone className="w-12 h-12 stroke-1 hidden" />
-                  <DecryptedText
-                    text={item.Title || "\u00a0"}
-                    animateOn="view"
-                    sequential={true}
-                    maxIterations={20}
-                    characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
-                    speed={50}
-                    revealDirection="start"
-                    encryptedClassName="text-3xl md:text-3xl font-medium tracking-tight"
-                    className="text-3xl md:text-3xl !text-center max-w-3xl font-medium tracking-tight"
-                  />
-                  {item.Subtitle ? (
-                    <span className="text-2xl max-w-2xl text-center font-semibold">
-                      {item.Subtitle}
-                    </span>
-                  ) : null}
-                  {item.Content ? (
-                    <p className="text-sm max-w-2xl text-left ">{item.Content}</p>
-                  ) : null}
-                  <Link href={safeHref(item.Url) ?? "#"} className="mt-8">
-                    <Button className="cursor-pointer">
-                      {item.ButtonText?.trim() || "Discover more"}{" "}
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
+        <section className="container w-full mx-auto mb-12 md:mb-32 relative before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:w-screen md:before:h-[2px] md:before:bg-[var(--green-secondary)] md:before:z-0 md:before:translate-x-[-50%] md:before:translate-y-[-50%] z-0 p-2 md:p-0">
+          <HighlightedsCarousel items={highlighteds} />
         </section>
       ) : null}
 
