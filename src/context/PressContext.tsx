@@ -1,15 +1,15 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
-import { fetchFromStrapi } from "@/lib/config";
+import { fetchAllStrapiPages } from "@/lib/fetchAllStrapiPages";
 
 // Context
 const Context = createContext<any>(null);
 
 // Creiamo il provider
 export function PressContext({ children }: { children: React.ReactNode }) {
-  const [presses, setPresses] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [presses, setPresses] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   // Variabile per passare al context
@@ -19,27 +19,34 @@ export function PressContext({ children }: { children: React.ReactNode }) {
     error,
   };
 
-  const getPresses = async () => {
-    setIsLoading(true);
-    try {
-      const data = await fetchFromStrapi("/api/presses?populate=*");
-      setPresses(data.data);
-    } catch (error: any) {
-      if (error.name === "TypeError" && error.message.includes("fetch")) {
-        console.error(
-          "Network error: Please check your connection or server status."
-        );
-      } else {
-        console.error("Failed to fetch presses:", error);
-      }
-      setError(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
+    let cancelled = false;
+
+    const getPresses = async () => {
+      try {
+        const data = await fetchAllStrapiPages("/api/presses?populate=*", {
+          isCancelled: () => cancelled,
+        });
+        if (!cancelled) setPresses(data);
+      } catch (error: any) {
+        if (cancelled) return;
+        if (error.name === "TypeError" && error.message.includes("fetch")) {
+          console.error(
+            "Network error: Please check your connection or server status."
+          );
+        } else {
+          console.error("Failed to fetch presses:", error);
+        }
+        setError(error);
+      } finally {
+        if (!cancelled) setIsLoading(false);
+      }
+    };
+
     getPresses();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

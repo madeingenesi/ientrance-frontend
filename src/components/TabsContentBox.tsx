@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -83,7 +84,6 @@ export default function TabsContentBox({ contentSections }: TabsContentBoxProps)
     // Cleanup
     return () => {
       ctx.revert();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, [contentSections.length]);
 
@@ -91,12 +91,12 @@ export default function TabsContentBox({ contentSections }: TabsContentBoxProps)
     return (
       <p className="text-center text-muted-foreground py-12 text-base md:text-lg max-w-2xl mx-auto">
         Guide content could not be loaded. Please see the full{" "}
-        <a
+        <Link
           className="text-[var(--blue-primary)] underline"
           href="/guidelines"
         >
           Guidelines
-        </a>{" "}
+        </Link>{" "}
         page.
       </p>
     );

@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
-import { fetchFromStrapi } from "@/lib/config";
+import { fetchAllStrapiPages } from "@/lib/fetchAllStrapiPages";
 
 // Definisci un'interfaccia per il tipo del context
 interface PagesContextType {
@@ -20,28 +20,31 @@ const Context = createContext<PagesContextType>({
 // Provider per le pagine
 export function PagesContext({ children }: { children: React.ReactNode }) {
   const [pages, setPages] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const getPages = async () => {
-    setIsLoading(true);
-    try {
-      const data = await fetchFromStrapi(
-        "/api/pages?populate=*&pagination[pageSize]=100"
-      );
-      if (data && data.data) {
-        setPages(data.data);
-      }
-    } catch (error: any) {
-      console.error("Error details:", error);
-      setError(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
+    let cancelled = false;
+
+    const getPages = async () => {
+      try {
+        const data = await fetchAllStrapiPages("/api/pages?populate=*", {
+          isCancelled: () => cancelled,
+        });
+        if (!cancelled) setPages(data);
+      } catch (error: any) {
+        if (cancelled) return;
+        console.error("Error details:", error);
+        setError(error);
+      } finally {
+        if (!cancelled) setIsLoading(false);
+      }
+    };
+
     getPages();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const value = {

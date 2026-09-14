@@ -11,7 +11,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useState, useEffect, use } from "react";
-import { API_CONFIG, getImageUrl } from "@/lib/config";
+import { API_CONFIG, getImageUrl, getStrapiMediaUrl } from "@/lib/config";
+import { safeHref } from "@/lib/safeHref";
 
 // Component for displaying event details
 export default function EventPage({ params }: any) {
@@ -29,7 +30,7 @@ export default function EventPage({ params }: any) {
         //const url = `${baseUrl}/api/events?filters[slug][$eq]=${slug}&populate=*`;
         //const url = `${baseUrl}/api/events?filters[slug][$eq]=${slug}&populate=*&populate[presses][populate][0]=Image&populate[presses][populate][1]=File`;
 
-        const url = `${baseUrl}/api/events?filters[slug][$eq]=${slug}&populate[presses][populate][Image]=true&populate[presses][populate][File]=true&populate[featuredImage]=true&populate[photoGallery]=true&populate[videoGallery][populate][Image]=true&populate[pressReview]=true`;
+        const url = `${baseUrl}/api/events?filters[slug][$eq]=${encodeURIComponent(slug)}&populate[presses][populate][Image]=true&populate[presses][populate][File]=true&populate[featuredImage]=true&populate[photoGallery]=true&populate[videoGallery][populate][Image]=true&populate[pressReview]=true`;
 
         const response = await fetch(url, {
           cache: "no-store",
@@ -119,7 +120,6 @@ export default function EventPage({ params }: any) {
     return notFound();
   }
 
-  const baseUrl = API_CONFIG.STRAPI_BASE_URL;
 
   // Use featuredImage if available, otherwise fallback to first photoGallery image
   const headerImage = getImageUrl(
@@ -172,7 +172,7 @@ export default function EventPage({ params }: any) {
                             return (
                               <Link
                                 key={childIndex}
-                                href={child.url}
+                                href={safeHref(child.url) ?? "#"}
                                 className="text-blue-600 hover:text-blue-800 underline"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -383,7 +383,11 @@ export default function EventPage({ params }: any) {
                       className="bg-gray-200 splashMiniXS flex-1 p-[1px] h-full"
                     >
                       {item.Url ? (
-                        <Link href={item.Url} target="_blank">
+                        <Link
+                          href={safeHref(item.Url) ?? "#"}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <Image
                             src={finalImageUrl}
                             alt={item.Title || "Press review image"}
@@ -428,10 +432,12 @@ export default function EventPage({ params }: any) {
 
                   const { width, height } = getImageDimensions();
                   const pressLink =
-                    item.Link_Esterno ||
-                    (item.File?.[0]?.url
-                      ? `${baseUrl}${item.File[0].url}`
-                      : "#");
+                    safeHref(
+                      item.Link_Esterno ||
+                        (item.File?.[0]?.url
+                          ? getStrapiMediaUrl(item.File[0].url)
+                          : undefined)
+                    ) ?? "#";
 
                   return (
                     <div
@@ -439,7 +445,11 @@ export default function EventPage({ params }: any) {
                       className="bg-gray-200 splashMiniXS flex-1 p-[1px] h-full"
                     >
                       {pressLink !== "#" ? (
-                        <Link href={pressLink} target="_blank">
+                        <Link
+                          href={pressLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <Image
                             src={finalImageUrl}
                             alt={item.Titolo || "Press coverage image"}

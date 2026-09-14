@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { safeHref } from "@/lib/safeHref";
 
 // Helper function per renderizzare il contenuto degli heading in modo ottimizzato
 const renderHeadingContent = (children: any[]) => {
@@ -78,7 +79,7 @@ const EditorComponent = ({ component }: { component: any }) => {
                       return (
                         <Link
                           key={childIndex}
-                          href={child.url}
+                          href={safeHref(child.url) ?? "#"}
                           className="text-blue-600 hover:text-blue-800 underline"
                           target="_blank"
                           rel="noopener noreferrer"
@@ -222,7 +223,7 @@ const TextImageComponent = ({ component }: { component: any }) => {
                         return (
                           <Link
                             key={childIndex}
-                            href={child.url}
+                            href={safeHref(child.url) ?? "#"}
                             className="text-blue-600 hover:text-blue-800 underline"
                             target="_blank"
                             rel="noopener noreferrer"

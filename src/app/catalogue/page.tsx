@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 
 // Context
 import { useEquipments } from "@/context/EquimentContext";
@@ -32,7 +32,7 @@ import {
 } from "@/components/EquipmentRequestForm";
 
 // Icons
-import { Check, ChevronsUpDown, Search, X, ArrowUpRight } from "lucide-react";
+import { Search, X, ArrowUpRight } from "lucide-react";
 import { SelectPopover } from "./SelectPopover";
 import DynamicBreadcrumb from "@/components/DynamicBreadcrumb";
 import {
@@ -50,17 +50,6 @@ const CATALOG_TABLE_SKELETON_ROWS = 10;
 export default function Catalogue() {
   const { machineries, loading, error } = useEquipments();
   const [search, setSearch] = useState("");
-  const [filteredMachineries, setFilteredMachineries] = useState<
-    CatalogEquipment[]
-  >(machineries as CatalogEquipment[]);
-  const [mainCategory, setMainCategory] = useState([
-    "Caracterization",
-    "Fabrication",
-  ]);
-  const [technique, setTechnique] = useState<string[]>([]);
-  const [tenantName, setTenantName] = useState<string[]>([]);
-  const [model, setModel] = useState<string[]>([]);
-  const [node, setNode] = useState<string[]>([]);
   const [filterFields, setFilterFields] = useState<string[]>([]);
 
   // Gestione dello Sheet
@@ -68,7 +57,23 @@ export default function Catalogue() {
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [showRequestForm, setShowRequestForm] = useState(false);
 
-  useEffect(() => {
+  // Valori derivati calcolati in render (niente effetti + setState a cascata)
+  const filteredMachineries = useMemo(() => {
+    const lowercasedSearch = search.toLowerCase();
+    const list = (machineries || []) as CatalogEquipment[];
+    return list.filter((machine) => {
+      if (machine.equipmentStatus === "Offline") return false;
+      const hay = getEquipmentSearchHaystack(machine);
+      const matchesSearch =
+        !lowercasedSearch || hay.includes(lowercasedSearch);
+      const matchesFilterFields = filterFields.every((field) =>
+        hay.includes(field.toLowerCase())
+      );
+      return matchesSearch && matchesFilterFields;
+    });
+  }, [search, machineries, filterFields]);
+
+  const { mainCategory, technique, tenantName } = useMemo(() => {
     const uniqueMainCategory = new Set(
       filteredMachineries.flatMap((machine) =>
         collectMainCategories(machine)
@@ -85,33 +90,15 @@ export default function Catalogue() {
         .filter((t): t is string => typeof t === "string" && t.length > 0)
     );
 
-    setMainCategory([...uniqueMainCategory].filter(Boolean).sort());
-    setTechnique([...uniqueTechnique].filter(Boolean).sort());
-    setTenantName([...uniqueTenantName].sort());
+    return {
+      mainCategory: [...uniqueMainCategory].filter(Boolean).sort(),
+      technique: [...uniqueTechnique].filter(Boolean).sort(),
+      tenantName: [...uniqueTenantName].sort(),
+    };
   }, [filteredMachineries]);
-
-  useEffect(() => {
-    const lowercasedSearch = search.toLowerCase();
-    const list = (machineries || []) as CatalogEquipment[];
-    const filtered = list.filter((machine) => {
-      if (machine.equipmentStatus === "Offline") return false;
-      const hay = getEquipmentSearchHaystack(machine);
-      const matchesSearch =
-        !lowercasedSearch || hay.includes(lowercasedSearch);
-      const matchesFilterFields = filterFields.every((field) =>
-        hay.includes(field.toLowerCase())
-      );
-      return matchesSearch && matchesFilterFields;
-    });
-    setFilteredMachineries(filtered);
-  }, [search, machineries, filterFields]);
 
   const removeTerm = (field: string) => {
     setFilterFields(filterFields.filter((f) => f !== field));
-  };
-
-  const handleFilter = (value: string) => {
-    // Implementa la logica di filtraggio se necessario
   };
 
   return (
@@ -314,16 +301,14 @@ export default function Catalogue() {
             {showRequestForm ? (
               <EquipmentRequestForm
                 onBack={() => setShowRequestForm(false)}
-                onSubmit={(data) => {
-                  const recipientEmail =
-                    selectedItem?.tenantName &&
-                    NODE_TO_EMAIL[selectedItem.tenantName];
-                  mergeRecipientEmails(
-                    recipientEmail || undefined,
-                    selectedItem?.equipmentMainContactInfo
-                  );
-                  // TODO: submit request (mailto, API, etc.) using data and recipient emails
-                }}
+                recipients={mergeRecipientEmails(
+                  (selectedItem?.tenantName &&
+                    NODE_TO_EMAIL[selectedItem.tenantName]) ||
+                    undefined,
+                  selectedItem?.equipmentMainContactInfo
+                )}
+                equipmentName={selectedItem?.name ?? ""}
+                nodeName={selectedItem?.tenantName ?? ""}
               />
             ) : (
               <ScrollArea className="h-full">

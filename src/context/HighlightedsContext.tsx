@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
-import { fetchFromStrapi } from "@/lib/config";
+import { fetchAllStrapiPages } from "@/lib/fetchAllStrapiPages";
 
 export interface HighlightedEntry {
   id: number;
@@ -33,7 +33,7 @@ export function HighlightedsContextProvider({
   children: React.ReactNode;
 }) {
   const [highlighteds, setHighlighteds] = useState<HighlightedEntry[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>(null);
 
   useEffect(() => {
@@ -43,13 +43,12 @@ export function HighlightedsContextProvider({
       setIsLoading(true);
       setError(null);
       try {
-        const data = await fetchFromStrapi(
+        const list = await fetchAllStrapiPages<HighlightedEntry>(
           "/api/highlighteds?populate=*&sort=publishedAt:desc",
-          { allowNotFound: true, kind: "collection" }
+          { allowNotFound: true, isCancelled: () => cancelled }
         );
         if (cancelled) return;
-        const list = Array.isArray(data?.data) ? data.data : [];
-        setHighlighteds(list as HighlightedEntry[]);
+        setHighlighteds(list);
       } catch (e) {
         if (!cancelled) {
           setError(e);

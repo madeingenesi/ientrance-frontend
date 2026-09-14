@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Thumbs, FreeMode } from "swiper/modules";
 import Image from "next/image";
+import { getStrapiMediaUrl } from "@/lib/config";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -36,10 +37,7 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
   // Helper function to get the correct URL (add base URL if relative)
-  const getImageUrl = (url: string) => {
-    if (!url) return "";
-    return url.startsWith("http") ? url : `http://localhost:1337${url}`;
-  };
+  const getImageUrl = (url: string) => getStrapiMediaUrl(url);
 
   const openModal = (photo: Photo, index: number) => {
     setSelectedImage(photo);

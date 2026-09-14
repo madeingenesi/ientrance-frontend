@@ -32,20 +32,69 @@ export const NODE_TO_EMAIL: Record<string, string> = {
 
 interface EquipmentRequestFormProps {
   onBack: () => void;
-  onSubmit: (data: EquipmentRequestFormData) => void;
+  /** Email del nodo + contatti dell'attrezzatura (già deduplicati) */
+  recipients: string[];
+  equipmentName: string;
+  nodeName: string;
 }
 
-export function EquipmentRequestForm({ onBack, onSubmit }: EquipmentRequestFormProps) {
+// Rimuove CR/LF dai campi a riga singola (evita injection nel mailto)
+const singleLine = (value: string) => value.replace(/[\r\n]+/g, " ").trim();
+
+function buildMailtoUrl(
+  recipients: string[],
+  data: EquipmentRequestFormData,
+  equipmentName: string,
+  nodeName: string
+): string {
+  // Codifica gli indirizzi lasciando leggibile la "@"
+  const to = recipients
+    .map((address) => encodeURIComponent(singleLine(address)).replace(/%40/g, "@"))
+    .join(",");
+  const subject = `Equipment request: ${singleLine(equipmentName)}`;
+  const body = [
+    `First name: ${singleLine(data.firstName)}`,
+    `Last name: ${singleLine(data.lastName)}`,
+    `Email: ${singleLine(data.email)}`,
+    `Equipment: ${singleLine(equipmentName)}`,
+    `Node: ${singleLine(nodeName)}`,
+    "",
+    "Request:",
+    data.request.replace(/\r?\n/g, "\r\n"),
+  ].join("\r\n");
+
+  return `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+export function EquipmentRequestForm({
+  onBack,
+  recipients,
+  equipmentName,
+  nodeName,
+}: EquipmentRequestFormProps) {
   const [formData, setFormData] = useState<EquipmentRequestFormData>({
     firstName: "",
     lastName: "",
     email: "",
     request: "",
   });
+  const [status, setStatus] = useState<"idle" | "opened" | "no-recipients">(
+    "idle"
+  );
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(formData);
+    if (recipients.length === 0) {
+      setStatus("no-recipients");
+      return;
+    }
+    window.location.href = buildMailtoUrl(
+      recipients,
+      formData,
+      equipmentName,
+      nodeName
+    );
+    setStatus("opened");
   };
 
   return (
@@ -114,6 +163,21 @@ export function EquipmentRequestForm({ onBack, onSubmit }: EquipmentRequestFormP
           className="min-h-[120px] rounded-md border"
         />
       </div>
+      {status === "no-recipients" && (
+        <p role="alert" className="text-sm text-red-600 mb-0">
+          No contact email is available for this equipment. Please write to{" "}
+          <a className="underline" href="mailto:info@ientrance.eu">
+            info@ientrance.eu
+          </a>
+          .
+        </p>
+      )}
+      {status === "opened" && (
+        <p role="status" className="text-sm text-green-700 mb-0">
+          Your email client has been opened with your request. If nothing
+          happened, please send it to {recipients.join(", ")}.
+        </p>
+      )}
       <div className="flex gap-2 pt-2">
         <Button
           type="button"

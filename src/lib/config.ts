@@ -76,6 +76,17 @@ export async function fetchFromStrapi<T = any>(
   return response.json() as Promise<T>;
 }
 
+/**
+ * URL assoluto di un media Strapi: gli URL assoluti restano invariati,
+ * quelli relativi vengono prefissati con STRAPI_BASE_URL.
+ */
+export function getStrapiMediaUrl(url?: string | null): string {
+  if (!url) return "";
+  if (/^(https?:)?\/\//i.test(url)) return url;
+  const base = API_CONFIG.STRAPI_BASE_URL.replace(/\/$/, "");
+  return `${base}${url.startsWith("/") ? url : `/${url}`}`;
+}
+
 // Helper function to get image URL from Strapi image field
 // Handles multiple Strapi response structures: direct URL, object with url, and nested data.attributes.url
 export const getImageUrl = (imageField: any, fallbackUrl?: string): string => {

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
@@ -11,14 +11,13 @@ import "swiper/css/navigation";
 
 import { Rss, Paperclip, Calendar, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { getStrapiMediaUrl } from "@/lib/config";
+import { safeHref } from "@/lib/safeHref";
 
 // Swiper modules
 import { Pagination, Navigation } from "swiper/modules";
 
 export default function NewsCarousel({ articles }: any) {
-  const baseImageUrl = "http://localhost:1337";
-  const data = articles?.data?.Articles;
-
   return (
     <>
       <Swiper
@@ -45,14 +44,15 @@ export default function NewsCarousel({ articles }: any) {
           },
         }}
       >
-        {articles
-          ?.sort(
+        {[...(articles ?? [])]
+          .sort(
             (a: any, b: any) =>
               new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
           )
-          .map((article: any, index: number) => {
+          .map((article: any) => {
             const imageUrl =
-              article?.Immagine?.url || "/images/placeholder.jpg";
+              getStrapiMediaUrl(article?.Immagine?.url) ||
+              "/images/placeholder.jpg";
 
             const firstParagraph =
               article?.Contenuto?.[0]?.children?.[0]?.text || "";
@@ -92,14 +92,19 @@ export default function NewsCarousel({ articles }: any) {
                             : firstParagraph}
                         </p>
                         <Link
-                          href={`${
-                            article.Link_Esterno
-                              ? article.Link_Esterno
-                              : `/${article.Slug}`
-                          }`}
+                          href={
+                            safeHref(
+                              article.Link_Esterno || `/${article.Slug}`
+                            ) ?? "#"
+                          }
                           className="w-fit"
                           prefetch={true}
                           target={article.Link_Esterno ? "_blank" : "_self"}
+                          rel={
+                            article.Link_Esterno
+                              ? "noopener noreferrer"
+                              : undefined
+                          }
                         >
                           <Button
                             variant="outline"

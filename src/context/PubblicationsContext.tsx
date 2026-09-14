@@ -7,7 +7,7 @@ import {
   useEffect,
   type ReactNode,
 } from "react";
-import { fetchFromStrapi } from "@/lib/config";
+import { fetchAllStrapiPages } from "@/lib/fetchAllStrapiPages";
 
 const Context = createContext<{
   pubblications: unknown[];
@@ -26,7 +26,7 @@ export function PubblicationsContextProvider({
   children: ReactNode;
 }) {
   const [pubblications, setPubblications] = useState<unknown[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>(null);
 
   useEffect(() => {
@@ -36,25 +36,10 @@ export function PubblicationsContextProvider({
       setIsLoading(true);
       setError(null);
       try {
-        // Strapi caps each response at pageSize (default 25). Loop every page
-        // so all publications load, not just the first page.
-        const PAGE_SIZE = 100;
-        const all: unknown[] = [];
-        let page = 1;
-        let pageCount = 1;
-        do {
-          const data = await fetchFromStrapi<{
-            data?: unknown[];
-            meta?: { pagination?: { pageCount?: number } };
-          }>(
-            `/api/pubblications?populate=*&sort=Year:desc&pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}`,
-            { allowNotFound: true, kind: "collection" }
-          );
-          if (cancelled) return;
-          if (Array.isArray(data?.data)) all.push(...data.data);
-          pageCount = data?.meta?.pagination?.pageCount ?? page;
-          page += 1;
-        } while (page <= pageCount);
+        const all = await fetchAllStrapiPages(
+          "/api/pubblications?populate=*&sort=Year:desc",
+          { allowNotFound: true, isCancelled: () => cancelled }
+        );
         if (cancelled) return;
         setPubblications(all);
       } catch (e) {

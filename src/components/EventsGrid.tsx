@@ -41,8 +41,8 @@ export default function EventsGrid({ events }: EventsGridProps) {
 
   return (
     <div className="flex flex-col gap-2 w-full">
-      {events
-        ?.sort(
+      {[...events]
+        .sort(
           (a: any, b: any) =>
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         )

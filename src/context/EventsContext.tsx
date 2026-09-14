@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
-import { fetchFromStrapi } from "@/lib/config";
+import { fetchAllStrapiPages } from "@/lib/fetchAllStrapiPages";
 
 // Define an interface for the context type
 interface EventsContextType {
@@ -20,26 +20,31 @@ const Context = createContext<EventsContextType>({
 // Provider for events
 export function EventsContext({ children }: { children: React.ReactNode }) {
   const [events, setEvents] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const getEvents = async () => {
-    setIsLoading(true);
-    try {
-      const data = await fetchFromStrapi("/api/events?populate=*");
-      if (data && data.data) {
-        setEvents(data.data);
-      }
-    } catch (error: any) {
-      console.error("Error details:", error);
-      setError(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
+    let cancelled = false;
+
+    const getEvents = async () => {
+      try {
+        const data = await fetchAllStrapiPages("/api/events?populate=*", {
+          isCancelled: () => cancelled,
+        });
+        if (!cancelled) setEvents(data);
+      } catch (error: any) {
+        if (cancelled) return;
+        console.error("Error details:", error);
+        setError(error);
+      } finally {
+        if (!cancelled) setIsLoading(false);
+      }
+    };
+
     getEvents();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const value = {

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { safeHref } from "@/lib/safeHref";
 
 function renderInline(children: any[] | undefined) {
   if (!children?.length) return null;
@@ -16,7 +17,7 @@ function renderInline(children: any[] | undefined) {
       return (
         <Link
           key={i}
-          href={child.url || "#"}
+          href={safeHref(child.url) ?? "#"}
           className="text-blue-600 hover:text-blue-800 underline"
           target="_blank"
           rel="noopener noreferrer"

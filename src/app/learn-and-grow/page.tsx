@@ -143,6 +143,7 @@ export default function LearnAndGrow() {
                   <Link
                     href="https://forms.office.com/Pages/DesignPageV2.aspx?subpage=design&token=f103f38f3f9f43b3974bc7e978bd77d2&id=n07GNH_S3U6h8BOX8MhPlJxQWquJAV5Fv8BvuGqTs09URjAzRVpYMUlJUTk4UUNURFhFRUNHUTlJUC4u"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="w-full hover:pointer"
                   >
                     <Button className="w-full splashMiniXS border-none bg-[var(--blue-primary)] !rounded-none py-6 text-lg tracking-tight text-white ">

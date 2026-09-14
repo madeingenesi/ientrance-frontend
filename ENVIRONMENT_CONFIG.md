@@ -1,40 +1,38 @@
 # Environment Configuration Guide
 
-## Server Configuration
+## Runtime
 
-This project is configured to work with both local development and production Strapi servers.
+- **Node.js 22** (see `.nvmrc`). Use `nvm use` before installing dependencies.
 
-### Production Server (Default)
+## Environment Variables
 
-- **URL**: `https://ambitious-cat-3135f7987e.strapiapp.com`
-- **Usage**: Automatically used when `NEXT_PUBLIC_STRAPI_URL` is set in `.env.local`
+Set these in `.env.local` (local) or in the deployment environment.
 
-### Local Development Server
+| Variable                       | Scope                     | Required                  | Description                                                                                                                                                       |
+| ------------------------------ | ------------------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_STRAPI_URL`       | Public (browser + server) | Recommended               | Strapi base URL. Falls back to `https://ambitious-cat-3135f7987e.strapiapp.com`.                                                                                  |
+| `NEXT_PUBLIC_STRAPI_API_TOKEN` | Public (browser + server) | Optional                  | Strapi API token sent as `Authorization: Bearer` by `fetchFromStrapi()`. Only needed if the Public role returns 403. It ends up in the client bundle: **read-only tokens only**. |
+| `IENTRANCE_API_URL`            | Server-only               | Recommended               | Base URL of the iENTRANCE catalogue API. Falls back to `https://ientrance.fablims.com/api`.                                                                       |
+| `IENTRANCE_API_KEY`            | Server-only               | Yes (catalogue)           | API key sent as `x-api-key` from the server. Never prefix it with `NEXT_PUBLIC_` and never commit it.                                                             |
 
-- **URL**: `http://localhost:1337`
-- **Requirements**: Local Strapi server must be running
+No other variables are read by the application.
 
-## Switching Between Environments
-
-### To use Production Server (Default)
-
-The application is already configured to use the production server. No changes needed.
+### Example `.env.local`
 
 ```bash
-# In .env.local
 NEXT_PUBLIC_STRAPI_URL=https://ambitious-cat-3135f7987e.strapiapp.com
+# NEXT_PUBLIC_STRAPI_API_TOKEN=<read-only token>
+
+IENTRANCE_API_URL=https://ientrance.fablims.com/api
+IENTRANCE_API_KEY=<secret>
 ```
 
-### To use Local Development Server
+## Using a Local Strapi Server
 
-1. Uncomment the local URL in `.env.local`:
+1. Point the frontend to the local instance:
 
 ```bash
 # In .env.local
-# Comment out or remove the production URL
-# NEXT_PUBLIC_STRAPI_URL=https://ambitious-cat-3135f7987e.strapiapp.com
-
-# Uncomment the local URL
 NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
 ```
 
@@ -45,51 +43,36 @@ cd backend
 npm run develop
 ```
 
-3. Restart the Next.js development server to pick up the environment changes.
-
-## Current Configuration
-
-The following components automatically use the configured URL:
-
-- ✅ Events Context (`/src/context/EventsContext.tsx`)
-- ✅ Articles Context (`/src/context/ArticlesContext.tsx`)
-- ✅ Pages Context (`/src/context/PagesContext.tsx`)
-- ✅ Press Context (`/src/context/PressContext.tsx`)
-- ✅ Events Page (`/src/app/events/[slug]/page.tsx`)
-- ✅ Fetch Articles Helper (`/src/helpers/fetchAllArticles.ts`)
+3. Restart the Next.js dev server to pick up the environment changes.
 
 ## Image Loading
 
-Next.js Image component is configured to support both environments:
+`next.config.js` allows `next/image` to load from:
 
-- **Production**: `https://ambitious-cat-3135f7987e.strapiapp.com`
-- **Local**: `http://localhost:1337`
+- `https://ambitious-cat-3135f7987e.strapiapp.com`
+- `https://ambitious-cat-3135f7987e.media.strapiapp.com`
+- `http://localhost:1337` — **development only** (not allowed when `NODE_ENV=production`)
 
 ## Technical Implementation
 
-All API calls are centralized through `/src/lib/config.ts` which provides:
+Strapi access is centralized in `/src/lib`:
 
-- `API_CONFIG.STRAPI_BASE_URL`: Environment-aware Strapi URL
-- `fetchFromStrapi()`: Unified function for Strapi API calls
-- `createFetchOptions()`: Standard fetch configuration
-- `getImageUrl()`: Helper function for consistent image URL resolution
+- `config.ts`
+  - `API_CONFIG`: environment-aware URLs and tokens
+  - `fetchFromStrapi()`: unified Strapi fetch (optional `allowNotFound`)
+  - `getStrapiMediaUrl()`: keeps absolute media URLs, prefixes relative ones with `NEXT_PUBLIC_STRAPI_URL`
+  - `getImageUrl()`: resolves the various Strapi image field shapes
+- `fetchAllStrapiPages.ts`: loops over every Strapi page (`pagination[pageSize]=100`) so collections are not capped at 25 items; used by all contexts in `/src/context`
+- `safeHref.ts`: validates CMS-provided links (only `http:`, `https:`, `mailto:`, `tel:`, `/…` and `#…`)
+
+Article detail pages (`/src/app/(articoli)/[slug]`) call `GET /api/articoli/:slug`, which returns only the published article: a 404 renders the Next.js not-found page, any other upstream error surfaces through the error boundary.
 
 ## Image Handling
 
 ### Featured Image Support
 
-Events now support a `featuredImage` field for the header image:
+Events support a `featuredImage` field for the header image:
 
 - **Priority**: `featuredImage` takes precedence over `photoGallery[0]`
 - **Fallback**: If no `featuredImage`, uses first image from `photoGallery`
 - **Default**: Falls back to `/images/examples/copertina-summer-school.jpg`
-
-### Image URL Resolution
-
-The `getImageUrl()` helper automatically handles:
-
-- Direct string URLs
-- Strapi v4 data.attributes.url structure
-- Object with url property
-- Array of image objects
-- Automatic base URL prepending for relative paths

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { ArticlesContext } from "../context/ArticlesContext";
@@ -12,15 +11,6 @@ import { EventsContext } from "../context/EventsContext";
 import { HighlightedsContextProvider } from "../context/HighlightedsContext";
 import { ResultsContextProvider } from "../context/ResultsContext";
 import { PubblicationsContextProvider } from "../context/PubblicationsContext";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "iEntrance",
@@ -73,9 +63,7 @@ export default function RootLayout({
         />
         {/* End Matomo */}
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         <PagesContext>
           <ArticlesContext>
             <HighlightedsContextProvider>

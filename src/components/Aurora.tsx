@@ -111,6 +111,10 @@ void main() {
 }
 `;
 
+// Costante di modulo: un array letterale nei default verrebbe ricreato a ogni
+// render e, essendo dipendenza dell'effetto, reinizializzerebbe WebGL
+const DEFAULT_COLOR_STOPS = ["#00d8ff", "#7cff67", "#00d8ff"];
+
 interface AuroraProps {
   colorStops?: string[];
   amplitude?: number;
@@ -121,7 +125,7 @@ interface AuroraProps {
 
 export default function Aurora(props: AuroraProps) {
   const {
-    colorStops = ["#00d8ff", "#7cff67", "#00d8ff"],
+    colorStops = DEFAULT_COLOR_STOPS,
     amplitude = 1.0,
     blend = 0.5,
   } = props;
@@ -145,8 +149,6 @@ export default function Aurora(props: AuroraProps) {
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     gl.canvas.style.backgroundColor = "transparent";
 
-    let program: Program | undefined;
-
     function resize() {
       if (!ctn) return;
       const width = ctn.offsetWidth;
@@ -169,7 +171,7 @@ export default function Aurora(props: AuroraProps) {
       return [c.r, c.g, c.b];
     });
 
-    program = new Program(gl, {
+    const program = new Program(gl, {
       vertex: VERT,
       fragment: FRAG,
       uniforms: {

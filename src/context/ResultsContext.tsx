@@ -7,7 +7,7 @@ import {
   useEffect,
   type ReactNode,
 } from "react";
-import { fetchFromStrapi } from "@/lib/config";
+import { fetchAllStrapiPages } from "@/lib/fetchAllStrapiPages";
 
 const Context = createContext<{
   results: unknown[];
@@ -21,7 +21,7 @@ const Context = createContext<{
 
 export function ResultsContextProvider({ children }: { children: ReactNode }) {
   const [results, setResults] = useState<unknown[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>(null);
 
   useEffect(() => {
@@ -31,12 +31,11 @@ export function ResultsContextProvider({ children }: { children: ReactNode }) {
       setIsLoading(true);
       setError(null);
       try {
-        const data = await fetchFromStrapi(
+        const list = await fetchAllStrapiPages(
           "/api/results?populate=*&sort=Year:desc",
-          { allowNotFound: true, kind: "collection" }
+          { allowNotFound: true, isCancelled: () => cancelled }
         );
         if (cancelled) return;
-        const list = Array.isArray(data?.data) ? data.data : [];
         setResults(list);
       } catch (e) {
         if (!cancelled) {

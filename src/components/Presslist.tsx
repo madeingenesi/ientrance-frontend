@@ -1,6 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { getStrapiMediaUrl } from "@/lib/config";
+import { safeHref } from "@/lib/safeHref";
 
 export default function Presslist({ presses }: { presses: any }) {
   // const presslist = [
@@ -55,9 +57,11 @@ export default function Presslist({ presses }: { presses: any }) {
       {sortedPresses.map((item: any) => {
         // Add proper null checking for File array
         const url =
-          item?.File && Array.isArray(item.File) && item.File.length > 0
-            ? item.File[0]?.url
-            : item.Link_Esterno || "#";
+          safeHref(
+            item?.File && Array.isArray(item.File) && item.File.length > 0
+              ? getStrapiMediaUrl(item.File[0]?.url)
+              : item.Link_Esterno
+          ) ?? "#";
 
         return (
           <div
@@ -67,14 +71,7 @@ export default function Presslist({ presses }: { presses: any }) {
             <div className="col-span-12 md:col-span-2 row-start-1 md:row-start-1 text-xs md:text-base flex items-center gap-2">
               {item.Image?.url ? (
                 <Image
-                  src={
-                    item.Image.url.startsWith("http")
-                      ? item.Image.url
-                      : `${
-                          process.env.NEXT_PUBLIC_STRAPI_URL ||
-                          "http://localhost:1337"
-                        }${item.Image.url}`
-                  }
+                  src={getStrapiMediaUrl(item.Image.url)}
                   alt={item.Source || "Press image"}
                   width={60}
                   height={60}

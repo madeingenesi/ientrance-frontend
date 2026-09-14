@@ -2,9 +2,9 @@
 
 // Next
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 import Link from "next/link";
-import { fetchFromStrapi } from "@/lib/config";
+import { safeHref } from "@/lib/safeHref";
 
 // Context
 import {
@@ -29,63 +29,28 @@ import DecryptedText from "../components/DecryptedText";
 
 // Icons
 import {
-  ArrowUpRight,
   LibraryBig,
   MessagesSquare,
   ArrowRight,
-  Rss,
-  Calendar,
-  Paperclip,
   Megaphone,
 } from "lucide-react";
 
 export default function Home() {
   const { articles } = useArticlesContext();
   const { highlighteds } = useHighlightedsContext();
-  /** Strapi single-type `{ data }` for `home-page` (HomeSlider reads `data.data.Slider`). */
-  const [slides, setSlides] = useState<{ data: unknown }>({ data: null });
-  const [boxes, setBoxes] = useState<{ data: unknown }>({ data: null });
   const { machineries } = useEquipments();
-  const [techniques, setTechniques] = useState<string[]>([]);
-
-  useEffect(() => {
+  const techniques = useMemo(() => {
     const list = (machineries || []) as CatalogEquipment[];
     const labels = list
       .filter((m) => m.equipmentStatus !== "Offline")
       .flatMap((m) => collectTechniqueLabels(m));
-    setTechniques([...new Set(labels)].filter(Boolean).sort());
+    return [...new Set(labels)].filter(Boolean).sort();
   }, [machineries]);
-
-  const fetchHomePage = async (
-    query: string,
-    setData: (value: { data: unknown }) => void
-  ) => {
-    try {
-      const data = await fetchFromStrapi<{ data: unknown }>(
-        `/api/home-page?${query}`,
-        {
-          allowNotFound: true,
-          kind: "single",
-        }
-      );
-      setData(data);
-    } catch {
-      setData({ data: null });
-    }
-  };
-
-  useEffect(() => {
-    fetchHomePage(
-      "populate[0]=Slider&populate[1]=Slider.Immagine",
-      setSlides
-    );
-    fetchHomePage("populate[0]=BoxesSection", setBoxes);
-  }, []);
 
   return (
     <main className="w-full mx-auto">
       <section className="w-full mx-auto !overflow-visible z-10 relative !-mb-[150px]">
-        <HomeSlider data={slides} />
+        <HomeSlider />
       </section>
 
       {/* {articles.map((article: any) => (
@@ -133,7 +98,7 @@ export default function Home() {
                   {item.Content ? (
                     <p className="text-sm max-w-2xl text-left ">{item.Content}</p>
                   ) : null}
-                  <Link href={item.Url?.trim() || "#"} className="mt-8">
+                  <Link href={safeHref(item.Url) ?? "#"} className="mt-8">
                     <Button className="cursor-pointer">
                       {item.ButtonText?.trim() || "Discover more"}{" "}
                       <ArrowRight className="w-4 h-4" />

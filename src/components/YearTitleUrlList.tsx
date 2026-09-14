@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type RefObject } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { YearTitleUrlRow } from "@/helpers/strapiOutcomeNormalize";
+import { safeHref } from "@/lib/safeHref";
 
 type YearTitleUrlListProps = {
   rows: YearTitleUrlRow[];
@@ -88,7 +89,7 @@ export default function YearTitleUrlList({
         </div>
       </div>
       {visibleRows.map((item, index) => {
-        const href = item.url?.trim() || "";
+        const href = safeHref(item.url) ?? "";
         const hasUrl = href.length > 0 && href !== "#";
 
         return (

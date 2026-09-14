@@ -3,17 +3,21 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Rss, Paperclip, Calendar, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { getStrapiMediaUrl } from "@/lib/config";
+import { safeHref } from "@/lib/safeHref";
 
 export default function NewsGrid({ articles }: any) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 w-full">
-      {articles
-        ?.sort(
+      {[...(articles ?? [])]
+        .sort(
           (a: any, b: any) =>
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         )
         .map((article: any) => {
-          const imageUrl = article?.Immagine?.url || "/images/placeholder.jpg";
+          const imageUrl =
+            getStrapiMediaUrl(article?.Immagine?.url) ||
+            "/images/placeholder.jpg";
           const firstParagraph =
             article?.Contenuto?.[0]?.children?.[0]?.text || "";
           return (
@@ -40,14 +44,16 @@ export default function NewsGrid({ articles }: any) {
                         : firstParagraph}
                     </p>
                     <Link
-                      href={`${
-                        article.Link_Esterno
-                          ? article.Link_Esterno
-                          : `/${article.Slug}`
-                      }`}
+                      href={
+                        safeHref(article.Link_Esterno || `/${article.Slug}`) ??
+                        "#"
+                      }
                       className="w-fit"
                       prefetch={true}
                       target={article.Link_Esterno ? "_blank" : "_self"}
+                      rel={
+                        article.Link_Esterno ? "noopener noreferrer" : undefined
+                      }
                     >
                       <Button
                         variant="outline"

@@ -64,7 +64,9 @@ export function SelectPopover({
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
                     setOpen(false);
-                    setFilterFields([...filterFields, currentValue]);
+                    if (!filterFields.includes(currentValue)) {
+                      setFilterFields([...filterFields, currentValue]);
+                    }
                   }}
                 >
                   <Check

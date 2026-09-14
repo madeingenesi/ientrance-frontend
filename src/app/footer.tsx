@@ -2,11 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 
 import { ArrowRight, ChevronRight, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SocialLogo } from "social-logos";
 import {
   collectTechniqueLabels,
   type CatalogEquipment,
@@ -15,14 +14,12 @@ import { useEquipments } from "@/context/EquimentContext";
 
 export default function Footer() {
   const { machineries } = useEquipments();
-  const [techniques, setTechniques] = useState<string[]>([]);
-
-  useEffect(() => {
+  const techniques = useMemo(() => {
     const list = (machineries || []) as CatalogEquipment[];
     const labels = list
       .filter((m) => m.equipmentStatus !== "Offline")
       .flatMap((m) => collectTechniqueLabels(m));
-    setTechniques([...new Set(labels)].filter(Boolean).sort());
+    return [...new Set(labels)].filter(Boolean).sort();
   }, [machineries]);
 
   const theMosaic = [
@@ -195,6 +192,7 @@ export default function Footer() {
             <Link
               href="https://www.youtube.com/@IENTRANCERESEARCH"
               target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-gray-300 hover:underline cursor-pointer"
             >
               <span className="text-lg flex flex-row gap-2 items-center">
@@ -210,6 +208,7 @@ export default function Footer() {
             <Link
               href="https://www.linkedin.com/company/ientrance-enl/"
               target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-gray-300 hover:underline cursor-pointer"
             >
               <span className="text-lg flex flex-row gap-2 items-center">
