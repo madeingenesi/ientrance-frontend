@@ -41,7 +41,7 @@ export default function HighlightedsCarousel({
         <SwiperSlide key={item.id} className="!h-auto">
           <div className="bg-gray-200 splash relative pb-6 h-full">
             <div className="flex flex-col gap-4 items-start bg-[var(--green-secondary)] p-5 pt-20 md:p-16 splash text-white h-full">
-              <div className="flex flex-1 flex-col gap-2 items-start">
+              <div className="flex flex-1 flex-col gap-2 items-start text-left">
                 <span className="text-sm font-semibold uppercase absolute top-0 left-5 p-2 px-4 bg-[var(--blue-primary)] text-white splashMiniXS">
                   Highlighted
                 </span>
@@ -54,10 +54,10 @@ export default function HighlightedsCarousel({
                   speed={50}
                   revealDirection="start"
                   encryptedClassName="text-3xl md:text-3xl font-medium tracking-tight"
-                  className="text-3xl md:text-3xl !text-center max-w-3xl font-medium tracking-tight"
+                  className="text-3xl md:text-3xl text-left max-w-3xl font-medium tracking-tight"
                 />
                 {item.Subtitle ? (
-                  <span className="text-2xl max-w-2xl text-center font-semibold">
+                  <span className="text-2xl max-w-2xl text-left font-semibold">
                     {item.Subtitle}
                   </span>
                 ) : null}

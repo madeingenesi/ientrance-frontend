@@ -354,21 +354,17 @@ body {
   object-fit: cover;
 }
 
+/* Swiper 12 usa un'icona SVG che occupa il box meno il padding */
 .swiper-button-prev,
 .swiper-button-next {
-  @apply bg-white p-5 text-sm rounded-full border border-gray-200;
-}
-
-.swiper-button-prev:after,
-.swiper-button-next:after {
-  font-size: 1.5rem !important;
-  @apply text-[var(--blue-primary)];
+  --swiper-navigation-color: var(--blue-primary);
+  @apply bg-white p-3 rounded-full border border-gray-200;
 }
 
 .featuresCarousel {
   .swiper-button-prev,
   .swiper-button-next {
-    @apply bg-white p-5 rounded-full border border-gray-200 -top-12;
+    @apply -top-12;
   }
 
   .swiper-button-next {
