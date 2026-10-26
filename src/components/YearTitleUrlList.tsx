@@ -13,7 +13,7 @@ type YearTitleUrlListProps = {
 };
 
 /**
- * Same grid layout as {@link Presslist}: 12-col header + stacked rows on mobile.
+ * Grid layout: 12-col header + stacked rows on mobile.
  * Columns: Year, Title, URL.
  */
 export default function YearTitleUrlList({

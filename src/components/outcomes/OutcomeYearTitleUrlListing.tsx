@@ -15,7 +15,7 @@ type OutcomeYearTitleUrlListingProps = {
 };
 
 /**
- * Same page shell as press-releases + {@link YearTitleUrlList} (Presslist-style grid).
+ * Page shell + {@link YearTitleUrlList} grid.
  */
 export function OutcomeYearTitleUrlListing({
   title,

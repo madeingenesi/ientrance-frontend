@@ -81,10 +81,6 @@ export default function Footer() {
       href: "/outcomes/events",
     },
     {
-      title: "Press Releases",
-      href: "/outcomes/press-releases",
-    },
-    {
       title: "Results",
       href: "/outcomes/results",
     },

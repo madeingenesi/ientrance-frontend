@@ -73,10 +73,6 @@ const outcomes: { title: string; href: string }[] = [
     href: "/outcomes/events",
   },
   {
-    title: "Press Releases",
-    href: "/outcomes/press-releases",
-  },
-  {
     title: "Results",
     href: "/outcomes/results",
   },

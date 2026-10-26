@@ -100,12 +100,6 @@ const outcomes: { title: string; href: string; description: string }[] = [
       "Discover our past and upcoming events with detailed content and photo galleries.",
   },
   {
-    title: "Press Releases",
-    href: "/outcomes/press-releases",
-    description:
-      "Official press releases and media communications from our organization.",
-  },
-  {
     title: "Results",
     href: "/outcomes/results",
     description:
